@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  Wegaut
+
+  Created by Felipe Ortega on 9/15/18.
+  Copyright © 2018 Wegaut. All rights reserved.
+*/
+
+//MARK: - LOGINVC
+
+"LOG_SLO"      = "¡Let's go!";
+"LOG_USR"      = "User";
+"LOG_PSSWD"    = "Password";
+"LOG_LOG"      = "LOGIN";
+"LOG_FP"       = "Forgot password?";
+"LOG_RP"       = "RECOVER PASSWORD";
+"LOG_RLOG"     = "Do you want to login?";
+"LOG_INVMAIL"  = "The email isn't valid";
+"LOG_INVPSSWD" = "The password isn't valid";
+"LOG_MAILTIT"  = "Email sent";
+"LOG_MAILSENT" = "An email for recovering password has been sent to your account.";

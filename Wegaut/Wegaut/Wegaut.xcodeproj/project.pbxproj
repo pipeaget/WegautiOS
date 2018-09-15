@@ -7,13 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D52CB3EC214AD284007C58D2 /* WegautConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52CB3EB214AD284007C58D2 /* WegautConstants.swift */; };
+		D52CB3EF214AD40C007C58D2 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52CB3EE214AD40C007C58D2 /* UIViewControllerExtensions.swift */; };
+		D5CB94DE2149973D00009BCB /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CB94DD2149973D00009BCB /* LoginVC.swift */; };
+		D5D14629214D75E5005C2FC5 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D14628214D75E5005C2FC5 /* StringExtensions.swift */; };
+		D5D1462B214D7A0F005C2FC5 /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D1462A214D7A0F005C2FC5 /* UITextFieldExtensions.swift */; };
+		D5D1462D214D7CC5005C2FC5 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D1462C214D7CC5005C2FC5 /* UIImageExtension.swift */; };
+		D5D14632214D8505005C2FC5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D5D14634214D8505005C2FC5 /* Localizable.strings */; };
 		D5E20EDC21478B390099C1BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E20EDB21478B390099C1BD /* AppDelegate.swift */; };
-		D5E20EDE21478B390099C1BD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E20EDD21478B390099C1BD /* ViewController.swift */; };
 		D5E20EE121478B390099C1BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5E20EDF21478B390099C1BD /* Main.storyboard */; };
 		D5E20EE321478B3A0099C1BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5E20EE221478B3A0099C1BD /* Assets.xcassets */; };
 		D5E20EE621478B3A0099C1BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5E20EE421478B3A0099C1BD /* LaunchScreen.storyboard */; };
 		D5E20EF121478B3A0099C1BD /* WegautTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E20EF021478B3A0099C1BD /* WegautTests.swift */; };
 		D5E20EFC21478B3A0099C1BD /* WegautUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E20EFB21478B3A0099C1BD /* WegautUITests.swift */; };
+		D5EBD478214982D700FEEBA4 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5EBD477214982D700FEEBA4 /* Login.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +41,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D52CB3EB214AD284007C58D2 /* WegautConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WegautConstants.swift; sourceTree = "<group>"; };
+		D52CB3EE214AD40C007C58D2 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
+		D5CB94DD2149973D00009BCB /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		D5D14628214D75E5005C2FC5 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		D5D1462A214D7A0F005C2FC5 /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
+		D5D1462C214D7CC5005C2FC5 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
+		D5D14630214D84E6005C2FC5 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		D5D14631214D84E6005C2FC5 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		D5D14633214D8505005C2FC5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D5D14635214D850A005C2FC5 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D5E20ED821478B390099C1BD /* Wegaut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wegaut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5E20EDB21478B390099C1BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D5E20EDD21478B390099C1BD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D5E20EE021478B390099C1BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D5E20EE221478B3A0099C1BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5E20EE521478B3A0099C1BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +63,7 @@
 		D5E20EF721478B3A0099C1BD /* WegautUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WegautUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5E20EFB21478B3A0099C1BD /* WegautUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WegautUITests.swift; sourceTree = "<group>"; };
 		D5E20EFD21478B3A0099C1BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5EBD477214982D700FEEBA4 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +91,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D57F8B37214790290001EE01 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D5D14628214D75E5005C2FC5 /* StringExtensions.swift */,
+				D5D1462A214D7A0F005C2FC5 /* UITextFieldExtensions.swift */,
+				D5D1462C214D7CC5005C2FC5 /* UIImageExtension.swift */,
+				D52CB3EE214AD40C007C58D2 /* UIViewControllerExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D57F8B38214790400001EE01 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				D52CB3EB214AD284007C58D2 /* WegautConstants.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		D57F8B39214790480001EE01 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		D57F8B3A214790510001EE01 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		D5CB94DC2149972900009BCB /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				D5CB94DD2149973D00009BCB /* LoginVC.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		D5E20ECF21478B390099C1BD = {
 			isa = PBXGroup;
 			children = (
@@ -97,12 +155,13 @@
 		D5E20EDA21478B390099C1BD /* Wegaut */ = {
 			isa = PBXGroup;
 			children = (
-				D5E20EDB21478B390099C1BD /* AppDelegate.swift */,
-				D5E20EDD21478B390099C1BD /* ViewController.swift */,
-				D5E20EDF21478B390099C1BD /* Main.storyboard */,
-				D5E20EE221478B3A0099C1BD /* Assets.xcassets */,
-				D5E20EE421478B3A0099C1BD /* LaunchScreen.storyboard */,
-				D5E20EE721478B3A0099C1BD /* Info.plist */,
+				D57F8B39214790480001EE01 /* DataModel */,
+				D57F8B38214790400001EE01 /* Classes */,
+				D57F8B37214790290001EE01 /* Extensions */,
+				D57F8B3A214790510001EE01 /* Cells */,
+				D5E20F0A21478EC40099C1BD /* ViewControllers */,
+				D5E20F0B21478ED30099C1BD /* Resources */,
+				D5E20F0921478EB60099C1BD /* XIBS */,
 			);
 			path = Wegaut;
 			sourceTree = "<group>";
@@ -123,6 +182,35 @@
 				D5E20EFD21478B3A0099C1BD /* Info.plist */,
 			);
 			path = WegautUITests;
+			sourceTree = "<group>";
+		};
+		D5E20F0921478EB60099C1BD /* XIBS */ = {
+			isa = PBXGroup;
+			children = (
+				D5E20EE421478B3A0099C1BD /* LaunchScreen.storyboard */,
+				D5EBD477214982D700FEEBA4 /* Login.storyboard */,
+				D5E20EDF21478B390099C1BD /* Main.storyboard */,
+			);
+			path = XIBS;
+			sourceTree = "<group>";
+		};
+		D5E20F0A21478EC40099C1BD /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D5E20EDB21478B390099C1BD /* AppDelegate.swift */,
+				D5CB94DC2149972900009BCB /* Login */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D5E20F0B21478ED30099C1BD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D5E20EE721478B3A0099C1BD /* Info.plist */,
+				D5E20EE221478B3A0099C1BD /* Assets.xcassets */,
+				D5D14634214D8505005C2FC5 /* Localizable.strings */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,6 +299,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = D5E20ECF21478B390099C1BD;
 			productRefGroup = D5E20ED921478B390099C1BD /* Products */;
@@ -229,6 +318,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5D14632214D8505005C2FC5 /* Localizable.strings in Resources */,
+				D5EBD478214982D700FEEBA4 /* Login.storyboard in Resources */,
 				D5E20EE621478B3A0099C1BD /* LaunchScreen.storyboard in Resources */,
 				D5E20EE321478B3A0099C1BD /* Assets.xcassets in Resources */,
 				D5E20EE121478B390099C1BD /* Main.storyboard in Resources */,
@@ -256,8 +347,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5E20EDE21478B390099C1BD /* ViewController.swift in Sources */,
 				D5E20EDC21478B390099C1BD /* AppDelegate.swift in Sources */,
+				D52CB3EF214AD40C007C58D2 /* UIViewControllerExtensions.swift in Sources */,
+				D5D1462D214D7CC5005C2FC5 /* UIImageExtension.swift in Sources */,
+				D5D14629214D75E5005C2FC5 /* StringExtensions.swift in Sources */,
+				D5D1462B214D7A0F005C2FC5 /* UITextFieldExtensions.swift in Sources */,
+				D52CB3EC214AD284007C58D2 /* WegautConstants.swift in Sources */,
+				D5CB94DE2149973D00009BCB /* LoginVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,10 +389,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		D5D14634214D8505005C2FC5 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D5D14633214D8505005C2FC5 /* en */,
+				D5D14635214D850A005C2FC5 /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		D5E20EDF21478B390099C1BD /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				D5E20EE021478B390099C1BD /* Base */,
+				D5D14631214D84E6005C2FC5 /* es */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -305,6 +411,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				D5E20EE521478B3A0099C1BD /* Base */,
+				D5D14630214D84E6005C2FC5 /* es */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -316,6 +423,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -376,6 +484,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -432,12 +541,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LUY25X6XJ5;
-				INFOPLIST_FILE = Wegaut/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Wegaut/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wegaut.wegaut.Wegaut;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wegaut.Wegaut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -450,12 +559,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LUY25X6XJ5;
-				INFOPLIST_FILE = Wegaut/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Wegaut/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wegaut.wegaut.Wegaut;
+				PRODUCT_BUNDLE_IDENTIFIER = com.wegaut.Wegaut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
