@@ -6,6 +6,37 @@
   Copyright © 2018 Wegaut. All rights reserved.
 */
 
+//MARK: - MAIN
+
+""            = "MISSING LOCALIZABLE";
+"APP_TITLE"   = "wegaut";
+"YES"         = "YES";
+"NO"          = "NO";
+"SEND"        = "SEND";
+"OK"          = "OK";
+"CANCEL"      = "Cancel";
+
+//MARK: - TAGS
+
+"TAG_PAR" = "Party";
+"TAG_ART" = "Art";
+"TAG_SOC" = "Social Causes";
+"TAG_COM" = "Comedy";
+"TAG_TEA" = "Theater";
+"TAG_HAN" = "Handcrafting";
+"TAG_EDU" = "Education";
+"TAG_DAN" = "Dance";
+"TAG_MOV" = "Movies";
+"TAG_FIT" = "Fitness";
+"TAG_SHO" = "Shopping";
+"TAG_SPO" = "Sports";
+"TAG_LIF" = "Lifestyle";
+"TAG_ENT" = "Entretainment";
+"TAG_FOO" = "Food";
+"TAG_GAM" = "Games";
+"TAG_HEA" = "Health";
+"TAG_GAR" = "Gardening";
+
 //MARK: - LOGINVC
 
 "LOG_SLO"      = "¡Let's go!";
@@ -34,3 +65,183 @@
 "REG_CANCEL"    = "Cancel";
 "REG_CAMERA"    = "Camera";
 "REG_GALLERY"   = "Gallery";
+
+//MARK: - SELECTINTERESTSVC
+
+"SEL_TIT" = "Choose your interests";
+
+//MARK: - WALKTHROUGHVC
+
+"WAL_SKP"    = "SKIP";
+"WAL_NXT"    = "NEXT";
+"WAL_STA"    = "GET STARTED";
+
+//MARK: - WALKTHROUGHPVC
+
+"WPC_H1"  = "DISCOVER WEGAUT";
+"WPC_H2"  = "SEARCH EVENTS";
+"WPC_H3"  = "CREATE EVENTS";
+"WPC_SH1" = "Bored and want to hang out with people like you? wegaut® is the new way to discover events around you!";
+"WPC_SH2" = "You can find multiple and diverse events near you. Or even plan a runout weekend.";
+"WPC_SH3" = "Also you can create events to meet new people or hang around with friends.";
+
+//MARK: - EVENTFEEDVC
+
+"EVF_NAME"  = "Name";
+"EVF_PLACE" = "Place";
+"EVF_TAGS"  = "Category";
+"EVF_NO_EVENTS" = "Currently there's any available events...";
+"EVF_SEARCH" = "Search...";
+
+//MARK: - EVENTFEEDDETAILVC
+
+"EVFD_SH1" = "I'm going to the event ";
+"EVFD_SH2" = "\nCome and join me ";
+"EVFD_SH3" = " at ";
+"EVFD_NAV_TIT" = "Navigation options";
+"EVFD_NAV_MESS" = "Please select your preferred application";
+
+//MARK: - EVENTDETAILTVCELL
+
+"EDC_INT" = "I'm interested";
+"EDC_GOI" = "I'm going";
+"EDC_SHA" = "Share";
+
+//MARK: - ADDNEWEVENTVC
+
+"ANE_STEP1" = "General";
+"ANE_STEP2" = "Location";
+"ANE_STEP3" = "Schedule";
+"ANE_STEP4" = "Organization";
+"ANE_STEP5" = "Multimedia";
+"ANE_PREV"  = "PREVIOUS";
+"ANE_NEXT"  = "NEXT";
+"ANE_FIN"   = "FINISH";
+
+//MARK: - GENERALINFOVC
+
+"GIE_ENAME" = "Event Name";
+"GIE_ASTY"  = "Event Assistance Type";
+"GIE_DESC"  = "Describe your event here...";
+
+//MARK: - LOCATIONINFOVC
+
+"SIVC_EVAD" = "Event Address";
+"SIVC_EVPL" = "Event Place";
+"SIVC_UL"   = "You're here";
+"SIVC_SP"   = "Search a place";
+
+//MARK: - SCHEDULEINFOVC
+
+"SIVC_INDA" = "Initial Date:";
+"SIVC_ENDA" = "End Date:";
+
+//MARK: - SPONSORSHIPINFOVC
+
+"SPO_ORG"   = "Organizers";
+"SPO_SPO"   = "Sponsors";
+"SPO_EVURL" = "Event Webpage";
+
+//MARK: - MULTIMEDIAINFOVC
+
+"MMI_SAVE" = "ADD";
+"MMI_CANC" = "CANCEL";
+
+//MARK: - COMMENTSTVCELL
+
+"COM_TIT" = "Comments";
+"COM_NEW" = "Write something...";
+"COM_ALL" = "Show all coments";
+
+//MARK: - EVENTADDRESSTVCELL
+
+"EAC_TIT"  = "Place highlights";
+"EAC_HTGT" = "Directions";
+
+//MARK: - ORGANIZERSTVCELL
+
+"ORC_TIT" = "Organizers";
+
+//MARK: - EVENTCOUNTDOWNTVCELL
+
+"ECDC_OPEN" = "OPEN";
+"ECDC_CLOS" = "CLOSED";
+
+//MARK: - RECENTPUBLICATIONSTVCELL
+
+"RPC_RP" = "Publicaciones recientes";
+
+//MARK: - MAININFOTVCELL
+
+"MIC_ASS"   = "Assistants";
+"MIC_CHE"   = "Check-Ins";
+"MIC_FOL"   = "Following";
+"MIC_AVA"   = "Entradas disponibles";
+"MIC_NAVA"  = "Entradas no disponibles";
+
+//MARK: - MYACTIVITIESVC
+
+"NOT_FOLLOW" = "Follow";
+"NOT_USER"   = "User";
+"NOT_NAME"   = "Notification";
+"NOT_NO_EVENTS" = "Currently there's any available notifications...";
+
+//MARK: - PROFILEVC
+
+"PRO_FOLWRS" = "Followers";
+"PRO_LEVEL"  = "Level";
+"PRO_EVENTS" = "Events";
+"PRO_GOING"  = "I'm going";
+"PRO_FAVS"   = "Favorites";
+"PRO_SHARED" = "Shared";
+
+//MARK: - SETTINGSVC
+
+"SO_H1"    = "Messages";
+"SO_H2"    = "Profile";
+"SO_H3"    = "wegaut®";
+"SO_H4"    = "Legal";
+"SO_PN"    = "Push Notifications";
+"SO_EP"    = "Edit Profile";
+"SO_CS"    = "Close Session";
+"SO_AU"    = "About Us";
+"SO_CON"   = "Contact";
+"SO_T&C"   = "Terms & Conditions";
+"SO_PA"    = "Privacy Advice";
+"SO_FAQ"   = "FAQ";
+"SO_SL"    = "Software Licenses";
+"CS_TITLE" = "Close Session";
+"CS_MSSG"  = "Are you sure you want to close this session?";
+
+//MARK: - EDITPROFILEVC
+
+"EPC_UPD" = "Update";
+
+//MARK: - MFMAILCOMPOSER
+
+"MF_SUB"       = "wegaut® Contact";
+"MF_BOD"       = "Please leave your message here...";
+"MF_ERR_TIT"   = "Please verify the information";
+"MF_ERR_MESS"  = "The mail couldn`t be sent";
+"MF_OK_TIT"    = "OK";
+
+//MARK: - DROPDOWNDETAILVC
+
+"DDD_INV_SEC" = "The section you selected is currently unavailable.";
+"DDD_EMP_SEC" = "The section you selected has no content.";
+"DD_Q1" = "What is wegaut®?";
+"DD_A1" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+"DD_Q2" = "Why use wegaut@?";
+"DD_A2" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+"DD_Q3" = "How wegaut® works?";
+"DD_A3" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+"DD_Q4" = "Where does my info go?";
+"DD_A4" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+"DD_PT1" = "Colours";
+"DD_PD1" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+"DD_PT2" = "Fabric";
+"DD_PD2" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+"DD_PT3" = "KVNProgress";
+"DD_PD3" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+"DD_PT4" = "SDWebImage";
+"DD_PD4" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";

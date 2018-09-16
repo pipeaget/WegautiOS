@@ -8,6 +8,8 @@ target 'Wegaut' do
 
   # Pods for Wegaut
 
+    pod 'BRCountDownView'
+    pod 'Colours'
     pod 'IQKeyboardManager'
     pod 'ReachabilitySwift'
     pod 'SDWebImage'

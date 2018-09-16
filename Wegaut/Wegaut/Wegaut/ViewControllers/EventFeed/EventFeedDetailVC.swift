@@ -1,0 +1,253 @@
+//
+//  EventFeedDetailVC.swift
+//  wegaut
+//
+//  Created by Felipe Ortega on 6/12/18.
+//  Copyright © 2018 InGenious. All rights reserved.
+//
+
+import UIKit
+import MapKit
+
+class EventFeedDetailVC: UIViewController {
+    
+    //MARK: - VARIABLES
+    
+    var currentEvent: Event?
+    
+    //MARK: - OUTLETS
+    
+    @IBOutlet weak var tvEventDetail: UITableView!
+    
+    //MARK: - VIEW LIFECYCLE
+
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        tvEventDetail.rowHeight = UITableViewAutomaticDimension
+    }
+
+    override func didReceiveMemoryWarning() {
+        
+        super.didReceiveMemoryWarning()
+    }
+    
+    //MARK: - NAVIGATION
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "ShowMoreComments"{
+            
+            let destinationVC = segue.destination as! MoreCommentsVC
+            destinationVC.currentComments = Comment.getcomments()
+        }
+    }
+    
+    //MARK: - FUNCTIONS
+    
+    func addToFavorites(anEvent: Event){
+        
+        //TODO: ADD EVENT TO FAVORITES
+    }
+    
+    func assitToEvent(anEvent: Event){
+        
+        //TODO: ADD EVENT TO ASSIST LIST
+    }
+    
+    func shareEvent(anEvent: Event){
+        
+        let strToShare = "EVFD_SH1".localized + "\(anEvent.eveName)" + "EVFD_SH2".localized + "\(anEvent.eveDate) \(anEvent.eveSchedule)" + "EVFD_SH3".localized + "\(anEvent.evePlace)."
+        
+        if let eventWebSite = NSURL(string: anEvent.eveURL) {
+            let objectsToShare: [Any] = [strToShare, eventWebSite]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            
+            activityVC.popoverPresentationController?.sourceView = tvEventDetail
+            self.present(activityVC, animated: true, completion: nil)
+        }
+    }
+    
+    func showNavigationOptions(){
+        
+        let navOptionsAlert: UIAlertController = UIAlertController(title: "EVFD_NAV_TIT".localized,
+                                                                   message: "EVFD_NAV_MESS".localized,
+                                                                   preferredStyle: UIAlertControllerStyle.actionSheet)
+        if  let anEvent = self.currentEvent{
+            
+            self.getLocationFrom(anEvent: anEvent) { (location, error) in
+                
+                if let aLocation = location{
+                    
+                    let actMaps: UIAlertAction = UIAlertAction(title: "Maps",
+                                                               style: UIAlertActionStyle.default) { (alert) in
+                                                                
+                                                                let regionDistance: CLLocationDistance = 10000
+                                                                let coordinates: CLLocationCoordinate2D = CLLocationCoordinate2DMake(aLocation.latitude, aLocation.longitude)
+                                                                let regionSpan: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(coordinates, regionDistance, regionDistance)
+                                                                let options: [String: NSValue] = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
+                                                                                                  MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)]
+                                                                let placemark: MKPlacemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+                                                                let mapItem: MKMapItem = MKMapItem(placemark: placemark)
+                                                                mapItem.name = anEvent.evePlace
+                                                                mapItem.openInMaps(launchOptions: options)
+                    }
+                    navOptionsAlert.addAction(actMaps)
+                    
+                    if (UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!)){
+                        
+                        let actGoogleMaps: UIAlertAction = UIAlertAction(title: "Google Maps",
+                                                                         style: UIAlertActionStyle.default) { (alert) in
+                                                                            
+                                                                            UIApplication.shared.open(URL(string: "comgooglemaps://?daddr=\(aLocation.latitude),\(aLocation.longitude)&zoom=14&directionsmode=driving")!,
+                                                                                                      options: [:],
+                                                                                                      completionHandler: { (canOpenURL) in
+                                                                                                        
+                                                                                                        if !canOpenURL{
+                                                                                                            let errorAlert: UIAlertController = UIAlertController(title: "ERROR",
+                                                                                                                                                                  message: "There's a problem with the location.",
+                                                                                                                                                                  preferredStyle: UIAlertControllerStyle.alert)
+                                                                                                            errorAlert.addAction(UIAlertAction(title: "OK",
+                                                                                                                                               style: UIAlertActionStyle.destructive,
+                                                                                                                                               handler: nil))
+                                                                                                            self.present(errorAlert, animated: true, completion: nil)
+                                                                                                        }
+                                                                            })
+                        }
+                        navOptionsAlert.addAction(actGoogleMaps)
+                    }
+                    
+                    if (UIApplication.shared.canOpenURL(URL(string: "https://waze.com/ul")!)){
+                        
+                        let actWaze: UIAlertAction = UIAlertAction(title: "Waze",
+                                                                   style: UIAlertActionStyle.default) { (alert) in
+                                                                    
+                                                                    UIApplication.shared.open(URL(string: "https://waze.com/ul?ll=\(aLocation.latitude),\(aLocation.longitude)&navigate=yes")!,
+                                                                                              options: [:],
+                                                                                              completionHandler: { (canOpenURL) in
+                                                                                                
+                                                                                                if !canOpenURL{
+                                                                                                    let errorAlert: UIAlertController = UIAlertController(title: "ERROR",
+                                                                                                                                                          message: "There's a problem with the location.",
+                                                                                                                                                          preferredStyle: UIAlertControllerStyle.alert)
+                                                                                                    errorAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                                                                                                    self.present(errorAlert, animated: true, completion: nil)
+                                                                                                }
+                                                                    })
+                        }
+                        navOptionsAlert.addAction(actWaze)
+                    }
+                }
+            }
+        }
+        
+        let actCancel: UIAlertAction = UIAlertAction(title: "CANCEL".localized,
+                                                     style: UIAlertActionStyle.cancel,
+                                                     handler: nil)
+        navOptionsAlert.addAction(actCancel)
+        present(navOptionsAlert, animated: true, completion: nil)
+    }
+    
+    func getLocationFrom(anEvent: Event, completion: @escaping(_ location: CLLocationCoordinate2D?, _ error: Error?)->Void){
+        
+        let geoCoder = CLGeocoder()
+        geoCoder.geocodeAddressString(anEvent.eveAddress) { (placemarks, error) in
+            
+            if let error = error{
+                
+                completion(nil, error)
+            }
+            
+            if let placemarks = placemarks{
+                
+                let placemark = placemarks[0]
+                return completion(placemark.location?.coordinate, nil)
+            }
+        }
+    }
+}
+
+//MARK: - EXTENSIONS
+
+extension EventFeedDetailVC: UITableViewDataSource, UITableViewDelegate{
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return 4
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        switch indexPath.row {
+            
+        case 0:
+            let aCell: EventDetailTVCell = tableView.dequeueReusableCell(withIdentifier: "EventDetailCell", for: indexPath) as! EventDetailTVCell
+            aCell.addFavorite = {
+                
+                (selectedEvent) in
+                self.addToFavorites(anEvent: selectedEvent)
+            }
+            aCell.assistEvent = {
+                
+                (selectedEvent) in
+                self.assitToEvent(anEvent: selectedEvent)
+            }
+            aCell.shareEvent = {
+                
+                (selectedEvent) in
+                self.shareEvent(anEvent: selectedEvent)
+            }
+            return aCell
+            
+        case 1:
+            let aCell: CommentsTVCell = tableView.dequeueReusableCell(withIdentifier: "CommentsCell", for: indexPath) as! CommentsTVCell
+            aCell.moreCommentsAction = {
+                
+                self.performSegue(withIdentifier: "ShowMoreComments", sender: self)
+            }
+            return aCell
+            
+        case 2:
+            let aCell: EventAddressTVCell = tableView.dequeueReusableCell(withIdentifier: "EventAddressCell", for: indexPath) as! EventAddressTVCell
+            aCell.howToGetThereAction = {
+                
+                self.showNavigationOptions()
+            }
+            return aCell
+            
+        default:
+            let aCell: OrganizersTVCell = tableView.dequeueReusableCell(withIdentifier: "OrganizersCell", for: indexPath) as! OrganizersTVCell
+            return aCell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        switch indexPath.row {
+            
+        case 0:
+            let aCell: EventDetailTVCell = cell as! EventDetailTVCell
+            aCell.currentEvent = currentEvent
+            
+        case 1:
+            let aCell: CommentsTVCell = cell as! CommentsTVCell
+            aCell.currentCommentaries = Comment.getcomments()
+        
+        case 2:
+            let aCell: EventAddressTVCell = cell as! EventAddressTVCell
+            aCell.currentEvent = currentEvent
+            
+        case 3:
+            let aCell: OrganizersTVCell = cell as! OrganizersTVCell
+            aCell.arrOrganizers = Organizer.getAllOrganizers()
+            
+        default:
+            break
+        }
+    }
+}

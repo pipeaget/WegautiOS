@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0940"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D46C9EF9D6009B61842CD0C6E2961B99"
+               BlueprintIdentifier = "979325EF471F82A986C8F085F841E922"
                BuildableName = "Pods_Wegaut.framework"
                BlueprintName = "Pods-Wegaut"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D46C9EF9D6009B61842CD0C6E2961B99"
+            BlueprintIdentifier = "979325EF471F82A986C8F085F841E922"
             BuildableName = "Pods_Wegaut.framework"
             BlueprintName = "Pods-Wegaut"
             ReferencedContainer = "container:Pods.xcodeproj">

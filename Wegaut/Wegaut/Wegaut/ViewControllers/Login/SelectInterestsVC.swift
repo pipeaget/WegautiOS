@@ -31,6 +31,7 @@ class SelectInterestsVC: UIViewController {
         
         super.viewDidLoad()
         arrInterests = Interest.getInterests()
+        lblInstructions.text = "SEL_TIT".localized
     }
 
     override func didReceiveMemoryWarning() {
