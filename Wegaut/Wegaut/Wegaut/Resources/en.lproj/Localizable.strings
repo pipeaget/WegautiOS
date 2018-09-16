@@ -19,3 +19,18 @@
 "LOG_INVPSSWD" = "The password isn't valid";
 "LOG_MAILTIT"  = "Email sent";
 "LOG_MAILSENT" = "An email for recovering password has been sent to your account.";
+
+//MARK: - REGISTERVC
+
+"REG_TIT"       = "Register";
+"REG_USR"       = "User";
+"REG_LN"        = "Last names";
+"REG_EM"        = "Email";
+"REG_PSSWD"     = "Password";
+"REG_BIRTH"     = "Birthday";
+"REG_ABOUT"     = "Tell us about you";
+"REG_DESC"      = "Use this space to describe yourself...";
+"REG_PHOTOMSSG" = "Select an origin";
+"REG_CANCEL"    = "Cancel";
+"REG_CAMERA"    = "Camera";
+"REG_GALLERY"   = "Gallery";

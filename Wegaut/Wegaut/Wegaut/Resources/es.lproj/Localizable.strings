@@ -19,3 +19,18 @@
 "LOG_INVPSSWD" = "La contraseña no es válida";
 "LOG_MAILTIT"  = "Correo Enviado";
 "LOG_MAILSENT" = "Un correo de recuperación de contraseña ha sido enviado a la cuenta solicitada.";
+
+//MARK: - REGISTERVC
+
+"REG_TIT"       = "Registro";
+"REG_USR"       = "Usuario";
+"REG_LN"        = "Apellidos";
+"REG_EM"        = "Email";
+"REG_PSSWD"     = "Contraseña";
+"REG_BIRTH"     = "Cumpleaños";
+"REG_ABOUT"     = "Cuentanos sobre ti";
+"REG_DESC"      = "Usa este espacio para describirte...";
+"REG_PHOTOMSSG" = "Selecciona un origen";
+"REG_CANCEL"    = "Cancelar";
+"REG_CAMERA"    = "Camára";
+"REG_GALLERY"   = "Galería";

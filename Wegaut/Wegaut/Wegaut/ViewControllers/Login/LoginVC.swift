@@ -45,6 +45,7 @@ class LoginVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.keyboardWillShow(_:)),
                                                name: NSNotification.Name.UIKeyboardWillShow,
@@ -122,6 +123,7 @@ class LoginVC: UIViewController {
                                                                             NSAttributedStringKey.foregroundColor : UIColor.white])
             btnForgotPassword.setAttributedTitle(strFP,
                                                  for: UIControlState.normal)
+            vwDivider.isHidden = false
             
         default:
             btnLogin.setTitle("LOG_RP".localized,
@@ -133,6 +135,7 @@ class LoginVC: UIViewController {
                                                                             NSAttributedStringKey.foregroundColor : UIColor.white])
             btnForgotPassword.setAttributedTitle(strFP,
                                                  for: UIControlState.normal)
+            vwDivider.isHidden = true
         }
         tfUser.showInvalidInputStateWhen(isValidInput: false)
         tfPassword.showInvalidInputStateWhen(isValidInput: false)
@@ -224,6 +227,12 @@ class LoginVC: UIViewController {
         default:
             currentUserInputStatus = userInput.login
         }
+    }
+    
+    @IBAction func actRegister(_ sender: UIButton) {
+        
+        self.performSegue(withIdentifier: "showRegister",
+                          sender: nil)
     }
 }
 

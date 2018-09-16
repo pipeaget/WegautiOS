@@ -14,6 +14,12 @@
 		D5D1462B214D7A0F005C2FC5 /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D1462A214D7A0F005C2FC5 /* UITextFieldExtensions.swift */; };
 		D5D1462D214D7CC5005C2FC5 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D1462C214D7CC5005C2FC5 /* UIImageExtension.swift */; };
 		D5D14632214D8505005C2FC5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D5D14634214D8505005C2FC5 /* Localizable.strings */; };
+		D5D14637214D8BE6005C2FC5 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D14636214D8BE6005C2FC5 /* RegisterVC.swift */; };
+		D5D1463C214DBE33005C2FC5 /* Avenir Next Condensed.ttc in Resources */ = {isa = PBXBuildFile; fileRef = D5D1463A214DBE21005C2FC5 /* Avenir Next Condensed.ttc */; };
+		D5D1463D214DBE33005C2FC5 /* Avenir Next.ttc in Resources */ = {isa = PBXBuildFile; fileRef = D5D1463B214DBE21005C2FC5 /* Avenir Next.ttc */; };
+		D5D1463E214DBE33005C2FC5 /* Avenir.ttc in Resources */ = {isa = PBXBuildFile; fileRef = D5D14639214DBE21005C2FC5 /* Avenir.ttc */; };
+		D5D14640214DC1E3005C2FC5 /* WegautColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D1463F214DC1E3005C2FC5 /* WegautColors.swift */; };
+		D5D14642214E34C4005C2FC5 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D14641214E34C4005C2FC5 /* UIViewExtensions.swift */; };
 		D5E20EDC21478B390099C1BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E20EDB21478B390099C1BD /* AppDelegate.swift */; };
 		D5E20EE121478B390099C1BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5E20EDF21478B390099C1BD /* Main.storyboard */; };
 		D5E20EE321478B3A0099C1BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5E20EE221478B3A0099C1BD /* Assets.xcassets */; };
@@ -51,6 +57,12 @@
 		D5D14631214D84E6005C2FC5 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		D5D14633214D8505005C2FC5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D5D14635214D850A005C2FC5 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D5D14636214D8BE6005C2FC5 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		D5D14639214DBE21005C2FC5 /* Avenir.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Avenir.ttc; sourceTree = "<group>"; };
+		D5D1463A214DBE21005C2FC5 /* Avenir Next Condensed.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Avenir Next Condensed.ttc"; sourceTree = "<group>"; };
+		D5D1463B214DBE21005C2FC5 /* Avenir Next.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Avenir Next.ttc"; sourceTree = "<group>"; };
+		D5D1463F214DC1E3005C2FC5 /* WegautColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WegautColors.swift; sourceTree = "<group>"; };
+		D5D14641214E34C4005C2FC5 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		D5E20ED821478B390099C1BD /* Wegaut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wegaut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5E20EDB21478B390099C1BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5E20EE021478B390099C1BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -97,6 +109,7 @@
 				D5D14628214D75E5005C2FC5 /* StringExtensions.swift */,
 				D5D1462A214D7A0F005C2FC5 /* UITextFieldExtensions.swift */,
 				D5D1462C214D7CC5005C2FC5 /* UIImageExtension.swift */,
+				D5D14641214E34C4005C2FC5 /* UIViewExtensions.swift */,
 				D52CB3EE214AD40C007C58D2 /* UIViewControllerExtensions.swift */,
 			);
 			path = Extensions;
@@ -106,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				D52CB3EB214AD284007C58D2 /* WegautConstants.swift */,
+				D5D1463F214DC1E3005C2FC5 /* WegautColors.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -128,8 +142,19 @@
 			isa = PBXGroup;
 			children = (
 				D5CB94DD2149973D00009BCB /* LoginVC.swift */,
+				D5D14636214D8BE6005C2FC5 /* RegisterVC.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		D5D14638214DBE13005C2FC5 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D5D1463A214DBE21005C2FC5 /* Avenir Next Condensed.ttc */,
+				D5D1463B214DBE21005C2FC5 /* Avenir Next.ttc */,
+				D5D14639214DBE21005C2FC5 /* Avenir.ttc */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		D5E20ECF21478B390099C1BD = {
@@ -206,6 +231,7 @@
 		D5E20F0B21478ED30099C1BD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D5D14638214DBE13005C2FC5 /* Fonts */,
 				D5E20EE721478B3A0099C1BD /* Info.plist */,
 				D5E20EE221478B3A0099C1BD /* Assets.xcassets */,
 				D5D14634214D8505005C2FC5 /* Localizable.strings */,
@@ -318,6 +344,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5D1463C214DBE33005C2FC5 /* Avenir Next Condensed.ttc in Resources */,
+				D5D1463D214DBE33005C2FC5 /* Avenir Next.ttc in Resources */,
+				D5D1463E214DBE33005C2FC5 /* Avenir.ttc in Resources */,
 				D5D14632214D8505005C2FC5 /* Localizable.strings in Resources */,
 				D5EBD478214982D700FEEBA4 /* Login.storyboard in Resources */,
 				D5E20EE621478B3A0099C1BD /* LaunchScreen.storyboard in Resources */,
@@ -347,10 +376,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5D14640214DC1E3005C2FC5 /* WegautColors.swift in Sources */,
 				D5E20EDC21478B390099C1BD /* AppDelegate.swift in Sources */,
+				D5D14637214D8BE6005C2FC5 /* RegisterVC.swift in Sources */,
 				D52CB3EF214AD40C007C58D2 /* UIViewControllerExtensions.swift in Sources */,
 				D5D1462D214D7CC5005C2FC5 /* UIImageExtension.swift in Sources */,
 				D5D14629214D75E5005C2FC5 /* StringExtensions.swift in Sources */,
+				D5D14642214E34C4005C2FC5 /* UIViewExtensions.swift in Sources */,
 				D5D1462B214D7A0F005C2FC5 /* UITextFieldExtensions.swift in Sources */,
 				D52CB3EC214AD284007C58D2 /* WegautConstants.swift in Sources */,
 				D5CB94DE2149973D00009BCB /* LoginVC.swift in Sources */,
