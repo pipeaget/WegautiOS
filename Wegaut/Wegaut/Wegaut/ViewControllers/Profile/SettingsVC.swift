@@ -148,10 +148,10 @@ extension SettingsVC: UITableViewDataSource, UITableViewDelegate{
                     if success{
                         popUpAlert.dismiss(animated: true)
                         UserDefaults.standard.set(false, forKey: WegautConstants.IS_USER_LOGGED)
-                        let storyBoard: UIStoryboard = UIStoryboard(name: "Main",
+                        let storyBoard: UIStoryboard = UIStoryboard(name: "Login",
                                                                     bundle: nil)
-                        let tabBar = storyBoard.instantiateViewController(withIdentifier: "RootNavigation") as! UITabBarController
-                        self.present(tabBar,
+                        let loginRoot = storyBoard.instantiateViewController(withIdentifier: "RootLogin") as! UINavigationController
+                        self.present(loginRoot,
                                      animated:true,
                                      completion:nil)
                     }else{

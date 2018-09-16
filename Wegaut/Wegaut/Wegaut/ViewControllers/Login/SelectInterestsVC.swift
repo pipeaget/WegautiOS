@@ -21,7 +21,6 @@ class SelectInterestsVC: UIViewController {
     //MARK: - OUTLETS
     
     @IBOutlet weak var btnDismiss: UIButton!
-    @IBOutlet weak var btnMore: UIButton!
     @IBOutlet weak var lblInstructions: UILabel!
     @IBOutlet weak var cvInterests: UICollectionView!
     
@@ -41,9 +40,7 @@ class SelectInterestsVC: UIViewController {
     
     //MARK: - FUNCTIONS
     
-    //MARK: - ACTIONS
-    
-    @IBAction func actDismiss(_ sender: UIButton) {
+    func goToFeed() {
         
         UserDefaults.standard.set(true,
                                   forKey: WegautConstants.IS_USER_LOGGED)
@@ -54,7 +51,18 @@ class SelectInterestsVC: UIViewController {
                      animated:true,
                      completion:nil)
     }
+    
+    //MARK: - ACTIONS
+    
+    @IBAction func actDismiss(_ sender: UIButton) {
+        
+        goToFeed()
+    }
 
+    @IBAction func actConfirmInterests(_ sender: UIButton) {
+        
+        goToFeed()
+    }
 }
 
 extension SelectInterestsVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManager
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        //Setting the back-end enviorment for all the project.
+        var isOnDev = true
+        #if DEBUG
+        isOnDev = true
+        #else
+        isOnDev = false
+        #endif
+        UserDefaults.standard.set(isOnDev,
+                                  forKey: WegautConstants.IS_DEV_APP)
+        
+        //Navigation bar appearance
+        let navAppearance = UINavigationBar.appearance()
+        navAppearance.barTintColor = UIColor.white
+        navAppearance.tintColor = UIColor.deepPurple
+        navAppearance.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white, NSAttributedStringKey.font:UIFont.systemFont(ofSize: 20)]
+        
+        //Tab bar appearance
+        let tabBarAppearance = UITabBar.appearance()
+        tabBarAppearance.barTintColor = UIColor.white
+        tabBarAppearance.tintColor = UIColor.mediumPurple
+        tabBarAppearance.unselectedItemTintColor = UIColor.lightGray
+        
+        //Search bar appearance
+        let tfAppearance = UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self])
+        tfAppearance.defaultTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.mediumPurple]
+        tfAppearance.tintColor = UIColor.white
+        
+        //Initialize IQkeyaboard
+        IQKeyboardManager.shared().isEnabled = true
         
         let isLogged: Bool = UserDefaults.standard.bool(forKey: WegautConstants.IS_USER_LOGGED)
         let storyboard: UIStoryboard = UIStoryboard(name: isLogged ? "Main" : "Login",

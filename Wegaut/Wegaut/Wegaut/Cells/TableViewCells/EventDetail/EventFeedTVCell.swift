@@ -24,12 +24,16 @@ class EventFeedTVCell: UITableViewCell {
     
     //MARK: OUTLETS
     
-    @IBOutlet weak var vwContainer: UIView!
-    @IBOutlet weak var btnIsFavorite: UIButton!
     @IBOutlet weak var imgvwEvent: UIImageView!
     @IBOutlet weak var lblEventName: UILabel!
     @IBOutlet weak var lblEventPlace: UILabel!
     @IBOutlet weak var lblEventDate: UILabel!
+    @IBOutlet weak var vwContainer: UIView!
+    @IBOutlet weak var btnIsFavorite: UIButton!
+    @IBOutlet weak var lblLikes: UILabel!
+    @IBOutlet weak var btnComments: UIButton!
+    @IBOutlet weak var lblComments: UILabel!
+    @IBOutlet weak var btnAdd: UIButton!
     
     //MARK: VIEW LIFECYCLE
 
@@ -48,8 +52,6 @@ class EventFeedTVCell: UITableViewCell {
     
     func drawUI(){
         
-        vwContainer.layer.borderColor = UIColor.darkGray.cgColor
-        vwContainer.layer.borderWidth = 2
         vwContainer.layer.masksToBounds = true
         vwContainer.cornerRadius(cornerRadius: 10)
         guard let anEvent = currentEvent else {
@@ -60,10 +62,11 @@ class EventFeedTVCell: UITableViewCell {
         }*/
         imgvwEvent.image = UIImage(named: anEvent.eveImageURL)
         imgvwEvent.clipsToBounds = true
+        imgvwEvent.cornerRadius(cornerRadius: 10)
         btnIsFavorite.setImage(anEvent.eveIsFavorite ? #imageLiteral(resourceName: "ICHearthON") : #imageLiteral(resourceName: "ICHearthOFF"), for: UIControlState.normal)
         lblEventName.text = anEvent.eveName
-        lblEventPlace.attributedText = anEvent.evePlace.getStringWith(anImage: #imageLiteral(resourceName: "ICPin"))
-        lblEventDate.attributedText = (anEvent.eveDate + ", " + anEvent.eveSchedule).getStringWith(anImage: #imageLiteral(resourceName: "ICCalendar"))
+        lblEventPlace.attributedText = anEvent.evePlace.getStringWith(anImage: #imageLiteral(resourceName: "ICPlace"))
+        lblEventDate.attributedText = (anEvent.eveDate + ", " + anEvent.eveSchedule).getStringWith(anImage: #imageLiteral(resourceName: "ICDate"))
     }
     
     //MARK: ACTIONS
