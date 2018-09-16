@@ -57,14 +57,6 @@ class RegisterVC: UIViewController {
         
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.keyboardWillShow(_:)),
-                                               name: NSNotification.Name.UIKeyboardWillShow,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.keyboardWillHide(_:)),
-                                               name: NSNotification.Name.UIKeyboardDidHide,
-                                               object: nil)
     }
 
     override func viewDidLoad() {
@@ -98,24 +90,6 @@ class RegisterVC: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    //MARK: - UIKEYBOARD NOTIFICATION HANDLER
-    
-    @objc func keyboardWillShow(_ notification: Notification) {
-        
-        if let userInfo = (notification as NSNotification).userInfo {
-            
-            if self.view.frame.origin.y == 0 {
-                
-                self.view.frame.origin.y -= (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
-            }
-        }
-    }
-    
-    @objc func keyboardWillHide(_ notification: Notification) {
-        
-        self.view.frame.origin.y = 0
-    }
-    
     //MARK: - FUNCTIONS
     
     /// Used to get a selected image from the Photo Library
@@ -144,8 +118,7 @@ class RegisterVC: UIViewController {
     
     @IBAction func actClose(_ sender: UIButton) {
         
-        self.dismiss(animated: true,
-                     completion: nil)
+        self.navigationController?.popViewController(animated: true)       
     }
     
     @IBAction func actChangePhoto(_ sender: UIButton) {
@@ -178,14 +151,8 @@ class RegisterVC: UIViewController {
     
     @IBAction func actRegister(_ sender: UIButton) {
         
-        UserDefaults.standard.set(true,
-                                  forKey: WegautConstants.IS_USER_LOGGED)
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main",
-                                                    bundle: nil)
-        let tabBar = storyBoard.instantiateViewController(withIdentifier: "RootNavigation") as! UITabBarController
-        self.present(tabBar,
-                     animated:true,
-                     completion:nil)
+        self.performSegue(withIdentifier: "showInterests",
+                          sender: nil)
     }
 }
 

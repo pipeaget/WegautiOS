@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let isLogged: Bool = UserDefaults.standard.bool(forKey: WegautConstants.IS_USER_LOGGED)
         let storyboard: UIStoryboard = UIStoryboard(name: isLogged ? "Main" : "Login",
                                                     bundle: Bundle.main)
-        let vc = storyboard.instantiateViewController(withIdentifier: isLogged ? "RootNavigation" : "LoginVC")
+        let vc = storyboard.instantiateViewController(withIdentifier: isLogged ? "RootNavigation" : "RootLogin")
         window?.rootViewController = vc
         
         return true

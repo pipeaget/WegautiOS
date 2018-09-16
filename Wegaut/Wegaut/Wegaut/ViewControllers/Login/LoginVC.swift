@@ -46,14 +46,6 @@ class LoginVC: UIViewController {
         
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.keyboardWillShow(_:)),
-                                               name: NSNotification.Name.UIKeyboardWillShow,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.keyboardWillHide(_:)),
-                                               name: NSNotification.Name.UIKeyboardDidHide,
-                                               object: nil)
     }
 
     override func viewDidLoad() {
@@ -86,24 +78,6 @@ class LoginVC: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-    }
-    
-    //MARK: - UIKEYBOARD NOTIFICATION HANDLER
-    
-    @objc func keyboardWillShow(_ notification: Notification) {
-        
-        if let userInfo = (notification as NSNotification).userInfo {
-            
-            if self.view.frame.origin.y == 0 {
-                
-                self.view.frame.origin.y -= (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue.height
-            }
-        }
-    }
-    
-    @objc func keyboardWillHide(_ notification: Notification) {
-        
-        self.view.frame.origin.y = 0
     }
     
     //MARK: - FUNCTIONS
