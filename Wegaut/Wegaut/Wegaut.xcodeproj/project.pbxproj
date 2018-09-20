@@ -92,6 +92,8 @@
 		D5D146E5214EAA9C005C2FC5 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5D146E4214EAA9B005C2FC5 /* Onboarding.storyboard */; };
 		D5D146E7214EAAA3005C2FC5 /* AddNewEvent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5D146E6214EAAA3005C2FC5 /* AddNewEvent.storyboard */; };
 		D5D146E9214EAAD0005C2FC5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5D146E8214EAAD0005C2FC5 /* Main.storyboard */; };
+		D5D4AFFF21535EDE0033317E /* NSAttributedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D4AFFE21535EDE0033317E /* NSAttributedStringExtensions.swift */; };
+		D5D4B00121537B6C0033317E /* EventInfoTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D4B00021537B6C0033317E /* EventInfoTVCell.swift */; };
 		D5E20EDC21478B390099C1BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E20EDB21478B390099C1BD /* AppDelegate.swift */; };
 		D5E20EE321478B3A0099C1BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5E20EE221478B3A0099C1BD /* Assets.xcassets */; };
 		D5E20EE621478B3A0099C1BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5E20EE421478B3A0099C1BD /* LaunchScreen.storyboard */; };
@@ -211,6 +213,8 @@
 		D5D146E4214EAA9B005C2FC5 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		D5D146E6214EAAA3005C2FC5 /* AddNewEvent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AddNewEvent.storyboard; sourceTree = "<group>"; };
 		D5D146E8214EAAD0005C2FC5 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		D5D4AFFE21535EDE0033317E /* NSAttributedStringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedStringExtensions.swift; sourceTree = "<group>"; };
+		D5D4B00021537B6C0033317E /* EventInfoTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoTVCell.swift; sourceTree = "<group>"; };
 		D5E20ED821478B390099C1BD /* Wegaut.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wegaut.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5E20EDB21478B390099C1BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D5E20EE221478B3A0099C1BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -289,6 +293,7 @@
 				D5D14641214E34C4005C2FC5 /* UIViewExtensions.swift */,
 				D52CB3EE214AD40C007C58D2 /* UIViewControllerExtensions.swift */,
 				D5D14649214E5420005C2FC5 /* UIImageViewExtensions.swift */,
+				D5D4AFFE21535EDE0033317E /* NSAttributedStringExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -421,8 +426,9 @@
 			isa = PBXGroup;
 			children = (
 				D5D1468B214EA94D005C2FC5 /* CommentsTVCell.swift */,
-				D5D1468A214EA94D005C2FC5 /* CommentTVCell.swift */,
+				D5D4B00021537B6C0033317E /* EventInfoTVCell.swift */,
 				D5D14688214EA94D005C2FC5 /* EventAddressTVCell.swift */,
+				D5D1468A214EA94D005C2FC5 /* CommentTVCell.swift */,
 				D5D14689214EA94D005C2FC5 /* EventDetailTVCell.swift */,
 				D5D1468C214EA94D005C2FC5 /* EventFeedTVCell.swift */,
 				D5D1468D214EA94D005C2FC5 /* OrganizersTVCell.swift */,
@@ -849,6 +855,7 @@
 				D5D1468F214EA94D005C2FC5 /* EventDetailTVCell.swift in Sources */,
 				D5D146B4214EA9B9005C2FC5 /* WalkThroughPVC.swift in Sources */,
 				D5D1465B214EA866005C2FC5 /* Sponsorship.swift in Sources */,
+				D5D4B00121537B6C0033317E /* EventInfoTVCell.swift in Sources */,
 				D5D146AC214EA983005C2FC5 /* OrganizerCVCell.swift in Sources */,
 				D5D146AE214EA983005C2FC5 /* TagCVCell.swift in Sources */,
 				D5D146BE214EA9D0005C2FC5 /* MoreCommentsVC.swift in Sources */,
@@ -879,6 +886,7 @@
 				D5D146BF214EA9D0005C2FC5 /* EventFeedVC.swift in Sources */,
 				D5D146AD214EA983005C2FC5 /* RecentPublicationsCVCell.swift in Sources */,
 				D5D146E3214EAA79005C2FC5 /* NSMutableAttributedStringExtensions.swift in Sources */,
+				D5D4AFFF21535EDE0033317E /* NSAttributedStringExtensions.swift in Sources */,
 				D5D14698214EA958005C2FC5 /* RecentCommentTVCell.swift in Sources */,
 				D5D14658214EA866005C2FC5 /* Event.swift in Sources */,
 				D5D146A1214EA968005C2FC5 /* NotificationEventTVCell.swift in Sources */,

@@ -17,12 +17,20 @@ class EventFeedVC: UIViewController {
             tvFeed.reloadData()
         }
     }
+    var selectedEvent: Event!
     
     //MARK: - OUTLETS
     
     @IBOutlet weak var tvFeed: UITableView!
     
     //MARK: - VIEW LIFECYCLE
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.navigationBar.isHidden = false
+    }
 
     override func viewDidLoad() {
         
@@ -35,6 +43,17 @@ class EventFeedVC: UIViewController {
     override func didReceiveMemoryWarning() {
         
         super.didReceiveMemoryWarning()
+    }
+    
+    //MARK: - NAVIGATION
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "ShowDetail" {
+            
+            let destinationVC: EventFeedDetailVC = segue.destination as! EventFeedDetailVC
+            destinationVC.currentEvent = selectedEvent
+        }
     }
     
     //MARK: - FUNCTIONS
@@ -72,5 +91,12 @@ extension EventFeedVC: UITableViewDataSource, UITableViewDelegate {
         
         let aCell: EventFeedTVCell = cell as! EventFeedTVCell
         aCell.currentEvent = arrEvents[indexPath.row]
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        selectedEvent = arrEvents[indexPath.row]
+        self.performSegue(withIdentifier: "ShowDetail",
+                          sender: nil)
     }
 }

@@ -124,6 +124,10 @@
 "GIE_ASTY"  = "Event Assistance Type";
 "GIE_DESC"  = "Describe your event here...";
 
+//MARK: - EVENTINFOTVCELL
+
+"EIVC_TIT" = "Acerca del evento";
+
 //MARK: - LOCATIONINFOVC
 
 "SIVC_EVAD" = "Event Address";

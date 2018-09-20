@@ -28,39 +28,21 @@ class EventDetailTVCell: UITableViewCell {
     
     //MARK: - OUTLETS
     
-    @IBOutlet weak var vwContainer: UIView!
     @IBOutlet weak var imgvwEvent: UIImageView!
-    @IBOutlet weak var lblEventName: UILabel!
-    @IBOutlet weak var lblDescription: UILabel!
-    @IBOutlet weak var vwDivider1: UIView!
-    @IBOutlet weak var vwButtonContainer: UIView!
     @IBOutlet weak var btnAddFavorite: UIButton!
-    @IBOutlet weak var lblAddFavorite: UILabel!
-    @IBOutlet weak var btnAddEvent: UIButton!
-    @IBOutlet weak var lblGoingTo: UILabel!
-    @IBOutlet weak var btnShare: UIButton!
-    @IBOutlet weak var lblShare: UILabel!
-    @IBOutlet weak var vwDivider2: UIView!
-    @IBOutlet weak var lblEventPlace: UILabel!
-    @IBOutlet weak var lblEventAddress: UILabel!
-    @IBOutlet weak var lblEventDate: UILabel!
-    @IBOutlet weak var lblEventSchedule: UILabel!
-    @IBOutlet weak var lblEventAssistance: UILabel!
-    @IBOutlet weak var lblEventOrganizer: UILabel!
+    @IBOutlet weak var btnAssistEvent: UIButton!
+    @IBOutlet weak var btnShareEvent: UIButton!
+    @IBOutlet weak var lblEventName: UILabel!
+    @IBOutlet weak var lblEventInfo: UILabel!
     
     //MARK: - VIEW LIFECYCLE
 
     override func awakeFromNib() {
         
         super.awakeFromNib()
-        vwContainer.layer.borderColor = UIColor.lightGray.cgColor
-        vwContainer.layer.borderWidth = 0.5
-        vwContainer.layer.masksToBounds = true
-        vwContainer.cornerRadius(cornerRadius: 1)
-        btnShare.cornerRadius(cornerRadius: 1)
-        lblAddFavorite.text = "EDC_INT".localized
-        lblGoingTo.text = "EDC_GOI".localized
-        lblShare.text = "EDC_SHA".localized
+        btnAddFavorite.cornerRadius(cornerRadius: nil)
+        btnAssistEvent.cornerRadius(cornerRadius: nil)
+        btnShareEvent.cornerRadius(cornerRadius: nil)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -82,16 +64,35 @@ class EventDetailTVCell: UITableViewCell {
                                    options: SDWebImageOptions.highPriority,
                                    completed: nil)
         }*/
-        imgvwEvent.clipsToBounds = true
         imgvwEvent.image = UIImage(named: anEvent.eveImageURL)
         lblEventName.text = anEvent.eveName
-        lblDescription.text = anEvent.eveDescription
-        lblEventPlace.attributedText = anEvent.evePlace.getStringWith(anImage: #imageLiteral(resourceName: "ICPin"))
-        lblEventAddress.text = anEvent.eveAddress
-        lblEventDate.attributedText = anEvent.eveDate.getStringWith(anImage: #imageLiteral(resourceName: "ICCalendar"))
-        lblEventSchedule.text = anEvent.eveSchedule
-        lblEventAssistance.attributedText = anEvent.eveAssitants.getStringWith(anImage: #imageLiteral(resourceName: "ICTicket"))
-        lblEventOrganizer.text = anEvent.eveOrganizers.first?.orgName ?? ""
+        let strEventInfo: NSMutableAttributedString = NSMutableAttributedString()
+        let strEventPlace: NSAttributedString = NSAttributedString(string: anEvent.evePlace,
+                                                                   attributes: [NSAttributedStringKey.font : UIFont(name: "Avenir", size: 18) ?? UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.regular)])
+        strEventInfo.append(strEventPlace.getStringWith(anImage: #imageLiteral(resourceName: "ICPlace")))
+        strEventInfo.append(NSAttributedString(string: "\n"))
+        let strEventAddress: NSAttributedString = NSAttributedString(string: anEvent.eveAddress,
+                                                                   attributes: [NSAttributedStringKey.font : UIFont(name: "Avenir", size: 14) ?? UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.regular)])
+        strEventInfo.append(strEventAddress)
+        strEventInfo.append(NSAttributedString(string: "\n"))
+        let strEventDate: NSAttributedString = NSAttributedString(string: anEvent.eveDate,
+                                                                   attributes: [NSAttributedStringKey.font : UIFont(name: "Avenir", size: 14) ?? UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.regular)])
+        strEventInfo.append(strEventDate.getStringWith(anImage: #imageLiteral(resourceName: "ICDate")))
+        strEventInfo.append(NSAttributedString(string: "\n"))
+        let strEventSchedule: NSAttributedString = NSAttributedString(string: anEvent.eveSchedule,
+                                                                     attributes: [NSAttributedStringKey.font : UIFont(name: "Avenir", size: 10) ?? UIFont.systemFont(ofSize: 10, weight: UIFont.Weight.regular)])
+        strEventInfo.append(strEventSchedule)
+        strEventInfo.append(NSAttributedString(string: "\n"))
+        
+        let strEventAssistants: NSAttributedString = NSAttributedString(string: anEvent.eveAssitants,
+                                                                  attributes: [NSAttributedStringKey.font : UIFont(name: "Avenir", size: 14) ?? UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.regular)])
+        strEventInfo.append(strEventAssistants.getStringWith(anImage: #imageLiteral(resourceName: "ICAssistants")))
+        strEventInfo.append(NSAttributedString(string: "\n"))
+        let strEventPrice: NSAttributedString = NSAttributedString(string: anEvent.evePrice,
+                                                                      attributes: [NSAttributedStringKey.font : UIFont(name: "Avenir", size: 10) ?? UIFont.systemFont(ofSize: 10, weight: UIFont.Weight.regular)])
+        strEventInfo.append(strEventPrice)
+        strEventInfo.append(NSAttributedString(string: "\n"))
+        lblEventInfo.attributedText = strEventInfo
     }
     
     //MARK: - ACTIONS

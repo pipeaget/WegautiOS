@@ -25,4 +25,12 @@ extension UIColor {
                        blue: 254/255,
                        alpha: 1)
     }
+    
+    class var blackPurple: UIColor {
+        
+        return UIColor(red: 64/255,
+                       green: 59/255,
+                       blue: 69/255,
+                       alpha: 1)
+    }
 }

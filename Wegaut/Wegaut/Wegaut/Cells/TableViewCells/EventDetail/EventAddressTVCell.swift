@@ -24,11 +24,7 @@ class EventAddressTVCell: UITableViewCell {
     
     //MARK: - OUTLETS
     
-    @IBOutlet weak var vwContainer: UIView!
-    @IBOutlet weak var lblAboutPlace: UILabel!
     @IBOutlet weak var mvwEventPlace: MKMapView!
-    @IBOutlet weak var lblEventPlace: UILabel!
-    @IBOutlet weak var lblEventAddress: UILabel!
     @IBOutlet weak var btnHowToGetThere: UIButton!
     
     //MARK: - VIEW LIFECYCLE
@@ -36,13 +32,6 @@ class EventAddressTVCell: UITableViewCell {
     override func awakeFromNib() {
         
         super.awakeFromNib()
-        vwContainer.layer.borderColor = UIColor.lightGray.cgColor
-        vwContainer.layer.borderWidth = 0.5
-        vwContainer.layer.masksToBounds = true
-        vwContainer.cornerRadius(cornerRadius: 1)
-        mvwEventPlace.cornerRadius(cornerRadius: 5)
-        btnHowToGetThere.cornerRadius(cornerRadius: 10)
-        lblAboutPlace.text = "EAC_TIT".localized
         btnHowToGetThere.setTitle("EAC_HTGT".localized,
                                   for: UIControlState.normal)
     }
@@ -61,8 +50,6 @@ class EventAddressTVCell: UITableViewCell {
             return
         }
         configure(location: anEvent.eveAddress, anAnnotationTitle: anEvent.evePlace)
-        lblEventPlace.attributedText = anEvent.evePlace.getStringWith(anImage: #imageLiteral(resourceName: "ICPin"))
-        lblEventAddress.text = anEvent.eveAddress
     }
     
     func configure(location: String, anAnnotationTitle:String){

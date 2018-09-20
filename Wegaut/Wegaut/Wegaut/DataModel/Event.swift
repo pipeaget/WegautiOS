@@ -20,6 +20,7 @@ struct Event {
     var eveSchedule: String
     var eveTags: [String]
     var eveAssitants: String
+    var evePrice: String
     var eveOrganizers: [Organizer]
     var eveSponsorships: [Sponsorship]
     var eveURL: String
@@ -42,6 +43,7 @@ struct Event {
                       eveSchedule: "7 pm - 9pm",
                       eveTags: ["Entretenimiento, Cine"],
                       eveAssitants: "Evento público, invitaciones de usuario corporativo",
+                      evePrice: "General $900 | VIP $1,250",
                       eveOrganizers: [Organizer(orgName: "Sony Pictures",
                                                    orgImageURL: "N/A",
                                                    orgLocalImage: UIImage())],
@@ -68,6 +70,7 @@ struct Event {
                       eveSchedule: "7 pm - 9pm",
                       eveTags: ["Entretenimiento, Cine"],
                       eveAssitants: "Evento público, invitaciones de usuario corporativo",
+                      evePrice: "General $900 | VIP $1,250",
                       eveOrganizers: [Organizer(orgName: "Disney",
                                                 orgImageURL: "N/A",
                                                 orgLocalImage: UIImage())],
@@ -91,6 +94,7 @@ struct Event {
                       eveSchedule: "5 pm",
                       eveTags: ["Baile, Entretenimiento, Teatro"],
                       eveAssitants: "Evento público, invitaciones de usuario corporativo",
+                      evePrice: "General $900 | VIP $1,250",
                       eveOrganizers: [Organizer(orgName: "Ocesa",
                                                 orgImageURL: "N/A",
                                                 orgLocalImage: UIImage())],
@@ -114,6 +118,7 @@ struct Event {
                       eveSchedule: "Múltiples horarios",
                       eveTags: ["Entretenimiento, Teatro"],
                       eveAssitants: "Evento público, invitaciones de usuario corporativo",
+                      evePrice: "General $900 | VIP $1,250",
                       eveOrganizers: [Organizer(orgName: "Citibanamex",
                                                 orgImageURL: "N/A",
                                                 orgLocalImage: UIImage())],
@@ -137,6 +142,7 @@ struct Event {
                       eveSchedule: "8: 30 pm",
                       eveTags: ["Conciertos, Entretenimiento, Música"],
                       eveAssitants: "Evento público, invitaciones de usuario corporativo",
+                      evePrice: "General $900 | VIP $1,250",
                       eveOrganizers: [Organizer(orgName: "Citibanamex",
                                                 orgImageURL: "N/A",
                                                 orgLocalImage: UIImage())],
@@ -160,6 +166,7 @@ struct Event {
                       eveSchedule: "8 pm",
                       eveTags: ["Comedia, Entretenimiento, Teatro"],
                       eveAssitants: "Evento público, invitaciones de usuario corporativo",
+                      evePrice: "General $900 | VIP $1,250",
                       eveOrganizers: [Organizer(orgName: "Citibanamex",
                                                 orgImageURL: "N/A",
                                                 orgLocalImage: UIImage())],
@@ -183,6 +190,7 @@ struct Event {
                       eveSchedule: "8 pm",
                       eveTags: ["Deportes"],
                       eveAssitants: "Lista de invitados",
+                      evePrice: "General $900 | VIP $1,250",
                       eveOrganizers: [Organizer(orgName: "Nike",
                                                 orgImageURL: "N/A",
                                                 orgLocalImage: UIImage())],

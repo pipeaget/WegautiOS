@@ -20,11 +20,28 @@ class EventFeedDetailVC: UIViewController {
     @IBOutlet weak var tvEventDetail: UITableView!
     
     //MARK: - VIEW LIFECYCLE
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
+        let btnBack: UIButton = UIButton(type: UIButtonType.system)
+        btnBack.frame = CGRect(x: 0,
+                               y: 40,
+                               width: 50,
+                               height: 50)
+        btnBack.tintColor = UIColor.white
+        btnBack.backgroundColor = UIColor.clear
+        btnBack.setImage(#imageLiteral(resourceName: "ICBack"),
+                         for: UIControlState.normal)
+        btnBack.addTarget(self,
+                          action: #selector(self.actGoBack), for: UIControlEvents.touchUpInside)
+        self.view.addSubview(btnBack)
+    }
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        tvEventDetail.rowHeight = UITableViewAutomaticDimension
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,6 +61,11 @@ class EventFeedDetailVC: UIViewController {
     }
     
     //MARK: - FUNCTIONS
+    
+    @objc func actGoBack() {
+        
+        self.navigationController?.popViewController(animated: true)
+    }
     
     func addToFavorites(anEvent: Event){
         
@@ -181,6 +203,21 @@ extension EventFeedDetailVC: UITableViewDataSource, UITableViewDelegate{
         return 4
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        switch indexPath.row {
+            
+        case 0:
+            return 480
+            
+        case 1:
+            return 150
+            
+        default:
+            return 300
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch indexPath.row {
@@ -205,6 +242,10 @@ extension EventFeedDetailVC: UITableViewDataSource, UITableViewDelegate{
             return aCell
             
         case 1:
+            let aCell: EventInfoTVCell = tableView.dequeueReusableCell(withIdentifier: "EventInfoCell", for: indexPath) as! EventInfoTVCell
+            return aCell
+            
+        case 2:
             let aCell: CommentsTVCell = tableView.dequeueReusableCell(withIdentifier: "CommentsCell", for: indexPath) as! CommentsTVCell
             aCell.moreCommentsAction = {
                 
@@ -212,7 +253,7 @@ extension EventFeedDetailVC: UITableViewDataSource, UITableViewDelegate{
             }
             return aCell
             
-        case 2:
+        case 3:
             let aCell: EventAddressTVCell = tableView.dequeueReusableCell(withIdentifier: "EventAddressCell", for: indexPath) as! EventAddressTVCell
             aCell.howToGetThereAction = {
                 
@@ -235,14 +276,18 @@ extension EventFeedDetailVC: UITableViewDataSource, UITableViewDelegate{
             aCell.currentEvent = currentEvent
             
         case 1:
+            let aCell: EventInfoTVCell = cell as! EventInfoTVCell
+            aCell.currentEvent = currentEvent 
+            
+        case 2:
             let aCell: CommentsTVCell = cell as! CommentsTVCell
             aCell.currentCommentaries = Comment.getcomments()
         
-        case 2:
+        case 3:
             let aCell: EventAddressTVCell = cell as! EventAddressTVCell
             aCell.currentEvent = currentEvent
             
-        case 3:
+        case 4:
             let aCell: OrganizersTVCell = cell as! OrganizersTVCell
             aCell.arrOrganizers = Organizer.getAllOrganizers()
             
