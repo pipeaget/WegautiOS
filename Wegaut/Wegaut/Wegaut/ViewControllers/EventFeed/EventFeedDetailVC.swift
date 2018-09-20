@@ -213,6 +213,9 @@ extension EventFeedDetailVC: UITableViewDataSource, UITableViewDelegate{
         case 1:
             return 150
             
+        case 2:
+            return 250
+            
         default:
             return 300
         }
@@ -246,18 +249,18 @@ extension EventFeedDetailVC: UITableViewDataSource, UITableViewDelegate{
             return aCell
             
         case 2:
-            let aCell: CommentsTVCell = tableView.dequeueReusableCell(withIdentifier: "CommentsCell", for: indexPath) as! CommentsTVCell
-            aCell.moreCommentsAction = {
-                
-                self.performSegue(withIdentifier: "ShowMoreComments", sender: self)
-            }
-            return aCell
-            
-        case 3:
             let aCell: EventAddressTVCell = tableView.dequeueReusableCell(withIdentifier: "EventAddressCell", for: indexPath) as! EventAddressTVCell
             aCell.howToGetThereAction = {
                 
                 self.showNavigationOptions()
+            }
+            return aCell
+            
+        case 3:
+            let aCell: CommentsTVCell = tableView.dequeueReusableCell(withIdentifier: "CommentsCell", for: indexPath) as! CommentsTVCell
+            aCell.moreCommentsAction = {
+                
+                self.performSegue(withIdentifier: "ShowMoreComments", sender: self)
             }
             return aCell
             
@@ -277,15 +280,15 @@ extension EventFeedDetailVC: UITableViewDataSource, UITableViewDelegate{
             
         case 1:
             let aCell: EventInfoTVCell = cell as! EventInfoTVCell
-            aCell.currentEvent = currentEvent 
+            aCell.currentEvent = currentEvent
             
         case 2:
-            let aCell: CommentsTVCell = cell as! CommentsTVCell
-            aCell.currentCommentaries = Comment.getcomments()
-        
-        case 3:
             let aCell: EventAddressTVCell = cell as! EventAddressTVCell
             aCell.currentEvent = currentEvent
+            
+        case 3:
+            let aCell: CommentsTVCell = cell as! CommentsTVCell
+            aCell.currentCommentaries = Comment.getcomments()
             
         case 4:
             let aCell: OrganizersTVCell = cell as! OrganizersTVCell
