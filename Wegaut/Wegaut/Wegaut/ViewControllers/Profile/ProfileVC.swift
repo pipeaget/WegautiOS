@@ -58,7 +58,7 @@ class ProfileVC: UIViewController {
         
         super.viewDidLoad()
         let bbiSettings: UIBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ICSettings"),
-                                                           style: UIBarButtonItemStyle.plain,
+                                                           style: UIBarButtonItem.Style.plain,
                                                            target: self,
                                                            action: #selector(self.showSettings))
         self.navigationItem.setRightBarButton(bbiSettings,
@@ -71,11 +71,11 @@ class ProfileVC: UIViewController {
         currentSegmentControlIndex = 0
         
         lblUsername.text = userData.usName
-        btnProfilePic.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+        btnProfilePic.imageView?.contentMode = UIView.ContentMode.scaleAspectFit
         if let anURL = URL(string: userData.usProfileImageURL){
             
             btnProfilePic.sd_setImage(with: anURL,
-                                      for: UIControlState.normal,
+                                      for: UIControl.State.normal,
                                       completed: nil)
         }
         lblUserDescription.text = userData.usDescription
@@ -165,7 +165,7 @@ class ProfileVC: UIViewController {
     func getImageFromPhotoLibrary(){
         
         let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
         imagePicker.delegate = self
         self.present(imagePicker,
                      animated: true,
@@ -176,7 +176,7 @@ class ProfileVC: UIViewController {
     func getImageFromCamera(){
         
         let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+        imagePicker.sourceType = UIImagePickerController.SourceType.camera
         imagePicker.delegate = self
         self.present(imagePicker,
                      animated: true,
@@ -296,12 +296,15 @@ extension ProfileVC: UICollectionViewDataSource, UICollectionViewDelegate, UICol
 
 extension ProfileVC:UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
         
-        if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage{
+        if let selectedImage = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage{
             
             userImage = selectedImage
-            btnProfilePic.setImage(userImage, for: UIControlState.normal)
+            btnProfilePic.setImage(userImage, for: UIControl.State.normal)
         }
         self.dismiss(animated: true, completion: nil)
     }
@@ -310,4 +313,14 @@ extension ProfileVC:UIImagePickerControllerDelegate, UINavigationControllerDeleg
         
         self.dismiss(animated: true, completion: nil)
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }

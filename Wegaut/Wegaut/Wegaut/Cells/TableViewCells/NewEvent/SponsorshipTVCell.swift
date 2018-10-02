@@ -44,7 +44,7 @@ class SponsorshipTVCell: UITableViewCell {
         if let aSponsor: Sponsorship = currentSponsor {
             
             btnCaptureSponsorPhoto.setBackgroundImage(aSponsor.spoLocalImage,
-                                                      for: UIControlState.normal)
+                                                      for: UIControl.State.normal)
             tfSponsorName.text = aSponsor.spoName
         }
     }

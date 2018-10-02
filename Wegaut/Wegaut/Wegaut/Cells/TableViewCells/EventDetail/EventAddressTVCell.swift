@@ -33,7 +33,7 @@ class EventAddressTVCell: UITableViewCell {
         
         super.awakeFromNib()
         btnHowToGetThere.setTitle("EAC_HTGT".localized,
-                                  for: UIControlState.normal)
+                                  for: UIControl.State.normal)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -71,9 +71,9 @@ class EventAddressTVCell: UITableViewCell {
                     annotation.coordinate = location.coordinate
                     annotation.title = anAnnotationTitle
                     self.mvwEventPlace.addAnnotation(annotation)
-                    let region = MKCoordinateRegionMakeWithDistance(annotation.coordinate,
-                                                                    1000,
-                                                                    1000)
+                    let region = MKCoordinateRegion.init(center: annotation.coordinate,
+                                                                    latitudinalMeters: 1000,
+                                                                    longitudinalMeters: 1000)
                     self.mvwEventPlace.setRegion(region,
                                                  animated: true)
                 }

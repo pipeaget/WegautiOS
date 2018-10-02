@@ -15,7 +15,7 @@ class MultimediaInfoVC: UIViewController {
     
     var arrMultimedia: [Multimedia]!
     var currentEditingIndex: Int!
-    var currentMultimediaTypeEditing: MultimediaType!
+    var currentMultimediaTypeEditing: MultimediaType = MultimediaType.image
     
     //MARK: - OUTLETS
     
@@ -69,7 +69,7 @@ class MultimediaInfoVC: UIViewController {
     func getImageFromPhotoLibrary() {
         
         let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
         imagePicker.delegate = self
         self.present(imagePicker,
                      animated: true,
@@ -80,7 +80,7 @@ class MultimediaInfoVC: UIViewController {
     func getImageFromCamera() {
         
         let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+        imagePicker.sourceType = UIImagePickerController.SourceType.camera
         imagePicker.delegate = self
         self.present(imagePicker,
                      animated: true,
@@ -166,33 +166,33 @@ extension MultimediaInfoVC: UITableViewDataSource, UITableViewDelegate {
                                                            width: buttonWidth,
                                                            height: 60))
         btnAddImage.setImage(#imageLiteral(resourceName: "ICAddPicture"),
-                             for: UIControlState.normal)
-        btnAddImage.contentMode = UIViewContentMode.scaleAspectFit
+                             for: UIControl.State.normal)
+        btnAddImage.contentMode = UIView.ContentMode.scaleAspectFit
         btnAddImage.addTarget(self,
                               action: #selector(self.addImage),
-                              for: UIControlEvents.touchUpInside)
+                              for: UIControl.Event.touchUpInside)
         aView.addSubview(btnAddImage)
         let btnAddVideo: UIButton = UIButton(frame: CGRect(x: buttonWidth + 35,
                                                          y: 5,
                                                          width: buttonWidth,
                                                          height: 60))
         btnAddVideo.setImage(#imageLiteral(resourceName: "ICAddVideo"),
-                           for: UIControlState.normal)
-        btnAddVideo.contentMode = UIViewContentMode.scaleAspectFit
+                           for: UIControl.State.normal)
+        btnAddVideo.contentMode = UIView.ContentMode.scaleAspectFit
         btnAddVideo.addTarget(self,
                             action: #selector(self.addVideo),
-                            for: UIControlEvents.touchUpInside)
+                            for: UIControl.Event.touchUpInside)
         aView.addSubview(btnAddVideo)
         let btnAddURL: UIButton = UIButton(frame: CGRect(x: (buttonWidth * 2) + 70,
                                                            y: 5,
                                                            width: buttonWidth,
                                                            height: 60))
         btnAddURL.setImage(#imageLiteral(resourceName: "ICAddURL"),
-                             for: UIControlState.normal)
-        btnAddURL.contentMode = UIViewContentMode.scaleAspectFit
+                             for: UIControl.State.normal)
+        btnAddURL.contentMode = UIView.ContentMode.scaleAspectFit
         btnAddURL.addTarget(self,
                               action: #selector(self.addURL),
-                              for: UIControlEvents.touchUpInside)
+                              for: UIControl.Event.touchUpInside)
         aView.addSubview(btnAddURL)
         return aView
     }
@@ -279,11 +279,11 @@ extension MultimediaInfoVC: UITableViewDataSource, UITableViewDelegate {
                                                                height: 40))
             btnSaveCell.addTarget(self,
                                   action: #selector(self.addCell),
-                                  for: UIControlEvents.touchUpInside)
+                                  for: UIControl.Event.touchUpInside)
             btnSaveCell.setTitle("MMI_SAVE".localized,
-                                 for: UIControlState.normal)
+                                 for: UIControl.State.normal)
             btnSaveCell.setTitleColor(UIColor.white,
-                                      for: UIControlState.normal)
+                                      for: UIControl.State.normal)
             aView.addSubview(btnSaveCell)
             let btnDeleteCell: UIButton = UIButton(frame: CGRect(x: 100 + buttonWidth,
                                                                y: 5,
@@ -291,11 +291,11 @@ extension MultimediaInfoVC: UITableViewDataSource, UITableViewDelegate {
                                                                height: 40))
             btnDeleteCell.addTarget(self,
                                   action: #selector(self.finishEditing),
-                                  for: UIControlEvents.touchUpInside)
+                                  for: UIControl.Event.touchUpInside)
             btnDeleteCell.setTitle("MMI_CANC".localized,
-                                 for: UIControlState.normal)
+                                 for: UIControl.State.normal)
             btnDeleteCell.setTitleColor(UIColor.white,
-                                      for: UIControlState.normal)
+                                      for: UIControl.State.normal)
             aView.addSubview(btnDeleteCell)
             return aView
         }
@@ -305,9 +305,12 @@ extension MultimediaInfoVC: UITableViewDataSource, UITableViewDelegate {
 
 extension MultimediaInfoVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
         
-        if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage{
+        if let selectedImage = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage{
             
             switch currentMultimediaTypeEditing {
                 
@@ -319,9 +322,6 @@ extension MultimediaInfoVC: UIImagePickerControllerDelegate, UINavigationControl
                 break
                 
             case .url:
-                break
-                
-            default:
                 break
             }
         }
@@ -343,4 +343,14 @@ extension MultimediaInfoVC: SFSafariViewControllerDelegate {
         controller.dismiss(animated: true,
                            completion: nil)
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }

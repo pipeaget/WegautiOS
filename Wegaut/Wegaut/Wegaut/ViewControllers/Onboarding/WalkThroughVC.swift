@@ -31,8 +31,8 @@ class WalkThroughVC: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        btnNext.setTitle("WAL_NXT".localized, for: UIControlState.normal)
-        btnSkip.setTitle("WAL_SKP".localized, for: UIControlState.normal)
+        btnNext.setTitle("WAL_NXT".localized, for: UIControl.State.normal)
+        btnSkip.setTitle("WAL_SKP".localized, for: UIControl.State.normal)
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,12 +62,12 @@ class WalkThroughVC: UIViewController {
                 
             case 0...1:
                 btnNext.setTitle("WAL_NXT".localized,
-                                 for: UIControlState.normal)
+                                 for: UIControl.State.normal)
                 btnSkip.isHidden = false
                 
             case 2:
                 btnNext.setTitle("WAL_STA".localized,
-                                 for: UIControlState.normal)
+                                 for: UIControl.State.normal)
                 btnSkip.isHidden = true
                 
             default:

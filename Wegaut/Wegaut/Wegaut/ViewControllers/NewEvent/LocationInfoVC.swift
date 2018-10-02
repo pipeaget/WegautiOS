@@ -38,10 +38,10 @@ class LocationInfoVC: UIViewController {
         super.viewDidLoad()
         tfEventAddress.placeholder = "SIVC_EVAD".localized
         tfEventAddress.delegate = self
-        tfEventAddress.clearButtonMode = UITextFieldViewMode.always
+        tfEventAddress.clearButtonMode = UITextField.ViewMode.always
         tfEventPlace.placeholder   = "SIVC_EVPL".localized
         tfEventPlace.delegate = self
-        tfEventPlace.clearButtonMode = UITextFieldViewMode.always
+        tfEventPlace.clearButtonMode = UITextField.ViewMode.always
         mvLocation.delegate = self
         lmUserLocation = CLLocationManager()
         lmUserLocation.delegate = self
@@ -66,15 +66,15 @@ class LocationInfoVC: UIViewController {
     func centerMapOn(location: CLLocationCoordinate2D, span: MKCoordinateSpan?) {
         
         let region: MKCoordinateRegion = MKCoordinateRegion(center: location,
-                                                            span: span ?? MKCoordinateSpanMake(0.005,
-                                                                                               0.005))
+                                                            span: span ?? MKCoordinateSpan.init(latitudeDelta: 0.005,
+                                                                                               longitudeDelta: 0.005))
         mvLocation.setRegion(region,
                              animated: true)
     }
     
     func getLocalRequestFor(query: String) {
         
-        let localRequest: MKLocalSearchRequest = MKLocalSearchRequest()
+        let localRequest: MKLocalSearch.Request = MKLocalSearch.Request()
         localRequest.naturalLanguageQuery = query
         localRequest.region = mvLocation.region
         let search: MKLocalSearch = MKLocalSearch(request: localRequest)

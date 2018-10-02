@@ -38,7 +38,7 @@ class MyActivitiesVC: UIViewController {
         
         super.viewDidLoad()
         addSearchBar()
-        tvActivities.rowHeight = UITableViewAutomaticDimension
+        tvActivities.rowHeight = UITableView.automaticDimension
         tvActivities.clearsContextBeforeDrawing = true
         vwSearchFooter = FORFooterSearchResults(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 64))
         addRefreshControlToTableView()
@@ -67,8 +67,8 @@ class MyActivitiesVC: UIViewController {
     
     func addSearchBar(){
         
-    tabBarItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.white], for: .normal)
-        tabBarItem.setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.black], for: .selected)
+    tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
+        tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .selected)
         scSearchActivities = UISearchController(searchResultsController: nil)
         scSearchActivities.searchResultsUpdater = self
         scSearchActivities.searchBar.backgroundColor = UIColor.deepPurple
@@ -101,7 +101,7 @@ class MyActivitiesVC: UIViewController {
     func addRefreshControlToTableView(){
         
         rcActivities = UIRefreshControl()
-        rcActivities.addTarget(self, action: #selector(self.getActivities), for: UIControlEvents.valueChanged)
+        rcActivities.addTarget(self, action: #selector(self.getActivities), for: UIControl.Event.valueChanged)
         tvActivities.addSubview(rcActivities)
     }
     

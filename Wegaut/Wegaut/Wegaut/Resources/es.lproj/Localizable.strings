@@ -37,6 +37,13 @@
 "TAG_HEA" = "Health";
 "TAG_GAR" = "Gardening";
 
+//MARK: - WELCOMEVC
+
+"WE_WELCOME" = "¡Bienvenido!";
+"WE_SLOGAN" = "No te pierdas nada";
+"WE_LOGIN" = "INGRESAR";
+"WE_REGISTER" = "REGÍSTRATE";
+
 //MARK: - LOGINVC
 
 "LOG_SLO"      = "¡Comienza ya!";
@@ -50,6 +57,15 @@
 "LOG_INVPSSWD" = "La contraseña no es válida";
 "LOG_MAILTIT"  = "Correo Enviado";
 "LOG_MAILSENT" = "Un correo de recuperación de contraseña ha sido enviado a la cuenta solicitada.";
+
+//MARK: - FORGOTPASSWORDVC
+
+"FP_BACK"  = "Iniciar sesión";
+"FP_TIT"   = "Recuperar contraseña";
+"FP_MESS"  = "Al utilizar esta funcionalidad se restaurará tu actual contraseña. Asegurate de que el correo electrónico especificado sea el asociado a tu cuenta de Wegaut.";
+"FP_MAIL"  = "Correo electrónico";
+"FP_RPASS" = "Restaurar mi contraseña";
+"FP_RECPASS" = "Un correo de recuperación de contraseña se ha enviado a tu bandeja.";
 
 //MARK: - REGISTERVC
 

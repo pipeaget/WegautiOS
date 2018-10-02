@@ -44,7 +44,7 @@ class NewVideoTVCell: UITableViewCell {
         if let anImage: Data = currentMultimedia?.mulLocalVideo {
             
             btnNewVideo.setImage(#imageLiteral(resourceName: "BGLogo"),
-                                 for: UIControlState.normal)
+                                 for: UIControl.State.normal)
         }
     }
     

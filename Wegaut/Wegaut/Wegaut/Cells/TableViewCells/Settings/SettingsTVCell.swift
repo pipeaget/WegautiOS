@@ -49,7 +49,7 @@ class SettingsTVCell: UITableViewCell {
         
         lblTitle = UILabel(frame: CGRect(x: 10,
                                          y: 10,
-                                         width: currentCellSection.SOCellType.accessoryType == UITableViewCellAccessoryType.none ? screenSize.width - 53 : screenSize.width - 69,
+                                         width: currentCellSection.SOCellType.accessoryType == UITableViewCell.AccessoryType.none ? screenSize.width - 53 : screenSize.width - 69,
                                          height: (cellHeight >= 50 ? cellHeight : 50) - 20))
         lblTitle.text = currentCellSection.SOTitle
         lblTitle.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.regular)
@@ -81,8 +81,8 @@ class SettingsTVCell: UITableViewCell {
         
         let screenSize: CGSize = UIScreen.main.bounds.size
         let attrName:NSAttributedString = NSAttributedString(string: aSettingsOption.SOTitle,
-                                                             attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.regular)])
-        let rectTitle:CGRect = attrName.boundingRect(with: CGSize(width: (screenSize.width - (aSettingsOption.SOCellType.accessoryType == UITableViewCellAccessoryType.none ? screenSize.width - 53 : screenSize.width - 69)),
+                                                             attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.regular)])
+        let rectTitle:CGRect = attrName.boundingRect(with: CGSize(width: (screenSize.width - (aSettingsOption.SOCellType.accessoryType == UITableViewCell.AccessoryType.none ? screenSize.width - 53 : screenSize.width - 69)),
                                                                   height: CGFloat.greatestFiniteMagnitude),
                                                      options: NSStringDrawingOptions.usesLineFragmentOrigin,
                                                      context: nil)

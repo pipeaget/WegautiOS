@@ -61,7 +61,7 @@ class NotificationFollowTVCell: UITableViewCell {
         lblNotification.text = aNotification.notContent
         lblTimelapse.text = aNotification.notCreationDate
         btnFollow.cornerRadius(cornerRadius: 5)
-        btnFollow.setTitle("NOT_FOLLOW".localized, for: UIControlState.normal)
+        btnFollow.setTitle("NOT_FOLLOW".localized, for: UIControl.State.normal)
     }
 
 }

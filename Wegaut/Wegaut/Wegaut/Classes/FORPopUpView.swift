@@ -52,7 +52,7 @@ extension ModalPopUp where Self: UIView{
                            delay: 0,
                            usingSpringWithDamping: 0.5,
                            initialSpringVelocity: 5,
-                           options: UIViewAnimationOptions(rawValue: 0),
+                           options: UIView.AnimationOptions(rawValue: 0),
                            animations: {
                             
                             self.vwDialog.center  = self.center
@@ -82,7 +82,7 @@ extension ModalPopUp where Self: UIView{
                            delay: 0,
                            usingSpringWithDamping: 1,
                            initialSpringVelocity: 5,
-                           options: UIViewAnimationOptions(rawValue: 0),
+                           options: UIView.AnimationOptions(rawValue: 0),
                            animations: {
                             
                             self.vwDialog.center = CGPoint(x: self.center.x,
@@ -426,7 +426,7 @@ class FORPopUpView: UIView, ModalPopUp {
                                                                  width: 50,
                                                                  height: 50))
             imgAlert.image = alertImage
-            imgAlert.contentMode = UIViewContentMode.scaleAspectFit
+            imgAlert.contentMode = UIView.ContentMode.scaleAspectFit
             vwDialog.addSubview(imgAlert)
             originY += imgAlert.frame.height + 15
         }
@@ -463,7 +463,7 @@ class FORPopUpView: UIView, ModalPopUp {
                                                              width: dialogWidth - 20,
                                                              height: 30))
         tfEmail.placeholder = "Correo electrónico"
-        tfEmail.borderStyle = UITextBorderStyle.roundedRect
+        tfEmail.borderStyle = UITextField.BorderStyle.roundedRect
         tfEmail.keyboardType = UIKeyboardType.emailAddress
         tfEmail.autocapitalizationType = UITextAutocapitalizationType.none
         tfEmail.autocorrectionType = UITextAutocorrectionType.no
@@ -478,7 +478,7 @@ class FORPopUpView: UIView, ModalPopUp {
                                                              width: dialogWidth - 20,
                                                              height: 30))
         tfPassword.placeholder = "Contraseña"
-        tfPassword.borderStyle = UITextBorderStyle.roundedRect
+        tfPassword.borderStyle = UITextField.BorderStyle.roundedRect
         tfPassword.keyboardType = UIKeyboardType.emailAddress
         tfPassword.autocapitalizationType = UITextAutocapitalizationType.none
         tfPassword.autocorrectionType = UITextAutocorrectionType.no
@@ -493,13 +493,13 @@ class FORPopUpView: UIView, ModalPopUp {
                                                         width: 100,
                                                         height: 40))
         btnLogin.setTitle("Enviar",
-                          for: UIControlState.normal)
+                          for: UIControl.State.normal)
         btnLogin.backgroundColor = UIColor.deepPurple
         btnLogin.setTitleColor(UIColor.white,
-                               for: UIControlState.normal)
+                               for: UIControl.State.normal)
         btnLogin.addTarget(self,
                            action: #selector(actLogin),
-                           for: UIControlEvents.touchUpInside)
+                           for: UIControl.Event.touchUpInside)
         btnLogin.cornerRadius(cornerRadius: 5)
         vwDialog.addSubview(btnLogin)
         originY += btnLogin.frame.height + 15
@@ -536,7 +536,7 @@ class FORPopUpView: UIView, ModalPopUp {
                                                                  width: 50,
                                                                  height: 50))
             imgAlert.image = alertImage
-            imgAlert.contentMode = UIViewContentMode.scaleAspectFit
+            imgAlert.contentMode = UIView.ContentMode.scaleAspectFit
             vwDialog.addSubview(imgAlert)
             originY += imgAlert.frame.height + 15
         }
@@ -573,7 +573,7 @@ class FORPopUpView: UIView, ModalPopUp {
                                                                                                 width: dialogWidth - 20,
                                                                                                 height: 30))
         tfEmail.placeholder = "Correo electrónico"
-        tfEmail.borderStyle = UITextBorderStyle.roundedRect
+        tfEmail.borderStyle = UITextField.BorderStyle.roundedRect
         tfEmail.keyboardType = UIKeyboardType.emailAddress
         tfEmail.autocapitalizationType = UITextAutocapitalizationType.none
         tfEmail.autocorrectionType = UITextAutocorrectionType.no
@@ -589,13 +589,13 @@ class FORPopUpView: UIView, ModalPopUp {
                                                                                           width: 100,
                                                                                           height: 40))
         btnLogin.setTitle("Enviar",
-                                     for: UIControlState.normal)
+                                     for: UIControl.State.normal)
         btnLogin.backgroundColor = UIColor.deepPurple
         btnLogin.setTitleColor(UIColor.white,
-                                              for: UIControlState.normal)
+                                              for: UIControl.State.normal)
         btnLogin.addTarget(self,
                            action: #selector(actRecoverPassword),
-                                          for: UIControlEvents.touchUpInside)
+                                          for: UIControl.Event.touchUpInside)
         btnLogin.cornerRadius(cornerRadius: 5)
         vwDialog.addSubview(btnLogin)
         originY += btnLogin.frame.height + 15
@@ -666,13 +666,13 @@ class FORPopUpView: UIView, ModalPopUp {
                                                     width: (dialogWidth / 2) - 24,
                                                     height: 40))
         btnNo.setTitle(self.popAlertData.popNoButtonText,
-                       for: UIControlState.normal)
+                       for: UIControl.State.normal)
         btnNo.backgroundColor = self.popAlertData.popNoButtonColor
         btnNo.setTitleColor(UIColor.white,
-                            for: UIControlState.normal)
+                            for: UIControl.State.normal)
         btnNo.addTarget(self,
                         action: #selector(actNo),
-                        for: UIControlEvents.touchUpInside)
+                        for: UIControl.Event.touchUpInside)
         btnNo.cornerRadius(cornerRadius: 5)
         vwDialog.addSubview(btnNo)
         
@@ -681,13 +681,13 @@ class FORPopUpView: UIView, ModalPopUp {
                                                      width: (dialogWidth / 2) - 24,
                                                      height: 40))
         btnYes.setTitle(self.popAlertData.popYesButtonText,
-                        for: UIControlState.normal)
+                        for: UIControl.State.normal)
         btnYes.backgroundColor = self.popAlertData.popYesButtonColor
         btnYes.setTitleColor(UIColor.white,
-                             for: UIControlState.normal)
+                             for: UIControl.State.normal)
         btnYes.addTarget(self,
                          action: #selector(actYes),
-                         for: UIControlEvents.touchUpInside)
+                         for: UIControl.Event.touchUpInside)
         btnYes.cornerRadius(cornerRadius: 5)
         vwDialog.addSubview(btnYes)
         originY += btnYes.frame.height + 15
@@ -746,9 +746,9 @@ class FORPopUpView: UIView, ModalPopUp {
         let pckDate: UIDatePicker = UIDatePicker(frame: CGRect(x: 10, y: originY, width: dialogWidth - 20, height: 200))
         pckDate.calendar = Calendar.current
         pckDate.date = Date()
-        pckDate.datePickerMode = UIDatePickerMode.date
+        pckDate.datePickerMode = UIDatePicker.Mode.date
         pckDate.locale = Locale(identifier: "es")
-        pckDate.addTarget(self, action: #selector(actChangeDate(sender:)), for: UIControlEvents.valueChanged)
+        pckDate.addTarget(self, action: #selector(actChangeDate(sender:)), for: UIControl.Event.valueChanged)
         vwDialog.addSubview(pckDate)
         originY += pckDate.frame.height+20
         
@@ -757,13 +757,13 @@ class FORPopUpView: UIView, ModalPopUp {
                                                     width: (dialogWidth / 2) - 24,
                                                     height: 40))
         btnNo.setTitle(self.popAlertData.popNoButtonText,
-                       for: UIControlState.normal)
+                       for: UIControl.State.normal)
         btnNo.backgroundColor = self.popAlertData.popNoButtonColor
         btnNo.setTitleColor(UIColor.white,
-                            for: UIControlState.normal)
+                            for: UIControl.State.normal)
         btnNo.addTarget(self,
                         action: #selector(actNo),
-                        for: UIControlEvents.touchUpInside)
+                        for: UIControl.Event.touchUpInside)
         btnNo.cornerRadius(cornerRadius: 5)
         vwDialog.addSubview(btnNo)
         
@@ -772,13 +772,13 @@ class FORPopUpView: UIView, ModalPopUp {
                                                      width: (dialogWidth / 2) - 24,
                                                      height: 40))
         btnYes.setTitle(self.popAlertData.popYesButtonText,
-                        for: UIControlState.normal)
+                        for: UIControl.State.normal)
         btnYes.backgroundColor = self.popAlertData.popYesButtonColor
         btnYes.setTitleColor(UIColor.white,
-                             for: UIControlState.normal)
+                             for: UIControl.State.normal)
         btnYes.addTarget(self,
                          action: #selector(actDate),
-                         for: UIControlEvents.touchUpInside)
+                         for: UIControl.Event.touchUpInside)
         btnYes.cornerRadius(cornerRadius: 5)
         vwDialog.addSubview(btnYes)
         originY += btnYes.frame.height + 15
@@ -815,7 +815,7 @@ class FORPopUpView: UIView, ModalPopUp {
                                                                  width: 50,
                                                                  height: 50))
             imgAlert.image = alertImage
-            imgAlert.contentMode = UIViewContentMode.scaleAspectFit
+            imgAlert.contentMode = UIView.ContentMode.scaleAspectFit
             vwDialog.addSubview(imgAlert)
             originY += imgAlert.frame.height + 15
         }
@@ -852,13 +852,13 @@ class FORPopUpView: UIView, ModalPopUp {
                                                     width: (dialogWidth / 2) - 24,
                                                     height: 40))
         btnNo.setTitle(self.popAlertData.popNoButtonText,
-                       for: UIControlState.normal)
+                       for: UIControl.State.normal)
         btnNo.backgroundColor = self.popAlertData.popNoButtonColor
         btnNo.setTitleColor(UIColor.white,
-                            for: UIControlState.normal)
+                            for: UIControl.State.normal)
         btnNo.addTarget(self,
                         action: #selector(actNo),
-                        for: UIControlEvents.touchUpInside)
+                        for: UIControl.Event.touchUpInside)
         btnNo.cornerRadius(cornerRadius: 5)
         vwDialog.addSubview(btnNo)
         
@@ -867,13 +867,13 @@ class FORPopUpView: UIView, ModalPopUp {
                                                      width: (dialogWidth / 2) - 24,
                                                      height: 40))
         btnYes.setTitle(self.popAlertData.popYesButtonText,
-                        for: UIControlState.normal)
+                        for: UIControl.State.normal)
         btnYes.backgroundColor = self.popAlertData.popYesButtonColor
         btnYes.setTitleColor(UIColor.white,
-                             for: UIControlState.normal)
+                             for: UIControl.State.normal)
         btnYes.addTarget(self,
                          action: #selector(actYes),
-                         for: UIControlEvents.touchUpInside)
+                         for: UIControl.Event.touchUpInside)
         btnYes.cornerRadius(cornerRadius: 5)
         vwDialog.addSubview(btnYes)
         originY += btnYes.frame.height + 15
@@ -932,13 +932,13 @@ class FORPopUpView: UIView, ModalPopUp {
                                                      width: (dialogWidth / 2) - 24,
                                                      height: 40))
         btnYes.setTitle(self.popAlertData.popOkButtonText,
-                        for: UIControlState.normal)
+                        for: UIControl.State.normal)
         btnYes.backgroundColor = self.popAlertData.popOKButtonColor
         btnYes.setTitleColor(UIColor.white,
-                             for: UIControlState.normal)
+                             for: UIControl.State.normal)
         btnYes.addTarget(self,
                          action: #selector(actYes),
-                         for: UIControlEvents.touchUpInside)
+                         for: UIControl.Event.touchUpInside)
         btnYes.cornerRadius(cornerRadius: 5)
         vwDialog.addSubview(btnYes)
         originY += btnYes.frame.height + 15
@@ -1127,7 +1127,7 @@ extension FORPopUpView: UITextFieldDelegate{
 public func getContainerHeight(accordingTo aText: String, aFont: UIFont, containerWidth: CGFloat)->CGFloat{
     
     let attributedText: NSAttributedString = NSAttributedString(string: aText,
-                                                                attributes: [NSAttributedStringKey.font : aFont])
+                                                                attributes: [NSAttributedString.Key.font : aFont])
     let lblTextRect: CGRect = attributedText.boundingRect(with: CGSize(width: containerWidth,
                                                                        height: CGFloat.greatestFiniteMagnitude),
                                                           options: NSStringDrawingOptions.usesLineFragmentOrigin,

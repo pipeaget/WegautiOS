@@ -39,6 +39,6 @@ class DropDownTVCell: UITableViewCell {
         self.lblCellHeader.text = aDropDownOption.DDHeader
         self.lblCellContent.text = isExpanded ? aDropDownOption.DDContent : ""
         self.ivwExpand.image = isExpanded ? #imageLiteral(resourceName: "ICDropDown") : #imageLiteral(resourceName: "ICDropUp")
-        self.ivwExpand.contentMode = UIViewContentMode.scaleAspectFit
+        self.ivwExpand.contentMode = UIView.ContentMode.scaleAspectFit
     }
 }

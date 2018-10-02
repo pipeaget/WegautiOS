@@ -13,7 +13,7 @@ extension UIImageView {
     func get(image:UIImage?, with tintColor:UIColor?){
         
         if let anImage = image {
-            let imageToColor: UIImage = anImage.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            let imageToColor: UIImage = anImage.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
             if let aTintColor = tintColor {
                 
                 self.tintColor = aTintColor

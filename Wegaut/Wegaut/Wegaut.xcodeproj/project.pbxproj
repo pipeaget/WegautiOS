@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		48F03510B95BB101D0BD0ACD /* Pods_WegautTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70EC62B6E2DF73A38F3A4B44 /* Pods_WegautTests.framework */; };
-		5CA70E730A3DADEED1CB9578 /* Pods_WegautUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAE21DFAFE1FC24330F5A26F /* Pods_WegautUITests.framework */; };
 		D52CB3EC214AD284007C58D2 /* WegautConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52CB3EB214AD284007C58D2 /* WegautConstants.swift */; };
 		D52CB3EF214AD40C007C58D2 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52CB3EE214AD40C007C58D2 /* UIViewControllerExtensions.swift */; };
 		D5CB94DE2149973D00009BCB /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CB94DD2149973D00009BCB /* LoginVC.swift */; };
@@ -97,28 +95,11 @@
 		D5E20EDC21478B390099C1BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E20EDB21478B390099C1BD /* AppDelegate.swift */; };
 		D5E20EE321478B3A0099C1BD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5E20EE221478B3A0099C1BD /* Assets.xcassets */; };
 		D5E20EE621478B3A0099C1BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5E20EE421478B3A0099C1BD /* LaunchScreen.storyboard */; };
-		D5E20EF121478B3A0099C1BD /* WegautTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E20EF021478B3A0099C1BD /* WegautTests.swift */; };
-		D5E20EFC21478B3A0099C1BD /* WegautUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E20EFB21478B3A0099C1BD /* WegautUITests.swift */; };
+		D5E78F382162A2BE001E17D1 /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E78F372162A2BE001E17D1 /* WelcomeVC.swift */; };
+		D5E78F3A2162B287001E17D1 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5E78F392162B287001E17D1 /* ForgotPasswordVC.swift */; };
 		D5EBD478214982D700FEEBA4 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5EBD477214982D700FEEBA4 /* Login.storyboard */; };
 		FE40079A69015558E74B20D1 /* Pods_Wegaut.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F20B586DBD618B83A078F86C /* Pods_Wegaut.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		D5E20EED21478B3A0099C1BD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D5E20ED021478B390099C1BD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D5E20ED721478B390099C1BD;
-			remoteInfo = Wegaut;
-		};
-		D5E20EF821478B3A0099C1BD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D5E20ED021478B390099C1BD /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D5E20ED721478B390099C1BD;
-			remoteInfo = Wegaut;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0CC4F014C17B7E4E6E4CC7B0 /* Pods-WegautUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WegautUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WegautUITests/Pods-WegautUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -220,12 +201,8 @@
 		D5E20EE221478B3A0099C1BD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5E20EE521478B3A0099C1BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D5E20EE721478B3A0099C1BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D5E20EEC21478B3A0099C1BD /* WegautTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WegautTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D5E20EF021478B3A0099C1BD /* WegautTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WegautTests.swift; sourceTree = "<group>"; };
-		D5E20EF221478B3A0099C1BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D5E20EF721478B3A0099C1BD /* WegautUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WegautUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D5E20EFB21478B3A0099C1BD /* WegautUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WegautUITests.swift; sourceTree = "<group>"; };
-		D5E20EFD21478B3A0099C1BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5E78F372162A2BE001E17D1 /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
+		D5E78F392162B287001E17D1 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
 		D5EBD477214982D700FEEBA4 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		DB3FED54A3E0347AEBF0EF23 /* Pods-Wegaut.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wegaut.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wegaut/Pods-Wegaut.release.xcconfig"; sourceTree = "<group>"; };
 		F20B586DBD618B83A078F86C /* Pods_Wegaut.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wegaut.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -237,22 +214,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE40079A69015558E74B20D1 /* Pods_Wegaut.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D5E20EE921478B3A0099C1BD /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				48F03510B95BB101D0BD0ACD /* Pods_WegautTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D5E20EF421478B3A0099C1BD /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5CA70E730A3DADEED1CB9578 /* Pods_WegautUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,7 +302,9 @@
 		D5CB94DC2149972900009BCB /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				D5E78F372162A2BE001E17D1 /* WelcomeVC.swift */,
 				D5CB94DD2149973D00009BCB /* LoginVC.swift */,
+				D5E78F392162B287001E17D1 /* ForgotPasswordVC.swift */,
 				D5D14636214D8BE6005C2FC5 /* RegisterVC.swift */,
 				D5D14643214E5060005C2FC5 /* SelectInterestsVC.swift */,
 			);
@@ -524,8 +487,6 @@
 			isa = PBXGroup;
 			children = (
 				D5E20EDA21478B390099C1BD /* Wegaut */,
-				D5E20EEF21478B3A0099C1BD /* WegautTests */,
-				D5E20EFA21478B3A0099C1BD /* WegautUITests */,
 				D5E20ED921478B390099C1BD /* Products */,
 				C74A198167CC05101A5B83F6 /* Pods */,
 				574611AC459D2211D9DB98D6 /* Frameworks */,
@@ -536,8 +497,6 @@
 			isa = PBXGroup;
 			children = (
 				D5E20ED821478B390099C1BD /* Wegaut.app */,
-				D5E20EEC21478B3A0099C1BD /* WegautTests.xctest */,
-				D5E20EF721478B3A0099C1BD /* WegautUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -554,24 +513,6 @@
 				D5E20F0921478EB60099C1BD /* XIBS */,
 			);
 			path = Wegaut;
-			sourceTree = "<group>";
-		};
-		D5E20EEF21478B3A0099C1BD /* WegautTests */ = {
-			isa = PBXGroup;
-			children = (
-				D5E20EF021478B3A0099C1BD /* WegautTests.swift */,
-				D5E20EF221478B3A0099C1BD /* Info.plist */,
-			);
-			path = WegautTests;
-			sourceTree = "<group>";
-		};
-		D5E20EFA21478B3A0099C1BD /* WegautUITests */ = {
-			isa = PBXGroup;
-			children = (
-				D5E20EFB21478B3A0099C1BD /* WegautUITests.swift */,
-				D5E20EFD21478B3A0099C1BD /* Info.plist */,
-			);
-			path = WegautUITests;
 			sourceTree = "<group>";
 		};
 		D5E20F0921478EB60099C1BD /* XIBS */ = {
@@ -634,44 +575,6 @@
 			productReference = D5E20ED821478B390099C1BD /* Wegaut.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D5E20EEB21478B3A0099C1BD /* WegautTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D5E20F0321478B3A0099C1BD /* Build configuration list for PBXNativeTarget "WegautTests" */;
-			buildPhases = (
-				6EF9985438B9B77C46B6E7E3 /* [CP] Check Pods Manifest.lock */,
-				D5E20EE821478B3A0099C1BD /* Sources */,
-				D5E20EE921478B3A0099C1BD /* Frameworks */,
-				D5E20EEA21478B3A0099C1BD /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D5E20EEE21478B3A0099C1BD /* PBXTargetDependency */,
-			);
-			name = WegautTests;
-			productName = WegautTests;
-			productReference = D5E20EEC21478B3A0099C1BD /* WegautTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		D5E20EF621478B3A0099C1BD /* WegautUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D5E20F0621478B3A0099C1BD /* Build configuration list for PBXNativeTarget "WegautUITests" */;
-			buildPhases = (
-				2C2E38DB01B5BDCE070B6984 /* [CP] Check Pods Manifest.lock */,
-				D5E20EF321478B3A0099C1BD /* Sources */,
-				D5E20EF421478B3A0099C1BD /* Frameworks */,
-				D5E20EF521478B3A0099C1BD /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D5E20EF921478B3A0099C1BD /* PBXTargetDependency */,
-			);
-			name = WegautUITests;
-			productName = WegautUITests;
-			productReference = D5E20EF721478B3A0099C1BD /* WegautUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -684,14 +587,7 @@
 				TargetAttributes = {
 					D5E20ED721478B390099C1BD = {
 						CreatedOnToolsVersion = 9.4.1;
-					};
-					D5E20EEB21478B3A0099C1BD = {
-						CreatedOnToolsVersion = 9.4.1;
-						TestTargetID = D5E20ED721478B390099C1BD;
-					};
-					D5E20EF621478B3A0099C1BD = {
-						CreatedOnToolsVersion = 9.4.1;
-						TestTargetID = D5E20ED721478B390099C1BD;
+						LastSwiftMigration = 1000;
 					};
 				};
 			};
@@ -710,8 +606,6 @@
 			projectRoot = "";
 			targets = (
 				D5E20ED721478B390099C1BD /* Wegaut */,
-				D5E20EEB21478B3A0099C1BD /* WegautTests */,
-				D5E20EF621478B3A0099C1BD /* WegautUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -734,59 +628,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D5E20EEA21478B3A0099C1BD /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D5E20EF521478B3A0099C1BD /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2C2E38DB01B5BDCE070B6984 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-WegautUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6EF9985438B9B77C46B6E7E3 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-WegautTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		C003A7BF938DCFBB205263E6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -869,6 +713,7 @@
 				D5D14691214EA94D005C2FC5 /* CommentsTVCell.swift in Sources */,
 				D5D146DB214EAA58005C2FC5 /* EditProfileVC.swift in Sources */,
 				D5D1465C214EA866005C2FC5 /* Multimedia.swift in Sources */,
+				D5E78F382162A2BE001E17D1 /* WelcomeVC.swift in Sources */,
 				D5D14646214E5145005C2FC5 /* Interest.swift in Sources */,
 				D5D146B5214EA9B9005C2FC5 /* WalkThroughContentVC.swift in Sources */,
 				D52CB3EF214AD40C007C58D2 /* UIViewControllerExtensions.swift in Sources */,
@@ -878,6 +723,7 @@
 				D5D1465D214EA866005C2FC5 /* DropDownOption.swift in Sources */,
 				D5D146DE214EAA58005C2FC5 /* MyBadgesVC.swift in Sources */,
 				D5D1462D214D7CC5005C2FC5 /* UIImageExtension.swift in Sources */,
+				D5E78F3A2162B287001E17D1 /* ForgotPasswordVC.swift in Sources */,
 				D5D146DC214EAA58005C2FC5 /* SimpleDetailVC.swift in Sources */,
 				D5D146B6214EA9B9005C2FC5 /* WalkThroughVC.swift in Sources */,
 				D5D14657214EA866005C2FC5 /* UserNotification.swift in Sources */,
@@ -920,36 +766,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D5E20EE821478B3A0099C1BD /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D5E20EF121478B3A0099C1BD /* WegautTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D5E20EF321478B3A0099C1BD /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D5E20EFC21478B3A0099C1BD /* WegautUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		D5E20EEE21478B3A0099C1BD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D5E20ED721478B390099C1BD /* Wegaut */;
-			targetProxy = D5E20EED21478B3A0099C1BD /* PBXContainerItemProxy */;
-		};
-		D5E20EF921478B3A0099C1BD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D5E20ED721478B390099C1BD /* Wegaut */;
-			targetProxy = D5E20EF821478B3A0099C1BD /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D5D14634214D8505005C2FC5 /* Localizable.strings */ = {
@@ -1103,7 +920,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wegaut.Wegaut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1122,94 +939,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.wegaut.Wegaut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		D5E20F0421478B3A0099C1BD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE1C11ED81BD8501D3A1D65A /* Pods-WegautTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LUY25X6XJ5;
-				INFOPLIST_FILE = WegautTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wegaut.wegaut.WegautTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wegaut.app/Wegaut";
-			};
-			name = Debug;
-		};
-		D5E20F0521478B3A0099C1BD /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1AA6765B6664F7C90B601730 /* Pods-WegautTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LUY25X6XJ5;
-				INFOPLIST_FILE = WegautTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wegaut.wegaut.WegautTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Wegaut.app/Wegaut";
-			};
-			name = Release;
-		};
-		D5E20F0721478B3A0099C1BD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 17F33DD3A31A7DA1D3DC907C /* Pods-WegautUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LUY25X6XJ5;
-				INFOPLIST_FILE = WegautUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wegaut.wegaut.WegautUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Wegaut;
-			};
-			name = Debug;
-		};
-		D5E20F0821478B3A0099C1BD /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0CC4F014C17B7E4E6E4CC7B0 /* Pods-WegautUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LUY25X6XJ5;
-				INFOPLIST_FILE = WegautUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wegaut.wegaut.WegautUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Wegaut;
 			};
 			name = Release;
 		};
@@ -1230,24 +961,6 @@
 			buildConfigurations = (
 				D5E20F0121478B3A0099C1BD /* Debug */,
 				D5E20F0221478B3A0099C1BD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D5E20F0321478B3A0099C1BD /* Build configuration list for PBXNativeTarget "WegautTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D5E20F0421478B3A0099C1BD /* Debug */,
-				D5E20F0521478B3A0099C1BD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D5E20F0621478B3A0099C1BD /* Build configuration list for PBXNativeTarget "WegautUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D5E20F0721478B3A0099C1BD /* Debug */,
-				D5E20F0821478B3A0099C1BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

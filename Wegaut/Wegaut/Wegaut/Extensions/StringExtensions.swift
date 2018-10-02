@@ -47,7 +47,7 @@ extension String{
     /// - Returns: An NSAttributedString with the foreground/text color requested.
     func setColorText(aColor:UIColor?)->NSAttributedString{
         
-        return NSAttributedString(string: self, attributes: [NSAttributedStringKey.foregroundColor : aColor ?? UIColor.black])
+        return NSAttributedString(string: self, attributes: [NSAttributedString.Key.foregroundColor : aColor ?? UIColor.black])
     }
     
     /// Used to add an image to a NSAttributedString as a NSAttachment.

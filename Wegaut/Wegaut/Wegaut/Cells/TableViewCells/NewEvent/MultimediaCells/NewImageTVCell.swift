@@ -44,7 +44,7 @@ class NewImageTVCell: UITableViewCell {
         if let anImage: UIImage = currentMultimedia?.mulLocalImage {
             
             btnNewImage.setImage(anImage,
-                                 for: UIControlState.normal)
+                                 for: UIControl.State.normal)
         }
     }
     

@@ -15,7 +15,7 @@ extension NSMutableAttributedString{
         let strToReturn: NSMutableAttributedString = self
         let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = aLineSpacing
-        strToReturn.addAttribute(NSAttributedStringKey.paragraphStyle,
+        strToReturn.addAttribute(NSAttributedString.Key.paragraphStyle,
                                  value: paragraphStyle,
                                  range: NSMakeRange(0,
                                                     strToReturn.length))

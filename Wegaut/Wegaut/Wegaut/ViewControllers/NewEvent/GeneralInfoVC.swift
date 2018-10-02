@@ -36,7 +36,7 @@ class GeneralInfoVC: UIViewController {
         tfEventAssitanceType.placeholder = "GIE_ASTY".localized
         txtvwEventDescription.text = "GIE_DESC".localized
         lblDescriptionCount.text = "0/250"
-        btnEventImage.imageView?.contentMode = UIViewContentMode.scaleAspectFill
+        btnEventImage.imageView?.contentMode = UIView.ContentMode.scaleAspectFill
         txtvwEventDescription.layer.borderColor = UIColor.black.cgColor
         txtvwEventDescription.layer.borderWidth = 1
         txtvwEventDescription.cornerRadius(cornerRadius: 5)
@@ -54,7 +54,7 @@ class GeneralInfoVC: UIViewController {
     func getImageFromPhotoLibrary() {
         
         let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
         imagePicker.delegate = self
         self.present(imagePicker,
                      animated: true,
@@ -65,7 +65,7 @@ class GeneralInfoVC: UIViewController {
     func getImageFromCamera() {
         
         let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+        imagePicker.sourceType = UIImagePickerController.SourceType.camera
         imagePicker.delegate = self
         self.present(imagePicker,
                      animated: true,
@@ -154,13 +154,16 @@ extension GeneralInfoVC: UICollectionViewDataSource, UICollectionViewDelegate, U
 
 extension GeneralInfoVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
         
-        if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage{
+        if let selectedImage = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage{
             
             eventImage = selectedImage
             btnEventImage.setImage(eventImage,
-                                           for: UIControlState.normal)
+                                           for: UIControl.State.normal)
         }
         self.dismiss(animated: true, completion: nil)
     }
@@ -182,11 +185,11 @@ extension GeneralInfoVC: UITextViewDelegate{
                                                         y: 0,
                                                         width: UIScreen.main.bounds.size.width,
                                                         height: 44))
-        let flexibleSpace:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace,
+        let flexibleSpace:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,
                                                             target: self,
                                                             action: nil)
         let doneButton:UIBarButtonItem = UIBarButtonItem(title: "OK".localized,
-                                                         style: UIBarButtonItemStyle.done,
+                                                         style: UIBarButtonItem.Style.done,
                                                          target: self,
                                                          action: #selector(self.dismissKeyboard))
         toolBar.items = [flexibleSpace, doneButton]
@@ -230,4 +233,14 @@ extension GeneralInfoVC: UITextViewDelegate{
         }
         return true
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }

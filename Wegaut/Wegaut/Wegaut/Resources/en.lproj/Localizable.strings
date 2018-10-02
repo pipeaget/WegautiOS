@@ -37,6 +37,13 @@
 "TAG_HEA" = "Health";
 "TAG_GAR" = "Gardening";
 
+//MARK: - WELCOMEVC
+
+"WE_WELCOME"  = "Welcome!";
+"WE_SLOGAN"   = "Don't miss a thing";
+"WE_LOGIN"    = "LOGIN";
+"WE_REGISTER" = "REGISTER";
+
 //MARK: - LOGINVC
 
 "LOG_SLO"      = "¡Let's go!";
@@ -50,6 +57,15 @@
 "LOG_INVPSSWD" = "The password isn't valid";
 "LOG_MAILTIT"  = "Email sent";
 "LOG_MAILSENT" = "An email for recovering password has been sent to your account.";
+
+//MARK: - FORGOTPASSWORDVC
+
+"FP_BACK"    = "Login";
+"FP_TIT"     = "Forgot Password";
+"FP_MESS"    = "Using this feature will be resenting your current password. Make sure entered email is related to your wegaut account.";
+"FP_MAIL"    = "Em@il";
+"FP_RPASS"   = "Reset my password";
+"FP_RECPASS" = "A recover password email has been sent to your inbox.";
 
 //MARK: - REGISTERVC
 

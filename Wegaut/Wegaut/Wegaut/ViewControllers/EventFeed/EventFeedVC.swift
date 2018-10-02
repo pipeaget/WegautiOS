@@ -35,7 +35,7 @@ class EventFeedVC: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        let bbiAdd: UIBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "BBIAdd"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.addNewEvent(sender:)))
+        let bbiAdd: UIBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "BBIAdd"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.addNewEvent(sender:)))
         self.navigationItem.setRightBarButton(bbiAdd, animated: false)
         arrEvents = Event.getEvents()
     }

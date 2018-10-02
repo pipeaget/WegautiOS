@@ -61,7 +61,7 @@ class CommentsTVCell: UITableViewCell {
             
             return
         }
-        tvRecentComments.rowHeight = UITableViewAutomaticDimension
+        tvRecentComments.rowHeight = UITableView.automaticDimension
         imgvwUser.cornerRadius(cornerRadius: nil)
         if let anURL = URL(string: "http://cdn02.cdn.justjared.com/wp-content/uploads/headlines/2018/03/robert-downey-jr-full-doctor-dolittle-voice-cast.jpg"){
             
@@ -70,7 +70,7 @@ class CommentsTVCell: UITableViewCell {
                                   options: SDWebImageOptions.highPriority,
                                   completed: nil)
         }
-        btnMoreComments.setTitle("COM_ALL".localized, for: UIControlState.normal)
+        btnMoreComments.setTitle("COM_ALL".localized, for: UIControl.State.normal)
         btnMoreComments.cornerRadius(cornerRadius: 5)
     }
     

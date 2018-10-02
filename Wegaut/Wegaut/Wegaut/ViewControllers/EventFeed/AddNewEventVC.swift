@@ -31,12 +31,12 @@ class AddNewEventVC: UIViewController {
     
     //MARK: - VARIABLES
     
-    var currentViewState: processProgressViewState! {
+    var currentViewState: processProgressViewState = processProgressViewState.general {
         didSet {
             updateUI()
         }
     }
-    var currentStackState: stackState! {
+    var currentStackState: stackState = stackState.onlyNext {
         didSet {
             updateStackView()
         }
@@ -86,9 +86,9 @@ class AddNewEventVC: UIViewController {
         lblStep4.text = "ANE_STEP4".localized
         lblStep5.text = "ANE_STEP5".localized
         btnPrevious.setTitle("ANE_PREV".localized,
-                             for: UIControlState.normal)
+                             for: UIControl.State.normal)
         btnNext.setTitle("ANE_NEXT".localized,
-                         for: UIControlState.normal)
+                         for: UIControl.State.normal)
         currentViewState = processProgressViewState.general
         currentStackState = stackState.onlyNext
     }
@@ -127,9 +127,6 @@ class AddNewEventVC: UIViewController {
             manageChildVC()
             vwStep4.isActive = true
             vwConnector4.isActive = true
-            
-        default:
-            break
         }
     }
     
@@ -185,9 +182,6 @@ class AddNewEventVC: UIViewController {
             self.addVCasChildVC(childVC: vc)
             removeViewControllerAsChildViewController(childVC: sponsorshipInfoVC)
             
-        default:
-            break
-            
         }
     }
     
@@ -197,11 +191,11 @@ class AddNewEventVC: UIViewController {
     func addVCasChildVC(childVC: UIViewController){
         
         if childVC.parent == nil{
-            addChildViewController(childVC)
+            addChild(childVC)
             vwContainer.addSubview(childVC.view)
             childVC.view.frame = vwContainer.bounds
-            childVC.view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
-            childVC.didMove(toParentViewController: self)
+            childVC.view.autoresizingMask = [UIView.AutoresizingMask.flexibleWidth, UIView.AutoresizingMask.flexibleHeight]
+            childVC.didMove(toParent: self)
         }
     }
     
@@ -214,9 +208,9 @@ class AddNewEventVC: UIViewController {
             
             return
         }
-        vc.willMove(toParentViewController: nil)
+        vc.willMove(toParent: nil)
         vc.view.removeFromSuperview()
-        vc.removeFromParentViewController()
+        vc.removeFromParent()
     }
     
     func updateStackView() {
@@ -227,7 +221,7 @@ class AddNewEventVC: UIViewController {
             btnNext.isHidden = false
             btnPrevious.isHidden = true
             btnNext.setTitle("ANE_NEXT".localized,
-                             for: UIControlState.normal)
+                             for: UIControl.State.normal)
             
         case .onlyPrevious:
             btnNext.isHidden = true
@@ -237,16 +231,13 @@ class AddNewEventVC: UIViewController {
             btnNext.isHidden = false
             btnPrevious.isHidden = false
             btnNext.setTitle("ANE_NEXT".localized,
-                             for: UIControlState.normal)
+                             for: UIControl.State.normal)
             
         case .finish:
             btnNext.isHidden = false
             btnPrevious.isHidden = false
             btnNext.setTitle("ANE_FIN".localized,
-                             for: UIControlState.normal)
-            
-        default:
-            break
+                             for: UIControl.State.normal)
         }
     }
     

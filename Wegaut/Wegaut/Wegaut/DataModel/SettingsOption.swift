@@ -13,15 +13,15 @@ enum cellType{
     case pushNotifications
     case detailDisclosure
     
-    var accessoryType: UITableViewCellAccessoryType{
+    var accessoryType: UITableViewCell.AccessoryType{
         
         switch self {
             
         case cellType.detailDisclosure:
-            return UITableViewCellAccessoryType.disclosureIndicator
+            return UITableViewCell.AccessoryType.disclosureIndicator
             
         default:
-            return UITableViewCellAccessoryType.none
+            return UITableViewCell.AccessoryType.none
         }
     }
 }

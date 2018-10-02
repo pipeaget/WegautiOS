@@ -23,7 +23,7 @@ class MoreCommentsVC: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        tvMoreComments.rowHeight = UITableViewAutomaticDimension
+        tvMoreComments.rowHeight = UITableView.automaticDimension
     }
 
     override func didReceiveMemoryWarning() {

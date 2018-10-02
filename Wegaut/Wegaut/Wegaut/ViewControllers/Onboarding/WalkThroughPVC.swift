@@ -42,7 +42,7 @@ class WalkThroughPVC: UIPageViewController {
         self.delegate = self
         if let initialVC = getContentVC(at: 0){
             setViewControllers([initialVC],
-                               direction: UIPageViewControllerNavigationDirection.forward,
+                               direction: UIPageViewController.NavigationDirection.forward,
                                animated: true,
                                completion: nil)
         }
@@ -86,7 +86,7 @@ class WalkThroughPVC: UIPageViewController {
         currentIndex += 1
         if let nextVC = getContentVC(at: currentIndex){
             setViewControllers([nextVC],
-                               direction: UIPageViewControllerNavigationDirection.forward,
+                               direction: UIPageViewController.NavigationDirection.forward,
                                animated: true,
                                completion: nil)
         }

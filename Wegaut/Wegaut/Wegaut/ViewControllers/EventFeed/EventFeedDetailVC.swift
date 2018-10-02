@@ -25,7 +25,7 @@ class EventFeedDetailVC: UIViewController {
         
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = true
-        let btnBack: UIButton = UIButton(type: UIButtonType.system)
+        let btnBack: UIButton = UIButton(type: UIButton.ButtonType.system)
         btnBack.frame = CGRect(x: 0,
                                y: 40,
                                width: 50,
@@ -33,9 +33,9 @@ class EventFeedDetailVC: UIViewController {
         btnBack.tintColor = UIColor.white
         btnBack.backgroundColor = UIColor.clear
         btnBack.setImage(#imageLiteral(resourceName: "ICBack"),
-                         for: UIControlState.normal)
+                         for: UIControl.State.normal)
         btnBack.addTarget(self,
-                          action: #selector(self.actGoBack), for: UIControlEvents.touchUpInside)
+                          action: #selector(self.actGoBack), for: UIControl.Event.touchUpInside)
         self.view.addSubview(btnBack)
     }
 
@@ -94,7 +94,7 @@ class EventFeedDetailVC: UIViewController {
         
         let navOptionsAlert: UIAlertController = UIAlertController(title: "EVFD_NAV_TIT".localized,
                                                                    message: "EVFD_NAV_MESS".localized,
-                                                                   preferredStyle: UIAlertControllerStyle.actionSheet)
+                                                                   preferredStyle: UIAlertController.Style.actionSheet)
         if  let anEvent = self.currentEvent{
             
             self.getLocationFrom(anEvent: anEvent) { (location, error) in
@@ -102,11 +102,11 @@ class EventFeedDetailVC: UIViewController {
                 if let aLocation = location{
                     
                     let actMaps: UIAlertAction = UIAlertAction(title: "Maps",
-                                                               style: UIAlertActionStyle.default) { (alert) in
+                                                               style: UIAlertAction.Style.default) { (alert) in
                                                                 
                                                                 let regionDistance: CLLocationDistance = 10000
                                                                 let coordinates: CLLocationCoordinate2D = CLLocationCoordinate2DMake(aLocation.latitude, aLocation.longitude)
-                                                                let regionSpan: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(coordinates, regionDistance, regionDistance)
+                                                                let regionSpan: MKCoordinateRegion = MKCoordinateRegion.init(center: coordinates, latitudinalMeters: regionDistance, longitudinalMeters: regionDistance)
                                                                 let options: [String: NSValue] = [MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
                                                                                                   MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)]
                                                                 let placemark: MKPlacemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
@@ -119,18 +119,18 @@ class EventFeedDetailVC: UIViewController {
                     if (UIApplication.shared.canOpenURL(URL(string: "comgooglemaps://")!)){
                         
                         let actGoogleMaps: UIAlertAction = UIAlertAction(title: "Google Maps",
-                                                                         style: UIAlertActionStyle.default) { (alert) in
+                                                                         style: UIAlertAction.Style.default) { (alert) in
                                                                             
                                                                             UIApplication.shared.open(URL(string: "comgooglemaps://?daddr=\(aLocation.latitude),\(aLocation.longitude)&zoom=14&directionsmode=driving")!,
-                                                                                                      options: [:],
+                                                                                                      options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]),
                                                                                                       completionHandler: { (canOpenURL) in
                                                                                                         
                                                                                                         if !canOpenURL{
                                                                                                             let errorAlert: UIAlertController = UIAlertController(title: "ERROR",
                                                                                                                                                                   message: "There's a problem with the location.",
-                                                                                                                                                                  preferredStyle: UIAlertControllerStyle.alert)
+                                                                                                                                                                  preferredStyle: UIAlertController.Style.alert)
                                                                                                             errorAlert.addAction(UIAlertAction(title: "OK",
-                                                                                                                                               style: UIAlertActionStyle.destructive,
+                                                                                                                                               style: UIAlertAction.Style.destructive,
                                                                                                                                                handler: nil))
                                                                                                             self.present(errorAlert, animated: true, completion: nil)
                                                                                                         }
@@ -142,17 +142,17 @@ class EventFeedDetailVC: UIViewController {
                     if (UIApplication.shared.canOpenURL(URL(string: "https://waze.com/ul")!)){
                         
                         let actWaze: UIAlertAction = UIAlertAction(title: "Waze",
-                                                                   style: UIAlertActionStyle.default) { (alert) in
+                                                                   style: UIAlertAction.Style.default) { (alert) in
                                                                     
                                                                     UIApplication.shared.open(URL(string: "https://waze.com/ul?ll=\(aLocation.latitude),\(aLocation.longitude)&navigate=yes")!,
-                                                                                              options: [:],
+                                                                                              options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]),
                                                                                               completionHandler: { (canOpenURL) in
                                                                                                 
                                                                                                 if !canOpenURL{
                                                                                                     let errorAlert: UIAlertController = UIAlertController(title: "ERROR",
                                                                                                                                                           message: "There's a problem with the location.",
-                                                                                                                                                          preferredStyle: UIAlertControllerStyle.alert)
-                                                                                                    errorAlert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.destructive, handler: nil))
+                                                                                                                                                          preferredStyle: UIAlertController.Style.alert)
+                                                                                                    errorAlert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive, handler: nil))
                                                                                                     self.present(errorAlert, animated: true, completion: nil)
                                                                                                 }
                                                                     })
@@ -164,7 +164,7 @@ class EventFeedDetailVC: UIViewController {
         }
         
         let actCancel: UIAlertAction = UIAlertAction(title: "CANCEL".localized,
-                                                     style: UIAlertActionStyle.cancel,
+                                                     style: UIAlertAction.Style.cancel,
                                                      handler: nil)
         navOptionsAlert.addAction(actCancel)
         present(navOptionsAlert, animated: true, completion: nil)
@@ -215,6 +215,9 @@ extension EventFeedDetailVC: UITableViewDataSource, UITableViewDelegate{
             
         case 2:
             return 250
+            
+        case 3:
+            return 297
             
         default:
             return 300
@@ -298,4 +301,9 @@ extension EventFeedDetailVC: UITableViewDataSource, UITableViewDelegate{
             break
         }
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

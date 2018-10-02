@@ -28,7 +28,7 @@ extension UIView{
     func shake(count:Float?, duration:TimeInterval?, translation:Float?){
         
         let animation:CABasicAnimation = CABasicAnimation(keyPath: "transform.translation.x")
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
         animation.repeatCount = count ?? 5
         animation.duration = duration ?? 0.1
         animation.autoreverses = true

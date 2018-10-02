@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         //Setting the back-end enviorment for all the project.
         var isOnDev = true
@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let navAppearance = UINavigationBar.appearance()
         navAppearance.barTintColor = UIColor.white
         navAppearance.tintColor = UIColor.deepPurple
-        navAppearance.titleTextAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white, NSAttributedStringKey.font:UIFont.systemFont(ofSize: 20)]
+        navAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white, NSAttributedString.Key.font:UIFont.systemFont(ofSize: 20)]
         
         //Tab bar appearance
         let tabBarAppearance = UITabBar.appearance()
@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Search bar appearance
         let tfAppearance = UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self])
-        tfAppearance.defaultTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor.mediumPurple]
+        tfAppearance.defaultTextAttributes = convertToNSAttributedStringKeyDictionary([NSAttributedString.Key.foregroundColor.rawValue: UIColor.mediumPurple])
         tfAppearance.tintColor = UIColor.white
         
         //Initialize IQkeyaboard
@@ -81,3 +81,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToNSAttributedStringKeyDictionary(_ input: [String: Any]) -> [NSAttributedString.Key: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
+}

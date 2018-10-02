@@ -16,21 +16,21 @@ extension UITextField{
     func showInvalidInputStateWhen(isValidInput:Bool){
         
         let rightImageView:UIImageView = UIImageView(image: #imageLiteral(resourceName: "ICError"))
-        rightImageView.image = rightImageView.image?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        rightImageView.image = rightImageView.image?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
         rightImageView.tintColor = UIColor.red
         rightImageView.frame =  CGRect(x: 0,
                                        y: 0,
                                        width: (rightImageView.image?.size.width)!+20,
                                        height: (rightImageView.image?.size.height)!+20)
-        rightImageView.contentMode = UIViewContentMode.center
+        rightImageView.contentMode = UIView.ContentMode.center
         self.rightView = isValidInput ? rightImageView : nil
-        self.rightViewMode = UITextFieldViewMode.always
+        self.rightViewMode = UITextField.ViewMode.always
         var attribute = NSAttributedString(string: self.text!,
-                                           attributes : [NSAttributedStringKey.foregroundColor:isValidInput ? UIColor.red : UIColor.lightGray])
+                                           attributes : [NSAttributedString.Key.foregroundColor:isValidInput ? UIColor.red : UIColor.lightGray])
         self.attributedText = attribute
         if let placeholder = self.placeholder{
             attribute = NSAttributedString(string: placeholder,
-                                           attributes:[NSAttributedStringKey.foregroundColor : isValidInput ? UIColor.red : UIColor.lightGray])
+                                           attributes:[NSAttributedString.Key.foregroundColor : isValidInput ? UIColor.red : UIColor.lightGray])
             self.attributedPlaceholder = attribute
         }
     }
@@ -49,9 +49,9 @@ extension UITextField{
                                           y: 0,
                                           width: (leftImageView.image?.size.width)!+(paddingLeftRight ?? 20),
                                           height: (leftImageView.image?.size.height)!+(paddingUpDown ?? 10))
-            leftImageView.contentMode = UIViewContentMode.center
+            leftImageView.contentMode = UIView.ContentMode.center
             self.leftView = leftImageView
-            self.leftViewMode = UITextFieldViewMode.always
+            self.leftViewMode = UITextField.ViewMode.always
         }
     }
     
@@ -65,7 +65,7 @@ extension UITextField{
     func addLeftImageWith(image:UIImage?, tintColor:UIColor?, paddingUpDown:CGFloat?, paddingLeftRight:CGFloat?){
         
         if let anImage = image{
-            let imageToColor:UIImage = anImage.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            let imageToColor:UIImage = anImage.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
             let leftImageView:UIImageView = UIImageView(image: imageToColor)
             if let aTintColor = tintColor{
                 leftImageView.tintColor = aTintColor
@@ -76,9 +76,9 @@ extension UITextField{
                                           y: 0,
                                           width: (leftImageView.image?.size.width)!+(paddingLeftRight ?? 20),
                                           height: (leftImageView.image?.size.height)!+(paddingUpDown ?? 10))
-            leftImageView.contentMode = UIViewContentMode.center
+            leftImageView.contentMode = UIView.ContentMode.center
             self.leftView = leftImageView
-            self.leftViewMode = UITextFieldViewMode.always
+            self.leftViewMode = UITextField.ViewMode.always
         }
     }
     
@@ -96,9 +96,9 @@ extension UITextField{
                                           y: 0,
                                           width: (rightImageView.image?.size.width)!+(paddingLeftRight ?? 20),
                                           height: (rightImageView.image?.size.height)!+(paddingUpDown ?? 10))
-            rightImageView.contentMode = UIViewContentMode.center
+            rightImageView.contentMode = UIView.ContentMode.center
             self.rightView = rightImageView
-            self.rightViewMode = UITextFieldViewMode.always
+            self.rightViewMode = UITextField.ViewMode.always
         }
     }
     
@@ -112,7 +112,7 @@ extension UITextField{
     func addRightImageWith(image:UIImage?, tintColor:UIColor?, paddingUpDown:CGFloat?, paddingLeftRight:CGFloat?){
         
         if let anImage = image{
-            let imageToColor:UIImage = anImage.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            let imageToColor:UIImage = anImage.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
             let rightImageView:UIImageView = UIImageView(image: imageToColor)
             if let aTintColor = tintColor{
                 rightImageView.tintColor = aTintColor
@@ -123,9 +123,9 @@ extension UITextField{
                                           y: 0,
                                           width: (rightImageView.image?.size.width)!+(paddingLeftRight ?? 20),
                                           height: (rightImageView.image?.size.height)!+(paddingUpDown ?? 10))
-            rightImageView.contentMode = UIViewContentMode.center
+            rightImageView.contentMode = UIView.ContentMode.center
             self.rightView = rightImageView
-            self.rightViewMode = UITextFieldViewMode.always
+            self.rightViewMode = UITextField.ViewMode.always
         }
     }
     

@@ -10,21 +10,7 @@ import UIKit
 
 class LoginVC: UIViewController {
     
-    //MARK: - ENUMS
-    
-    enum userInput {
-        
-        case login
-        case forgotPassword
-    }
-    
     //MARK: - VARIABLES
-    
-    var currentUserInputStatus: userInput = userInput.login {
-        didSet {
-            updateInputStatus()
-        }
-    }
     
     //MARK: - OUTLETS
     
@@ -61,12 +47,12 @@ class LoginVC: UIViewController {
         lblUser.text = "LOG_USR".localized
         lblPassword.text = "LOG_PSSWD".localized
         btnLogin.setTitle("LOG_LOG".localized,
-                          for: UIControlState.normal)
+                          for: UIControl.State.normal)
         let strFP: NSAttributedString = NSAttributedString(string: "LOG_FP".localized,
-                                                           attributes: [NSAttributedStringKey.underlineStyle : NSUnderlineStyle.styleSingle.rawValue,
-                                                                        NSAttributedStringKey.foregroundColor : UIColor.white])
+                                                           attributes: [NSAttributedString.Key.underlineStyle : NSUnderlineStyle.single.rawValue,
+                                                                        NSAttributedString.Key.foregroundColor : UIColor.white])
         btnForgotPassword.setAttributedTitle(strFP,
-                                             for: UIControlState.normal)
+                                             for: UIControl.State.normal)
     }
 
     override func didReceiveMemoryWarning() {
@@ -80,132 +66,50 @@ class LoginVC: UIViewController {
         
     }
     
-    //MARK: - FUNCTIONS
-    
-    func updateInputStatus() {
-        
-        switch currentUserInputStatus {
-            
-        case .login:
-            btnLogin.setTitle("LOG_LOG".localized,
-                              for: UIControlState.normal)
-            vwUser.isHidden = false
-            lblUser.text = "LOG_USR".localized
-            lblPassword.text = "LOG_PSSWD".localized
-            let strFP: NSAttributedString = NSAttributedString(string: "LOG_FP".localized,
-                                                               attributes: [NSAttributedStringKey.underlineStyle : NSUnderlineStyle.styleSingle.rawValue,
-                                                                            NSAttributedStringKey.foregroundColor : UIColor.white])
-            btnForgotPassword.setAttributedTitle(strFP,
-                                                 for: UIControlState.normal)
-            vwDivider.isHidden = false
-            
-        default:
-            btnLogin.setTitle("LOG_RP".localized,
-                              for: UIControlState.normal)
-            vwUser.isHidden = true
-            lblPassword.text = "LOG_USR".localized
-            let strFP: NSAttributedString = NSAttributedString(string: "LOG_RLOG".localized,
-                                                               attributes: [NSAttributedStringKey.underlineStyle : NSUnderlineStyle.styleSingle.rawValue,
-                                                                            NSAttributedStringKey.foregroundColor : UIColor.white])
-            btnForgotPassword.setAttributedTitle(strFP,
-                                                 for: UIControlState.normal)
-            vwDivider.isHidden = true
-        }
-        tfUser.showInvalidInputStateWhen(isValidInput: false)
-        tfPassword.showInvalidInputStateWhen(isValidInput: false)
-    }
-    
     //MARK: - ACTIONS
     
     @IBAction func actBtnLogin(_ sender: UIButton) {
         
-        switch currentUserInputStatus {
+        var strErrorMessage: String = ""
+        var tfError: UITextField?
+        if !tfUser.text!.isAValidEmail {
             
-        case .login:
-            var strErrorMessage: String = ""
-            var tfError: UITextField?
-            if !tfUser.text!.isAValidEmail {
-                
-                strErrorMessage = "LOG_INVMAIL".localized
-                tfError = tfUser
-            } else if tfPassword.text!.isEmpty {
-                
-                strErrorMessage = "LOG_INVPSSWD".localized
-                tfError = tfPassword
-            }
-            if strErrorMessage != "" {
-                
-                let alertVC: UIAlertController = UIAlertController(title: "ERROR",
-                                                                   message: strErrorMessage,
-                                                                   preferredStyle: UIAlertControllerStyle.alert)
-                alertVC.addAction(UIAlertAction(title: "OK",
-                                                style: UIAlertActionStyle.destructive,
-                                                handler: nil))
-                self.present(alertVC,
-                             animated: true) {
-                                if let _ = tfError {
-                                    
-                                    tfError?.showInvalidInputStateWhen(isValidInput: true)
-                                }
-                }
-            } else {
-               
-                let storyBoard: UIStoryboard = UIStoryboard(name: "Main",
-                                                            bundle: Bundle.main)
-                let rootNavigation: UITabBarController = storyBoard.instantiateViewController(withIdentifier: "RootNavigation") as! UITabBarController
-                self.present(rootNavigation,
-                             animated: true,
-                             completion: nil)
-            }
+            strErrorMessage = "LOG_INVMAIL".localized
+            tfError = tfUser
+        } else if tfPassword.text!.isEmpty {
             
-        default:
+            strErrorMessage = "LOG_INVPSSWD".localized
+            tfError = tfPassword
+        }
+        if strErrorMessage != "" {
             
-            var alertVC: UIAlertController = UIAlertController()
-            var isErrorAlert: Bool = false
-            if !tfPassword.text!.isAValidEmail {
-                
-                isErrorAlert = true
-                alertVC = UIAlertController(title: "ERROR",
-                                            message: "LOG_INVMAIL".localized,
-                                            preferredStyle: UIAlertControllerStyle.alert)
-            } else {
-                
-                alertVC = UIAlertController(title: "LOG_MAILTIT".localized,
-                                            message: "LOG_MAILSENT".localized,
-                                            preferredStyle: UIAlertControllerStyle.alert)
-            }
+            let alertVC: UIAlertController = UIAlertController(title: "ERROR",
+                                                               message: strErrorMessage,
+                                                               preferredStyle: UIAlertController.Style.alert)
             alertVC.addAction(UIAlertAction(title: "OK",
-                                            style: UIAlertActionStyle.destructive,
+                                            style: UIAlertAction.Style.destructive,
                                             handler: nil))
             self.present(alertVC,
                          animated: true) {
-                            
-                            if isErrorAlert {
+                            if let _ = tfError {
                                 
-                                self.tfPassword.showInvalidInputStateWhen(isValidInput: true)
-                            } else {
-                                
-                                self.currentUserInputStatus = userInput.login
+                                tfError?.showInvalidInputStateWhen(isValidInput: true)
                             }
             }
+        } else {
+            
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Main",
+                                                        bundle: Bundle.main)
+            let rootNavigation: UITabBarController = storyBoard.instantiateViewController(withIdentifier: "RootNavigation") as! UITabBarController
+            self.present(rootNavigation,
+                         animated: true,
+                         completion: nil)
         }
     }
     
     @IBAction func actForgotPassword(_ sender: UIButton) {
         
-        switch currentUserInputStatus {
-            
-        case .login:
-            currentUserInputStatus = userInput.forgotPassword
-            
-        default:
-            currentUserInputStatus = userInput.login
-        }
-    }
-    
-    @IBAction func actRegister(_ sender: UIButton) {
-        
-        self.performSegue(withIdentifier: "showRegister",
+        self.performSegue(withIdentifier: "showForgotPassword",
                           sender: nil)
     }
 }

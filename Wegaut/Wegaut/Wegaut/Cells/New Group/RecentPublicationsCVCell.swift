@@ -60,7 +60,7 @@ class RecentPublicationsCVCell: UICollectionViewCell {
     
     func drawPhotoWith(publication: Publication) {
         
-        imgvwPublication.contentMode = UIViewContentMode.scaleAspectFill
+        imgvwPublication.contentMode = UIView.ContentMode.scaleAspectFill
         imgvwPublication.clipsToBounds = true
         imgvwPublication.image = publication.pubImage ?? #imageLiteral(resourceName: "BGLogo")
     }

@@ -33,4 +33,12 @@ extension UIColor {
                        blue: 69/255,
                        alpha: 1)
     }
+    
+    class var pinkBack: UIColor {
+        
+        return UIColor(red: 255/255,
+                       green: 51/255,
+                       blue: 102/255,
+                       alpha: 1)
+    }
 }

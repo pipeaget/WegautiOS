@@ -68,13 +68,13 @@ class DropDownDetailVC: UIViewController {
     func getCellHeightAccordingTo(aDropDownOption: DropDownOption, includesDesc: Bool)->CGFloat{
         
         let attributedName:NSAttributedString = NSAttributedString(string: aDropDownOption.DDHeader,
-                                                                   attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18)])
+                                                                   attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18)])
         let rectName:CGRect = attributedName.boundingRect(with: CGSize(width: self.view.frame.width - 60,
                                                                        height: CGFloat.greatestFiniteMagnitude),
                                                           options: NSStringDrawingOptions.usesLineFragmentOrigin,
                                                           context: nil)
         let attributedContent:NSAttributedString = NSAttributedString(string: aDropDownOption.DDContent,
-                                                                      attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)])
+                                                                      attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)])
         let rectContent:CGRect = attributedContent.boundingRect(with: CGSize(width: self.view.frame.width - 30,
                                                                        height: CGFloat.greatestFiniteMagnitude),
                                                           options: NSStringDrawingOptions.usesLineFragmentOrigin,
@@ -160,7 +160,7 @@ extension DropDownDetailVC: UITableViewDataSource, UITableViewDelegate{
             
             aCell.setupCell(aDropDownOption: anOptions[indexPath.row], isExpanded: selectedCellIndex == indexPath.row ? true : false)
         }
-        aCell.selectionStyle = UITableViewCellSelectionStyle.none
+        aCell.selectionStyle = UITableViewCell.SelectionStyle.none
         return aCell
     }
     
@@ -179,7 +179,7 @@ extension DropDownDetailVC: UITableViewDataSource, UITableViewDelegate{
         selectedCellIndex = selectedCellIndex == indexPath.row ? 99 : indexPath.row
         tvDropDownDetail.endUpdates()
         tvDropDownDetail.reloadData()
-        tvDropDownDetail.scrollToRow(at: indexPath, at: UITableViewScrollPosition.top, animated: true)
+        tvDropDownDetail.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.top, animated: true)
     }
     
 }

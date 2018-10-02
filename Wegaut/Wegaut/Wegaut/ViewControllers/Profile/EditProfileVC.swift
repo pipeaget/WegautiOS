@@ -46,7 +46,7 @@ class EditProfileVC: UIViewController {
         let tgrDismissKeyboard: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
                                                                                 action: #selector(self.dismissKeyboard))
         self.view.addGestureRecognizer(tgrDismissKeyboard)
-        btnEditProfilePicture.setImage(#imageLiteral(resourceName: "BGLogo"), for: UIControlState.normal)
+        btnEditProfilePicture.setImage(#imageLiteral(resourceName: "BGLogo"), for: UIControl.State.normal)
         tfEmail.placeholder = "REG_MAIL".localized
         tfPassword.placeholder = "REG_PSSWD".localized
         tfConfirmPassword.placeholder = "REG_CONPSSWD".localized
@@ -54,11 +54,11 @@ class EditProfileVC: UIViewController {
         tfFatherLastName.placeholder = "REG_FAT_NAME".localized
         tfMotherLastName.placeholder = "REG_MOT_NAME".localized
         txtvwDescription.text = "REG_USR_BIO".localized
-        btnUpdate.setTitle("EPC_UPD".localized, for: UIControlState.normal)
+        btnUpdate.setTitle("EPC_UPD".localized, for: UIControl.State.normal)
         
         btnEditProfilePicture.cornerRadius(cornerRadius: nil)
         btnEditProfilePicture.clipsToBounds = true
-        btnEditProfilePicture.contentMode = UIViewContentMode.scaleAspectFill
+        btnEditProfilePicture.contentMode = UIView.ContentMode.scaleAspectFill
         btnEditProfilePicture.layer.borderWidth = 1
         btnEditProfilePicture.layer.borderColor = UIColor.black.cgColor
         imgvwNewProfilePicture.cornerRadius(cornerRadius: nil)
@@ -80,7 +80,7 @@ class EditProfileVC: UIViewController {
     func getImageFromPhotoLibrary(){
         
         let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
         imagePicker.delegate = self
         self.present(imagePicker,
                      animated: true,
@@ -91,7 +91,7 @@ class EditProfileVC: UIViewController {
     func getImageFromCamera(){
         
         let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+        imagePicker.sourceType = UIImagePickerController.SourceType.camera
         imagePicker.delegate = self
         self.present(imagePicker,
                      animated: true,
@@ -147,13 +147,16 @@ class EditProfileVC: UIViewController {
 
 extension EditProfileVC:UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
         
-        if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage{
+        if let selectedImage = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage{
             
             userImage = selectedImage
             btnEditProfilePicture.setImage(userImage,
-                                           for: UIControlState.normal)
+                                           for: UIControl.State.normal)
         }
         self.dismiss(animated: true, completion: nil)
     }
@@ -217,11 +220,11 @@ extension EditProfileVC: UITextViewDelegate{
                                                         y: 0,
                                                         width: UIScreen.main.bounds.size.width,
                                                         height: 44))
-        let flexibleSpace:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace,
+        let flexibleSpace:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,
                                                             target: self,
                                                             action: nil)
         let doneButton:UIBarButtonItem = UIBarButtonItem(title: "OK".localized,
-                                                         style: UIBarButtonItemStyle.done,
+                                                         style: UIBarButtonItem.Style.done,
                                                          target: self,
                                                          action: #selector(self.dismissKeyboard))
         toolBar.items = [flexibleSpace, doneButton]
@@ -265,4 +268,14 @@ extension EditProfileVC: UITextViewDelegate{
         }
         return true
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }

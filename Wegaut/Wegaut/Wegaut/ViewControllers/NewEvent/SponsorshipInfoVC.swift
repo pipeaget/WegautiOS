@@ -76,7 +76,7 @@ class SponsorshipInfoVC: UIViewController {
     func getImageFromPhotoLibrary() {
         
         let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
         imagePicker.delegate = self
         self.present(imagePicker,
                      animated: true,
@@ -87,7 +87,7 @@ class SponsorshipInfoVC: UIViewController {
     func getImageFromCamera() {
         
         let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+        imagePicker.sourceType = UIImagePickerController.SourceType.camera
         imagePicker.delegate = self
         self.present(imagePicker,
                      animated: true,
@@ -214,20 +214,20 @@ extension SponsorshipInfoVC: UITableViewDataSource, UITableViewDelegate {
                                                       width: 40,
                                                       height: 40))
         btnNewRow.setImage(#imageLiteral(resourceName: "ICPlus"),
-                           for: UIControlState.normal)
+                           for: UIControl.State.normal)
         btnNewRow.backgroundColor = UIColor.deepPurple
         btnNewRow.setTitle("",
-                           for: UIControlState.normal)
+                           for: UIControl.State.normal)
         if tableView == tvOrganizers {
             
             btnNewRow.addTarget(self,
                                 action: #selector(addNewOrganizer),
-                                for: UIControlEvents.touchUpInside)
+                                for: UIControl.Event.touchUpInside)
         } else {
             
             btnNewRow.addTarget(self,
                                 action: #selector(addNewSponsorship),
-                                for: UIControlEvents.touchUpInside)
+                                for: UIControl.Event.touchUpInside)
         }
         btnNewRow.cornerRadius(cornerRadius: nil)
         vwFooter.addSubview(btnNewRow)
@@ -237,9 +237,12 @@ extension SponsorshipInfoVC: UITableViewDataSource, UITableViewDelegate {
 
 extension SponsorshipInfoVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
         
-        if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage{
+        if let selectedImage = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage{
             
             if isEditingOrganizer {
                 
@@ -287,4 +290,14 @@ extension SponsorshipInfoVC: SFSafariViewControllerDelegate {
         controller.dismiss(animated: true,
                            completion: nil)
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }

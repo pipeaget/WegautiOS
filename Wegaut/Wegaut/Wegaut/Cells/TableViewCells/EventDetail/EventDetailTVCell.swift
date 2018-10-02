@@ -68,28 +68,28 @@ class EventDetailTVCell: UITableViewCell {
         lblEventName.text = anEvent.eveName
         let strEventInfo: NSMutableAttributedString = NSMutableAttributedString()
         let strEventPlace: NSAttributedString = NSAttributedString(string: anEvent.evePlace,
-                                                                   attributes: [NSAttributedStringKey.font : UIFont(name: "Avenir", size: 18) ?? UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.regular)])
+                                                                   attributes: [NSAttributedString.Key.font : UIFont(name: "Avenir", size: 18) ?? UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.regular)])
         strEventInfo.append(strEventPlace.getStringWith(anImage: #imageLiteral(resourceName: "ICPlace")))
         strEventInfo.append(NSAttributedString(string: "\n"))
         let strEventAddress: NSAttributedString = NSAttributedString(string: anEvent.eveAddress,
-                                                                   attributes: [NSAttributedStringKey.font : UIFont(name: "Avenir", size: 14) ?? UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.regular)])
+                                                                   attributes: [NSAttributedString.Key.font : UIFont(name: "Avenir", size: 14) ?? UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.regular)])
         strEventInfo.append(strEventAddress)
         strEventInfo.append(NSAttributedString(string: "\n"))
         let strEventDate: NSAttributedString = NSAttributedString(string: anEvent.eveDate,
-                                                                   attributes: [NSAttributedStringKey.font : UIFont(name: "Avenir", size: 14) ?? UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.regular)])
+                                                                   attributes: [NSAttributedString.Key.font : UIFont(name: "Avenir", size: 14) ?? UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.regular)])
         strEventInfo.append(strEventDate.getStringWith(anImage: #imageLiteral(resourceName: "ICDate")))
         strEventInfo.append(NSAttributedString(string: "\n"))
         let strEventSchedule: NSAttributedString = NSAttributedString(string: anEvent.eveSchedule,
-                                                                     attributes: [NSAttributedStringKey.font : UIFont(name: "Avenir", size: 10) ?? UIFont.systemFont(ofSize: 10, weight: UIFont.Weight.regular)])
+                                                                     attributes: [NSAttributedString.Key.font : UIFont(name: "Avenir", size: 10) ?? UIFont.systemFont(ofSize: 10, weight: UIFont.Weight.regular)])
         strEventInfo.append(strEventSchedule)
         strEventInfo.append(NSAttributedString(string: "\n"))
         
         let strEventAssistants: NSAttributedString = NSAttributedString(string: anEvent.eveAssitants,
-                                                                  attributes: [NSAttributedStringKey.font : UIFont(name: "Avenir", size: 14) ?? UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.regular)])
+                                                                  attributes: [NSAttributedString.Key.font : UIFont(name: "Avenir", size: 14) ?? UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.regular)])
         strEventInfo.append(strEventAssistants.getStringWith(anImage: #imageLiteral(resourceName: "ICAssistants")))
         strEventInfo.append(NSAttributedString(string: "\n"))
         let strEventPrice: NSAttributedString = NSAttributedString(string: anEvent.evePrice,
-                                                                      attributes: [NSAttributedStringKey.font : UIFont(name: "Avenir", size: 10) ?? UIFont.systemFont(ofSize: 10, weight: UIFont.Weight.regular)])
+                                                                      attributes: [NSAttributedString.Key.font : UIFont(name: "Avenir", size: 10) ?? UIFont.systemFont(ofSize: 10, weight: UIFont.Weight.regular)])
         strEventInfo.append(strEventPrice)
         strEventInfo.append(NSAttributedString(string: "\n"))
         lblEventInfo.attributedText = strEventInfo

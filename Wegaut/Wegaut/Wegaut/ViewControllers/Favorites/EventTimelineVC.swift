@@ -96,7 +96,7 @@ extension EventTimelineVC: UITableViewDataSource, UITableViewDelegate {
                                                                     y: 5,
                                                                     width: 120,
                                                                     height: 60))
-        imgvwOrganizer.contentMode = UIViewContentMode.scaleAspectFit
+        imgvwOrganizer.contentMode = UIView.ContentMode.scaleAspectFit
         imgvwOrganizer.sd_setImage(with: URL(string: (currentEvent?.eveOrganizers.first?.orgImageURL)!),
                                    placeholderImage: #imageLiteral(resourceName: "BGLogo"),
                                    options: SDWebImageOptions.highPriority,

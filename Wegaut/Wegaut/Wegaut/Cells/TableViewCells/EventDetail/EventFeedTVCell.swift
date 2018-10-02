@@ -40,7 +40,7 @@ class EventFeedTVCell: UITableViewCell {
     override func awakeFromNib() {
         
         super.awakeFromNib()
-        self.selectionStyle = UITableViewCellSelectionStyle.none
+        self.selectionStyle = UITableViewCell.SelectionStyle.none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -63,7 +63,7 @@ class EventFeedTVCell: UITableViewCell {
         imgvwEvent.image = UIImage(named: anEvent.eveImageURL)
         imgvwEvent.clipsToBounds = true
         imgvwEvent.cornerRadius(cornerRadius: 10)
-        btnIsFavorite.setImage(anEvent.eveIsFavorite ? #imageLiteral(resourceName: "ICHearthON") : #imageLiteral(resourceName: "ICHearthOFF"), for: UIControlState.normal)
+        btnIsFavorite.setImage(anEvent.eveIsFavorite ? #imageLiteral(resourceName: "ICHearthON") : #imageLiteral(resourceName: "ICHearthOFF"), for: UIControl.State.normal)
         lblEventName.text = anEvent.eveName
         lblEventPlace.attributedText = anEvent.evePlace.getStringWith(anImage: #imageLiteral(resourceName: "ICPlace"))
         lblEventDate.attributedText = (anEvent.eveDate + ", " + anEvent.eveSchedule).getStringWith(anImage: #imageLiteral(resourceName: "ICDate"))

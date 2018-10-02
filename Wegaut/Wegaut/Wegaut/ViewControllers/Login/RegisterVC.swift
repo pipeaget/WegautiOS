@@ -96,7 +96,7 @@ class RegisterVC: UIViewController {
     func getImageFromPhotoLibrary() {
         
         let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
         imagePicker.delegate = self
         self.present(imagePicker,
                      animated: true,
@@ -107,7 +107,7 @@ class RegisterVC: UIViewController {
     func getImageFromCamera() {
         
         let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = UIImagePickerControllerSourceType.camera
+        imagePicker.sourceType = UIImagePickerController.SourceType.camera
         imagePicker.delegate = self
         self.present(imagePicker,
                      animated: true,
@@ -160,14 +160,17 @@ class RegisterVC: UIViewController {
 
 extension RegisterVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
         
-        if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage{
+        if let selectedImage = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage{
             
             userImage = selectedImage
             imgvwProfilePicture.image = userImage
             btnChangePhoto.setImage(UIImage(),
-                                    for: UIControlState.normal)
+                                    for: UIControl.State.normal)
             btnChangePhoto.backgroundColor = UIColor.clear
         }
         self.dismiss(animated: true,
@@ -222,11 +225,11 @@ extension RegisterVC: UITextViewDelegate {
                                                         y: 0,
                                                         width: UIScreen.main.bounds.size.width,
                                                         height: 44))
-        let flexibleSpace:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace,
+        let flexibleSpace:UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace,
                                                             target: self,
                                                             action: nil)
         let doneButton:UIBarButtonItem = UIBarButtonItem(title: "OK",
-                                                         style: UIBarButtonItemStyle.done,
+                                                         style: UIBarButtonItem.Style.done,
                                                          target: self,
                                                          action: #selector(self.dismissKeyboard))
         toolBar.items = [flexibleSpace, doneButton]
@@ -270,4 +273,14 @@ extension RegisterVC: UITextViewDelegate {
         }
         return true
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }

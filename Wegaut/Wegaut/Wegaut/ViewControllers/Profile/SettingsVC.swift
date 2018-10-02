@@ -175,8 +175,8 @@ extension SettingsVC: UITableViewDataSource, UITableViewDelegate{
                         let navAppearance = UINavigationBar.appearance()
                         navAppearance.barTintColor = UIColor.black
                         navAppearance.tintColor = UIColor.lightGray
-                        navAppearance.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white,
-                                                             NSAttributedStringKey.font:UIFont.systemFont(ofSize: 20)]
+                        navAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white,
+                                                             NSAttributedString.Key.font:UIFont.systemFont(ofSize: 20)]
                     })
                 }else{
                     

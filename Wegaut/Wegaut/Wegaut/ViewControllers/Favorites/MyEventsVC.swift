@@ -29,7 +29,7 @@ class MyEventsVC: UIViewController {
         
         super.viewDidLoad()
         arrMyEvents = Event.getEvents()
-        tvMyEvents.rowHeight = UITableViewAutomaticDimension
+        tvMyEvents.rowHeight = UITableView.automaticDimension
     }
 
     override func didReceiveMemoryWarning() {

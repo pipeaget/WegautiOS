@@ -42,7 +42,7 @@ class OrganizerTVCell: UITableViewCell {
         
         if let anOrganizer: Organizer = currentOrganizer {
             
-            btnCaptureOrganizerPhoto.setBackgroundImage(anOrganizer.orgLocalImage, for: UIControlState.normal)
+            btnCaptureOrganizerPhoto.setBackgroundImage(anOrganizer.orgLocalImage, for: UIControl.State.normal)
             tfOrganizerName.text = anOrganizer.orgName
         }
     }
