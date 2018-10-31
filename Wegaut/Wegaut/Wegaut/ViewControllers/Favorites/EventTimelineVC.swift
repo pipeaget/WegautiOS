@@ -24,6 +24,7 @@ class EventTimelineVC: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        self.addImageLogoToNavBar()
     }
 
     override func didReceiveMemoryWarning() {

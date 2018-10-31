@@ -30,6 +30,7 @@ class EventFeedVC: UIViewController {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.navigationBar.isHidden = false
+        self.title = "EVF_TIT".localized
     }
 
     override func viewDidLoad() {
@@ -38,6 +39,7 @@ class EventFeedVC: UIViewController {
         let bbiAdd: UIBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "BBIAdd"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.addNewEvent(sender:)))
         self.navigationItem.setRightBarButton(bbiAdd, animated: false)
         arrEvents = Event.getEvents()
+        self.addImageLogoToNavBar()
     }
 
     override func didReceiveMemoryWarning() {
@@ -77,7 +79,7 @@ extension EventFeedVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        return 275
+        return tableView.frame.height - 100
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

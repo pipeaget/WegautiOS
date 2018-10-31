@@ -30,6 +30,7 @@ class MyEventsVC: UIViewController {
         super.viewDidLoad()
         arrMyEvents = Event.getEvents()
         tvMyEvents.rowHeight = UITableView.automaticDimension
+        self.addImageLogoToNavBar()
     }
 
     override func didReceiveMemoryWarning() {

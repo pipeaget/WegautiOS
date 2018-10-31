@@ -30,6 +30,7 @@ class SimpleDetailVC: UIViewController {
         }
         lblTitle.text = aCurrentOption.SOTitle
         lblTitle.numberOfLines = 0
+        self.addImageLogoToNavBar()
     }
 
     override func didReceiveMemoryWarning() {

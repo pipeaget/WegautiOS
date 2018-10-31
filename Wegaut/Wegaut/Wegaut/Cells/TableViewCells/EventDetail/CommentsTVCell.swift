@@ -24,13 +24,12 @@ class CommentsTVCell: UITableViewCell {
     
     //MARK: - OUTLETS
     
-    @IBOutlet weak var vwContainer: UIView!
     @IBOutlet weak var lblComments: UILabel!
-    @IBOutlet weak var imgvwUser: UIImageView!
-    @IBOutlet weak var tfNewComment: UITextField!
-    @IBOutlet weak var vwDividerUser: UIView!
+    //@IBOutlet weak var imgvwUser: UIImageView!
+    //@IBOutlet weak var tfNewComment: UITextField!
+    //@IBOutlet weak var vwDividerUser: UIView!
     @IBOutlet weak var tvRecentComments: UITableView!
-    @IBOutlet weak var vwDividerComments: UIView!
+    //@IBOutlet weak var vwDividerComments: UIView!
     @IBOutlet weak var btnMoreComments: UIButton!
     
     //MARK: - VIEW LIFECYCLE
@@ -38,14 +37,10 @@ class CommentsTVCell: UITableViewCell {
     override func awakeFromNib() {
         
         super.awakeFromNib()
-        vwContainer.layer.borderColor = UIColor.lightGray.cgColor
-        vwContainer.layer.borderWidth = 0.5
-        vwContainer.layer.masksToBounds = true
-        vwContainer.cornerRadius(cornerRadius: 1)
         tvRecentComments.dataSource = self
         tvRecentComments.delegate = self
         lblComments.text = "COM_TIT".localized
-        tfNewComment.placeholder = "COM_NEW".localized
+        //tfNewComment.placeholder = "COM_NEW".localized
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -62,14 +57,14 @@ class CommentsTVCell: UITableViewCell {
             return
         }
         tvRecentComments.rowHeight = UITableView.automaticDimension
-        imgvwUser.cornerRadius(cornerRadius: nil)
+        /*imgvwUser.cornerRadius(cornerRadius: nil)
         if let anURL = URL(string: "http://cdn02.cdn.justjared.com/wp-content/uploads/headlines/2018/03/robert-downey-jr-full-doctor-dolittle-voice-cast.jpg"){
             
             imgvwUser.sd_setImage(with: anURL,
                                   placeholderImage: #imageLiteral(resourceName: "BGLogo"),
                                   options: SDWebImageOptions.highPriority,
                                   completed: nil)
-        }
+        }*/
         btnMoreComments.setTitle("COM_ALL".localized, for: UIControl.State.normal)
         btnMoreComments.cornerRadius(cornerRadius: 5)
     }

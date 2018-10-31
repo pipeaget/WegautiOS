@@ -14,7 +14,7 @@ class MultimediaInfoVC: UIViewController {
     //MARK: - VARIABLES
     
     var arrMultimedia: [Multimedia]!
-    var currentEditingIndex: Int!
+    var currentEditingIndex: Int = 0
     var currentMultimediaTypeEditing: MultimediaType = MultimediaType.image
     
     //MARK: - OUTLETS

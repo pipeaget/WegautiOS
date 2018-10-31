@@ -102,6 +102,7 @@ class ProfileVC: UIViewController {
         imgvwNewProfilePic.cornerRadius(cornerRadius: nil)
         imgvwNewProfilePic.layer.borderWidth = 0.5
         imgvwNewProfilePic.layer.borderColor = UIColor.black.cgColor
+        self.addImageLogoToNavBar()
     }
 
     override func didReceiveMemoryWarning() {

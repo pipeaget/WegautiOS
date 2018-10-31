@@ -24,6 +24,7 @@ class MoreCommentsVC: UIViewController {
         
         super.viewDidLoad()
         tvMoreComments.rowHeight = UITableView.automaticDimension
+        self.addImageLogoToNavBar()
     }
 
     override func didReceiveMemoryWarning() {

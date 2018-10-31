@@ -27,6 +27,7 @@ class SettingsVC: UIViewController {
         super.viewDidLoad()
         tvSettings.dataSource = self
         tvSettings.delegate = self
+        self.addImageLogoToNavBar()
     }
 
     override func didReceiveMemoryWarning() {

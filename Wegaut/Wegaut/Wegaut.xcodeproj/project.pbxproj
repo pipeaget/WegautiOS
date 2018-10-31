@@ -243,6 +243,13 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D52E50E9216A8C9900B2AB6F /* No Connection */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "No Connection";
+			sourceTree = "<group>";
+		};
 		D57F8B37214790290001EE01 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -530,6 +537,7 @@
 		D5E20F0A21478EC40099C1BD /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D52E50E9216A8C9900B2AB6F /* No Connection */,
 				D5E20EDB21478B390099C1BD /* AppDelegate.swift */,
 				D5D146B0214EA9A2005C2FC5 /* Onboarding */,
 				D5CB94DC2149972900009BCB /* Login */,

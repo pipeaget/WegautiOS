@@ -67,6 +67,7 @@ class EditProfileVC: UIViewController {
         txtvwDescription.cornerRadius(cornerRadius: 5)
         txtvwDescription.layer.borderWidth = 1
         txtvwDescription.layer.borderColor = UIColor.lightGray.cgColor
+        self.addImageLogoToNavBar()
     }
     
     override func didReceiveMemoryWarning() {

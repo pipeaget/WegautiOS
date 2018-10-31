@@ -12,7 +12,7 @@ class MyBadgesVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.addImageLogoToNavBar()
         // Do any additional setup after loading the view.
     }
 

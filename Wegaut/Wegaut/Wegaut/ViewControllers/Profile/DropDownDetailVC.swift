@@ -33,6 +33,7 @@ class DropDownDetailVC: UIViewController {
         tvDropDownDetail.dataSource = self
         tvDropDownDetail.delegate = self
         selectedCellIndex = 99
+        self.addImageLogoToNavBar()
     }
 
     override func didReceiveMemoryWarning() {

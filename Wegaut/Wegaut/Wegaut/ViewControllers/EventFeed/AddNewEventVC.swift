@@ -91,6 +91,7 @@ class AddNewEventVC: UIViewController {
                          for: UIControl.State.normal)
         currentViewState = processProgressViewState.general
         currentStackState = stackState.onlyNext
+        self.addImageLogoToNavBar()
     }
 
     override func didReceiveMemoryWarning() {

@@ -59,14 +59,5 @@ class NotificationEventTVCell: UITableViewCell {
         lblUser.text = aNotification.notUsername
         lblNotification.text = aNotification.notContent
         lblTimeLapse.text = aNotification.notCreationDate
-        imgvwNotificationPic.cornerRadius(cornerRadius: 5)
-        if  let aString = aNotification.notEventImageURL,
-            let anURL = URL(string: aString){
-            
-            imgvwNotificationPic.sd_setImage(with: anURL,
-                                        placeholderImage: #imageLiteral(resourceName: "BGLogo"),
-                                        options: SDWebImageOptions.highPriority,
-                                        completed: nil)
-        }
     }
 }

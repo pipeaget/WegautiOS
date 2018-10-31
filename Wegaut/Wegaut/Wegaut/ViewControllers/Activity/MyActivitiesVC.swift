@@ -32,6 +32,7 @@ class MyActivitiesVC: UIViewController {
         arrFilteredActivities = []
         definesPresentationContext = true
         getActivities()
+        self.title = "NOT_TIT".localized
     }
 
     override func viewDidLoad() {
@@ -49,6 +50,7 @@ class MyActivitiesVC: UIViewController {
             
             tvActivities.tableHeaderView = scSearchActivities.searchBar
         }
+        self.addImageLogoToNavBar()
     }
 
     override func didReceiveMemoryWarning() {
@@ -175,8 +177,28 @@ extension MyActivitiesVC: UITableViewDataSource, UITableViewDelegate{
             vwHeader.addSubview(lblTitle)
             
             return vwHeader
+        } else {
+            
+            let screenSize: CGRect = UIScreen.main.bounds
+            let aView: UIView = UIView(frame: CGRect(x: 0,
+                                                     y: 0,
+                                                     width: screenSize.width,
+                                                     height: 30))
+            aView.backgroundColor = UIColor(red: 235/255,
+                                            green: 235/255,
+                                            blue: 235/255,
+                                            alpha: 1)
+            let lblTitle: UILabel = UILabel(frame: CGRect(x: 20,
+                                                          y: 5,
+                                                          width: screenSize.width - 40,
+                                                          height: 20))
+            lblTitle.text = section == 0 ? "Hoy" : "Ayer"
+            lblTitle.font = UIFont(name: "Avenir-Bold",
+                                   size: 24)
+            lblTitle.textColor = section == 0 ? UIColor.deepPurple : UIColor.gray
+            aView.addSubview(lblTitle)
+            return aView
         }
-        return nil
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -185,12 +207,12 @@ extension MyActivitiesVC: UITableViewDataSource, UITableViewDelegate{
             
             return 50
         }
-        return 0
+        return 30
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -221,6 +243,11 @@ extension MyActivitiesVC: UITableViewDataSource, UITableViewDelegate{
             aCell.layer.masksToBounds = true
             return aCell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 100
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

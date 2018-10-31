@@ -22,7 +22,6 @@ class NotificationBadgeTVCell: UITableViewCell {
     //MARK: - OUTLETS
     
     @IBOutlet weak var vwContainer: UIView!
-    @IBOutlet weak var imgvwProfilePic: UIImageView!
     @IBOutlet weak var lblUser: UILabel!
     @IBOutlet weak var lblNotification: UILabel!
     @IBOutlet weak var lblTimelapse: UILabel!
@@ -48,24 +47,8 @@ class NotificationBadgeTVCell: UITableViewCell {
             return
         }
         vwContainer.cornerRadius(cornerRadius: 10)
-        imgvwProfilePic.cornerRadius(cornerRadius: nil)
-        if let anURL = URL(string: aNotification.notProfImageURL){
-            
-            imgvwProfilePic.sd_setImage(with: anURL,
-                                        placeholderImage: #imageLiteral(resourceName: "BGLogo"),
-                                        options: SDWebImageOptions.highPriority,
-                                        completed: nil)
-        }
         lblUser.text = aNotification.notUsername
         lblNotification.text = aNotification.notContent
         lblTimelapse.text = aNotification.notCreationDate
-        if  let aString = aNotification.notBadgeImageURL,
-            let anURL = URL(string: aString){
-            
-            imgvwBadge.sd_setImage(with: anURL,
-                                             placeholderImage: #imageLiteral(resourceName: "BGLogo"),
-                                             options: SDWebImageOptions.highPriority,
-                                             completed: nil)
-        }
     }
 }

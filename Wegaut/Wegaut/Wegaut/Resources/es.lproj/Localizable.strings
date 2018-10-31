@@ -103,6 +103,7 @@
 
 //MARK: - EVENTFEEDVC
 
+"EVF_TIT"   = "Feed";
 "EVF_NAME"  = "Name";
 "EVF_PLACE" = "Place";
 "EVF_TAGS"  = "Category";
@@ -201,6 +202,7 @@
 
 //MARK: - MYACTIVITIESVC
 
+"NOT_TIT"    = "Actividad";
 "NOT_FOLLOW" = "Follow";
 "NOT_USER"   = "User";
 "NOT_NAME"   = "Notification";
