@@ -13,7 +13,7 @@ class NotificationEventTVCell: UITableViewCell {
     
     //MARK: - VARIABLES
     
-    var currentNotification: UserNotification?{
+    var currentNotification: Activity?{
         didSet{
             drawCell()
         }
@@ -49,15 +49,15 @@ class NotificationEventTVCell: UITableViewCell {
         }
         vwContainer.cornerRadius(cornerRadius: 10)
         imgvwProfilePic.cornerRadius(cornerRadius: nil)
-        if let anURL = URL(string: aNotification.notProfImageURL){
+        if let anURL = URL(string: aNotification.actUser.usProfileImageURL){
             
             imgvwProfilePic.sd_setImage(with: anURL,
                                         placeholderImage: #imageLiteral(resourceName: "BGLogo"),
                                         options: SDWebImageOptions.highPriority,
                                         completed: nil)
         }
-        lblUser.text = aNotification.notUsername
-        lblNotification.text = aNotification.notContent
-        lblTimeLapse.text = aNotification.notCreationDate
+        lblUser.text = User.getUserCompleteName(user: aNotification.actUser)
+        lblNotification.text = aNotification.actTitle
+        lblTimeLapse.text = "\(aNotification.actDate)"
     }
 }

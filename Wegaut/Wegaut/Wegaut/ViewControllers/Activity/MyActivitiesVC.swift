@@ -12,9 +12,9 @@ class MyActivitiesVC: UIViewController {
     
     //MARK: - VARIABLES
     
-    var arrActivities: [UserNotification]!
-    var arrFilteredActivities: [UserNotification]!
-    var selectedActivity: UserNotification!
+    var arrActivities: [Activity]!
+    var arrFilteredActivities: [Activity]!
+    var selectedActivity: Activity!
     
     //MARK: - OUTLETS
     
@@ -92,7 +92,7 @@ class MyActivitiesVC: UIViewController {
     
     @objc func getActivities(){
         
-        arrActivities = UserNotification.getNotifications()
+        arrActivities = Activity.getActivities()
         if self.rcActivities != nil{
             self.rcActivities.endRefreshing()
         }
@@ -124,11 +124,11 @@ class MyActivitiesVC: UIViewController {
         switch scope{
             
         case "NOT_NAME".localized:
-            arrFilteredActivities = arrActivities.filter{$0.notContent.lowercased().contains(searchText.lowercased())}
+            arrFilteredActivities = arrActivities.filter{$0.actTitle.lowercased().contains(searchText.lowercased())}
             break
             
         case "NOT_USER".localized:
-            arrFilteredActivities = arrActivities.filter{$0.notUsername.lowercased().contains(searchText.lowercased())}
+            arrFilteredActivities = arrActivities.filter{User.getUserCompleteName(user: $0.actUser).lowercased().contains(searchText.lowercased())}
             break
             
         default:
@@ -223,25 +223,34 @@ extension MyActivitiesVC: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        switch isFiltering() ? arrFilteredActivities[indexPath.row].notType : arrActivities[indexPath.row].notType {
+        switch isFiltering() ? arrFilteredActivities[indexPath.row].actType : arrActivities[indexPath.row].actType {
             
-        case notificationType.event:
+        case activityType.goingEvent:
             let aCell: NotificationEventTVCell = tableView.dequeueReusableCell(withIdentifier: "NotificationEvent", for: indexPath) as! NotificationEventTVCell
             aCell.currentNotification = isFiltering() ? arrFilteredActivities[indexPath.row] : arrActivities[indexPath.row]
             aCell.layer.masksToBounds = true
             return aCell
             
-        case notificationType.follow:
+        case activityType.newFollower:
             let aCell: NotificationFollowTVCell = tableView.dequeueReusableCell(withIdentifier: "NotificationFollow", for: indexPath) as! NotificationFollowTVCell
             aCell.currentNotification = isFiltering() ? arrFilteredActivities[indexPath.row] : arrActivities[indexPath.row]
             aCell.layer.masksToBounds = true
             return aCell
             
-        case notificationType.badge:
+        case activityType.newLevel:
             let aCell: NotificationBadgeTVCell = tableView.dequeueReusableCell(withIdentifier: "NotificationBadge", for: indexPath) as! NotificationBadgeTVCell
             aCell.currentNotification = isFiltering() ? arrFilteredActivities[indexPath.row] : arrActivities[indexPath.row]
             aCell.layer.masksToBounds = true
             return aCell
+            
+        case .newFollowing:
+            return UITableViewCell()
+            
+        case .favouritedEvent:
+            return UITableViewCell()
+            
+        case .sharedevent:
+            return UITableViewCell()
         }
     }
     

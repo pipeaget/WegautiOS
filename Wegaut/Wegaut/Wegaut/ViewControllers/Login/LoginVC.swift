@@ -25,6 +25,7 @@ class LoginVC: UIViewController {
     @IBOutlet weak var tfPassword: UITextField!
     @IBOutlet weak var btnLogin: UIButton!
     @IBOutlet weak var btnForgotPassword: UIButton!
+    @IBOutlet weak var btnBack: UIButton!
     
     //MARK: - VIEW LIFECYCLE
     
@@ -42,7 +43,7 @@ class LoginVC: UIViewController {
         self.view.addGestureRecognizer(tgrDismissKeyboard)
         tfUser.delegate = self
         tfPassword.delegate = self
-        
+        tfPassword.isSecureTextEntry = true
         lblSlogan.text = "LOG_SLO".localized
         lblUser.text = "LOG_USR".localized
         lblPassword.text = "LOG_PSSWD".localized
@@ -98,6 +99,8 @@ class LoginVC: UIViewController {
             }
         } else {
             
+            UserDefaults.standard.set(true,
+                                      forKey: WegautConstants.IS_USER_LOGGED)
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main",
                                                         bundle: Bundle.main)
             let rootNavigation: UITabBarController = storyBoard.instantiateViewController(withIdentifier: "RootNavigation") as! UITabBarController
@@ -111,6 +114,11 @@ class LoginVC: UIViewController {
         
         self.performSegue(withIdentifier: "showForgotPassword",
                           sender: nil)
+    }
+    
+    @IBAction func actGoBack(_ sender: UIButton) {
+        
+        self.navigationController?.popViewController(animated: true)
     }
 }
 

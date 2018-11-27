@@ -12,7 +12,7 @@ class SelectInterestsVC: UIViewController {
     
     //MARK: - VARIABLES
     
-    var arrInterests: [Interest]! {
+    var arrInterests: [Tag]! {
         didSet{
             cvInterests.reloadData()
         }
@@ -29,7 +29,7 @@ class SelectInterestsVC: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        arrInterests = Interest.getInterests()
+        arrInterests = Tag.getTags()
         lblInstructions.text = "SEL_TIT".localized
     }
 
@@ -96,7 +96,7 @@ extension SelectInterestsVC: UICollectionViewDataSource, UICollectionViewDelegat
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        arrInterests[indexPath.row].inIsSelected = !arrInterests[indexPath.row].inIsSelected
+        arrInterests[indexPath.row].tagIsSelected = !arrInterests[indexPath.row].tagIsSelected
         cvInterests.reloadData()
     }
 }

@@ -12,7 +12,7 @@ class GeneralInfoVC: UIViewController {
     
     //MARK: - VARIABLES
     
-    var arrNewEventTags: [(Tag, Bool)]!
+    var arrNewEventTags: [Tag]!
     var arrSelectedTags: [Tag]!
     var eventImage: UIImage?
     
@@ -30,7 +30,7 @@ class GeneralInfoVC: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        arrNewEventTags = Tag.getTagsForNewEvent()
+        arrNewEventTags = Tag.getTags()
         arrSelectedTags = []
         tfEventName.placeholder = "GIE_ENAME".localized
         tfEventAssitanceType.placeholder = "GIE_ASTY".localized
@@ -138,8 +138,8 @@ extension GeneralInfoVC: UICollectionViewDataSource, UICollectionViewDelegate, U
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        arrNewEventTags[indexPath.row].1 = !arrNewEventTags[indexPath.row].1
-        arrNewEventTags[indexPath.row].1 ? addTagWithIndex(aTag: arrNewEventTags[indexPath.row].0) : removeTagWithIndex(aTag: arrNewEventTags[indexPath.row].0)
+        arrNewEventTags[indexPath.row].tagIsSelected = !arrNewEventTags[indexPath.row].tagIsSelected
+        arrNewEventTags[indexPath.row].tagIsSelected ? addTagWithIndex(aTag: arrNewEventTags[indexPath.row]) : removeTagWithIndex(aTag: arrNewEventTags[indexPath.row])
         cvEventTags.reloadData()
     }
     

@@ -82,13 +82,11 @@ class EventFeedDetailVC: UIViewController {
         
         let strToShare = "EVFD_SH1".localized + "\(anEvent.eveName)" + "EVFD_SH2".localized + "\(anEvent.eveDate) \(anEvent.eveSchedule)" + "EVFD_SH3".localized + "\(anEvent.evePlace)."
         
-        if let eventWebSite = NSURL(string: anEvent.eveURL) {
-            let objectsToShare: [Any] = [strToShare, eventWebSite]
-            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-            
-            activityVC.popoverPresentationController?.sourceView = tvEventDetail
-            self.present(activityVC, animated: true, completion: nil)
-        }
+        let objectsToShare: [Any] = [strToShare]
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        
+        activityVC.popoverPresentationController?.sourceView = tvEventDetail
+        self.present(activityVC, animated: true, completion: nil)
     }
     
     func showNavigationOptions(){
@@ -201,7 +199,7 @@ extension EventFeedDetailVC: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 4
+        return 6
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -209,7 +207,7 @@ extension EventFeedDetailVC: UITableViewDataSource, UITableViewDelegate{
         switch indexPath.row {
             
         case 0:
-            return 480
+            return 650
             
         case 1:
             return 150
@@ -218,10 +216,13 @@ extension EventFeedDetailVC: UITableViewDataSource, UITableViewDelegate{
             return 250
             
         case 3:
-            return 297
+            return 410
+            
+        case 4:
+            return 300
             
         default:
-            return 300
+            return 131
         }
     }
     
@@ -268,6 +269,11 @@ extension EventFeedDetailVC: UITableViewDataSource, UITableViewDelegate{
             }
             return aCell
             
+        case 4:
+            let aCell: MultimediaTVCell = tableView.dequeueReusableCell(withIdentifier: "MultimediaCell",
+                                                                        for: indexPath) as! MultimediaTVCell
+            return aCell
+            
         default:
             let aCell: OrganizersTVCell = tableView.dequeueReusableCell(withIdentifier: "OrganizersCell", for: indexPath) as! OrganizersTVCell
             return aCell
@@ -295,11 +301,12 @@ extension EventFeedDetailVC: UITableViewDataSource, UITableViewDelegate{
             aCell.currentCommentaries = Comment.getcomments()
             
         case 4:
-            let aCell: OrganizersTVCell = cell as! OrganizersTVCell
-            aCell.arrOrganizers = Organizer.getAllOrganizers()
+            let aCell: MultimediaTVCell = cell as! MultimediaTVCell
+            aCell.currentMultimedia = [Multimedia.getDefaultMultimediaWith(type: MultimediaType.image)]
             
         default:
-            break
+            let aCell: OrganizersTVCell = cell as! OrganizersTVCell
+            aCell.arrOrganizers = Organizer.getAllOrganizers()
         }
     }
 }

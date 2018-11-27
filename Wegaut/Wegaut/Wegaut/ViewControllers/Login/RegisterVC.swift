@@ -151,6 +151,8 @@ class RegisterVC: UIViewController {
     
     @IBAction func actRegister(_ sender: UIButton) {
         
+        UserDefaults.standard.set(true,
+                                  forKey: WegautConstants.IS_USER_LOGGED)
         self.performSegue(withIdentifier: "showInterests",
                           sender: nil)
     }

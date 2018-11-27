@@ -46,13 +46,13 @@ class CommentTVCell: UITableViewCell {
             return
         }
         imgvwUserProfilePicture.cornerRadius(cornerRadius: nil)
-        if let aURL = URL(string: aComment.comUserImageURL){
+        if let aURL = URL(string: aComment.comUser.usProfileImageURL){
             imgvwUserProfilePicture.sd_setImage(with: aURL,
                                                 placeholderImage: #imageLiteral(resourceName: "BGLogo"),
                                                 options: SDWebImageOptions.highPriority,
                                                 completed: nil)
         }
-        lblUser.text = aComment.comUser
+        lblUser.text = User.getUserCompleteName(user: aComment.comUser)
         lblComment.text = aComment.comText
         lblTimelapse.text = aComment.comDate
     }

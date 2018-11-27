@@ -31,7 +31,9 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var btnProfilePic: UIButton!
     @IBOutlet weak var imgvwNewProfilePic: UIImageView!
     @IBOutlet weak var lblUsername: UILabel!
+    @IBOutlet weak var lblCompany: UILabel!
     @IBOutlet weak var lblUserDescription: UILabel!
+    @IBOutlet weak var vwUsage: UIView!
     @IBOutlet weak var lblFollowersQuantity: UILabel!
     @IBOutlet weak var lblFollowers: UILabel!
     @IBOutlet weak var lblWegautLevel: UILabel!
@@ -79,21 +81,18 @@ class ProfileVC: UIViewController {
                                       completed: nil)
         }
         lblUserDescription.text = userData.usDescription
-        lblFollowersQuantity.text = "15K"
-        let strFollowers: NSMutableAttributedString = NSMutableAttributedString(string: "PRO_FOLWRS".localized)
-        lblFollowers.attributedText = strFollowers.getStringWith(anImage: #imageLiteral(resourceName: "ICFollowersOn"), isInLeftPosition: true, currentFont: UIFont.systemFont(ofSize: 10))
-        lblWegautLevel.text = userData.usWegautLevel
-        let strLevel: NSMutableAttributedString = NSMutableAttributedString(string: "PRO_LEVEL".localized)
-        lblLevel.attributedText = strLevel.getStringWith(anImage: #imageLiteral(resourceName: "ICBadgeOn"), isInLeftPosition: true, currentFont: UIFont.systemFont(ofSize: 10))
-        let strEvents: NSMutableAttributedString = NSMutableAttributedString(string: "PRO_EVENTS".localized)
-        lblEvents.attributedText = strEvents.getStringWith(anImage: #imageLiteral(resourceName: "ICSavedOn"), isInLeftPosition: true, currentFont: UIFont.systemFont(ofSize: 10))
+        lblFollowersQuantity.text = "\(userData.usFollowers)"
+        lblFollowers.text = "PRO_FOLWRS".localized
+        lblWegautLevel.text = userData.usWegautLevel.description
+        lblLevel.text = "PRO_LEVEL".localized
+        lblEvents.text = "PRO_EVENTS".localized
         lblNumberOfEvents.text = "\(arrMyEvents.count)"
         
-        imgvwSection1.image = #imageLiteral(resourceName: "ICCalendar")
+        imgvwSection1.image = #imageLiteral(resourceName: "ICPurpleCalendar")
         lblSection1.text = "PRO_GOING".localized
-        imgvwSection2.image = #imageLiteral(resourceName: "ICFavoriteOff")
+        imgvwSection2.image = #imageLiteral(resourceName: "ICWhiteHearth")
         lblSection2.text = "PRO_FAVS".localized
-        imgvwSection3.image = #imageLiteral(resourceName: "ICShareOff")
+        imgvwSection3.image = #imageLiteral(resourceName: "ICWhiteShare")
         lblSection3.text = "PRO_SHARED".localized
         
         btnProfilePic.cornerRadius(cornerRadius: nil)
@@ -103,6 +102,8 @@ class ProfileVC: UIViewController {
         imgvwNewProfilePic.layer.borderWidth = 0.5
         imgvwNewProfilePic.layer.borderColor = UIColor.black.cgColor
         self.addImageLogoToNavBar()
+        vwUsage.cornerRadius(cornerRadius: 5)
+        vwUsage.clipsToBounds = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -129,27 +130,27 @@ class ProfileVC: UIViewController {
             
         case 0:
             lblSection1.textColor = UIColor.mediumPurple
-            imgvwSection1.image = #imageLiteral(resourceName: "ICCalendar")
+            imgvwSection1.image = #imageLiteral(resourceName: "ICPurpleCalendar")
             lblSection2.textColor = UIColor.lightGray
-            imgvwSection2.image = #imageLiteral(resourceName: "ICFavoriteOff")
+            imgvwSection2.image = #imageLiteral(resourceName: "ICWhiteHearth")
             lblSection3.textColor = UIColor.lightGray
-            imgvwSection3.image = #imageLiteral(resourceName: "ICShareOff")
+            imgvwSection3.image = #imageLiteral(resourceName: "ICWhiteShare")
             
         case 1:
             lblSection1.textColor = UIColor.lightGray
-            imgvwSection1.image = #imageLiteral(resourceName: "ICCalendarOff")
+            imgvwSection1.image = #imageLiteral(resourceName: "ICDate")
             lblSection2.textColor = UIColor.mediumPurple
             imgvwSection2.image = #imageLiteral(resourceName: "ICHearth")
             lblSection3.textColor = UIColor.lightGray
-            imgvwSection3.image = #imageLiteral(resourceName: "ICShareOff")
+            imgvwSection3.image = #imageLiteral(resourceName: "ICWhiteShare")
             
         case 2:
             lblSection1.textColor = UIColor.lightGray
-            imgvwSection1.image = #imageLiteral(resourceName: "ICCalendarOff")
+            imgvwSection1.image = #imageLiteral(resourceName: "ICDate")
             lblSection2.textColor = UIColor.lightGray
-            imgvwSection2.image = #imageLiteral(resourceName: "ICFavoriteOff")
+            imgvwSection2.image = #imageLiteral(resourceName: "ICWhiteHearth")
             lblSection3.textColor = UIColor.mediumPurple
-            imgvwSection3.image = #imageLiteral(resourceName: "ICShare")
+            imgvwSection3.image = #imageLiteral(resourceName: "ICPurpleShare")
             
         default:
             break
@@ -218,6 +219,24 @@ class ProfileVC: UIViewController {
         
         currentSegmentControlIndex = sender.tag
         setSegmentedControlUI()
+    }
+    
+    @IBAction func actShowFollowers(_ sender: UIButton) {
+        
+        self.performSegue(withIdentifier: "showFollowers",
+                          sender: nil)
+    }
+    
+    @IBAction func actShowMedals(_ sender: UIButton) {
+        
+        self.performSegue(withIdentifier: "showMedals",
+                          sender: nil)
+    }
+    
+    @IBAction func actShowMyEvents(_ sender: Any) {
+        
+        self.performSegue(withIdentifier: "showMyEvents",
+                          sender: nil)
     }
 }
 

@@ -15,27 +15,29 @@
 "SEND"        = "SEND";
 "OK"          = "OK";
 "CANCEL"      = "Cancel";
+"SENDCOMMENT" = "Escribe un comentario...";
+"SENDPREF"    = "Escr";
 
 //MARK: - TAGS
 
-"TAG_PAR" = "Party";
-"TAG_ART" = "Art";
-"TAG_SOC" = "Social Causes";
-"TAG_COM" = "Comedy";
-"TAG_TEA" = "Theater";
-"TAG_HAN" = "Handcrafting";
-"TAG_EDU" = "Education";
-"TAG_DAN" = "Dance";
-"TAG_MOV" = "Movies";
+"TAG_PAR" = "Fiesta";
+"TAG_ART" = "Arte";
+"TAG_SOC" = "Causas Sociales";
+"TAG_COM" = "Comedia";
+"TAG_TEA" = "Teatro";
+"TAG_HAN" = "Manualidades";
+"TAG_EDU" = "Educación";
+"TAG_DAN" = "Bailar";
+"TAG_MOV" = "Películas";
 "TAG_FIT" = "Fitness";
-"TAG_SHO" = "Shopping";
-"TAG_SPO" = "Sports";
+"TAG_SHO" = "Compras";
+"TAG_SPO" = "Deportes";
 "TAG_LIF" = "Lifestyle";
-"TAG_ENT" = "Entretainment";
-"TAG_FOO" = "Food";
-"TAG_GAM" = "Games";
-"TAG_HEA" = "Health";
-"TAG_GAR" = "Gardening";
+"TAG_ENT" = "Entretenimiento";
+"TAG_FOO" = "Comida";
+"TAG_GAM" = "Juegos";
+"TAG_HEA" = "Salud";
+"TAG_GAR" = "Jardineria";
 
 //MARK: - WELCOMEVC
 
@@ -108,7 +110,7 @@
 "EVF_PLACE" = "Place";
 "EVF_TAGS"  = "Category";
 "EVF_NO_EVENTS" = "Currently there's any available events...";
-"EVF_SEARCH" = "Search...";
+"EVF_SEARCH" = "Busca eventos";
 
 //MARK: - EVENTFEEDDETAILVC
 
@@ -179,9 +181,14 @@
 "EAC_TIT"  = "Place highlights";
 "EAC_HTGT" = "Directions";
 
+//MARK: - MULTIMEDIATVCELL
+
+"MUL_MULT" = "Multimedia";
+"MUL_RESP" = "Responder";
+
 //MARK: - ORGANIZERSTVCELL
 
-"ORC_TIT" = "Organizers";
+"ORG_TIT" = "Organizers";
 
 //MARK: - EVENTCOUNTDOWNTVCELL
 

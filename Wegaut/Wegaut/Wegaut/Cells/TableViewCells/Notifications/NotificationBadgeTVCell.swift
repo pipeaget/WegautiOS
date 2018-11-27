@@ -13,7 +13,7 @@ class NotificationBadgeTVCell: UITableViewCell {
     
     //MARK: - VARIABLES
     
-    var currentNotification: UserNotification?{
+    var currentNotification: Activity?{
         didSet{
             drawCell()
         }
@@ -47,8 +47,8 @@ class NotificationBadgeTVCell: UITableViewCell {
             return
         }
         vwContainer.cornerRadius(cornerRadius: 10)
-        lblUser.text = aNotification.notUsername
-        lblNotification.text = aNotification.notContent
-        lblTimelapse.text = aNotification.notCreationDate
+        lblUser.text = User.getUserCompleteName(user: aNotification.actUser)
+        lblNotification.text = aNotification.actTitle
+        lblTimelapse.text = "\(aNotification.actDate)"
     }
 }

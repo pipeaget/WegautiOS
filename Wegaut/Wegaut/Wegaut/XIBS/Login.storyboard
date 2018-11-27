@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -146,6 +146,17 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4d-GK-0H3">
+                                <rect key="frame" x="0.0" y="40" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="JCi-Hk-ayi"/>
+                                    <constraint firstAttribute="height" constant="50" id="eud-4d-289"/>
+                                </constraints>
+                                <state key="normal" image="ICBack"/>
+                                <connections>
+                                    <action selector="actGoBack:" destination="0XT-L8-eiN" eventType="touchUpInside" id="CD8-If-IjT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -153,6 +164,8 @@
                             <constraint firstItem="kot-6c-4yS" firstAttribute="trailing" secondItem="uKA-ib-sPr" secondAttribute="trailing" id="DDb-9b-DZk"/>
                             <constraint firstItem="kot-6c-4yS" firstAttribute="bottom" secondItem="uKA-ib-sPr" secondAttribute="bottom" id="DQd-uF-cEM"/>
                             <constraint firstItem="kot-6c-4yS" firstAttribute="height" secondItem="aTT-du-jj9" secondAttribute="height" multiplier="4:10" id="DoV-pu-mH9"/>
+                            <constraint firstItem="M4d-GK-0H3" firstAttribute="top" secondItem="uKA-ib-sPr" secondAttribute="top" constant="20" id="EaG-ej-Ten"/>
+                            <constraint firstItem="M4d-GK-0H3" firstAttribute="leading" secondItem="uKA-ib-sPr" secondAttribute="leading" id="EwF-43-FTs"/>
                             <constraint firstItem="Xxt-Ac-T4x" firstAttribute="height" secondItem="aTT-du-jj9" secondAttribute="height" multiplier="1:5" id="NgJ-jO-BFI"/>
                             <constraint firstItem="uej-c7-LkM" firstAttribute="leading" secondItem="uKA-ib-sPr" secondAttribute="leading" id="NwF-Is-PmU"/>
                             <constraint firstItem="kot-6c-4yS" firstAttribute="top" secondItem="JW8-GY-xc7" secondAttribute="bottom" constant="50" id="PTZ-eF-hcz"/>
@@ -170,6 +183,7 @@
                     <navigationItem key="navigationItem" id="orI-S9-6s8"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
+                        <outlet property="btnBack" destination="M4d-GK-0H3" id="i0u-bv-M5m"/>
                         <outlet property="btnForgotPassword" destination="qFU-vE-JPG" id="O6g-65-tWh"/>
                         <outlet property="btnLogin" destination="B0S-VN-VXG" id="Hai-4T-hoy"/>
                         <outlet property="lblPassword" destination="XyU-Dd-5iL" id="ExN-UJ-mbh"/>
@@ -598,10 +612,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hTA-mv-6Bo">
-                                        <rect key="frame" x="8" y="41" width="120" height="40"/>
+                                        <rect key="frame" x="0.0" y="41" width="80" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="qZg-oO-mPU"/>
-                                            <constraint firstAttribute="width" constant="120" id="xTu-dm-E0D"/>
+                                            <constraint firstAttribute="width" constant="80" id="xTu-dm-E0D"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="16"/>
                                         <color key="tintColor" red="1" green="0.20000000000000001" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -613,7 +627,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="hTA-mv-6Bo" firstAttribute="leading" secondItem="bSs-1u-pXp" secondAttribute="leading" constant="8" id="0OP-pd-1Jj"/>
+                                    <constraint firstItem="hTA-mv-6Bo" firstAttribute="leading" secondItem="bSs-1u-pXp" secondAttribute="leading" id="0OP-pd-1Jj"/>
                                     <constraint firstAttribute="trailing" secondItem="KKj-RR-qZn" secondAttribute="trailing" constant="8" id="3hW-sW-dX5"/>
                                     <constraint firstAttribute="bottom" secondItem="KKj-RR-qZn" secondAttribute="bottom" constant="8" id="dgw-eT-yQ1"/>
                                     <constraint firstAttribute="height" constant="120" id="kIo-uY-VEf"/>
@@ -840,7 +854,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No te pierdas de nada" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="Wqb-SR-a98">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No te pierdas de nada" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Wqb-SR-a98">
                                 <rect key="frame" x="86.5" y="312" width="147" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="2Ey-yg-MnD"/>
@@ -917,6 +931,7 @@
         <image name="BGProfilePicture" width="375" height="159"/>
         <image name="BGSplash" width="750" height="1334"/>
         <image name="BTNAdd" width="70" height="70"/>
+        <image name="ICBack" width="17" height="31"/>
         <image name="ICClose" width="40" height="39"/>
         <image name="ICDone" width="42" height="30"/>
         <image name="ICExitP" width="38" height="37"/>

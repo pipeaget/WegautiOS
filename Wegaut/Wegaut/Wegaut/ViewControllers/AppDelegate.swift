@@ -30,8 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Navigation bar appearance
         let navAppearance = UINavigationBar.appearance()
         navAppearance.barTintColor = UIColor.white
-        navAppearance.tintColor = UIColor.deepPurple
-        navAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white, NSAttributedString.Key.font:UIFont.systemFont(ofSize: 20)]
+        navAppearance.tintColor = UIColor.black
+        navAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white, NSAttributedString.Key.font: UIFont.init(name: "Avenir-Book", size: 20) ?? UIFont.systemFont(ofSize: 20)]
         
         //Tab bar appearance
         let tabBarAppearance = UITabBar.appearance()

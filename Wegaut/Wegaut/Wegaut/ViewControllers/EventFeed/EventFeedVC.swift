@@ -22,6 +22,7 @@ class EventFeedVC: UIViewController {
     //MARK: - OUTLETS
     
     @IBOutlet weak var tvFeed: UITableView!
+    @IBOutlet weak var sbEvents: UISearchBar!
     
     //MARK: - VIEW LIFECYCLE
     
@@ -30,14 +31,19 @@ class EventFeedVC: UIViewController {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.navigationBar.isHidden = false
-        self.title = "EVF_TIT".localized
+        let bbiFeed: UIBarButtonItem = UIBarButtonItem(title: "EVF_TIT".localized,
+                                                       style: UIBarButtonItem.Style.plain,
+                                                       target: nil,
+                                                       action: nil)
+        self.navigationItem.setLeftBarButton(bbiFeed,
+                                             animated: false)
     }
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        let bbiAdd: UIBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "BBIAdd"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(self.addNewEvent(sender:)))
-        self.navigationItem.setRightBarButton(bbiAdd, animated: false)
+        sbEvents.barTintColor = UIColor.deepPurple
+        sbEvents.placeholder = "EVF_SEARCH".localized
         arrEvents = Event.getEvents()
         self.addImageLogoToNavBar()
     }
