@@ -224,6 +224,12 @@
 "PRO_FAVS"   = "Favorites";
 "PRO_SHARED" = "Shared";
 
+//MARK: - FOLLOWERSVC
+
+"FO_FWR" = "Seguidores";
+"FO_FWG" = "Siguiendo";
+"FO_SEA" = "Busca personas";
+
 //MARK: - SETTINGSVC
 
 "SO_H1"    = "Messages";

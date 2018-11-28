@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Search bar appearance
         let tfAppearance = UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self])
-        tfAppearance.defaultTextAttributes = convertToNSAttributedStringKeyDictionary([NSAttributedString.Key.foregroundColor.rawValue: UIColor.mediumPurple])
+        tfAppearance.defaultTextAttributes = convertToNSAttributedStringKeyDictionary([NSAttributedString.Key.foregroundColor.rawValue: UIColor.black])
         tfAppearance.tintColor = UIColor.white
         
         //Initialize IQkeyaboard

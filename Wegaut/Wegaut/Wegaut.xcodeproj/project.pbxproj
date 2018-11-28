@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		D52CB3EC214AD284007C58D2 /* WegautConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52CB3EB214AD284007C58D2 /* WegautConstants.swift */; };
 		D52CB3EF214AD40C007C58D2 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52CB3EE214AD40C007C58D2 /* UIViewControllerExtensions.swift */; };
-		D5874F4421ACD6F20039F08D /* FORSelectorDisplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5874F4321ACD6F20039F08D /* FORSelectorDisplayer.swift */; };
 		D5BCEE7B219B60C6003428C9 /* FORButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BCEE7A219B60C5003428C9 /* FORButton.swift */; };
 		D5CAD99621A75655002D2335 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CAD99521A75655002D2335 /* Activity.swift */; };
 		D5CAD99821A761FE002D2335 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CAD99721A761FE002D2335 /* Level.swift */; };
@@ -118,7 +117,6 @@
 		CE1C11ED81BD8501D3A1D65A /* Pods-WegautTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WegautTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WegautTests/Pods-WegautTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D52CB3EB214AD284007C58D2 /* WegautConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WegautConstants.swift; sourceTree = "<group>"; };
 		D52CB3EE214AD40C007C58D2 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
-		D5874F4321ACD6F20039F08D /* FORSelectorDisplayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FORSelectorDisplayer.swift; sourceTree = "<group>"; };
 		D5BCEE7A219B60C5003428C9 /* FORButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FORButton.swift; sourceTree = "<group>"; };
 		D5CAD99521A75655002D2335 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		D5CAD99721A761FE002D2335 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
@@ -289,7 +287,6 @@
 				D5D14662214EA881005C2FC5 /* FORPopUpView.swift */,
 				D5D14663214EA882005C2FC5 /* FORView.swift */,
 				D5BCEE7A219B60C5003428C9 /* FORButton.swift */,
-				D5874F4321ACD6F20039F08D /* FORSelectorDisplayer.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -816,7 +813,6 @@
 				D5CE6172219E4090001F7E3C /* OrganizerCVCell.swift in Sources */,
 				D5D14666214EA882005C2FC5 /* FORView.swift in Sources */,
 				D5D14685214EA942005C2FC5 /* NewURLTVCell.swift in Sources */,
-				D5874F4421ACD6F20039F08D /* FORSelectorDisplayer.swift in Sources */,
 				D5D1462B214D7A0F005C2FC5 /* UITextFieldExtensions.swift in Sources */,
 				D52CB3EC214AD284007C58D2 /* WegautConstants.swift in Sources */,
 				D5D146BD214EA9D0005C2FC5 /* AddNewEventVC.swift in Sources */,

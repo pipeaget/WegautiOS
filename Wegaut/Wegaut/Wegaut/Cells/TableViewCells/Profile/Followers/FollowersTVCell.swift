@@ -55,8 +55,10 @@ class FollowersTVCell: UITableViewCell {
             
             imgvwProfileImage.image = #imageLiteral(resourceName: "LGNavBar")
         }
+        imgvwProfileImage.layer.cornerRadius = imgvwProfileImage.frame.width/2
+        imgvwProfileImage.clipsToBounds = true
         lblUsername.text = aFollower.usName
-        btnFollow.isHidden = true
+        btnFollow.isHidden = !isFollower
     }
     
     //MARK: - ACTIONS
