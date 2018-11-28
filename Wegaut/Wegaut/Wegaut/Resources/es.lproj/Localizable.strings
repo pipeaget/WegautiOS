@@ -39,6 +39,12 @@
 "TAG_HEA" = "Salud";
 "TAG_GAR" = "Jardineria";
 
+//MARK: - LEVELS
+
+"LV_1" = "NOOB";
+"LV_2" = "MITAD";
+"LV_3" = "PRO";
+
 //MARK: - WELCOMEVC
 
 "WE_WELCOME" = "¡Bienvenido!";

@@ -31,7 +31,6 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var btnProfilePic: UIButton!
     @IBOutlet weak var imgvwNewProfilePic: UIImageView!
     @IBOutlet weak var lblUsername: UILabel!
-    @IBOutlet weak var lblCompany: UILabel!
     @IBOutlet weak var lblUserDescription: UILabel!
     @IBOutlet weak var vwUsage: UIView!
     @IBOutlet weak var lblFollowersQuantity: UILabel!
@@ -81,7 +80,7 @@ class ProfileVC: UIViewController {
                                       completed: nil)
         }
         lblUserDescription.text = userData.usDescription
-        lblFollowersQuantity.text = "\(userData.usFollowers)"
+        lblFollowersQuantity.text = "\(userData.usFollowers.count)"
         lblFollowers.text = "PRO_FOLWRS".localized
         lblWegautLevel.text = userData.usWegautLevel.description
         lblLevel.text = "PRO_LEVEL".localized

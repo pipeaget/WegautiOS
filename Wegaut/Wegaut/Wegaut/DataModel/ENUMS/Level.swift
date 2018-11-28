@@ -22,7 +22,7 @@ enum Level {
             
         case Level.medium: return "LV_2".localized
             
-        case Level.high:   return "LV_1".localized
+        case Level.high:   return "LV_3".localized
         }
     }
 }
