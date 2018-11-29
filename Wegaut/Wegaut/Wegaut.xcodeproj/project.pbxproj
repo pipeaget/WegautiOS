@@ -104,6 +104,7 @@
 		D5EA5461219C9FAA0048CFED /* MultimediaTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5EA5460219C9FAA0048CFED /* MultimediaTVCell.swift */; };
 		D5EA546F219D1A170048CFED /* NoConnection.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5EA546E219D1A170048CFED /* NoConnection.xib */; };
 		D5EBD478214982D700FEEBA4 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5EBD477214982D700FEEBA4 /* Login.storyboard */; };
+		D5F198EC21AF1C9C0082DE73 /* FORAndroidTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F198EB21AF1C9B0082DE73 /* FORAndroidTextfield.swift */; };
 		FE40079A69015558E74B20D1 /* Pods_Wegaut.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F20B586DBD618B83A078F86C /* Pods_Wegaut.framework */; };
 /* End PBXBuildFile section */
 
@@ -216,6 +217,7 @@
 		D5EA5460219C9FAA0048CFED /* MultimediaTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultimediaTVCell.swift; sourceTree = "<group>"; };
 		D5EA546E219D1A170048CFED /* NoConnection.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoConnection.xib; sourceTree = "<group>"; };
 		D5EBD477214982D700FEEBA4 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		D5F198EB21AF1C9B0082DE73 /* FORAndroidTextfield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FORAndroidTextfield.swift; sourceTree = "<group>"; };
 		DB3FED54A3E0347AEBF0EF23 /* Pods-Wegaut.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wegaut.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wegaut/Pods-Wegaut.release.xcconfig"; sourceTree = "<group>"; };
 		F20B586DBD618B83A078F86C /* Pods_Wegaut.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wegaut.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -287,6 +289,7 @@
 				D5D14662214EA881005C2FC5 /* FORPopUpView.swift */,
 				D5D14663214EA882005C2FC5 /* FORView.swift */,
 				D5BCEE7A219B60C5003428C9 /* FORButton.swift */,
+				D5F198EB21AF1C9B0082DE73 /* FORAndroidTextfield.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -754,6 +757,7 @@
 				D5D146C8214EA9FC005C2FC5 /* ScheduleInfoVC.swift in Sources */,
 				D5D1465A214EA866005C2FC5 /* SettingsOption.swift in Sources */,
 				D5D146BC214EA9D0005C2FC5 /* EventFeedDetailVC.swift in Sources */,
+				D5F198EC21AF1C9C0082DE73 /* FORAndroidTextfield.swift in Sources */,
 				D5CE6175219E4090001F7E3C /* RecentPublicationsCVCell.swift in Sources */,
 				D5D14690214EA94D005C2FC5 /* CommentTVCell.swift in Sources */,
 				D5D1464A214E5420005C2FC5 /* UIImageViewExtensions.swift in Sources */,
