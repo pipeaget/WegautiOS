@@ -74,11 +74,6 @@
 		D5D146BD214EA9D0005C2FC5 /* AddNewEventVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D146B9214EA9D0005C2FC5 /* AddNewEventVC.swift */; };
 		D5D146BE214EA9D0005C2FC5 /* MoreCommentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D146BA214EA9D0005C2FC5 /* MoreCommentsVC.swift */; };
 		D5D146BF214EA9D0005C2FC5 /* EventFeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D146BB214EA9D0005C2FC5 /* EventFeedVC.swift */; };
-		D5D146C6214EA9FC005C2FC5 /* MultimediaInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D146C1214EA9FC005C2FC5 /* MultimediaInfoVC.swift */; };
-		D5D146C7214EA9FC005C2FC5 /* LocationInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D146C2214EA9FC005C2FC5 /* LocationInfoVC.swift */; };
-		D5D146C8214EA9FC005C2FC5 /* ScheduleInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D146C3214EA9FC005C2FC5 /* ScheduleInfoVC.swift */; };
-		D5D146C9214EA9FC005C2FC5 /* SponsorshipInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D146C4214EA9FC005C2FC5 /* SponsorshipInfoVC.swift */; };
-		D5D146CA214EA9FC005C2FC5 /* GeneralInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D146C5214EA9FC005C2FC5 /* GeneralInfoVC.swift */; };
 		D5D146D0214EAA45005C2FC5 /* EventTimelineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D146CE214EAA45005C2FC5 /* EventTimelineVC.swift */; };
 		D5D146D1214EAA45005C2FC5 /* MyEventsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D146CF214EAA45005C2FC5 /* MyEventsVC.swift */; };
 		D5D146D3214EAA4D005C2FC5 /* MyActivitiesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D146D2214EAA4D005C2FC5 /* MyActivitiesVC.swift */; };
@@ -105,6 +100,8 @@
 		D5EA546F219D1A170048CFED /* NoConnection.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5EA546E219D1A170048CFED /* NoConnection.xib */; };
 		D5EBD478214982D700FEEBA4 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5EBD477214982D700FEEBA4 /* Login.storyboard */; };
 		D5F198EC21AF1C9C0082DE73 /* FORAndroidTextfield.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F198EB21AF1C9B0082DE73 /* FORAndroidTextfield.swift */; };
+		D5F198EE21B063930082DE73 /* NewEventMainInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F198ED21B063930082DE73 /* NewEventMainInfoVC.swift */; };
+		D5F198F021B0643D0082DE73 /* NewEventOtherInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F198EF21B0643D0082DE73 /* NewEventOtherInfoVC.swift */; };
 		FE40079A69015558E74B20D1 /* Pods_Wegaut.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F20B586DBD618B83A078F86C /* Pods_Wegaut.framework */; };
 /* End PBXBuildFile section */
 
@@ -185,11 +182,6 @@
 		D5D146B9214EA9D0005C2FC5 /* AddNewEventVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewEventVC.swift; sourceTree = "<group>"; };
 		D5D146BA214EA9D0005C2FC5 /* MoreCommentsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreCommentsVC.swift; sourceTree = "<group>"; };
 		D5D146BB214EA9D0005C2FC5 /* EventFeedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventFeedVC.swift; sourceTree = "<group>"; };
-		D5D146C1214EA9FC005C2FC5 /* MultimediaInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultimediaInfoVC.swift; sourceTree = "<group>"; };
-		D5D146C2214EA9FC005C2FC5 /* LocationInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationInfoVC.swift; sourceTree = "<group>"; };
-		D5D146C3214EA9FC005C2FC5 /* ScheduleInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleInfoVC.swift; sourceTree = "<group>"; };
-		D5D146C4214EA9FC005C2FC5 /* SponsorshipInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SponsorshipInfoVC.swift; sourceTree = "<group>"; };
-		D5D146C5214EA9FC005C2FC5 /* GeneralInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralInfoVC.swift; sourceTree = "<group>"; };
 		D5D146CE214EAA45005C2FC5 /* EventTimelineVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTimelineVC.swift; sourceTree = "<group>"; };
 		D5D146CF214EAA45005C2FC5 /* MyEventsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEventsVC.swift; sourceTree = "<group>"; };
 		D5D146D2214EAA4D005C2FC5 /* MyActivitiesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyActivitiesVC.swift; sourceTree = "<group>"; };
@@ -218,6 +210,8 @@
 		D5EA546E219D1A170048CFED /* NoConnection.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoConnection.xib; sourceTree = "<group>"; };
 		D5EBD477214982D700FEEBA4 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		D5F198EB21AF1C9B0082DE73 /* FORAndroidTextfield.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FORAndroidTextfield.swift; sourceTree = "<group>"; };
+		D5F198ED21B063930082DE73 /* NewEventMainInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventMainInfoVC.swift; sourceTree = "<group>"; };
+		D5F198EF21B0643D0082DE73 /* NewEventOtherInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEventOtherInfoVC.swift; sourceTree = "<group>"; };
 		DB3FED54A3E0347AEBF0EF23 /* Pods-Wegaut.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wegaut.release.xcconfig"; path = "Pods/Target Support Files/Pods-Wegaut/Pods-Wegaut.release.xcconfig"; sourceTree = "<group>"; };
 		F20B586DBD618B83A078F86C /* Pods_Wegaut.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Wegaut.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -496,11 +490,8 @@
 		D5D146C0214EA9EC005C2FC5 /* NewEvent */ = {
 			isa = PBXGroup;
 			children = (
-				D5D146C5214EA9FC005C2FC5 /* GeneralInfoVC.swift */,
-				D5D146C2214EA9FC005C2FC5 /* LocationInfoVC.swift */,
-				D5D146C1214EA9FC005C2FC5 /* MultimediaInfoVC.swift */,
-				D5D146C3214EA9FC005C2FC5 /* ScheduleInfoVC.swift */,
-				D5D146C4214EA9FC005C2FC5 /* SponsorshipInfoVC.swift */,
+				D5F198ED21B063930082DE73 /* NewEventMainInfoVC.swift */,
+				D5F198EF21B0643D0082DE73 /* NewEventOtherInfoVC.swift */,
 			);
 			path = NewEvent;
 			sourceTree = "<group>";
@@ -754,7 +745,6 @@
 				D5CE6174219E4090001F7E3C /* TagCVCell.swift in Sources */,
 				D5D146A7214EA971005C2FC5 /* SettingsTVCell.swift in Sources */,
 				D5CE6171219E4090001F7E3C /* MultimediaCVCell.swift in Sources */,
-				D5D146C8214EA9FC005C2FC5 /* ScheduleInfoVC.swift in Sources */,
 				D5D1465A214EA866005C2FC5 /* SettingsOption.swift in Sources */,
 				D5D146BC214EA9D0005C2FC5 /* EventFeedDetailVC.swift in Sources */,
 				D5F198EC21AF1C9C0082DE73 /* FORAndroidTextfield.swift in Sources */,
@@ -764,7 +754,6 @@
 				D5D14640214DC1E3005C2FC5 /* WegautColors.swift in Sources */,
 				D5D14680214EA919005C2FC5 /* LocationResultTVCell.swift in Sources */,
 				D5D14660214EA866005C2FC5 /* User.swift in Sources */,
-				D5D146C9214EA9FC005C2FC5 /* SponsorshipInfoVC.swift in Sources */,
 				D5D14665214EA882005C2FC5 /* FORPopUpView.swift in Sources */,
 				D5D14687214EA942005C2FC5 /* NewImageTVCell.swift in Sources */,
 				D5DF805A21A63A03002BD91F /* FollowersTVCell.swift in Sources */,
@@ -793,13 +782,13 @@
 				D52CB3EF214AD40C007C58D2 /* UIViewControllerExtensions.swift in Sources */,
 				D5D146E2214EAA79005C2FC5 /* MFMailComposeViewControllerExtension.swift in Sources */,
 				D5D146D1214EAA45005C2FC5 /* MyEventsVC.swift in Sources */,
-				D5D146C6214EA9FC005C2FC5 /* MultimediaInfoVC.swift in Sources */,
 				D5D1465D214EA866005C2FC5 /* DropDownOption.swift in Sources */,
 				D5D146DE214EAA58005C2FC5 /* MyBadgesVC.swift in Sources */,
 				D5CE6173219E4090001F7E3C /* InterestCVCell.swift in Sources */,
 				D5D1462D214D7CC5005C2FC5 /* UIImageExtension.swift in Sources */,
 				D5E78F3A2162B287001E17D1 /* ForgotPasswordVC.swift in Sources */,
 				D5D146DC214EAA58005C2FC5 /* SimpleDetailVC.swift in Sources */,
+				D5F198EE21B063930082DE73 /* NewEventMainInfoVC.swift in Sources */,
 				D5D146B6214EA9B9005C2FC5 /* WalkThroughVC.swift in Sources */,
 				D5CAD99821A761FE002D2335 /* Level.swift in Sources */,
 				D5D14692214EA94D005C2FC5 /* EventFeedTVCell.swift in Sources */,
@@ -808,6 +797,7 @@
 				D5D146E3214EAA79005C2FC5 /* NSMutableAttributedStringExtensions.swift in Sources */,
 				D5D4AFFF21535EDE0033317E /* NSAttributedStringExtensions.swift in Sources */,
 				D5D14698214EA958005C2FC5 /* RecentCommentTVCell.swift in Sources */,
+				D5F198F021B0643D0082DE73 /* NewEventOtherInfoVC.swift in Sources */,
 				D5D14658214EA866005C2FC5 /* Event.swift in Sources */,
 				D5D146A1214EA968005C2FC5 /* NotificationEventTVCell.swift in Sources */,
 				D5CE6162219E3580001F7E3C /* FollowersVC.swift in Sources */,
@@ -825,10 +815,8 @@
 				D5D146DF214EAA58005C2FC5 /* SettingsVC.swift in Sources */,
 				D5D146DA214EAA58005C2FC5 /* DropDownDetailVC.swift in Sources */,
 				D5D14656214EA866005C2FC5 /* Tag.swift in Sources */,
-				D5D146C7214EA9FC005C2FC5 /* LocationInfoVC.swift in Sources */,
 				D5D146D0214EAA45005C2FC5 /* EventTimelineVC.swift in Sources */,
 				D5D14659214EA866005C2FC5 /* Organizer.swift in Sources */,
-				D5D146CA214EA9FC005C2FC5 /* GeneralInfoVC.swift in Sources */,
 				D5CB94DE2149973D00009BCB /* LoginVC.swift in Sources */,
 				D5D14644214E5060005C2FC5 /* SelectInterestsVC.swift in Sources */,
 				D5D146A6214EA971005C2FC5 /* DropDownTVCell.swift in Sources */,
