@@ -143,6 +143,18 @@
 "ANE_NEXT"  = "NEXT";
 "ANE_FIN"   = "FINISH";
 
+//MARK: - NEWEVENTMAININFOVC
+
+"NEMI_ENAME" = "Event Name";
+"NEMI_ACCT"  = "Access Type";
+"NEMI_AGER"  = "Age Range";
+"NEMI_DATE"  = "Date(s)";
+"NEMI_ABO"   = "Description";
+"NEMI_EXA"   = "Tell the people more about your event here...";
+"NEMI_NEXT"  = "Next";
+"NEMI_PREV"  = "Previous";
+"NEMI_FIN"   = "Finish";
+
 //MARK: - GENERALINFOVC
 
 "GIE_ENAME" = "Event Name";

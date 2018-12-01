@@ -41,4 +41,12 @@ extension UIColor {
                        blue: 102/255,
                        alpha: 1)
     }
+    
+    class var textColor: UIColor {
+        
+        return UIColor(red: 29/255,
+                       green: 29/255,
+                       blue: 38/255,
+                       alpha: 1)
+    }
 }
