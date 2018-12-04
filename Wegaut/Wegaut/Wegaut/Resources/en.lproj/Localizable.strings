@@ -151,9 +151,14 @@
 "NEMI_DATE"  = "Date(s)";
 "NEMI_ABO"   = "Description";
 "NEMI_EXA"   = "Tell the people more about your event here...";
+"NEMI_PREF"  = "Tell";
 "NEMI_NEXT"  = "Next";
 "NEMI_PREV"  = "Previous";
 "NEMI_FIN"   = "Finish";
+
+//MARK: - NEWEVENTOTHERINFOVC
+
+"NEOI_SB"    = "Add Ubication";
 
 //MARK: - GENERALINFOVC
 

@@ -169,7 +169,7 @@
             <objects>
                 <viewController id="roT-W8-x1p" customClass="MyActivitiesVC" customModule="Wegaut" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cXU-kN-MU4">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zPb-yh-kkJ">
@@ -459,14 +459,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0tE-8f-WvV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1726.875" y="2485"/>
+            <point key="canvasLocation" x="2749" y="2485"/>
         </scene>
         <!--SettingsVC-->
         <scene sceneID="6VV-ER-jA6">
             <objects>
                 <viewController id="S6L-bR-UyD" customClass="SettingsVC" customModule="Wegaut" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="hv4-TG-V4d">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="hv4-TG-V4d">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hm7-i6-nnz">
@@ -506,12 +506,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qh6-Me-9n7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2796" y="3324"/>
+            <point key="canvasLocation" x="3818" y="3324"/>
         </scene>
         <!--FollowersVC-->
         <scene sceneID="z6U-kx-Jh7">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ufk-A2-KwI" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="WFE-aJ-HHe" customClass="FollowersVC" customModule="Wegaut" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Q0l-D9-1yL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
@@ -664,14 +663,15 @@
                         <outlet property="vwThumb" destination="tfU-fa-2Ni" id="074-tn-Yud"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ufk-A2-KwI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3858.75" y="3323.75"/>
+            <point key="canvasLocation" x="4881" y="3324"/>
         </scene>
         <!--My BadgesVC-->
         <scene sceneID="kOS-T5-bQW">
             <objects>
                 <viewController id="Vrq-Ab-I5Q" customClass="MyBadgesVC" customModule="Wegaut" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="Xu6-KH-fPj">
+                    <view key="view" contentMode="scaleToFill" id="Xu6-KH-fPj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -680,14 +680,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YYz-O7-l5S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4854" y="3323"/>
+            <point key="canvasLocation" x="5874" y="3323"/>
         </scene>
         <!--My EventsVC-->
         <scene sceneID="fxG-PW-cIB">
             <objects>
                 <viewController id="7As-du-itT" customClass="MyEventsVC" customModule="Wegaut" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="M8L-TP-V3O">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="R85-FB-9sY"/>
@@ -695,7 +695,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yqS-Dd-B9E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5886" y="3323"/>
+            <point key="canvasLocation" x="6908" y="3323"/>
         </scene>
         <!--ProfileVC-->
         <scene sceneID="48C-EO-8pD">
@@ -1117,26 +1117,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UaM-2I-j8F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2795.625" y="2485"/>
+            <point key="canvasLocation" x="3818" y="2485"/>
         </scene>
-        <!--Add New EventVC-->
+        <!--Item-->
         <scene sceneID="4O8-Sy-JPu">
             <objects>
                 <viewController id="w9f-nY-ha9" customClass="AddNewEventVC" customModule="Wegaut" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w2q-X3-8sH">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fj8-2M-hJZ">
-                                <rect key="frame" x="0.0" y="47" width="320" height="319"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="361"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="HQ6-HY-Aj4">
-                                <rect key="frame" x="0.0" y="366" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="381" width="320" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T7c-Zc-WMN">
                                         <rect key="frame" x="0.0" y="0.0" width="160" height="50"/>
-                                        <color key="backgroundColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.3294117647" green="0.098039215690000001" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="btnPrevious">
                                             <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
@@ -1167,12 +1167,12 @@
                             <constraint firstItem="HQ6-HY-Aj4" firstAttribute="trailing" secondItem="chv-qE-MGd" secondAttribute="trailing" id="VJR-Bb-QwX"/>
                             <constraint firstItem="HQ6-HY-Aj4" firstAttribute="leading" secondItem="chv-qE-MGd" secondAttribute="leading" id="Ved-d1-wPY"/>
                             <constraint firstItem="Fj8-2M-hJZ" firstAttribute="trailing" secondItem="chv-qE-MGd" secondAttribute="trailing" id="d9l-H6-Q3I"/>
-                            <constraint firstItem="Fj8-2M-hJZ" firstAttribute="top" secondItem="chv-qE-MGd" secondAttribute="top" constant="47" id="gbd-pe-R7W"/>
+                            <constraint firstItem="Fj8-2M-hJZ" firstAttribute="top" secondItem="chv-qE-MGd" secondAttribute="top" id="gbd-pe-R7W"/>
                             <constraint firstItem="HQ6-HY-Aj4" firstAttribute="top" secondItem="Fj8-2M-hJZ" secondAttribute="bottom" id="lrd-wK-xK1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="chv-qE-MGd"/>
                     </view>
-                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBarItem key="tabBarItem" title="Item" id="jCa-5Z-j1b"/>
                     <connections>
                         <outlet property="btnNext" destination="Qy5-TL-d7P" id="yRM-gO-rFn"/>
                         <outlet property="btnPrevious" destination="T7c-Zc-WMN" id="QCB-Kt-TnH"/>
@@ -1182,14 +1182,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fSY-aT-QVb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-114.375" y="3323.75"/>
+            <point key="canvasLocation" x="1749" y="1715"/>
         </scene>
         <!--Event TimelineVC-->
         <scene sceneID="u1C-2p-Knb">
             <objects>
                 <viewController id="6Ex-Jn-nzp" customClass="EventTimelineVC" customModule="Wegaut" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" misplaced="YES" id="WVm-up-Tqr">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hh1-jw-10Z">
@@ -1901,14 +1901,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="56r-TT-8gE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1732.5" y="4160"/>
+            <point key="canvasLocation" x="2754" y="4160"/>
         </scene>
         <!--Simple DetailVC-->
         <scene sceneID="TkK-yz-LOM">
             <objects>
                 <viewController id="yK0-Wg-t2l" customClass="SimpleDetailVC" customModule="Wegaut" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="YG2-iB-Iue">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="YG2-iB-Iue">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LnI-Vf-JxC">
@@ -1948,14 +1948,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1sa-MH-jPn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2796" y="4163"/>
+            <point key="canvasLocation" x="3818" y="4163"/>
         </scene>
         <!--Drop Down DetailVC-->
         <scene sceneID="OKL-ub-hnl">
             <objects>
                 <viewController id="zys-Xz-Vat" customClass="DropDownDetailVC" customModule="Wegaut" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Gsb-rL-Gkw">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="PTQ-12-mqG">
@@ -2029,13 +2029,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RjJ-4E-Hxb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3859" y="4163"/>
+            <point key="canvasLocation" x="4881" y="4163"/>
         </scene>
         <!--Event FeedVC-->
         <scene sceneID="s4M-Jd-i5P">
             <objects>
                 <viewController id="RTY-ME-DyR" customClass="EventFeedVC" customModule="Wegaut" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="E4f-c1-1HD">
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="E4f-c1-1HD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -2223,7 +2223,6 @@
                         <outlet property="sbEvents" destination="xrD-Sb-RHx" id="WdQ-f7-CcK"/>
                         <outlet property="tvFeed" destination="Zmi-42-QLi" id="eLf-I5-I62"/>
                         <segue destination="gme-92-C0b" kind="show" identifier="ShowDetail" id="TbL-rK-3zz"/>
-                        <segue destination="w9f-nY-ha9" kind="show" identifier="ShowNewEvent" id="uNc-kR-1D8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1jl-8E-p5i" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2882,11 +2881,11 @@ lblEventPrice</string>
             <objects>
                 <viewController id="mK0-sy-02A" customClass="MoreCommentsVC" customModule="Wegaut" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EcE-nk-qtV">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ggM-MH-e2H">
-                                <rect key="frame" x="0.0" y="20" width="320" height="411"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentCell" rowHeight="75" id="eeM-nk-7An" customClass="CommentTVCell" customModule="Wegaut" customModuleProvider="target">
@@ -2989,6 +2988,7 @@ lblEventPrice</string>
                     <connections>
                         <segue destination="AU4-nQ-0rh" kind="relationship" relationship="viewControllers" id="wAe-3l-EIS"/>
                         <segue destination="mBN-m7-uZI" kind="relationship" relationship="viewControllers" id="yLR-te-DRu"/>
+                        <segue destination="w9f-nY-ha9" kind="relationship" relationship="viewControllers" id="sNg-SA-deQ"/>
                         <segue destination="mrX-yC-n9j" kind="relationship" relationship="viewControllers" id="tkS-4l-ZVn"/>
                         <segue destination="3Pr-EE-K8B" kind="relationship" relationship="viewControllers" id="rke-Za-237"/>
                     </connections>
@@ -3005,7 +3005,7 @@ lblEventPrice</string>
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="nCY-DO-g5X">
-                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -3045,7 +3045,7 @@ lblEventPrice</string>
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="3iy-C3-gUC">
-                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -3055,7 +3055,7 @@ lblEventPrice</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ldm-oq-AHR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1727" y="1715"/>
+            <point key="canvasLocation" x="2749" y="1715"/>
         </scene>
         <!--Profile-->
         <scene sceneID="hmm-04-wJd">
@@ -3075,7 +3075,7 @@ lblEventPrice</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GIY-Rg-bZW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2796" y="1715"/>
+            <point key="canvasLocation" x="3818" y="1715"/>
         </scene>
     </scenes>
     <resources>
@@ -3106,7 +3106,7 @@ lblEventPrice</string>
         <image name="TBProfile" width="44" height="44"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ew9-14-lOP"/>
-        <segue reference="Jqj-No-YmH"/>
+        <segue reference="g8C-GX-ZTi"/>
+        <segue reference="TbL-rK-3zz"/>
     </inferredMetricsTieBreakers>
 </document>

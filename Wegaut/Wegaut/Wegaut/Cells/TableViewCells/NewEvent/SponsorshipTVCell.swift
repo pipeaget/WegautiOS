@@ -17,7 +17,7 @@ class SponsorshipTVCell: UITableViewCell {
             drawCell()
         }
     }
-    var actTakePhoto: TakePhotoAction?
+    //var actTakePhoto: TakePhotoAction?
     
     //MARK: - OUTLETS
     
@@ -53,9 +53,9 @@ class SponsorshipTVCell: UITableViewCell {
 
     @IBAction func actBtnCaptureSponsorPhoto(_ sender: Any) {
         
-        if  let anAction = self.actTakePhoto {
+        /*if  let anAction = self.actTakePhoto {
             
             anAction()
-        }
+        }*/
     }
 }

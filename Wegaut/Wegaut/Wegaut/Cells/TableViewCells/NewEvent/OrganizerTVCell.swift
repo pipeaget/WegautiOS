@@ -17,7 +17,7 @@ class OrganizerTVCell: UITableViewCell {
             drawCell()
         }
     }
-    var actTakePhoto: TakePhotoAction?
+    //var actTakePhoto: TakePhotoAction?
     
     //MARK: - OUTLETS
     
@@ -51,10 +51,10 @@ class OrganizerTVCell: UITableViewCell {
     
     @IBAction func actBtnCaptureOrganizerPhoto(_ sender: UIButton) {
         
-        if let anAction = self.actTakePhoto {
+        /*if let anAction = self.actTakePhoto {
             
             anAction()
-        }
+        }*/
     }
     
 }

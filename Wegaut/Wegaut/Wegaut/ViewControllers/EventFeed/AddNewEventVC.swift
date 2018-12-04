@@ -15,55 +15,32 @@ class AddNewEventVC: UIViewController {
     enum stackState {
         
         case onlyNext
-        case onlyPrevious
-        case both
         case finish
     }
     
     enum processProgressViewState {
         
-        case general
-        case location
-        case schedule
-        case sponsorship
-        case multimedia
+        case mainInfo
+        case otherInfo
     }
     
     //MARK: - VARIABLES
     
-    var currentViewState: processProgressViewState = processProgressViewState.general {
-        didSet {
-            updateUI()
-        }
-    }
     var currentStackState: stackState = stackState.onlyNext {
         didSet {
             updateStackView()
         }
     }
-    var generalInfoVC: GeneralInfoVC?
-    var locationInfoVC: LocationInfoVC?
-    var scheduleInfoVC: ScheduleInfoVC?
-    var sponsorshipInfoVC: SponsorshipInfoVC?
-    var multimediaInfoVC: MultimediaInfoVC?
+    var currentViewState: processProgressViewState = processProgressViewState.mainInfo {
+        didSet {
+            updateUI()
+        }
+    }
+    var newEventMainInfoVC: NewEventMainInfoVC?
+    var newEventOtherInfoVC: NewEventOtherInfoVC?
     
     //MARK: - OUTLETS
     
-    @IBOutlet weak var vwProcess: UIView!
-    @IBOutlet weak var lblStep1: UILabel!
-    @IBOutlet weak var vwStep1: FORView!
-    @IBOutlet weak var lblStep2: UILabel!
-    @IBOutlet weak var vwStep2: FORView!
-    @IBOutlet weak var vwConnector2: FORView!
-    @IBOutlet weak var lblStep3: UILabel!
-    @IBOutlet weak var vwStep3: FORView!
-    @IBOutlet weak var vwConnector3: FORView!
-    @IBOutlet weak var lblStep4: UILabel!
-    @IBOutlet weak var vwStep4: FORView!
-    @IBOutlet weak var vwConnector4: FORView!
-    @IBOutlet weak var lblStep5: UILabel!
-    @IBOutlet weak var vwStep5: FORView!
-    @IBOutlet weak var vwConnector5: FORView!
     @IBOutlet weak var vwContainer: UIView!
     @IBOutlet weak var svwProcessProgress: UIStackView!
     @IBOutlet weak var btnNext: UIButton!
@@ -80,16 +57,11 @@ class AddNewEventVC: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        lblStep1.text = "ANE_STEP1".localized
-        lblStep2.text = "ANE_STEP2".localized
-        lblStep3.text = "ANE_STEP3".localized
-        lblStep4.text = "ANE_STEP4".localized
-        lblStep5.text = "ANE_STEP5".localized
-        btnPrevious.setTitle("ANE_PREV".localized,
+        btnPrevious.setTitle("NEMI_NEXT".localized,
                              for: UIControl.State.normal)
-        btnNext.setTitle("ANE_NEXT".localized,
+        btnNext.setTitle("NEMI_PREV".localized,
                          for: UIControl.State.normal)
-        currentViewState = processProgressViewState.general
+        currentViewState = processProgressViewState.mainInfo
         currentStackState = stackState.onlyNext
         self.addImageLogoToNavBar()
     }
@@ -103,32 +75,7 @@ class AddNewEventVC: UIViewController {
     
     func updateUI() {
         
-        switch currentViewState {
-            
-        case .general:
-            manageChildVC()
-            vwStep1.isActive = true
-            
-        case .location:
-            manageChildVC()
-            vwStep2.isActive = true
-            vwConnector2.isActive = true
-            
-        case .schedule:
-            manageChildVC()
-            vwStep3.isActive = true
-            vwConnector3.isActive = true
-            
-        case .sponsorship:
-            manageChildVC()
-            vwStep4.isActive = true
-            vwConnector4.isActive = true
-            
-        case .multimedia:
-            manageChildVC()
-            vwStep4.isActive = true
-            vwConnector4.isActive = true
-        }
+        manageChildVC()
     }
     
     /// Used to manage the subviews and it's memory managment.
@@ -139,50 +86,22 @@ class AddNewEventVC: UIViewController {
         
         switch currentViewState {
             
-        case .general:
-            guard let vc: GeneralInfoVC = storyboard.instantiateViewController(withIdentifier: "GeneralInfoVC") as? GeneralInfoVC else {
+        case .mainInfo:
+            guard let vc: NewEventMainInfoVC = storyboard.instantiateViewController(withIdentifier: "MainEventInfoVC") as? NewEventMainInfoVC else {
                 
                 return
             }
-            generalInfoVC = vc
+            newEventMainInfoVC = vc
             self.addVCasChildVC(childVC: vc)
             
-        case .location:
-            guard let vc: LocationInfoVC = storyboard.instantiateViewController(withIdentifier: "LocationInfoVC") as? LocationInfoVC else {
+        case .otherInfo:
+            guard let vc: NewEventOtherInfoVC = storyboard.instantiateViewController(withIdentifier: "NewEventOtherInfoVC") as? NewEventOtherInfoVC else {
                 
                 return
             }
-            locationInfoVC = vc
+            newEventOtherInfoVC = vc
             self.addVCasChildVC(childVC: vc)
-            removeViewControllerAsChildViewController(childVC: generalInfoVC)
-            
-        case .schedule:
-            guard let vc: ScheduleInfoVC = storyboard.instantiateViewController(withIdentifier: "ScheduleInfoVC") as? ScheduleInfoVC else {
-                
-                return
-            }
-            scheduleInfoVC = vc
-            self.addVCasChildVC(childVC: vc)
-            removeViewControllerAsChildViewController(childVC: locationInfoVC)
-            
-        case .sponsorship:
-            guard let vc: SponsorshipInfoVC = storyboard.instantiateViewController(withIdentifier: "SponsorshipInfoVC") as? SponsorshipInfoVC else {
-                
-                return
-            }
-            sponsorshipInfoVC = vc
-            self.addVCasChildVC(childVC: vc)
-            removeViewControllerAsChildViewController(childVC: scheduleInfoVC)
-            
-        case .multimedia:
-            guard let vc: MultimediaInfoVC = storyboard.instantiateViewController(withIdentifier: "MultimediaInfoVC") as? MultimediaInfoVC else {
-                
-                return
-            }
-            multimediaInfoVC = vc
-            self.addVCasChildVC(childVC: vc)
-            removeViewControllerAsChildViewController(childVC: sponsorshipInfoVC)
-            
+            removeViewControllerAsChildViewController(childVC: newEventMainInfoVC)
         }
     }
     
@@ -220,36 +139,15 @@ class AddNewEventVC: UIViewController {
             
         case .onlyNext:
             btnNext.isHidden = false
+            btnNext.setTitle("NEMI_NEXT".localized,
+                             for: UIControl.State.normal)
             btnPrevious.isHidden = true
-            btnNext.setTitle("ANE_NEXT".localized,
-                             for: UIControl.State.normal)
-            
-        case .onlyPrevious:
-            btnNext.isHidden = true
-            btnPrevious.isHidden = false
-            
-        case .both:
-            btnNext.isHidden = false
-            btnPrevious.isHidden = false
-            btnNext.setTitle("ANE_NEXT".localized,
-                             for: UIControl.State.normal)
             
         case .finish:
             btnNext.isHidden = false
-            btnPrevious.isHidden = false
-            btnNext.setTitle("ANE_FIN".localized,
+            btnNext.setTitle("NEMI_FIN".localized,
                              for: UIControl.State.normal)
-        }
-    }
-    
-    func setProgressStateUIFor(index: Int) {
-        
-        for subview in vwProcess.subviews {
-            
-            if let aView = subview as? FORView {
-                
-                aView.isActive = aView.tag <= index ?  true : false
-            }
+            btnPrevious.isHidden = false
         }
     }
     
@@ -259,25 +157,9 @@ class AddNewEventVC: UIViewController {
         
         switch currentViewState {
             
-        case .location:
-            setProgressStateUIFor(index: 1)
-            currentViewState = processProgressViewState.general
+        case .otherInfo:
+            currentViewState = processProgressViewState.mainInfo
             currentStackState = stackState.onlyNext
-            
-        case .schedule:
-            setProgressStateUIFor(index: 2)
-            currentViewState = processProgressViewState.location
-            currentStackState = stackState.both
-            
-        case .sponsorship:
-            setProgressStateUIFor(index: 3)
-            currentViewState = processProgressViewState.schedule
-            currentStackState = stackState.both
-            
-        case .multimedia:
-            setProgressStateUIFor(index: 4)
-            currentViewState = processProgressViewState.sponsorship
-            currentStackState = stackState.both
             
         default:
             break
@@ -289,24 +171,8 @@ class AddNewEventVC: UIViewController {
         
         switch currentViewState {
             
-        case .general:
-            setProgressStateUIFor(index: 2)
-            currentViewState = processProgressViewState.location
-            currentStackState = stackState.both
-            
-        case .location:
-            setProgressStateUIFor(index: 3)
-            currentViewState = processProgressViewState.schedule
-            currentStackState = stackState.both
-            
-        case .schedule:
-            setProgressStateUIFor(index: 4)
-            currentViewState = processProgressViewState.sponsorship
-            currentStackState = stackState.both
-            
-        case .sponsorship:
-            setProgressStateUIFor(index: 5)
-            currentViewState = processProgressViewState.multimedia
+        case .mainInfo:
+            currentViewState = processProgressViewState.otherInfo
             currentStackState = stackState.finish
             
         default:

@@ -68,11 +68,6 @@ class EventFeedVC: UIViewController {
     
     
     //MARK: - ACTIONS
-    
-    @objc func addNewEvent(sender: UIBarButtonItem){
-        
-        self.performSegue(withIdentifier: "ShowNewEvent", sender: self)
-    }
 
 }
 

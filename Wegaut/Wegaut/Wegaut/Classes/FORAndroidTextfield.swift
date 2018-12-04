@@ -56,9 +56,9 @@ import UIKit
     }
     
     /// A String value that specifies the placeholder text for the lblPlaceholder.
-    @IBInspectable var placeholder: String = "Placeholder"{
+    @IBInspectable var strPlaceholder: String = ""{
         didSet{
-            lblPlaceholder.text = placeholder
+            lblPlaceholder.text = strPlaceholder
         }
     }
     
@@ -153,7 +153,7 @@ import UIKit
         if  let textField = tfInput,
             let tfInputText = textField.text{
             
-            lblPlaceholder.text = tfInputText.count > 0 ? placeholderText : ""
+            lblPlaceholder.text = tfInputText.count > 0 ? strPlaceholder : ""
         }else{
             
             lblPlaceholder.text = ""
@@ -180,10 +180,10 @@ import UIKit
         
         if let tfInputText = tfInput.text{
             
-            tfInput.placeholder = tfInputText.count > 0 ? "" : placeholderText
+            tfInput.placeholder = tfInputText.count > 0 ? "" : strPlaceholder
         }else{
             
-            tfInput.text = placeholderText
+            tfInput.text = strPlaceholder
         }
         addSubview(tfInput)
         originY += tfInput.frame.height + (controlSize.height * 0.2)
@@ -205,7 +205,7 @@ import UIKit
             
             self.tfInput.placeholder = ""
             self.lblPlaceholder.alpha = 1
-            self.lblPlaceholder.text = self.placeholderText
+            self.lblPlaceholder.text = self.strPlaceholder
         }
     }
     
@@ -220,8 +220,8 @@ import UIKit
         UIView.animate(withDuration: 0.5) {
         
             self.tfInput.alpha = 1
-            self.tfInput.placeholder = self.tfInput.text!.count > 0 ? "" : self.placeholder
-            self.lblPlaceholder.text = self.tfInput.text!.count > 0 ? self.placeholder : ""
+            self.tfInput.placeholder = self.tfInput.text!.count > 0 ? "" : self.strPlaceholder
+            self.lblPlaceholder.text = self.tfInput.text!.count > 0 ? self.strPlaceholder : ""
         }
     }
     

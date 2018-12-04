@@ -143,6 +143,23 @@
 "ANE_NEXT"  = "NEXT";
 "ANE_FIN"   = "FINISH";
 
+//MARK: - NEWEVENTMAININFOVC
+
+"NEMI_ENAME" = "Nombre del Evento";
+"NEMI_ACCT"  = "Tipo de Acceso";
+"NEMI_AGER"  = "Rango de Edad";
+"NEMI_DATE"  = "Fecha(s)";
+"NEMI_ABO"   = "Descripción";
+"NEMI_EXA"   = "Cuéntale a la gente más acerca de tu evento...";
+"NEMI_PREF"  = "Cuén";
+"NEMI_NEXT"  = "Siguiente";
+"NEMI_PREV"  = "Anterior";
+"NEMI_FIN"   = "Finalizar";
+
+//MARK: - NEWEVENTOTHERINFOVC
+
+"NEOI_SB"    = "Añadir Ubicación";
+
 //MARK: - GENERALINFOVC
 
 "GIE_ENAME" = "Event Name";
