@@ -159,6 +159,12 @@
 //MARK: - NEWEVENTOTHERINFOVC
 
 "NEOI_SB"    = "Add Ubication";
+"NEOI_RES"   = "Places";
+"NEOI_ORG"   = "Organizers";
+"NEOI_SPO"   = "Sponsors";
+"NEOI_WEB"   = "Event's web";
+"NEOI_MUL"   = "Multimedia";
+"NEOI_TAG"   = "Tags";
 
 //MARK: - GENERALINFOVC
 
@@ -234,12 +240,14 @@
 
 "NOT_TIT"    = "Activity";
 "NOT_FOLLOW" = "Follow";
+"NOT_FLWING" = "Following";
 "NOT_USER"   = "User";
 "NOT_NAME"   = "Notification";
 "NOT_NO_EVENTS" = "Currently there's any available notifications...";
 
 //MARK: - PROFILEVC
 
+"PRO_TIT"    = "User";
 "PRO_FOLWRS" = "Followers";
 "PRO_LEVEL"  = "Level";
 "PRO_EVENTS" = "Events";
@@ -257,7 +265,7 @@
 
 "SO_H1"    = "Messages";
 "SO_H2"    = "Profile";
-"SO_H3"    = "wegaut®";
+"SO_H3"    = "Wegaut®";
 "SO_H4"    = "Legal";
 "SO_PN"    = "Push Notifications";
 "SO_EP"    = "Edit Profile";
@@ -285,6 +293,8 @@
 
 //MARK: - DROPDOWNDETAILVC
 
+"DDD_FAQ" = "F.A.Q.";
+"DDD_SL"  = "Software Licenses";
 "DDD_INV_SEC" = "The section you selected is currently unavailable.";
 "DDD_EMP_SEC" = "The section you selected has no content.";
 "DD_Q1" = "What is wegaut®?";

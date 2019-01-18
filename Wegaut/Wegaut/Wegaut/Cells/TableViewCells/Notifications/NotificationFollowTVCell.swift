@@ -11,6 +11,26 @@ import SDWebImage
 
 class NotificationFollowTVCell: UITableViewCell {
     
+    //MARK: - ENUMS
+    
+    enum notificationFollowerType {
+        
+        case follwing
+        case follower
+        case noExists
+        
+        var description: String {
+            
+            switch self {
+                
+            case notificationFollowerType.follower: return "NOT_FOLLOW".localized
+            case notificationFollowerType.follwing: return "NOT_FLWING".localized
+            case notificationFollowerType.noExists: return ""
+                
+            }
+        }
+    }
+    
     //MARK: - VARIABLES
     
     var currentNotification: Activity?{
@@ -18,6 +38,8 @@ class NotificationFollowTVCell: UITableViewCell {
             drawCell()
         }
     }
+    
+    var currentFollowerType: notificationFollowerType?
     
     //MARK: - OUTLETS
     
@@ -48,6 +70,7 @@ class NotificationFollowTVCell: UITableViewCell {
         guard let aNotification = currentNotification else{
             return
         }
+        getFollowerType()
         vwContainer.cornerRadius(cornerRadius: 10)
         imgvwProfilePic.cornerRadius(cornerRadius: nil)
         if let anURL = URL(string: aNotification.actUser.usProfileImageURL){
@@ -60,8 +83,24 @@ class NotificationFollowTVCell: UITableViewCell {
         lblUser.text = User.getUserCompleteName(user: aNotification.actUser)
         lblNotification.text = aNotification.actTitle
         lblTimelapse.text = "\(aNotification.actDate)"
+        btnFollow.isHidden = false
         btnFollow.cornerRadius(cornerRadius: 5)
-        btnFollow.setTitle("NOT_FOLLOW".localized, for: UIControl.State.normal)
+        if let aFollowerType = currentFollowerType {
+            
+            btnFollow.setTitle(aFollowerType.description, for: UIControl.State.normal)
+        } else {
+            
+            btnFollow.isHidden = true
+        }
     }
-
+    
+    func getFollowerType(){
+        
+        switch currentNotification!.actType {
+            
+        case activityType.newFollower:  currentFollowerType = notificationFollowerType.follower
+        case activityType.newFollowing: currentFollowerType = notificationFollowerType.follwing
+        default:                        currentFollowerType = notificationFollowerType.noExists
+        }
+    }
 }

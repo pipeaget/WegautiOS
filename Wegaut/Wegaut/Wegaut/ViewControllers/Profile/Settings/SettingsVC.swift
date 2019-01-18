@@ -65,14 +65,15 @@ extension SettingsVC: UITableViewDataSource, UITableViewDelegate{
         let vwHeader: UIView = UIView(frame: CGRect(x: 0,
                                                     y: 0,
                                                     width: screenSize.width,
-                                                    height: 50))
+                                                    height: 60))
         let lblHeader: UILabel = UILabel(frame: CGRect(x: 10,
-                                                       y: 10,
+                                                       y: 15,
                                                        width: screenSize.width - 20,
                                                        height: 30))
         lblHeader.text = SettingsOption.getSectionName(accordingTo: section)
         lblHeader.textColor = UIColor.white
-        lblHeader.font = UIFont.systemFont(ofSize: 25, weight: UIFont.Weight.bold)
+        lblHeader.font = UIFont(name: "Avenir-Heavy",
+                                size: 25) ?? UIFont.systemFont(ofSize: 25)
         vwHeader.backgroundColor = UIColor.deepPurple
         vwHeader.addSubview(lblHeader)
         return vwHeader
@@ -80,7 +81,7 @@ extension SettingsVC: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        return 50
+        return 60
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -98,7 +99,7 @@ extension SettingsVC: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let aCell:SettingsTVCell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell",
+        let aCell: SettingsTVCell = tableView.dequeueReusableCell(withIdentifier: "SettingsCell",
                                                              for: indexPath) as! SettingsTVCell
         return aCell
     }
@@ -133,7 +134,8 @@ extension SettingsVC: UITableViewDataSource, UITableViewDelegate{
                 break
                 
             case destinationType.editProfile:
-                self.performSegue(withIdentifier: "showEditProfile", sender: self)
+                self.performSegue(withIdentifier: "showEditProfile",
+                                  sender: self)
                 
             case destinationType.closeSession:
                 let popUpAlert:FORPopUpView = FORPopUpView(with: FORAlertData(yesNoAlert: nil,

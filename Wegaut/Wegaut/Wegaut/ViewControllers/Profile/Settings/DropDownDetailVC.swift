@@ -12,6 +12,15 @@ enum DropDownType {
     
     case FAQ
     case SoftwareLicenses
+    
+    var description: String {
+        
+        switch self {
+            
+        case DropDownType.FAQ:              return "DDD_FAQ"
+        case DropDownType.SoftwareLicenses: return "DDD_SL"
+        }
+    }
 }
 
 class DropDownDetailVC: UIViewController {
@@ -97,15 +106,16 @@ extension DropDownDetailVC: UITableViewDataSource, UITableViewDelegate{
         let vwHeader: UIView = UIView(frame: CGRect(x: 0,
                                                     y: 0,
                                                     width: screenSize.width,
-                                                    height: 50))
+                                                    height: 60))
         let lblHeader: UILabel = UILabel(frame: CGRect(x: 10,
-                                                       y: 10,
+                                                       y: 15,
                                                        width: screenSize.width - 20,
                                                        height: 30))
-        lblHeader.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.regular)
+        lblHeader.font = UIFont(name: "Avenir-Heavy", size: 25) ?? UIFont.systemFont(ofSize: 25, weight: UIFont.Weight.regular)
         lblHeader.textAlignment = NSTextAlignment.center
+        lblHeader.textColor = UIColor.white
         lblHeader.adjustsFontSizeToFitWidth = true
-        vwHeader.backgroundColor = UIColor.lightGray
+        vwHeader.backgroundColor = UIColor.deepPurple
         vwHeader.addSubview(lblHeader)
         
         guard let arrOptions = getCorrespondingDropDownOptions() else{
@@ -120,24 +130,14 @@ extension DropDownDetailVC: UITableViewDataSource, UITableViewDelegate{
             return vwHeader
         }else{
             
-            return nil
+            lblHeader.text = currentInfoType!.description.localized
+            return vwHeader
         }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        guard let arrOptions = getCorrespondingDropDownOptions() else{
-            
-            return 50
-        }
-        
-        if arrOptions.count == 0{
-            
-            return 50
-        }else{
-            
-            return 0
-        }
+        return 60
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

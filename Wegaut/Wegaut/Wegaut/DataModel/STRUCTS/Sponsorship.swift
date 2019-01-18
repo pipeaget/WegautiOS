@@ -28,4 +28,11 @@ struct Sponsorship {
                            spoImageURL: "http://wegaut.com",
                            spoLocalImage: #imageLiteral(resourceName: "BGLogo"))
     }
+    
+    static func getNewSponsor() ->Sponsorship {
+        
+        return Sponsorship(spoName: "",
+                           spoImageURL: "",
+                           spoLocalImage: #imageLiteral(resourceName: "ICFollowBack"))
+    }
 }

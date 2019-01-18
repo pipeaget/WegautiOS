@@ -13,7 +13,7 @@ class NotificationEventTVCell: UITableViewCell {
     
     //MARK: - VARIABLES
     
-    var currentNotification: Activity?{
+    var currentNotification: Activity? {
         didSet{
             drawCell()
         }
@@ -55,9 +55,25 @@ class NotificationEventTVCell: UITableViewCell {
                                         placeholderImage: #imageLiteral(resourceName: "BGLogo"),
                                         options: SDWebImageOptions.highPriority,
                                         completed: nil)
+        } else {
+            
+            imgvwProfilePic.image = #imageLiteral(resourceName: "BGLogo")
         }
+        imgvwNotificationPic.image = getImageForNotificationType()
         lblUser.text = User.getUserCompleteName(user: aNotification.actUser)
         lblNotification.text = aNotification.actTitle
         lblTimeLapse.text = "\(aNotification.actDate)"
+    }
+    
+    func getImageForNotificationType()-> UIImage {
+        
+        guard let aNotification = currentNotification else  { return #imageLiteral(resourceName: "LGNavBar")}
+        switch aNotification.actType {
+            
+        case activityType.favouritedEvent: return #imageLiteral(resourceName: "ICFavoriteOn")
+        case activityType.goingEvent:      return #imageLiteral(resourceName: "ICPurpleCalendar")
+        case activityType.sharedEvent:     return #imageLiteral(resourceName: "ICFollowBack")
+        default:                           return #imageLiteral(resourceName: "LGNavBar")
+        }
     }
 }

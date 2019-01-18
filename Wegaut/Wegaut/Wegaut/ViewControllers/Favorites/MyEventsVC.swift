@@ -24,6 +24,13 @@ class MyEventsVC: UIViewController {
     @IBOutlet weak var tvMyEvents: UITableView!
     
     //MARK: - VIEW LIFECYCLE
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.navigationBar.isHidden = false
+    }
 
     override func viewDidLoad() {
         

@@ -51,15 +51,16 @@ class AddNewEventVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.navigationBar.isHidden = false
     }
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        btnPrevious.setTitle("NEMI_NEXT".localized,
+        btnPrevious.setTitle("NEMI_PREV".localized,
                              for: UIControl.State.normal)
-        btnNext.setTitle("NEMI_PREV".localized,
+        btnNext.setTitle("NEMI_NEXT".localized,
                          for: UIControl.State.normal)
         currentViewState = processProgressViewState.mainInfo
         currentStackState = stackState.onlyNext

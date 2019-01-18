@@ -28,4 +28,9 @@ struct Organizer {
                          orgImageURL: "http://wegaut.com",
                          orgLocalImage: #imageLiteral(resourceName: "BGLogo"))
     }
+    
+    static func getNewOrganizer()-> Organizer {
+        
+        return Organizer(orgName: "", orgImageURL: "", orgLocalImage: #imageLiteral(resourceName: "ICFollowBack"))
+    }
 }

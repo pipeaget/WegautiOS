@@ -40,10 +40,10 @@ class SettingsTVCell: UITableViewCell {
     
     func drawCell(){
         
+        
         guard let currentCellSection = cellSection else{
             return
         }
-        
         let screenSize: CGSize = UIScreen.main.bounds.size
         let cellHeight: CGFloat = SettingsTVCell.getCellHeightAccordingTo(aSettingsOption: currentCellSection)
         
@@ -52,10 +52,14 @@ class SettingsTVCell: UITableViewCell {
                                          width: currentCellSection.SOCellType.accessoryType == UITableViewCell.AccessoryType.none ? screenSize.width - 53 : screenSize.width - 69,
                                          height: (cellHeight >= 50 ? cellHeight : 50) - 20))
         lblTitle.text = currentCellSection.SOTitle
-        lblTitle.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.regular)
+        lblTitle.font = UIFont(name: "Avenir-Medium",
+                               size: 16) ?? UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.regular)
         lblTitle.textColor = UIColor.black
         lblTitle.numberOfLines = 0
-        self.contentView.addSubview(lblTitle)
+        if !(lblTitle!.parentContainerViewController != nil) {
+            
+            self.contentView.addSubview(lblTitle)
+        }
         
         self.accessoryType = currentCellSection.SOCellType.accessoryType
         
@@ -67,9 +71,11 @@ class SettingsTVCell: UITableViewCell {
                                                          height: 31))
             swPushNotifications!.isOn = UserDefaults.standard.bool(forKey: WegautConstants.IS_PUSH_ENABLED)
             swPushNotifications!.onTintColor = UIColor.mediumPurple
-            self.contentView.addSubview(swPushNotifications!)
+            self.accessoryView = swPushNotifications
         }else{
+            
             self.accessoryView = UIImageView(image: #imageLiteral(resourceName: "ICDetailDisclosure"))
+            self.accessoryView?.contentMode = UIView.ContentMode.scaleAspectFit
         }
     }
     

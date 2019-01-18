@@ -54,16 +54,23 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var btnSection3: UIButton!
     
     //MARK: - VIEW LIFECYCLE
-
-    override func viewDidLoad() {
+    
+    override func viewWillAppear(_ animated: Bool) {
         
-        super.viewDidLoad()
-        let bbiSettings: UIBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ICSettings"),
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.navigationBar.isHidden = false
+        let bbiSettings: UIBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ICMenu"),
                                                            style: UIBarButtonItem.Style.plain,
                                                            target: self,
                                                            action: #selector(self.showSettings))
         self.navigationItem.setRightBarButton(bbiSettings,
                                               animated: false)
+    }
+
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
         userData = User.getUserData()
         arrMyEvents = Event.getEvents()
         arrGoingEvents = Event.getEvents()

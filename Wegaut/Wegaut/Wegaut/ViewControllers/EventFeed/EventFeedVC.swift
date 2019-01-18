@@ -31,12 +31,8 @@ class EventFeedVC: UIViewController {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.navigationBar.isHidden = false
-        let bbiFeed: UIBarButtonItem = UIBarButtonItem(title: "EVF_TIT".localized,
-                                                       style: UIBarButtonItem.Style.plain,
-                                                       target: nil,
-                                                       action: nil)
-        self.navigationItem.setLeftBarButton(bbiFeed,
-                                             animated: false)
+        sbEvents.delegate = self
+        sbEvents.showsCancelButton = true
     }
 
     override func viewDidLoad() {
@@ -101,5 +97,18 @@ extension EventFeedVC: UITableViewDataSource, UITableViewDelegate {
         selectedEvent = arrEvents[indexPath.row]
         self.performSegue(withIdentifier: "ShowDetail",
                           sender: nil)
+    }
+}
+
+extension EventFeedVC: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        self.dismissKeyboard()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        self.dismissKeyboard()
     }
 }

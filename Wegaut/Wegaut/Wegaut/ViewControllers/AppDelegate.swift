@@ -35,8 +35,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Tab bar appearance
         let tabBarAppearance = UITabBar.appearance()
-        tabBarAppearance.barTintColor = UIColor.white
-        tabBarAppearance.tintColor = UIColor.mediumPurple
+        tabBarAppearance.barTintColor = UIColor.mediumPurple
+        tabBarAppearance.tintColor = UIColor.white
         tabBarAppearance.unselectedItemTintColor = UIColor.lightGray
         
         //Search bar appearance

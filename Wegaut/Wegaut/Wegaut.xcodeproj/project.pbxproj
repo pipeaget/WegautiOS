@@ -9,6 +9,16 @@
 /* Begin PBXBuildFile section */
 		D52CB3EC214AD284007C58D2 /* WegautConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52CB3EB214AD284007C58D2 /* WegautConstants.swift */; };
 		D52CB3EF214AD40C007C58D2 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52CB3EE214AD40C007C58D2 /* UIViewControllerExtensions.swift */; };
+		D55CC4A321C041D1000A1C43 /* NewOrganizerTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55CC4A221C041D1000A1C43 /* NewOrganizerTVCell.swift */; };
+		D55CC4A521C041E4000A1C43 /* NewSponsorTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55CC4A421C041E4000A1C43 /* NewSponsorTVCell.swift */; };
+		D55CC4A721C04201000A1C43 /* WebEventTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55CC4A621C04201000A1C43 /* WebEventTVCell.swift */; };
+		D55CC4A921C04269000A1C43 /* NewMultimediaTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55CC4A821C04269000A1C43 /* NewMultimediaTVCell.swift */; };
+		D55CC4AB21C04277000A1C43 /* NewTagTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55CC4AA21C04277000A1C43 /* NewTagTVCell.swift */; };
+		D55CC4AE21C042A2000A1C43 /* NewOrganizerCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55CC4AD21C042A2000A1C43 /* NewOrganizerCVCell.swift */; };
+		D55CC4B021C042B1000A1C43 /* NewSponsorCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55CC4AF21C042B1000A1C43 /* NewSponsorCVCell.swift */; };
+		D55CC4B221C042C2000A1C43 /* NewMultimediaCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55CC4B121C042C2000A1C43 /* NewMultimediaCVCell.swift */; };
+		D55CC4B421C042D6000A1C43 /* NewTagCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55CC4B321C042D6000A1C43 /* NewTagCVCell.swift */; };
+		D55CC4B621C05A90000A1C43 /* PlaceTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55CC4B521C05A90000A1C43 /* PlaceTVCell.swift */; };
 		D5BCEE7B219B60C6003428C9 /* FORButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BCEE7A219B60C5003428C9 /* FORButton.swift */; };
 		D5CAD99621A75655002D2335 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CAD99521A75655002D2335 /* Activity.swift */; };
 		D5CAD99821A761FE002D2335 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CAD99721A761FE002D2335 /* Level.swift */; };
@@ -45,12 +55,6 @@
 		D5D14664214EA882005C2FC5 /* FORFooterSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D14661214EA881005C2FC5 /* FORFooterSearchResults.swift */; };
 		D5D14665214EA882005C2FC5 /* FORPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D14662214EA881005C2FC5 /* FORPopUpView.swift */; };
 		D5D14666214EA882005C2FC5 /* FORView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D14663214EA882005C2FC5 /* FORView.swift */; };
-		D5D1467E214EA919005C2FC5 /* SponsorshipTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D1467B214EA919005C2FC5 /* SponsorshipTVCell.swift */; };
-		D5D1467F214EA919005C2FC5 /* OrganizerTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D1467C214EA919005C2FC5 /* OrganizerTVCell.swift */; };
-		D5D14680214EA919005C2FC5 /* LocationResultTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D1467D214EA919005C2FC5 /* LocationResultTVCell.swift */; };
-		D5D14685214EA942005C2FC5 /* NewURLTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D14682214EA941005C2FC5 /* NewURLTVCell.swift */; };
-		D5D14686214EA942005C2FC5 /* NewVideoTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D14683214EA941005C2FC5 /* NewVideoTVCell.swift */; };
-		D5D14687214EA942005C2FC5 /* NewImageTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D14684214EA942005C2FC5 /* NewImageTVCell.swift */; };
 		D5D1468E214EA94D005C2FC5 /* EventAddressTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D14688214EA94D005C2FC5 /* EventAddressTVCell.swift */; };
 		D5D1468F214EA94D005C2FC5 /* EventDetailTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D14689214EA94D005C2FC5 /* EventDetailTVCell.swift */; };
 		D5D14690214EA94D005C2FC5 /* CommentTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D1468A214EA94D005C2FC5 /* CommentTVCell.swift */; };
@@ -115,6 +119,16 @@
 		CE1C11ED81BD8501D3A1D65A /* Pods-WegautTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WegautTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WegautTests/Pods-WegautTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D52CB3EB214AD284007C58D2 /* WegautConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WegautConstants.swift; sourceTree = "<group>"; };
 		D52CB3EE214AD40C007C58D2 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
+		D55CC4A221C041D1000A1C43 /* NewOrganizerTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrganizerTVCell.swift; sourceTree = "<group>"; };
+		D55CC4A421C041E4000A1C43 /* NewSponsorTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSponsorTVCell.swift; sourceTree = "<group>"; };
+		D55CC4A621C04201000A1C43 /* WebEventTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebEventTVCell.swift; sourceTree = "<group>"; };
+		D55CC4A821C04269000A1C43 /* NewMultimediaTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMultimediaTVCell.swift; sourceTree = "<group>"; };
+		D55CC4AA21C04277000A1C43 /* NewTagTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTagTVCell.swift; sourceTree = "<group>"; };
+		D55CC4AD21C042A2000A1C43 /* NewOrganizerCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrganizerCVCell.swift; sourceTree = "<group>"; };
+		D55CC4AF21C042B1000A1C43 /* NewSponsorCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSponsorCVCell.swift; sourceTree = "<group>"; };
+		D55CC4B121C042C2000A1C43 /* NewMultimediaCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMultimediaCVCell.swift; sourceTree = "<group>"; };
+		D55CC4B321C042D6000A1C43 /* NewTagCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTagCVCell.swift; sourceTree = "<group>"; };
+		D55CC4B521C05A90000A1C43 /* PlaceTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTVCell.swift; sourceTree = "<group>"; };
 		D5BCEE7A219B60C5003428C9 /* FORButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FORButton.swift; sourceTree = "<group>"; };
 		D5CAD99521A75655002D2335 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		D5CAD99721A761FE002D2335 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
@@ -153,12 +167,6 @@
 		D5D14661214EA881005C2FC5 /* FORFooterSearchResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FORFooterSearchResults.swift; sourceTree = "<group>"; };
 		D5D14662214EA881005C2FC5 /* FORPopUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FORPopUpView.swift; sourceTree = "<group>"; };
 		D5D14663214EA882005C2FC5 /* FORView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FORView.swift; sourceTree = "<group>"; };
-		D5D1467B214EA919005C2FC5 /* SponsorshipTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SponsorshipTVCell.swift; sourceTree = "<group>"; };
-		D5D1467C214EA919005C2FC5 /* OrganizerTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrganizerTVCell.swift; sourceTree = "<group>"; };
-		D5D1467D214EA919005C2FC5 /* LocationResultTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationResultTVCell.swift; sourceTree = "<group>"; };
-		D5D14682214EA941005C2FC5 /* NewURLTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewURLTVCell.swift; sourceTree = "<group>"; };
-		D5D14683214EA941005C2FC5 /* NewVideoTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewVideoTVCell.swift; sourceTree = "<group>"; };
-		D5D14684214EA942005C2FC5 /* NewImageTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewImageTVCell.swift; sourceTree = "<group>"; };
 		D5D14688214EA94D005C2FC5 /* EventAddressTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventAddressTVCell.swift; sourceTree = "<group>"; };
 		D5D14689214EA94D005C2FC5 /* EventDetailTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailTVCell.swift; sourceTree = "<group>"; };
 		D5D1468A214EA94D005C2FC5 /* CommentTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTVCell.swift; sourceTree = "<group>"; };
@@ -256,6 +264,17 @@
 			children = (
 			);
 			path = "No Connection";
+			sourceTree = "<group>";
+		};
+		D55CC4AC21C0427F000A1C43 /* NewEvent */ = {
+			isa = PBXGroup;
+			children = (
+				D55CC4AD21C042A2000A1C43 /* NewOrganizerCVCell.swift */,
+				D55CC4AF21C042B1000A1C43 /* NewSponsorCVCell.swift */,
+				D55CC4B121C042C2000A1C43 /* NewMultimediaCVCell.swift */,
+				D55CC4B321C042D6000A1C43 /* NewTagCVCell.swift */,
+			);
+			path = NewEvent;
 			sourceTree = "<group>";
 		};
 		D57F8B37214790290001EE01 /* Extensions */ = {
@@ -364,6 +383,7 @@
 				D5CE616C219E4090001F7E3C /* OrganizerCVCell.swift */,
 				D5CE616F219E4090001F7E3C /* RecentPublicationsCVCell.swift */,
 				D5CE616E219E4090001F7E3C /* TagCVCell.swift */,
+				D55CC4AC21C0427F000A1C43 /* NewEvent */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -448,22 +468,14 @@
 		D5D1467A214EA909005C2FC5 /* NewEvent */ = {
 			isa = PBXGroup;
 			children = (
-				D5D1467D214EA919005C2FC5 /* LocationResultTVCell.swift */,
-				D5D1467C214EA919005C2FC5 /* OrganizerTVCell.swift */,
-				D5D1467B214EA919005C2FC5 /* SponsorshipTVCell.swift */,
-				D5D14681214EA92D005C2FC5 /* MultimediaCells */,
+				D55CC4A221C041D1000A1C43 /* NewOrganizerTVCell.swift */,
+				D55CC4A421C041E4000A1C43 /* NewSponsorTVCell.swift */,
+				D55CC4A621C04201000A1C43 /* WebEventTVCell.swift */,
+				D55CC4A821C04269000A1C43 /* NewMultimediaTVCell.swift */,
+				D55CC4AA21C04277000A1C43 /* NewTagTVCell.swift */,
+				D55CC4B521C05A90000A1C43 /* PlaceTVCell.swift */,
 			);
 			path = NewEvent;
-			sourceTree = "<group>";
-		};
-		D5D14681214EA92D005C2FC5 /* MultimediaCells */ = {
-			isa = PBXGroup;
-			children = (
-				D5D14684214EA942005C2FC5 /* NewImageTVCell.swift */,
-				D5D14682214EA941005C2FC5 /* NewURLTVCell.swift */,
-				D5D14683214EA941005C2FC5 /* NewVideoTVCell.swift */,
-			);
-			path = MultimediaCells;
 			sourceTree = "<group>";
 		};
 		D5D146B0214EA9A2005C2FC5 /* Onboarding */ = {
@@ -742,6 +754,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D55CC4B421C042D6000A1C43 /* NewTagCVCell.swift in Sources */,
 				D5CE6174219E4090001F7E3C /* TagCVCell.swift in Sources */,
 				D5D146A7214EA971005C2FC5 /* SettingsTVCell.swift in Sources */,
 				D5CE6171219E4090001F7E3C /* MultimediaCVCell.swift in Sources */,
@@ -751,30 +764,32 @@
 				D5CE6175219E4090001F7E3C /* RecentPublicationsCVCell.swift in Sources */,
 				D5D14690214EA94D005C2FC5 /* CommentTVCell.swift in Sources */,
 				D5D1464A214E5420005C2FC5 /* UIImageViewExtensions.swift in Sources */,
+				D55CC4A521C041E4000A1C43 /* NewSponsorTVCell.swift in Sources */,
 				D5D14640214DC1E3005C2FC5 /* WegautColors.swift in Sources */,
-				D5D14680214EA919005C2FC5 /* LocationResultTVCell.swift in Sources */,
 				D5D14660214EA866005C2FC5 /* User.swift in Sources */,
 				D5D14665214EA882005C2FC5 /* FORPopUpView.swift in Sources */,
-				D5D14687214EA942005C2FC5 /* NewImageTVCell.swift in Sources */,
 				D5DF805A21A63A03002BD91F /* FollowersTVCell.swift in Sources */,
 				D5D1468E214EA94D005C2FC5 /* EventAddressTVCell.swift in Sources */,
 				D5E20EDC21478B390099C1BD /* AppDelegate.swift in Sources */,
 				D5D1468F214EA94D005C2FC5 /* EventDetailTVCell.swift in Sources */,
+				D55CC4A921C04269000A1C43 /* NewMultimediaTVCell.swift in Sources */,
 				D5D146B4214EA9B9005C2FC5 /* WalkThroughPVC.swift in Sources */,
 				D5EA5461219C9FAA0048CFED /* MultimediaTVCell.swift in Sources */,
+				D55CC4A321C041D1000A1C43 /* NewOrganizerTVCell.swift in Sources */,
 				D5CE6170219E4090001F7E3C /* EventCVCell.swift in Sources */,
 				D5D1465B214EA866005C2FC5 /* Sponsorship.swift in Sources */,
 				D5D4B00121537B6C0033317E /* EventInfoTVCell.swift in Sources */,
 				D5D146BE214EA9D0005C2FC5 /* MoreCommentsVC.swift in Sources */,
 				D5D14637214D8BE6005C2FC5 /* RegisterVC.swift in Sources */,
+				D55CC4AB21C04277000A1C43 /* NewTagTVCell.swift in Sources */,
 				D5D1465E214EA866005C2FC5 /* Publication.swift in Sources */,
 				D5D146D3214EAA4D005C2FC5 /* MyActivitiesVC.swift in Sources */,
 				D5D1469B214EA958005C2FC5 /* RecentCommentsTVCell.swift in Sources */,
 				D5D146A2214EA968005C2FC5 /* NotificationFollowTVCell.swift in Sources */,
-				D5D14686214EA942005C2FC5 /* NewVideoTVCell.swift in Sources */,
 				D5D14691214EA94D005C2FC5 /* CommentsTVCell.swift in Sources */,
 				D5D146DB214EAA58005C2FC5 /* EditProfileVC.swift in Sources */,
 				D5D1465C214EA866005C2FC5 /* Multimedia.swift in Sources */,
+				D55CC4B621C05A90000A1C43 /* PlaceTVCell.swift in Sources */,
 				D5CAD99621A75655002D2335 /* Activity.swift in Sources */,
 				D5E78F382162A2BE001E17D1 /* WelcomeVC.swift in Sources */,
 				D5D146B5214EA9B9005C2FC5 /* WalkThroughContentVC.swift in Sources */,
@@ -788,6 +803,8 @@
 				D5D1462D214D7CC5005C2FC5 /* UIImageExtension.swift in Sources */,
 				D5E78F3A2162B287001E17D1 /* ForgotPasswordVC.swift in Sources */,
 				D5D146DC214EAA58005C2FC5 /* SimpleDetailVC.swift in Sources */,
+				D55CC4AE21C042A2000A1C43 /* NewOrganizerCVCell.swift in Sources */,
+				D55CC4B221C042C2000A1C43 /* NewMultimediaCVCell.swift in Sources */,
 				D5F198EE21B063930082DE73 /* NewEventMainInfoVC.swift in Sources */,
 				D5D146B6214EA9B9005C2FC5 /* WalkThroughVC.swift in Sources */,
 				D5CAD99821A761FE002D2335 /* Level.swift in Sources */,
@@ -806,7 +823,8 @@
 				D5D14642214E34C4005C2FC5 /* UIViewExtensions.swift in Sources */,
 				D5CE6172219E4090001F7E3C /* OrganizerCVCell.swift in Sources */,
 				D5D14666214EA882005C2FC5 /* FORView.swift in Sources */,
-				D5D14685214EA942005C2FC5 /* NewURLTVCell.swift in Sources */,
+				D55CC4B021C042B1000A1C43 /* NewSponsorCVCell.swift in Sources */,
+				D55CC4A721C04201000A1C43 /* WebEventTVCell.swift in Sources */,
 				D5D1462B214D7A0F005C2FC5 /* UITextFieldExtensions.swift in Sources */,
 				D52CB3EC214AD284007C58D2 /* WegautConstants.swift in Sources */,
 				D5D146BD214EA9D0005C2FC5 /* AddNewEventVC.swift in Sources */,
@@ -823,8 +841,6 @@
 				D5D14664214EA882005C2FC5 /* FORFooterSearchResults.swift in Sources */,
 				D5D146A3214EA968005C2FC5 /* NotificationBadgeTVCell.swift in Sources */,
 				D5D146DD214EAA58005C2FC5 /* ProfileVC.swift in Sources */,
-				D5D1467E214EA919005C2FC5 /* SponsorshipTVCell.swift in Sources */,
-				D5D1467F214EA919005C2FC5 /* OrganizerTVCell.swift in Sources */,
 				D5D1469A214EA958005C2FC5 /* MainInfoTVCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

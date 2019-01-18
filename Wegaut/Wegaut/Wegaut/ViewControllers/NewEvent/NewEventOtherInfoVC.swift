@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import SafariServices
 
 class NewEventOtherInfoVC: UIViewController {
 
@@ -17,10 +18,11 @@ class NewEventOtherInfoVC: UIViewController {
     var lmUserLocation: CLLocationManager!
     var arrLocationResults: [MKMapItem]!
     var pmEventPlace: MKPlacemark?
-    var arrOrganizers: [Organizer]!
-    var arrSponsors: [Sponsorship]!
-    var arrMultimedia: [Multimedia]!
-    var arrTags: [Tag]!
+    var isSearching: Bool = false {
+        didSet {
+            tvEvent.reloadData()
+        }
+    }
     
     //MARK: - OUTLETS
     
@@ -34,6 +36,7 @@ class NewEventOtherInfoVC: UIViewController {
         
         super.viewDidLoad()
         sbEventAddress.placeholder = "NEOI_SB".localized
+        sbEventAddress.showsCancelButton = true
         sbEventAddress.delegate = self
         mvEvent.delegate = self
         lmUserLocation = CLLocationManager()
@@ -47,10 +50,6 @@ class NewEventOtherInfoVC: UIViewController {
                         span: nil)
         }
         arrLocationResults = []
-        arrOrganizers = []
-        arrSponsors = []
-        arrMultimedia = []
-        arrTags = []
     }
     
     //MARK: - FUNCTIONS
@@ -74,91 +73,165 @@ class NewEventOtherInfoVC: UIViewController {
         
             guard let places = response else { return }
             self.arrLocationResults = places.mapItems
-            //self.tvAddressResults.reloadData()
+            self.tvEvent.reloadData()
         }
     }
     
     func getHeaderForSection(currentSection: Int)-> UIView{
         
-        return UIView()
+        let screenSize: CGSize = UIScreen.main.bounds.size
+        let aView: UIView = UIView(frame: CGRect(x: 0,
+                                                 y: 0,
+                                                 width: screenSize.width,
+                                                 height: 70))
+        aView.backgroundColor = UIColor.clear
+        
+        let lblSectionTitle: UILabel = UILabel(frame: CGRect(x: 20,
+                                                             y: 10,
+                                                             width: screenSize.width - 40,
+                                                             height: 50))
+        lblSectionTitle.font = UIFont(name: "Avenir-Book",
+                                      size: 20) ?? UIFont.systemFont(ofSize: 20)
+        lblSectionTitle.text = getTitleForSection(index: currentSection)
+        lblSectionTitle.textColor = UIColor.textColor
+        lblSectionTitle.adjustsFontSizeToFitWidth = true
+        aView.addSubview(lblSectionTitle)
+        
+        return aView
+    }
+    
+    func getTitleForSection(index: Int)-> String {
+        
+        switch index {
+            
+        case 0:  return "NEOI_ORG".localized
+        case 1:  return "NEOI_SPO".localized
+        case 2:  return "NEOI_WEB".localized
+        case 3:  return "NEOI_MUL".localized
+        case 4:  return "NEOI_TAG".localized
+        default: return "NEOI_RES".localized
+        }
+    }
+    
+    @objc func showURLPreview(aURL: String) {
+        
+        guard let url = URL(string: "http://" + aURL) else {
+            return
+        }
+        openSafariVC(url: url)
+    }
+    
+    func openSafariVC(url: URL) {
+        
+        let safariVC = SFSafariViewController(url: url)
+        self.present(safariVC, animated: true, completion: nil)
+        safariVC.delegate = self
     }
     
     //MARK: - ACTIONS
-    
 }
 
 //MARK: - EXTENSIONS
 
 extension NewEventOtherInfoVC: UISearchBarDelegate {
     
+    func searchBar(_ searchBar: UISearchBar, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        getLocalRequestFor(query: searchBar.text! + text)
+        return true
+    }
     
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        
+        isSearching = true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        isSearching = false
+        self.dismissKeyboard()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        isSearching = false
+        self.dismissKeyboard()
+    }
 }
 
 extension NewEventOtherInfoVC: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        return tableView == tvEvent ? 5 : 1
+        return !isSearching ? 5 : 1
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        return tableView == tvEvent ? getHeaderForSection(currentSection: section) : nil
+        return !isSearching ? getHeaderForSection(currentSection: section) : getHeaderForSection(currentSection: 99)
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        return tableView == tvEvent ? 70 : 0
+        return 70
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if tableView == tvEvent {
-            
-            switch section {
-                
-            case 0: return arrOrganizers.count
-                
-            case 1: return arrSponsors.count
-                
-            case 2: return 1
-                
-            case 3: return arrMultimedia.count
-                
-            case 4: return arrTags.count
-                
-            }
-        } else {
-            
-            return arrLocationResults.count
-        }
+        return !isSearching ? 1 : arrLocationResults.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        switch indexPath.section {
+        if !isSearching {
             
-        case 0:
-            //TODO: ORGANIZER CELL
-            break
+            switch indexPath.section {
+                
+            case 0:
+                let aCell: NewOrganizerTVCell = tvEvent.dequeueReusableCell(withIdentifier: "NewOrganizerCell",
+                                                                            for: indexPath) as! NewOrganizerTVCell
+                return aCell
+                
+            case 1:
+                let aCell: NewSponsorTVCell = tvEvent.dequeueReusableCell(withIdentifier: "NewSponsorCell",
+                                                                          for: indexPath) as! NewSponsorTVCell
+                return aCell
+                
+            case 2:
+                let aCell: WebEventTVCell = tvEvent.dequeueReusableCell(withIdentifier: "NewEventCell",
+                                                                        for: indexPath) as! WebEventTVCell
+                aCell.actOpenURL = {
+                    (urlToOpen) in
+                    self.showURLPreview(aURL: urlToOpen)
+                }
+                return aCell
+                
+            case 3:
+                let aCell: NewMultimediaTVCell = tvEvent.dequeueReusableCell(withIdentifier: "NewMultimediaCell",
+                                                                             for: indexPath) as! NewMultimediaTVCell
+                return aCell
+                
+            default:
+                let aCell: NewTagTVCell = tvEvent.dequeueReusableCell(withIdentifier: "NewTagCell",
+                                                                      for: indexPath) as! NewTagTVCell
+                return aCell
+            }
             
-        case 1:
-            //TODO: SPONSOR CELL
-            break
+        } else {
             
-        case 2:
-            //TODO: EVENTWEB CELL
-            break
-            
-        case 3:
-            //TODO: MULTIMEDIA CELL
-            break
-            
-        default:
-            //TODO: TAGS CELL
-            break
+            let aCell: PlaceTVCell = tvEvent.dequeueReusableCell(withIdentifier: "PlaceCell",
+                                                                 for: indexPath) as! PlaceTVCell
+            return aCell
         }
-        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        /*if isSearching {
+            
+            let aCell: PlaceTVCell = cell as! PlaceTVCell
+            aCell.currentPlace = arrLocationResults [indexPath.row]
+        }*/
     }
 }
 
@@ -181,9 +254,23 @@ extension NewEventOtherInfoVC: CLLocationManagerDelegate, MKMapViewDelegate {
         }
     }
     
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        
+        print(error.localizedDescription)
+    }
+    
     func mapViewDidFailLoadingMap(_ mapView: MKMapView, withError error: Error) {
         
         print(error.localizedDescription)
     }
     
+}
+
+extension NewEventOtherInfoVC: SFSafariViewControllerDelegate {
+    
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        
+        controller.dismiss(animated: true,
+                           completion: nil)
+    }
 }

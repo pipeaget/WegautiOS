@@ -13,6 +13,8 @@ class MyActivitiesVC: UIViewController {
     //MARK: - VARIABLES
     
     var arrActivities: [Activity]!
+    var arrTodayActivities: [Activity]!
+    var arrYesterdayActivities: [Activity]!
     var arrFilteredActivities: [Activity]!
     var selectedActivity: Activity!
     
@@ -29,10 +31,13 @@ class MyActivitiesVC: UIViewController {
         
         super.viewWillAppear(animated)
         arrActivities = []
+        arrTodayActivities = []
+        arrYesterdayActivities = []
         arrFilteredActivities = []
         definesPresentationContext = true
         getActivities()
-        self.title = "NOT_TIT".localized
+        self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.navigationBar.isHidden = false
     }
 
     override func viewDidLoad() {
@@ -93,6 +98,8 @@ class MyActivitiesVC: UIViewController {
     @objc func getActivities(){
         
         arrActivities = Activity.getActivities()
+        arrTodayActivities = arrActivities.filter{$0.actDate == "03:02 PM | 13/09/2018"}
+        arrYesterdayActivities = arrActivities.filter{$0.actDate != "03:02 PM | 13/09/2018"}
         if self.rcActivities != nil{
             self.rcActivities.endRefreshing()
         }
@@ -192,7 +199,7 @@ extension MyActivitiesVC: UITableViewDataSource, UITableViewDelegate{
                                                           y: 5,
                                                           width: screenSize.width - 40,
                                                           height: 20))
-            lblTitle.text = section == 0 ? "Hoy" : "Ayer"
+            lblTitle.text = section == 0 ? "Hoy" : "Antes"
             lblTitle.font = UIFont(name: "Avenir-Bold",
                                    size: 24)
             lblTitle.textColor = section == 0 ? UIColor.deepPurple : UIColor.gray
@@ -218,39 +225,45 @@ extension MyActivitiesVC: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         isFiltering() ? vwSearchFooter.setIsFilteringToShow(filteredItemCount: arrFilteredActivities.count, of: arrActivities.count) : vwSearchFooter.setNotFiltering()
-        return isFiltering() ? arrFilteredActivities.count : arrActivities.count
+        return isFiltering() ? arrFilteredActivities.count : getActivitiesForSection(section: section)
+    }
+    
+    func getActivitiesForSection(section: Int)-> Int {
+        
+        return section == 0 ? arrTodayActivities.count : arrYesterdayActivities.count
+    }
+    
+    func getCorresponingArrayForSection(section: Int)-> [Activity] {
+        
+        return section == 0 ? arrTodayActivities : arrYesterdayActivities
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        switch isFiltering() ? arrFilteredActivities[indexPath.row].actType : arrActivities[indexPath.row].actType {
+        switch isFiltering() ? arrFilteredActivities[indexPath.row].actType : getCorresponingArrayForSection(section: indexPath.section)[indexPath.row].actType {
             
-        case activityType.goingEvent:
+        case activityType.goingEvent, activityType.favouritedEvent, activityType.sharedEvent:
             let aCell: NotificationEventTVCell = tableView.dequeueReusableCell(withIdentifier: "NotificationEvent", for: indexPath) as! NotificationEventTVCell
-            aCell.currentNotification = isFiltering() ? arrFilteredActivities[indexPath.row] : arrActivities[indexPath.row]
+            aCell.currentNotification = isFiltering() ? arrFilteredActivities[indexPath.row] : getCorresponingArrayForSection(section: indexPath.section)[indexPath.row]
             aCell.layer.masksToBounds = true
             return aCell
             
         case activityType.newFollower:
             let aCell: NotificationFollowTVCell = tableView.dequeueReusableCell(withIdentifier: "NotificationFollow", for: indexPath) as! NotificationFollowTVCell
-            aCell.currentNotification = isFiltering() ? arrFilteredActivities[indexPath.row] : arrActivities[indexPath.row]
+            aCell.currentNotification = isFiltering() ? arrFilteredActivities[indexPath.row] : getCorresponingArrayForSection(section: indexPath.section)[indexPath.row]
             aCell.layer.masksToBounds = true
             return aCell
             
         case activityType.newLevel:
             let aCell: NotificationBadgeTVCell = tableView.dequeueReusableCell(withIdentifier: "NotificationBadge", for: indexPath) as! NotificationBadgeTVCell
-            aCell.currentNotification = isFiltering() ? arrFilteredActivities[indexPath.row] : arrActivities[indexPath.row]
+            aCell.currentNotification = isFiltering() ? arrFilteredActivities[indexPath.row] : getCorresponingArrayForSection(section: indexPath.section)[indexPath.row]
             aCell.layer.masksToBounds = true
             return aCell
             
         case .newFollowing:
             return UITableViewCell()
             
-        case .favouritedEvent:
-            return UITableViewCell()
-            
-        case .sharedevent:
-            return UITableViewCell()
+        
         }
     }
     

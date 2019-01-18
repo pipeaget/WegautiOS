@@ -8,7 +8,6 @@
 
 import UIKit
 import SDWebImage
-import BRCountDownView
 
 class EventCountdownTVCell: UITableViewCell {
     
@@ -19,7 +18,7 @@ class EventCountdownTVCell: UITableViewCell {
             drawCell()
         }
     }
-    lazy var countdownView: BRCountDownView = {
+    /*lazy var countdownView: BRCountDownView = {
         let countdownView = BRCountDownView(timeSeconds: 100000)
         countdownView.animationStyle = .slideInFromBottom
         
@@ -93,17 +92,14 @@ class EventCountdownTVCell: UITableViewCell {
         }
         
         return countdownView
-    }()
+    }()*/
     
     //MARK: - OUTLETS
     
-    @IBOutlet weak var vwContainer: UIView!
-    @IBOutlet weak var vwEventContainer: UIView!
     @IBOutlet weak var vwTimer: UIView!
     @IBOutlet weak var imgvwEvent: UIImageView!
     @IBOutlet weak var lblEventName: UILabel!
     @IBOutlet weak var lblEventAddress: UILabel!
-    @IBOutlet weak var lblEventStatus: UILabel!
     @IBOutlet weak var lblEventDate: UILabel!
     
     //MARK: - VIEW LIFECYCLE
@@ -123,14 +119,6 @@ class EventCountdownTVCell: UITableViewCell {
     
     func drawCell(){
         
-        vwContainer.layer.borderColor = UIColor.lightGray.cgColor
-        vwContainer.layer.borderWidth = 2
-        vwContainer.layer.masksToBounds = true
-        vwContainer.cornerRadius(cornerRadius: 10)
-        vwEventContainer.layer.borderColor = UIColor.lightGray.cgColor
-        vwEventContainer.layer.borderWidth = 2
-        vwEventContainer.layer.masksToBounds = true
-        vwEventContainer.cornerRadius(cornerRadius: 5)
         guard let anEvent: Event = currentEvent else{
            
             return
@@ -149,9 +137,9 @@ class EventCountdownTVCell: UITableViewCell {
         lblEventAddress.attributedText = strAddress.getStringWith(anImage: #imageLiteral(resourceName: "ICAddress"),
                                                                   isInLeftPosition: true,
                                                                   currentFont: UIFont.systemFont(ofSize: 8))
-        lblEventStatus.text = anEvent.eveStatus ? "ECDC_OPEN".localized : "ECDC_CLOS".localized
-        lblEventStatus.textColor = anEvent.eveStatus ? UIColor.green : UIColor.red
         lblEventDate.text = anEvent.eveDate
+        
+        /*vwTimer.
         
         countdownView.layer.borderWidth = 1.0
         countdownView.layer.borderColor = UIColor.black.cgColor
@@ -161,6 +149,6 @@ class EventCountdownTVCell: UITableViewCell {
                                      y: 0,
                                      width: 189,
                                      height: 74)
-        self.vwTimer.addSubview(countdownView)
+        self.vwTimer.addSubview(countdownView)*/
     }
 }

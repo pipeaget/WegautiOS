@@ -159,6 +159,12 @@
 //MARK: - NEWEVENTOTHERINFOVC
 
 "NEOI_SB"    = "Añadir Ubicación";
+"NEOI_RES"   = "Lugares";
+"NEOI_ORG"   = "Organizadores";
+"NEOI_SPO"   = "Patrocinadores";
+"NEOI_WEB"   = "Web del evento";
+"NEOI_MUL"   = "Multimedia";
+"NEOI_TAG"   = "Tags";
 
 //MARK: - GENERALINFOVC
 
@@ -233,13 +239,15 @@
 //MARK: - MYACTIVITIESVC
 
 "NOT_TIT"    = "Actividad";
-"NOT_FOLLOW" = "Follow";
-"NOT_USER"   = "User";
-"NOT_NAME"   = "Notification";
-"NOT_NO_EVENTS" = "Currently there's any available notifications...";
+"NOT_FOLLOW" = "Seguir";
+"NOT_FLWING" = "Siguiendo";
+"NOT_USER"   = "Usuario";
+"NOT_NAME"   = "Notificación";
+"NOT_NO_EVENTS" = "Actualmente no hay notificaciones disponibles...";
 
 //MARK: - PROFILEVC
 
+"PRO_TIT"    = "Usuario";
 "PRO_FOLWRS" = "Followers";
 "PRO_LEVEL"  = "Level";
 "PRO_EVENTS" = "Events";
@@ -285,6 +293,8 @@
 
 //MARK: - DROPDOWNDETAILVC
 
+"DDD_FAQ" = "Preguntas frecuentes";
+"DDD_SL"  = "Licencias de Software";
 "DDD_INV_SEC" = "The section you selected is currently unavailable.";
 "DDD_EMP_SEC" = "The section you selected has no content.";
 "DD_Q1" = "What is wegaut®?";
