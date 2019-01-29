@@ -56,7 +56,7 @@ class SettingsTVCell: UITableViewCell {
                                size: 16) ?? UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.regular)
         lblTitle.textColor = UIColor.black
         lblTitle.numberOfLines = 0
-        if !(lblTitle!.parentContainerViewController != nil) {
+        if !(lblTitle!.parentViewController != nil) {
             
             self.contentView.addSubview(lblTitle)
         }

@@ -68,11 +68,11 @@
 
 //MARK: - FORGOTPASSWORDVC
 
-"FP_BACK"    = "Login";
+"FP_BACK"    = "     Back";
 "FP_TIT"     = "Forgot Password";
-"FP_MESS"    = "Using this feature will be resenting your current password. Make sure entered email is related to your wegaut account.";
-"FP_MAIL"    = "Em@il";
-"FP_RPASS"   = "Reset my password";
+"FP_MESS"    = "Enter the email account which you registered.";
+"FP_MAIL"    = "Write here your email";
+"FP_RPASS"   = "Get a new password";
 "FP_RECPASS" = "A recover password email has been sent to your inbox.";
 
 //MARK: - REGISTERVC
@@ -145,16 +145,19 @@
 
 //MARK: - NEWEVENTMAININFOVC
 
-"NEMI_ENAME" = "Event Name";
-"NEMI_ACCT"  = "Access Type";
-"NEMI_AGER"  = "Age Range";
-"NEMI_DATE"  = "Date(s)";
-"NEMI_ABO"   = "Description";
-"NEMI_EXA"   = "Tell the people more about your event here...";
-"NEMI_PREF"  = "Tell";
-"NEMI_NEXT"  = "Next";
-"NEMI_PREV"  = "Previous";
-"NEMI_FIN"   = "Finish";
+"NEMI_ENAME"     = "Event Name";
+"NEMI_ACCT"      = "Access Type";
+"NEMI_AGER"      = "Age Range";
+"NEMI_DATE"      = "Date(s)";
+"NEMI_ABO"       = "Description";
+"NEMI_EXA"       = "Tell the people more about your event here...";
+"NEMI_PREF"      = "Tell";
+"NEMI_NEXT"      = "Next";
+"NEMI_PREV"      = "Previous";
+"NEMI_FIN"       = "Finish";
+"NEMI_TITACCTYP" = "Select an access type:";
+"NEMI_TITAGERAN" = "Select an age range:";
+"NEMI_TITDATE"   = "Select a date:";
 
 //MARK: - NEWEVENTOTHERINFOVC
 
@@ -263,7 +266,7 @@
 
 //MARK: - SETTINGSVC
 
-"SO_H1"    = "Messages";
+"SO_H1"    = "Notifications";
 "SO_H2"    = "Profile";
 "SO_H3"    = "Wegaut®";
 "SO_H4"    = "Legal";

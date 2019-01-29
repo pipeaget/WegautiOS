@@ -47,9 +47,9 @@
 
 //MARK: - WELCOMEVC
 
-"WE_WELCOME" = "¡Bienvenido!";
-"WE_SLOGAN" = "No te pierdas nada";
-"WE_LOGIN" = "INGRESAR";
+"WE_WELCOME"  = "¡Bienvenido!";
+"WE_SLOGAN"   = "No te pierdas nada";
+"WE_LOGIN"    = "INGRESAR";
 "WE_REGISTER" = "REGÍSTRATE";
 
 //MARK: - LOGINVC
@@ -68,11 +68,11 @@
 
 //MARK: - FORGOTPASSWORDVC
 
-"FP_BACK"  = "Iniciar sesión";
-"FP_TIT"   = "Recuperar contraseña";
-"FP_MESS"  = "Al utilizar esta funcionalidad se restaurará tu actual contraseña. Asegurate de que el correo electrónico especificado sea el asociado a tu cuenta de Wegaut.";
-"FP_MAIL"  = "Correo electrónico";
-"FP_RPASS" = "Restaurar mi contraseña";
+"FP_BACK"    = "    Atrás";
+"FP_TIT"     = "Recuperar contraseña";
+"FP_MESS"    = "Introduce el correo electrónico con el que te registraste.";
+"FP_MAIL"    = "Escribe aquí tu mail";
+"FP_RPASS"   = "Obtener nueva contraseña";
 "FP_RECPASS" = "Un correo de recuperación de contraseña se ha enviado a tu bandeja.";
 
 //MARK: - REGISTERVC
@@ -111,19 +111,19 @@
 
 //MARK: - EVENTFEEDVC
 
-"EVF_TIT"   = "Feed";
-"EVF_NAME"  = "Name";
-"EVF_PLACE" = "Place";
-"EVF_TAGS"  = "Category";
+"EVF_TIT"       = "Feed";
+"EVF_NAME"      = "Name";
+"EVF_PLACE"     = "Place";
+"EVF_TAGS"      = "Category";
 "EVF_NO_EVENTS" = "Currently there's any available events...";
-"EVF_SEARCH" = "Busca eventos";
+"EVF_SEARCH"    = "Busca eventos";
 
 //MARK: - EVENTFEEDDETAILVC
 
-"EVFD_SH1" = "I'm going to the event ";
-"EVFD_SH2" = "\nCome and join me ";
-"EVFD_SH3" = " at ";
-"EVFD_NAV_TIT" = "Navigation options";
+"EVFD_SH1"      = "I'm going to the event ";
+"EVFD_SH2"      = "\nCome and join me ";
+"EVFD_SH3"      = " at ";
+"EVFD_NAV_TIT"  = "Navigation options";
 "EVFD_NAV_MESS" = "Please select your preferred application";
 
 //MARK: - EVENTDETAILTVCELL
@@ -238,11 +238,11 @@
 
 //MARK: - MYACTIVITIESVC
 
-"NOT_TIT"    = "Actividad";
-"NOT_FOLLOW" = "Seguir";
-"NOT_FLWING" = "Siguiendo";
-"NOT_USER"   = "Usuario";
-"NOT_NAME"   = "Notificación";
+"NOT_TIT"       = "Actividad";
+"NOT_FOLLOW"    = "Seguir";
+"NOT_FLWING"    = "Siguiendo";
+"NOT_USER"      = "Usuario";
+"NOT_NAME"      = "Notificación";
 "NOT_NO_EVENTS" = "Actualmente no hay notificaciones disponibles...";
 
 //MARK: - PROFILEVC
@@ -263,25 +263,25 @@
 
 //MARK: - SETTINGSVC
 
-"SO_H1"    = "Messages";
-"SO_H2"    = "Profile";
-"SO_H3"    = "wegaut®";
-"SO_H4"    = "Legal";
+"SO_H1"    = "Notificaciones";
+"SO_H2"    = "Perfil";
+"SO_H3"    = "Wegaut®";
+"SO_H4"    = "Legales";
 "SO_PN"    = "Push Notifications";
-"SO_EP"    = "Edit Profile";
-"SO_CS"    = "Close Session";
-"SO_AU"    = "About Us";
-"SO_CON"   = "Contact";
-"SO_T&C"   = "Terms & Conditions";
-"SO_PA"    = "Privacy Advice";
-"SO_FAQ"   = "FAQ";
-"SO_SL"    = "Software Licenses";
-"CS_TITLE" = "Close Session";
-"CS_MSSG"  = "Are you sure you want to close this session?";
+"SO_EP"    = "Editar Perfil";
+"SO_CS"    = "Cerrar Sesión";
+"SO_AU"    = "Nosotros";
+"SO_CON"   = "Contacto";
+"SO_T&C"   = "Términos y Condiciones";
+"SO_PA"    = "Aviso de Privacidad";
+"SO_FAQ"   = "Preguntas Frecuentes";
+"SO_SL"    = "Licencias de Software";
+"CS_TITLE" = "Cerrar Sesión";
+"CS_MSSG"  = "¿Estás seguro que deseas cerrar sesión?";
 
 //MARK: - EDITPROFILEVC
 
-"EPC_UPD" = "Update";
+"EPC_UPD" = "Actualizar";
 
 //MARK: - MFMAILCOMPOSER
 
@@ -293,23 +293,23 @@
 
 //MARK: - DROPDOWNDETAILVC
 
-"DDD_FAQ" = "Preguntas frecuentes";
-"DDD_SL"  = "Licencias de Software";
+"DDD_FAQ"     = "Preguntas frecuentes";
+"DDD_SL"      = "Licencias de Software";
 "DDD_INV_SEC" = "The section you selected is currently unavailable.";
 "DDD_EMP_SEC" = "The section you selected has no content.";
-"DD_Q1" = "What is wegaut®?";
-"DD_A1" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
-"DD_Q2" = "Why use wegaut@?";
-"DD_A2" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
-"DD_Q3" = "How wegaut® works?";
-"DD_A3" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
-"DD_Q4" = "Where does my info go?";
-"DD_A4" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
-"DD_PT1" = "Colours";
-"DD_PD1" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
-"DD_PT2" = "Fabric";
-"DD_PD2" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
-"DD_PT3" = "KVNProgress";
-"DD_PD3" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
-"DD_PT4" = "SDWebImage";
-"DD_PD4" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+"DD_Q1"       = "What is wegaut®?";
+"DD_A1"       = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+"DD_Q2"      = "Why use wegaut@?";
+"DD_A2"      = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+"DD_Q3"      = "How wegaut® works?";
+"DD_A3"      = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+"DD_Q4"       = "Where does my info go?";
+"DD_A4"       = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+"DD_PT1"       = "Colours";
+"DD_PD1"       = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+"DD_PT2"       = "Fabric";
+"DD_PD2"       = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+"DD_PT3"       = "KVNProgress";
+"DD_PD3"       = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+"DD_PT4"       = "SDWebImage";
+"DD_PD4"       = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";

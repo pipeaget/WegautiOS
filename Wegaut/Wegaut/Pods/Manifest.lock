@@ -3,7 +3,6 @@ PODS:
   - Colours (5.13.0):
     - Colours/ObjC (= 5.13.0)
   - Colours/ObjC (5.13.0)
-  - IQKeyboardManager (6.1.1)
   - ReachabilitySwift (4.1.0)
   - SDWebImage (4.4.2):
     - SDWebImage/Core (= 4.4.2)
@@ -12,7 +11,6 @@ PODS:
 DEPENDENCIES:
   - BRCountDownView
   - Colours
-  - IQKeyboardManager
   - ReachabilitySwift
   - SDWebImage
 
@@ -20,17 +18,15 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - BRCountDownView
     - Colours
-    - IQKeyboardManager
     - ReachabilitySwift
     - SDWebImage
 
 SPEC CHECKSUMS:
   BRCountDownView: c94d362aa7227a47582eddf8bb132cc10f7b4749
   Colours: f24220c38f13deac88612667e9b4a7fb96b871d4
-  IQKeyboardManager: 79c57795f5c2408d259d37b9da2ed07efcbb5225
   ReachabilitySwift: 6849231cd4e06559f3b9ef4a97a0a0f96d41e09f
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
 
-PODFILE CHECKSUM: 3d29f49aa2078a3e5ebf014fd945ae9b0cddc1d6
+PODFILE CHECKSUM: 0f2b3b86f82108b0b38cb9bfc5dae1bf32ed293f
 
 COCOAPODS: 1.5.3

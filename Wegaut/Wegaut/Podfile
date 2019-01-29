@@ -10,18 +10,7 @@ target 'Wegaut' do
 
     pod 'BRCountDownView'
     pod 'Colours'
-    pod 'IQKeyboardManager'
     pod 'ReachabilitySwift'
     pod 'SDWebImage'
-
-  target 'WegautTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'WegautUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
 
 end

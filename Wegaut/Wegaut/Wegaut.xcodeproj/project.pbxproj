@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D52CB3EC214AD284007C58D2 /* WegautConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52CB3EB214AD284007C58D2 /* WegautConstants.swift */; };
 		D52CB3EF214AD40C007C58D2 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52CB3EE214AD40C007C58D2 /* UIViewControllerExtensions.swift */; };
+		D53E120A21FF821E000552BC /* UIDeviceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53E120921FF821E000552BC /* UIDeviceExtensions.swift */; };
 		D55CC4A321C041D1000A1C43 /* NewOrganizerTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55CC4A221C041D1000A1C43 /* NewOrganizerTVCell.swift */; };
 		D55CC4A521C041E4000A1C43 /* NewSponsorTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55CC4A421C041E4000A1C43 /* NewSponsorTVCell.swift */; };
 		D55CC4A721C04201000A1C43 /* WebEventTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55CC4A621C04201000A1C43 /* WebEventTVCell.swift */; };
@@ -119,6 +120,7 @@
 		CE1C11ED81BD8501D3A1D65A /* Pods-WegautTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WegautTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WegautTests/Pods-WegautTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D52CB3EB214AD284007C58D2 /* WegautConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WegautConstants.swift; sourceTree = "<group>"; };
 		D52CB3EE214AD40C007C58D2 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
+		D53E120921FF821E000552BC /* UIDeviceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtensions.swift; sourceTree = "<group>"; };
 		D55CC4A221C041D1000A1C43 /* NewOrganizerTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewOrganizerTVCell.swift; sourceTree = "<group>"; };
 		D55CC4A421C041E4000A1C43 /* NewSponsorTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSponsorTVCell.swift; sourceTree = "<group>"; };
 		D55CC4A621C04201000A1C43 /* WebEventTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebEventTVCell.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 				D52CB3EE214AD40C007C58D2 /* UIViewControllerExtensions.swift */,
 				D5D14649214E5420005C2FC5 /* UIImageViewExtensions.swift */,
 				D5D4AFFE21535EDE0033317E /* NSAttributedStringExtensions.swift */,
+				D53E120921FF821E000552BC /* UIDeviceExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -730,7 +733,6 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Wegaut/Pods-Wegaut-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BRCountDownView/BRCountDownView.framework",
 				"${BUILT_PRODUCTS_DIR}/Colours/Colours.framework",
-				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
@@ -738,7 +740,6 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BRCountDownView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Colours.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
@@ -822,6 +823,7 @@
 				D5D14629214D75E5005C2FC5 /* StringExtensions.swift in Sources */,
 				D5D14642214E34C4005C2FC5 /* UIViewExtensions.swift in Sources */,
 				D5CE6172219E4090001F7E3C /* OrganizerCVCell.swift in Sources */,
+				D53E120A21FF821E000552BC /* UIDeviceExtensions.swift in Sources */,
 				D5D14666214EA882005C2FC5 /* FORView.swift in Sources */,
 				D55CC4B021C042B1000A1C43 /* NewSponsorCVCell.swift in Sources */,
 				D55CC4A721C04201000A1C43 /* WebEventTVCell.swift in Sources */,

@@ -28,6 +28,67 @@ enum AssistantType: String {
         case AssistantType.byTicket: return "ASS_TIC".localized
         }
     }
+    
+    static func getAllAsistantTypes()-> [String] {
+        
+        return [AssistantType.forAll.description,
+                AssistantType.forPublic.description,
+                AssistantType.byTicket.description,
+                AssistantType.byInvite.description]
+    }
+    
+    static func getAssistantTypeFrom(index: Int)-> AssistantType {
+        
+        switch index {
+            
+        case 0:  return AssistantType.forAll
+        case 1:  return AssistantType.forPublic
+        case 2:  return AssistantType.byTicket
+        default: return AssistantType.byInvite
+        }
+    }
+}
+
+enum AgeRange {
+    
+    case everyone
+    case child
+    case teen
+    case legal
+    case adult
+    
+    var description: String {
+        
+        switch self {
+        
+        case AgeRange.everyone: return "AGE_EVE".localized
+        case AgeRange.child:    return "AGE_CHI".localized
+        case AgeRange.teen:     return "AGE_TEE".localized
+        case AgeRange.legal:    return "AGE_LEG".localized
+        case AgeRange.adult:    return "AGE_ADU".localized
+        }
+    }
+    
+    static func getAllAgeRanges()-> [String] {
+        
+        return [AgeRange.everyone.description,
+                AgeRange.child.description,
+                AgeRange.teen.description,
+                AgeRange.legal.description,
+                AgeRange.adult.description]
+    }
+    
+    static func getAgeRangeFrom(index: Int)-> AgeRange {
+        
+        switch index {
+            
+        case 0:  return AgeRange.everyone
+        case 1:  return AgeRange.child
+        case 2:  return AgeRange.teen
+        case 3:  return AgeRange.legal
+        default: return AgeRange.adult
+        }
+    }
 }
 
 struct Event {
@@ -54,6 +115,32 @@ struct Event {
     var eveShared: [User]
     var eveCheckIns: [User]
     var eveFollowers: [User]
+    
+    static func getNewEvent()-> Event {
+        
+        return Event(eveImageURL: "",
+                     eveName: "",
+                     evePlace: "",
+                     eveAddress: "",
+                     eveDate: "",
+                     eveSchedule: "",
+                     eveAssitantsType: AssistantType.forAll,
+                     evePrice: "",
+                     eveDescription: "",
+                     eveStatus: true,
+                     eveTags:[],
+                     eveAssitants: [],
+                     evePublications: [],
+                     eveComments: [],
+                     eveMultimedia: [],
+                     eveOrganizers: [],
+                     eveSponsorships: [],
+                     eveAssistants: [],
+                     eveUserFavorited: [],
+                     eveShared: [],
+                     eveCheckIns: [],
+                     eveFollowers: [])
+    }
     
     static func getEvents()->[Event]{
         

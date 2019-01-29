@@ -12,6 +12,8 @@ class RegisterVC: UIViewController {
     
     //MARK: - VARIABLES
     
+    var activeField: UITextField?
+    var keyBoardHeight: CGFloat = 0
     var userImage: UIImage?
     
     //MARK: - OUTLETS
@@ -19,7 +21,6 @@ class RegisterVC: UIViewController {
     @IBOutlet weak var vwNavigation: UIView!
     @IBOutlet weak var btnClose: UIButton!
     @IBOutlet weak var lblTitle: UILabel!
-    @IBOutlet weak var imgvwProfilePicture: UIImageView!
     @IBOutlet weak var btnChangePhoto: UIButton!
     @IBOutlet weak var svContainer: UIScrollView!
     @IBOutlet weak var vwContainer: UIView!
@@ -83,6 +84,26 @@ class RegisterVC: UIViewController {
         tfEmail.delegate = self
         tfPassword.delegate = self
         tfBirthday.delegate = self
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardWillShow(notification:)),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardWillHide(notification:)),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillShowNotification,
+                                                  object: nil)
+        NotificationCenter.default.removeObserver(self,
+                                                  name: UIResponder.keyboardWillHideNotification,
+                                                  object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -90,7 +111,51 @@ class RegisterVC: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    //MARK: - NOTIFICATION CENTER
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        
+        if let activeField = self.activeField {
+            
+            keyBoardHeight = keyboardSize.height
+            let contentInsets = UIEdgeInsets(top: 0.0,
+                                             left: 0.0,
+                                             bottom: keyboardSize.height,
+                                             right: 0.0)
+            self.svContainer.contentInset = contentInsets
+            self.svContainer.scrollIndicatorInsets = contentInsets
+            var aRect = self.svContainer.frame
+            aRect.size.height -= keyboardSize.size.height
+            if !aRect.contains(activeField.frame.origin){
+                
+                self.svContainer.scrollRectToVisible(activeField.frame,
+                                                     animated: true)
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        
+        let contentInsets = UIEdgeInsets(top: 0.0,
+                                         left: 0.0,
+                                         bottom: 0,
+                                         right: 0.0)
+        self.svContainer.contentInset = contentInsets
+        self.svContainer.scrollIndicatorInsets = contentInsets
+        let point =  CGPoint.zero
+        self.svContainer.setContentOffset(point,
+                                          animated: true)
+    }
+    
     //MARK: - FUNCTIONS
+    
+    func adjustKeyboardToShowTextView(){
+        
+        self.svContainer.scrollRectToVisible(btnRegister.frame,
+                                             animated: true)
+    }
     
     /// Used to get a selected image from the Photo Library
     func getImageFromPhotoLibrary() {
@@ -163,14 +228,13 @@ class RegisterVC: UIViewController {
 extension RegisterVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-// Local variable inserted by Swift 4.2 migrator.
-let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
-
-        
+        // Local variable inserted by Swift 4.2 migrator.
+        let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
         if let selectedImage = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage{
             
             userImage = selectedImage
-            imgvwProfilePicture.image = userImage
+            btnChangePhoto.setImage(userImage,
+                                    for: UIControl.State.normal)
             btnChangePhoto.setImage(UIImage(),
                                     for: UIControl.State.normal)
             btnChangePhoto.backgroundColor = UIColor.clear
@@ -187,6 +251,12 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
 }
 
 extension RegisterVC: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        activeField = textField
+        textField.showInvalidInputStateWhen(isValidInput: false)
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
@@ -216,13 +286,9 @@ extension RegisterVC: UITextFieldDelegate {
 
 extension RegisterVC: UITextViewDelegate {
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        
-        textField.showInvalidInputStateWhen(isValidInput: false)
-    }
-    
     func textViewDidBeginEditing(_ textView: UITextView) {
         
+        adjustKeyboardToShowTextView()
         let toolBar:UIToolbar = UIToolbar(frame: CGRect(x: 0,
                                                         y: 0,
                                                         width: UIScreen.main.bounds.size.width,
@@ -236,6 +302,7 @@ extension RegisterVC: UITextViewDelegate {
                                                          action: #selector(self.dismissKeyboard))
         toolBar.items = [flexibleSpace, doneButton]
         toolBar.tintColor = UIColor.black
+        textView.inputAccessoryView = toolBar
         textView.inputAccessoryView = toolBar
         if textView.text == "REG_DESC".localized {
             

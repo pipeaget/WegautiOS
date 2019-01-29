@@ -12,6 +12,8 @@ class LoginVC: UIViewController {
     
     //MARK: - VARIABLES
     
+    var activeField: UITextField?
+    
     //MARK: - OUTLETS
     
     @IBOutlet weak var lblSlogan: UILabel!
@@ -26,6 +28,7 @@ class LoginVC: UIViewController {
     @IBOutlet weak var btnLogin: UIButton!
     @IBOutlet weak var btnForgotPassword: UIButton!
     @IBOutlet weak var btnBack: UIButton!
+    @IBOutlet weak var cnBottomVwLogin: NSLayoutConstraint!
     
     //MARK: - VIEW LIFECYCLE
     
@@ -54,6 +57,15 @@ class LoginVC: UIViewController {
                                                                         NSAttributedString.Key.foregroundColor : UIColor.white])
         btnForgotPassword.setAttributedTitle(strFP,
                                              for: UIControl.State.normal)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardWillShow(notification:)),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.keyboardWillHide(notification:)),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,6 +77,25 @@ class LoginVC: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+    }
+    
+    //MARK: - NOTIFICATION CENTER
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        
+        if let _ = self.activeField {
+            
+            self.lblSlogan.isHidden = true
+            self.cnBottomVwLogin.constant = -keyboardSize.height
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        
+        lblSlogan.isHidden = false
+        cnBottomVwLogin.constant = 0
     }
     
     //MARK: - ACTIONS
@@ -128,6 +159,7 @@ extension LoginVC: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
+        activeField = textField
         textField.showInvalidInputStateWhen(isValidInput: false)
     }
     

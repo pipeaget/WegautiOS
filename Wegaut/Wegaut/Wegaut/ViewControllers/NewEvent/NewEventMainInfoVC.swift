@@ -12,6 +12,8 @@ class NewEventMainInfoVC: UIViewController {
     
     //MARK: - VARIABLES
     
+    var currentEvent: Event!
+    
     //MARK: - OUTLETS
     
     @IBOutlet weak var imgvwEventImage: UIImageView!
@@ -29,6 +31,7 @@ class NewEventMainInfoVC: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        currentEvent = Event.getNewEvent()
         ccEventName.tfInput.delegate = self
         ccEventName.strPlaceholder = "NEMI_ENAME".localized
         ccEventAccesType.tfInput.delegate = self
@@ -67,12 +70,11 @@ extension NewEventMainInfoVC: UITextFieldDelegate {
             
         case ccEventAccesType.tfInput:
             ccEventAccesType.activePlaceholder()
-            //TODO: SHOW ACCESS TYPE POP
             break
             
         case ccEventAgeRange.tfInput:
             ccEventAgeRange.activePlaceholder()
-            //TODO: SHOW AGE RANGR POP
+            //TODO: SHOW AGE RANGE POP
             break
             
         case ccEventDate.tfInput:
@@ -85,15 +87,81 @@ extension NewEventMainInfoVC: UITextFieldDelegate {
         }
     }
     
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        
+        switch textField {
+            
+        case ccEventAccesType.tfInput:
+            dismissKeyboard()
+            let popUpAlert: FORPopUpView = FORPopUpView(with: FORAlertData(filterOptions: nil,
+                                                                           aTitle: "NEMI_TITACCTYP".localized,
+                                                                           aMessage: nil,
+                                                                           yesButtonTitle: "OK".localized,
+                                                                           yesButtonColor: UIColor.deepPurple,
+                                                                           noButtonTitle: "CANCEL".localized,
+                                                                           noButtonColor: UIColor.mediumPurple,
+                                                                           selectOptions: AssistantType.getAllAsistantTypes()))
+            popUpAlert.yesNoSuccess = {
+                aBool in
+                if aBool {
+                    self.ccEventAccesType.tfInput.text = AssistantType.getAssistantTypeFrom(index: popUpAlert.selectedSegmentIndex ?? 0).description
+                    popUpAlert.dismiss(animated: true)
+                }
+            }
+            popUpAlert.show(animated: true)
+            return false
+            
+        case ccEventAgeRange:
+            dismissKeyboard()
+            let popUpAlert: FORPopUpView = FORPopUpView(with: FORAlertData(filterOptions: nil,
+                                                                           aTitle: "NEMI_TITAGERAN".localized,
+                                                                           aMessage: nil,
+                                                                           yesButtonTitle: "OK".localized,
+                                                                           yesButtonColor: UIColor.deepPurple,
+                                                                           noButtonTitle: "CANCEL".localized,
+                                                                           noButtonColor: UIColor.mediumPurple,
+                                                                           selectOptions: AgeRange.getAllAgeRanges()))
+            popUpAlert.yesNoSuccess = {
+                aBool in
+                if aBool {
+                    self.ccEventAgeRange.tfInput.text = AgeRange.getAgeRangeFrom(index: popUpAlert.selectedSegmentIndex ?? 0).description
+                    popUpAlert.dismiss(animated: true)
+                }
+            }
+            popUpAlert.show(animated: true)
+            return false
+            
+        case ccEventDate.tfInput:
+            dismissKeyboard()
+            let popUpAlert: FORPopUpView = FORPopUpView(with: FORAlertData(datePicker: nil,
+                                                                           aTitle: "NEMI_TITDATE".localized,
+                                                                           aMessage: nil,
+                                                                           yesButtonTitle: "OK".localized,
+                                                                           yesButtonColor: UIColor.deepPurple,
+                                                                           noButtonTitle: "CANCEL".localized,
+                                                                           noButtonColor: UIColor.mediumPurple))
+            popUpAlert.dateSelection = {
+                
+                aDate in
+                self.ccEventDate.tfInput.text = aDate.description
+                popUpAlert.dismiss(animated: true)
+            }
+            popUpAlert.show(animated: true)
+            return false
+            
+        default: return true
+        }
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         switch textField {
             
-        case ccEventName.tfInput: ccEventAccesType.becomeFirstResponder()
+        case ccEventName.tfInput: ccEventAccesType.tfInput.becomeFirstResponder()
             
-        case ccEventAccesType.tfInput: ccEventAgeRange.becomeFirstResponder()
+        case ccEventAccesType.tfInput: ccEventAgeRange.tfInput.becomeFirstResponder()
             
-        case ccEventAgeRange.tfInput: ccEventDate.becomeFirstResponder()
+        case ccEventAgeRange.tfInput: ccEventDate.tfInput.becomeFirstResponder()
             
         case ccEventDate.tfInput: self.dismissKeyboard()
             

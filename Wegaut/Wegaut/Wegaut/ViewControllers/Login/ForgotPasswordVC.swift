@@ -29,12 +29,8 @@ class ForgotPasswordVC: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        let strBack: NSMutableAttributedString = NSMutableAttributedString(string: "FP_BACK".localized)
-        btnBack.setAttributedTitle(strBack.with(anImage: #imageLiteral(resourceName: "ICPinkBack"),
-                                                inLeftPosition: true,
-                                                currentFont: UIFont(name: "Avenir-Medium",
-                                                                    size: 16) ?? UIFont.systemFont(ofSize: 16)),
-                                   for: UIControl.State.normal)
+        btnBack.setTitle("FP_BACK".localized,
+                         for: UIControl.State.normal)
         lblTitle.text = "FP_TIT".localized
         lblMessage.text = "FP_MESS".localized
         tfEmail.placeholder = "FP_MAIL".localized

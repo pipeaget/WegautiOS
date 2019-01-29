@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import IQKeyboardManager
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -43,9 +42,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tfAppearance = UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self])
         tfAppearance.defaultTextAttributes = convertToNSAttributedStringKeyDictionary([NSAttributedString.Key.foregroundColor.rawValue: UIColor.black])
         tfAppearance.tintColor = UIColor.white
-        
-        //Initialize IQkeyaboard
-        IQKeyboardManager.shared().isEnabled = true
         
         let isLogged: Bool = UserDefaults.standard.bool(forKey: WegautConstants.IS_USER_LOGGED)
         let storyboard: UIStoryboard = UIStoryboard(name: isLogged ? "Main" : "Login",
