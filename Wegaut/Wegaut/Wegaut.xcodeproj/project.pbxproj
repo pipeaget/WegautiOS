@@ -20,6 +20,7 @@
 		D55CC4B221C042C2000A1C43 /* NewMultimediaCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55CC4B121C042C2000A1C43 /* NewMultimediaCVCell.swift */; };
 		D55CC4B421C042D6000A1C43 /* NewTagCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55CC4B321C042D6000A1C43 /* NewTagCVCell.swift */; };
 		D55CC4B621C05A90000A1C43 /* PlaceTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55CC4B521C05A90000A1C43 /* PlaceTVCell.swift */; };
+		D5A7710E2200D66900F49D06 /* EventAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A7710D2200D66900F49D06 /* EventAnnotation.swift */; };
 		D5BCEE7B219B60C6003428C9 /* FORButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BCEE7A219B60C5003428C9 /* FORButton.swift */; };
 		D5CAD99621A75655002D2335 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CAD99521A75655002D2335 /* Activity.swift */; };
 		D5CAD99821A761FE002D2335 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CAD99721A761FE002D2335 /* Level.swift */; };
@@ -131,6 +132,7 @@
 		D55CC4B121C042C2000A1C43 /* NewMultimediaCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMultimediaCVCell.swift; sourceTree = "<group>"; };
 		D55CC4B321C042D6000A1C43 /* NewTagCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTagCVCell.swift; sourceTree = "<group>"; };
 		D55CC4B521C05A90000A1C43 /* PlaceTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTVCell.swift; sourceTree = "<group>"; };
+		D5A7710D2200D66900F49D06 /* EventAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAnnotation.swift; sourceTree = "<group>"; };
 		D5BCEE7A219B60C5003428C9 /* FORButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FORButton.swift; sourceTree = "<group>"; };
 		D5CAD99521A75655002D2335 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		D5CAD99721A761FE002D2335 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 				D5D14663214EA882005C2FC5 /* FORView.swift */,
 				D5BCEE7A219B60C5003428C9 /* FORButton.swift */,
 				D5F198EB21AF1C9B0082DE73 /* FORAndroidTextfield.swift */,
+				D5A7710D2200D66900F49D06 /* EventAnnotation.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -838,6 +841,7 @@
 				D5D146D0214EAA45005C2FC5 /* EventTimelineVC.swift in Sources */,
 				D5D14659214EA866005C2FC5 /* Organizer.swift in Sources */,
 				D5CB94DE2149973D00009BCB /* LoginVC.swift in Sources */,
+				D5A7710E2200D66900F49D06 /* EventAnnotation.swift in Sources */,
 				D5D14644214E5060005C2FC5 /* SelectInterestsVC.swift in Sources */,
 				D5D146A6214EA971005C2FC5 /* DropDownTVCell.swift in Sources */,
 				D5D14664214EA882005C2FC5 /* FORFooterSearchResults.swift in Sources */,
@@ -995,7 +999,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LUY25X6XJ5;
 				INFOPLIST_FILE = "$(SRCROOT)/Wegaut/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1015,7 +1019,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LUY25X6XJ5;
 				INFOPLIST_FILE = "$(SRCROOT)/Wegaut/Resources/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -12,7 +12,7 @@ class NewOrganizerTVCell: UITableViewCell {
     
     //MARK: - VARIABLES
     
-    var arrOrganizers: [Organizer] = [] {
+    var arrOrganizers: [Organizer] = [Organizer.getNewOrganizer()] {
         didSet {
             cvOrganizers.reloadData()
         }
@@ -54,18 +54,9 @@ extension NewOrganizerTVCell: UICollectionViewDataSource, UICollectionViewDelega
         
         let aCell: NewOrganizerCVCell = cvOrganizers.dequeueReusableCell(withReuseIdentifier: "NewOrganizerCell",
                                                                          for: indexPath) as! NewOrganizerCVCell
+        aCell.currentOrganizer = arrOrganizers[indexPath.row]
+        aCell.layer.borderWidth = 1
+        aCell.layer.borderColor = UIColor.black.cgColor
         return aCell
     }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        
-        let aCell = cell as! NewOrganizerCVCell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        
-    }
-    
-    
 }

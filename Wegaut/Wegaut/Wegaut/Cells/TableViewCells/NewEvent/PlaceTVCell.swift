@@ -44,8 +44,8 @@ class PlaceTVCell: UITableViewCell {
             
             return
         }
-        self.lblPlaceName.text = aLocation.placemark.title
-        self.lblPlaceAddress.text = aLocation.name
+        self.lblPlaceName.text = aLocation.name
+        self.lblPlaceAddress.text = aLocation.placemark.title
     }
 
 }

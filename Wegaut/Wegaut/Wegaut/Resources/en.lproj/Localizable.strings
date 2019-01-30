@@ -45,6 +45,21 @@
 "LV_2" = "HALF";
 "LV_3" = "PRO";
 
+//MARK: - ASSISTANT TYPES
+
+"ASS_ALL" = "All";
+"ASS_PUB" = "Public";
+"ASS_INV" = "Selling Tickets";
+"ASS_TIC" = "Only by Invite";
+
+//MARK: - AGE RANGES
+
+"AGE_EVE" = "Everyone";
+"AGE_CHI" = "Childs";
+"AGE_TEE" = "Teens";
+"AGE_LEG" = "18+";
+"AGE_ADU" = "Adults";
+
 //MARK: - WELCOMEVC
 
 "WE_WELCOME"  = "Welcome!";

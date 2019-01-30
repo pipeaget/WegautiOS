@@ -26,6 +26,8 @@ class WebEventTVCell: UITableViewCell {
         
         super.awakeFromNib()
         tfEventWebURL.delegate = self
+        tfEventWebURL.returnKeyType = UIReturnKeyType.done
+        btnPreviewWebPage.isHidden = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -63,5 +65,12 @@ extension WebEventTVCell: UITextFieldDelegate {
                                         paddingUpDown: 0,
                                         paddingLeftRight: 0)
         }
+        btnPreviewWebPage.isHidden = !textField.text!.isAValidURL
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        dismissKeyboard()
+        return true
     }
 }

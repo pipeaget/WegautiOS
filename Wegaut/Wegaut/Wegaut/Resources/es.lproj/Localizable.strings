@@ -45,6 +45,21 @@
 "LV_2" = "MITAD";
 "LV_3" = "PRO";
 
+//MARK: - ASSISTANT TYPES
+
+"ASS_ALL" = "Todos";
+"ASS_PUB" = "Público";
+"ASS_INV" = "Tickets en venta";
+"ASS_TIC" = "Solo por invitación";
+
+//MARK: - AGE RANGES
+
+"AGE_EVE" = "Todos";
+"AGE_CHI" = "Niños";
+"AGE_TEE" = "Adolescentes";
+"AGE_LEG" = "18+";
+"AGE_ADU" = "Adultos";
+
 //MARK: - WELCOMEVC
 
 "WE_WELCOME"  = "¡Bienvenido!";
@@ -155,6 +170,9 @@
 "NEMI_NEXT"  = "Siguiente";
 "NEMI_PREV"  = "Anterior";
 "NEMI_FIN"   = "Finalizar";
+"NEMI_TITACCTYP" = "Selecciona un tipo de acceso:";
+"NEMI_TITAGERAN" = "Selecciona un rango de edad:";
+"NEMI_TITDATE"   = "Selecciona una fecha:";
 
 //MARK: - NEWEVENTOTHERINFOVC
 

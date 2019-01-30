@@ -235,8 +235,6 @@ extension RegisterVC: UIImagePickerControllerDelegate, UINavigationControllerDel
             userImage = selectedImage
             btnChangePhoto.setImage(userImage,
                                     for: UIControl.State.normal)
-            btnChangePhoto.setImage(UIImage(),
-                                    for: UIControl.State.normal)
             btnChangePhoto.backgroundColor = UIColor.clear
         }
         self.dismiss(animated: true,

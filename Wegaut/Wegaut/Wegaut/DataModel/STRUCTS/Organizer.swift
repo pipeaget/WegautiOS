@@ -31,6 +31,8 @@ struct Organizer {
     
     static func getNewOrganizer()-> Organizer {
         
-        return Organizer(orgName: "", orgImageURL: "", orgLocalImage: #imageLiteral(resourceName: "ICFollowBack"))
+        return Organizer(orgName: "",
+                         orgImageURL: "",
+                         orgLocalImage: #imageLiteral(resourceName: "ICFollowBack"))
     }
 }

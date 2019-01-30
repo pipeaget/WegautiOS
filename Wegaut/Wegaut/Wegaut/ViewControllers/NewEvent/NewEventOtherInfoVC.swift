@@ -23,6 +23,11 @@ class NewEventOtherInfoVC: UIViewController {
             tvEvent.reloadData()
         }
     }
+    var eventLocationPin: EventAnnotation!
+    var arrOrganizers: [Organizer]!
+    var arrSponsors: [Sponsorship]!
+    var arrMultimedia: [Multimedia]!
+    var arrTags: [Tag]!
     
     //MARK: - OUTLETS
     
@@ -49,7 +54,12 @@ class NewEventOtherInfoVC: UIViewController {
             centerMapOn(location: userLocation,
                         span: nil)
         }
+        tvEvent.allowsSelection = true
         arrLocationResults = []
+        arrOrganizers = [Organizer.getNewOrganizer()]
+        arrSponsors = [Sponsorship.getNewSponsor()]
+        arrMultimedia = [Multimedia.getDefaultMultimediaWith(type: MultimediaType.image)]
+        arrTags = Tag.getTags()
     }
     
     //MARK: - FUNCTIONS
@@ -69,11 +79,11 @@ class NewEventOtherInfoVC: UIViewController {
         localRequest.naturalLanguageQuery = query
         localRequest.region = mvEvent.region
         let search: MKLocalSearch = MKLocalSearch(request: localRequest)
-        search.start { (response, err) in
+        search.start { [weak self] (response, err) in
         
             guard let places = response else { return }
-            self.arrLocationResults = places.mapItems
-            self.tvEvent.reloadData()
+            self!.arrLocationResults = places.mapItems
+            self!.tvEvent.reloadData()
         }
     }
     
@@ -84,7 +94,7 @@ class NewEventOtherInfoVC: UIViewController {
                                                  y: 0,
                                                  width: screenSize.width,
                                                  height: 70))
-        aView.backgroundColor = UIColor.clear
+        aView.backgroundColor = UIColor.white
         
         let lblSectionTitle: UILabel = UILabel(frame: CGRect(x: 20,
                                                              y: 10,
@@ -178,7 +188,27 @@ extension NewEventOtherInfoVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return !isSearching ? 1 : arrLocationResults.count
+        return isSearching ? arrLocationResults.count : 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if isSearching {
+            
+            return 80
+        } else {
+            
+            switch indexPath.section {
+                
+            case 0:  return 78
+            case 1:  return 78
+            case 2:  return 70
+            case 3:  return 100
+            case 4:  return CGFloat(round(Double(Tag.getTags().count / 3)) * 75)
+            default: return 0
+                
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -198,7 +228,7 @@ extension NewEventOtherInfoVC: UITableViewDataSource, UITableViewDelegate {
                 return aCell
                 
             case 2:
-                let aCell: WebEventTVCell = tvEvent.dequeueReusableCell(withIdentifier: "NewEventCell",
+                let aCell: WebEventTVCell = tvEvent.dequeueReusableCell(withIdentifier: "WebURLCell",
                                                                         for: indexPath) as! WebEventTVCell
                 aCell.actOpenURL = {
                     (urlToOpen) in
@@ -221,17 +251,24 @@ extension NewEventOtherInfoVC: UITableViewDataSource, UITableViewDelegate {
             
             let aCell: PlaceTVCell = tvEvent.dequeueReusableCell(withIdentifier: "PlaceCell",
                                                                  for: indexPath) as! PlaceTVCell
+            aCell.currentPlace = arrLocationResults[indexPath.row]
             return aCell
         }
     }
     
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        /*if isSearching {
+        if isSearching {
             
-            let aCell: PlaceTVCell = cell as! PlaceTVCell
-            aCell.currentPlace = arrLocationResults [indexPath.row]
-        }*/
+            if eventLocationPin != nil {
+                mvEvent.removeAnnotation(eventLocationPin)
+            }
+            
+            self.eventLocationPin = EventAnnotation(aTitle: arrLocationResults[indexPath.row].name ?? "Wegaut",
+                                               aLocName: arrLocationResults[indexPath.row].placemark.title ?? "N/A",
+                                               aCoordinate: arrLocationResults[indexPath.row].placemark.coordinate)
+            mvEvent.addAnnotation(eventLocationPin)
+        }
     }
 }
 
@@ -254,6 +291,29 @@ extension NewEventOtherInfoVC: CLLocationManagerDelegate, MKMapViewDelegate {
         }
     }
     
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        if (annotation is MKUserLocation) { return nil}
+        
+        guard let anAnnotation = annotation as? EventAnnotation else { return nil }
+        let identifier = "marker"
+        var view: MKMarkerAnnotationView
+        if let dequedView = mvEvent.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView{
+            
+            dequedView.annotation = anAnnotation
+            view = dequedView
+        } else {
+            
+            view = MKMarkerAnnotationView(annotation: anAnnotation,
+                                          reuseIdentifier: identifier)
+            view.canShowCallout = true
+            view.calloutOffset = CGPoint(x: -5,
+                                         y: 5)
+            view.rightCalloutAccessoryView = UIButton(type: UIButton.ButtonType.detailDisclosure)
+        }
+        return view
+    }
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         
         print(error.localizedDescription)
@@ -263,7 +323,6 @@ extension NewEventOtherInfoVC: CLLocationManagerDelegate, MKMapViewDelegate {
         
         print(error.localizedDescription)
     }
-    
 }
 
 extension NewEventOtherInfoVC: SFSafariViewControllerDelegate {
@@ -272,5 +331,16 @@ extension NewEventOtherInfoVC: SFSafariViewControllerDelegate {
         
         controller.dismiss(animated: true,
                            completion: nil)
+    }
+}
+
+extension NewEventOtherInfoVC: UIScrollViewDelegate {
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        
+        if isSearching {
+            
+            dismissKeyboard()
+        }
     }
 }
