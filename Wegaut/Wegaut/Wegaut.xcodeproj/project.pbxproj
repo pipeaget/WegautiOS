@@ -22,6 +22,7 @@
 		D55CC4B621C05A90000A1C43 /* PlaceTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55CC4B521C05A90000A1C43 /* PlaceTVCell.swift */; };
 		D5A7710E2200D66900F49D06 /* EventAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A7710D2200D66900F49D06 /* EventAnnotation.swift */; };
 		D5BCEE7B219B60C6003428C9 /* FORButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5BCEE7A219B60C5003428C9 /* FORButton.swift */; };
+		D5C8BB2F22022E550028F4CB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5C8BB2E22022E550028F4CB /* MapKit.framework */; };
 		D5CAD99621A75655002D2335 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CAD99521A75655002D2335 /* Activity.swift */; };
 		D5CAD99821A761FE002D2335 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CAD99721A761FE002D2335 /* Level.swift */; };
 		D5CB94DE2149973D00009BCB /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CB94DD2149973D00009BCB /* LoginVC.swift */; };
@@ -134,6 +135,7 @@
 		D55CC4B521C05A90000A1C43 /* PlaceTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTVCell.swift; sourceTree = "<group>"; };
 		D5A7710D2200D66900F49D06 /* EventAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventAnnotation.swift; sourceTree = "<group>"; };
 		D5BCEE7A219B60C5003428C9 /* FORButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FORButton.swift; sourceTree = "<group>"; };
+		D5C8BB2E22022E550028F4CB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D5CAD99521A75655002D2335 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		D5CAD99721A761FE002D2335 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		D5CB94DD2149973D00009BCB /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5C8BB2F22022E550028F4CB /* MapKit.framework in Frameworks */,
 				FE40079A69015558E74B20D1 /* Pods_Wegaut.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -243,6 +246,7 @@
 		574611AC459D2211D9DB98D6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D5C8BB2E22022E550028F4CB /* MapKit.framework */,
 				F20B586DBD618B83A078F86C /* Pods_Wegaut.framework */,
 				70EC62B6E2DF73A38F3A4B44 /* Pods_WegautTests.framework */,
 				BAE21DFAFE1FC24330F5A26F /* Pods_WegautUITests.framework */,
@@ -497,7 +501,6 @@
 		D5D146B7214EA9C1005C2FC5 /* EventFeed */ = {
 			isa = PBXGroup;
 			children = (
-				D5D146B9214EA9D0005C2FC5 /* AddNewEventVC.swift */,
 				D5D146B8214EA9D0005C2FC5 /* EventFeedDetailVC.swift */,
 				D5D146BB214EA9D0005C2FC5 /* EventFeedVC.swift */,
 				D5D146BA214EA9D0005C2FC5 /* MoreCommentsVC.swift */,
@@ -508,6 +511,7 @@
 		D5D146C0214EA9EC005C2FC5 /* NewEvent */ = {
 			isa = PBXGroup;
 			children = (
+				D5D146B9214EA9D0005C2FC5 /* AddNewEventVC.swift */,
 				D5F198ED21B063930082DE73 /* NewEventMainInfoVC.swift */,
 				D5F198EF21B0643D0082DE73 /* NewEventOtherInfoVC.swift */,
 			);
@@ -736,6 +740,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Wegaut/Pods-Wegaut-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BRCountDownView/BRCountDownView.framework",
 				"${BUILT_PRODUCTS_DIR}/Colours/Colours.framework",
+				"${BUILT_PRODUCTS_DIR}/CropViewController/CropViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
@@ -743,6 +748,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BRCountDownView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Colours.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CropViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);

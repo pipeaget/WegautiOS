@@ -45,6 +45,7 @@ class LoginVC: UIViewController {
                                                                                 action: #selector(self.dismissKeyboard))
         self.view.addGestureRecognizer(tgrDismissKeyboard)
         tfUser.delegate = self
+        tfUser.keyboardType = UIKeyboardType.emailAddress
         tfPassword.delegate = self
         tfPassword.isSecureTextEntry = true
         lblSlogan.text = "LOG_SLO".localized

@@ -12,5 +12,6 @@ target 'Wegaut' do
     pod 'Colours'
     pod 'ReachabilitySwift'
     pod 'SDWebImage'
+    pod 'CropViewController'
 
 end

@@ -57,6 +57,13 @@ extension NewOrganizerTVCell: UICollectionViewDataSource, UICollectionViewDelega
         aCell.currentOrganizer = arrOrganizers[indexPath.row]
         aCell.layer.borderWidth = 1
         aCell.layer.borderColor = UIColor.black.cgColor
+        aCell.actNewOrganizerCellAdded = {
+            
+            aOrganizer in
+            self.arrOrganizers[indexPath.row] = aOrganizer
+            self.arrOrganizers.insert(Organizer.getNewOrganizer(),
+                                 at: 0)
+        }
         return aCell
     }
 }

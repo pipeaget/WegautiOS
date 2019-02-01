@@ -30,7 +30,7 @@ class InterestCVCell: UICollectionViewCell {
         self.layer.borderColor = UIColor.white.cgColor
         self.layer.borderWidth = 1
         guard let anInterest = currentInterest else { return }
-        imgvwInterest.get(image: anInterest.tagImage, with: anInterest.tagIsSelected ? UIColor.mediumPurple : UIColor.white)
+        imgvwInterest.get(image: anInterest.tagStateImage, with: anInterest.tagIsSelected ? UIColor.mediumPurple : UIColor.white)
         self.backgroundColor = anInterest.tagIsSelected ? UIColor.white : UIColor.clear
     }
 }

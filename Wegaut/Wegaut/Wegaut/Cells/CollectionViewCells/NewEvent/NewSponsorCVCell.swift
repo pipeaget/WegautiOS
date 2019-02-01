@@ -8,6 +8,8 @@
 
 import UIKit
 
+typealias newSponsorCellAddedAction = (Sponsorship)-> Void
+
 class NewSponsorCVCell: UICollectionViewCell {
     
     //MARK: - VARIABLES
@@ -17,7 +19,7 @@ class NewSponsorCVCell: UICollectionViewCell {
             drawCell()
         }
     }
-    var sponsorImage: UIImage?
+    var actNewSponsorCellAdded: newSponsorCellAddedAction?
     
     //MARK: - OUTLETS
     
@@ -92,15 +94,19 @@ extension NewSponsorCVCell: UIImagePickerControllerDelegate, UINavigationControl
         // Local variable inserted by Swift 4.2 migrator.
         let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
         
-        
         if let selectedImage = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage{
             
-            sponsorImage = selectedImage
-            btnSponsorImage.setImage(sponsorImage,
+            currentSponsor!.spoLocalImage = selectedImage
+            btnSponsorImage.setImage(selectedImage,
                                        for: UIControl.State.normal)
         }
         self.parentViewController?.dismiss(animated: true,
-                                           completion: nil)
+                                           completion: {
+                                            if  let anAction = self.actNewSponsorCellAdded,
+                                                let aSponsor = self.currentSponsor {
+                                                anAction(aSponsor)
+                                            }
+        })
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

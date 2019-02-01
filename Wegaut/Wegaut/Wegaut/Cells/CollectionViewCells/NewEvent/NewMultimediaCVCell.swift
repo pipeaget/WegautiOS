@@ -8,6 +8,8 @@
 
 import UIKit
 
+typealias newMultimediaCellAddedAction = (Multimedia)-> Void
+
 class NewMultimediaCVCell: UICollectionViewCell {
     
     //MARK: - VARIABLES
@@ -17,7 +19,7 @@ class NewMultimediaCVCell: UICollectionViewCell {
             drawCell()
         }
     }
-    var multimediaImage: UIImage?
+    var actNewMultimediaCellAdded: newMultimediaCellAddedAction?
     
     //MARK: - OUTLETS
     
@@ -94,12 +96,17 @@ extension NewMultimediaCVCell: UIImagePickerControllerDelegate, UINavigationCont
         
         if let selectedImage = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage{
             
-            multimediaImage = selectedImage
-            btnMultimediaImage.setImage(multimediaImage,
+            currentMultimedia!.mulLocalImage = selectedImage
+            btnMultimediaImage.setImage(selectedImage,
                                        for: UIControl.State.normal)
         }
         self.parentViewController?.dismiss(animated: true,
-                                           completion: nil)
+                                           completion: {
+                                            if  let anAction = self.actNewMultimediaCellAdded,
+                                                let aMultimedia = self.currentMultimedia {
+                                                anAction(aMultimedia)
+                                            }
+        })
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

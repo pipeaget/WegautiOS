@@ -8,6 +8,8 @@
 
 import UIKit
 
+typealias newOrganizerCellAddedAction = (Organizer)-> Void
+
 class NewOrganizerCVCell: UICollectionViewCell {
     
     //MARK: - VARIABLES
@@ -17,7 +19,7 @@ class NewOrganizerCVCell: UICollectionViewCell {
             drawCell()
         }
     }
-    var organizerImage: UIImage?
+    var actNewOrganizerCellAdded: newOrganizerCellAddedAction?
     
     //MARK: - OUTLETS
     
@@ -95,12 +97,17 @@ extension NewOrganizerCVCell: UIImagePickerControllerDelegate, UINavigationContr
         
         if let selectedImage = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage{
             
-            organizerImage = selectedImage
-            btnOrganizerImage.setImage(organizerImage,
+            currentOrganizer!.orgLocalImage = selectedImage
+            btnOrganizerImage.setImage(selectedImage,
                                        for: UIControl.State.normal)
         }
         self.parentViewController?.dismiss(animated: true,
-                     completion: nil)
+                                           completion: {
+                                            if  let anAction = self.actNewOrganizerCellAdded,
+                                                let anOrganizer = self.currentOrganizer {
+                                                anAction(anOrganizer)
+                                            }
+        })
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

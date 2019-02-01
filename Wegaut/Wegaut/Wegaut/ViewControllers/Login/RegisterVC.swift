@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CropViewController
 
 class RegisterVC: UIViewController {
     
@@ -84,6 +85,11 @@ class RegisterVC: UIViewController {
         tfEmail.delegate = self
         tfPassword.delegate = self
         tfBirthday.delegate = self
+        
+        btnChangePhoto.imageView?.contentMode = UIView.ContentMode.scaleAspectFit
+        btnChangePhoto.clipsToBounds = true
+        btnChangePhoto.imageView?.backgroundColor = UIColor.lightPurple
+        btnChangePhoto.backgroundColor = UIColor.lightPurple
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.keyboardWillShow(notification:)),
@@ -179,6 +185,16 @@ class RegisterVC: UIViewController {
                      completion: nil)
     }
     
+    func presentCropViewController(anImage: UIImage) {
+        
+        let cropVC: CropViewController = CropViewController(croppingStyle: CropViewCroppingStyle.circular,
+                                                            image: anImage)
+        cropVC.delegate = self
+        self.present(cropVC,
+                     animated: true,
+                     completion: nil)
+    }
+    
     //MARK: - ACTIONS
     
     @IBAction func actClose(_ sender: UIButton) {
@@ -208,6 +224,14 @@ class RegisterVC: UIViewController {
         })
         alert.addAction(cameraAction)
         alert.addAction(galleryAction)
+        if let anImage = userImage {
+            
+            let editAction = UIAlertAction(title: "REG_EDIT".localized,
+                                           style: UIAlertAction.Style.default) { (alertAction) -> Void in
+                                            self.presentCropViewController(anImage: anImage)
+            }
+            alert.addAction(editAction)
+        }
         alert.addAction(cancelAction)
         self.present(alert,
                      animated: true,
@@ -235,10 +259,11 @@ extension RegisterVC: UIImagePickerControllerDelegate, UINavigationControllerDel
             userImage = selectedImage
             btnChangePhoto.setImage(userImage,
                                     for: UIControl.State.normal)
-            btnChangePhoto.backgroundColor = UIColor.clear
         }
-        self.dismiss(animated: true,
-                     completion: nil)
+        self.dismiss(animated: true) {
+            guard let anImage = self.userImage else  { return }
+            self.presentCropViewController(anImage: anImage)
+        }
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -350,4 +375,16 @@ fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [U
 // Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
 	return input.rawValue
+}
+
+extension RegisterVC: CropViewControllerDelegate {
+    
+    func cropViewController(_ cropViewController: CropViewController, didCropToCircularImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
+        
+        userImage = image
+        btnChangePhoto.setImage(image,
+                                for: UIControl.State.normal)
+        cropViewController.dismiss(animated: true,
+                                   completion: nil)
+    }
 }

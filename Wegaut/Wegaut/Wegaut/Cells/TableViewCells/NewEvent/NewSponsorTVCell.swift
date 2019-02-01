@@ -23,8 +23,8 @@ class NewSponsorTVCell: UITableViewCell {
     @IBOutlet weak var cvSponsors: UICollectionView!
     
     override func awakeFromNib() {
+        
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -53,6 +53,13 @@ extension NewSponsorTVCell: UICollectionViewDataSource, UICollectionViewDelegate
         aCell.currentSponsor = arrSponsors[indexPath.row]
         aCell.layer.borderWidth = 1
         aCell.layer.borderColor = UIColor.black.cgColor
+        aCell.actNewSponsorCellAdded = {
+            
+            aSponsor in
+            self.arrSponsors[indexPath.row] = aSponsor
+            self.arrSponsors.insert(Sponsorship.getNewSponsor(),
+                                      at: 0)
+        }
         return aCell
     }
 }

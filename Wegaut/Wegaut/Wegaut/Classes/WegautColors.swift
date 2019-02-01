@@ -26,6 +26,14 @@ extension UIColor {
                        alpha: 1)
     }
     
+    class var lightPurple: UIColor {
+        
+        return UIColor(red: 84/255,
+                       green: 25/255,
+                       blue: 127/255,
+                       alpha: 1)
+    }
+    
     class var blackPurple: UIColor {
         
         return UIColor(red: 64/255,

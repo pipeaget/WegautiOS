@@ -27,11 +27,11 @@ struct Multimedia {
     var mulDate: String
     var mulIsFavorite: Bool
     
-    static func getDefaultMultimediaWith(type: MultimediaType)-> Multimedia {
+    static func getDefaultMultimedia()-> Multimedia {
         
-        return Multimedia(mulMediaType: type,
+        return Multimedia(mulMediaType: MultimediaType.image,
                           mulImageURL: nil,
-                          mulLocalImage: nil,
+                          mulLocalImage: #imageLiteral(resourceName: "ICFollow"),
                           mulVideoURL: nil,
                           mulLocalVideo: nil,
                           mulURL: nil,

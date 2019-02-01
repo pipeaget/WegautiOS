@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C35635CE450737501DDED263452C11B8"
+               BlueprintIdentifier = "604F97E97380768FCA6AE2AF8CEFDF53"
                BuildableName = "Pods_Wegaut.framework"
                BlueprintName = "Pods-Wegaut"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C35635CE450737501DDED263452C11B8"
+            BlueprintIdentifier = "604F97E97380768FCA6AE2AF8CEFDF53"
             BuildableName = "Pods_Wegaut.framework"
             BlueprintName = "Pods-Wegaut"
             ReferencedContainer = "container:Pods.xcodeproj">

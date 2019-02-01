@@ -11,23 +11,29 @@ import MapKit
 import CoreLocation
 import SafariServices
 
+typealias validateOtherInfoAction = (Bool)-> Void
+
 class NewEventOtherInfoVC: UIViewController {
 
     //MARK: - VARIABLES
     
     var lmUserLocation: CLLocationManager!
     var arrLocationResults: [MKMapItem]!
-    var pmEventPlace: MKPlacemark?
     var isSearching: Bool = false {
         didSet {
+            tvEvent.allowsSelection = isSearching
             tvEvent.reloadData()
         }
     }
-    var eventLocationPin: EventAnnotation!
+    var eventAnnotation = MKPointAnnotation()
     var arrOrganizers: [Organizer]!
     var arrSponsors: [Sponsorship]!
     var arrMultimedia: [Multimedia]!
     var arrTags: [Tag]!
+    var canFinishProcess: Bool = false
+    var actValidateOtherInfo: validateOtherInfoAction?
+    var eventURL: String?
+    var eventPlace: String?
     
     //MARK: - OUTLETS
     
@@ -40,6 +46,8 @@ class NewEventOtherInfoVC: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        sbEventAddress.barTintColor = UIColor.deepPurple
+        sbEventAddress.tintColor = UIColor.white
         sbEventAddress.placeholder = "NEOI_SB".localized
         sbEventAddress.showsCancelButton = true
         sbEventAddress.delegate = self
@@ -54,12 +62,11 @@ class NewEventOtherInfoVC: UIViewController {
             centerMapOn(location: userLocation,
                         span: nil)
         }
-        tvEvent.allowsSelection = true
         arrLocationResults = []
         arrOrganizers = [Organizer.getNewOrganizer()]
         arrSponsors = [Sponsorship.getNewSponsor()]
-        arrMultimedia = [Multimedia.getDefaultMultimediaWith(type: MultimediaType.image)]
-        arrTags = Tag.getTags()
+        arrMultimedia = [Multimedia.getDefaultMultimedia()]
+        arrTags = []
     }
     
     //MARK: - FUNCTIONS
@@ -85,6 +92,14 @@ class NewEventOtherInfoVC: UIViewController {
             self!.arrLocationResults = places.mapItems
             self!.tvEvent.reloadData()
         }
+    }
+    
+    func addPin(aLocation: MKMapItem) {
+        
+        eventAnnotation.coordinate = aLocation.placemark.coordinate
+        eventAnnotation.title = aLocation.name
+        mvEvent.addAnnotation(eventAnnotation)
+        mvEvent.showAnnotations(mvEvent.annotations, animated: true)
     }
     
     func getHeaderForSection(currentSection: Int)-> UIView{
@@ -138,7 +153,15 @@ class NewEventOtherInfoVC: UIViewController {
         safariVC.delegate = self
     }
     
-    //MARK: - ACTIONS
+    func validateEventInfo() {
+        
+        canFinishProcess = (eventPlace != nil && arrTags.count > 0 && eventURL != nil)
+        if canFinishProcess {
+            if let anAction = self.actValidateOtherInfo {
+                anAction(true)
+            }
+        }
+    }
 }
 
 //MARK: - EXTENSIONS
@@ -260,14 +283,11 @@ extension NewEventOtherInfoVC: UITableViewDataSource, UITableViewDelegate {
         
         if isSearching {
             
-            if eventLocationPin != nil {
-                mvEvent.removeAnnotation(eventLocationPin)
-            }
-            
-            self.eventLocationPin = EventAnnotation(aTitle: arrLocationResults[indexPath.row].name ?? "Wegaut",
-                                               aLocName: arrLocationResults[indexPath.row].placemark.title ?? "N/A",
-                                               aCoordinate: arrLocationResults[indexPath.row].placemark.coordinate)
-            mvEvent.addAnnotation(eventLocationPin)
+            addPin(aLocation: arrLocationResults[indexPath.row])
+            isSearching = false
+            eventPlace = arrLocationResults[indexPath.row].name
+            validateEventInfo()
+            dismissKeyboard()
         }
     }
 }
@@ -289,29 +309,6 @@ extension NewEventOtherInfoVC: CLLocationManagerDelegate, MKMapViewDelegate {
             centerMapOn(location: currentLocation.coordinate,
                         span: nil)
         }
-    }
-    
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
-        if (annotation is MKUserLocation) { return nil}
-        
-        guard let anAnnotation = annotation as? EventAnnotation else { return nil }
-        let identifier = "marker"
-        var view: MKMarkerAnnotationView
-        if let dequedView = mvEvent.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView{
-            
-            dequedView.annotation = anAnnotation
-            view = dequedView
-        } else {
-            
-            view = MKMarkerAnnotationView(annotation: anAnnotation,
-                                          reuseIdentifier: identifier)
-            view.canShowCallout = true
-            view.calloutOffset = CGPoint(x: -5,
-                                         y: 5)
-            view.rightCalloutAccessoryView = UIButton(type: UIButton.ButtonType.detailDisclosure)
-        }
-        return view
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

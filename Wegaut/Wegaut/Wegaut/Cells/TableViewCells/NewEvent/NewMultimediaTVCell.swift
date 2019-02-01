@@ -12,7 +12,7 @@ class NewMultimediaTVCell: UITableViewCell {
 
     //MARK: - VARIABLES
     
-    var arrMultimedia: [Multimedia] = [Multimedia.getDefaultMultimediaWith(type: MultimediaType.image)] {
+    var arrMultimedia: [Multimedia] = [Multimedia.getDefaultMultimedia()] {
         didSet {
             cvMultimedia.reloadData()
         }
@@ -56,6 +56,13 @@ extension NewMultimediaTVCell: UICollectionViewDataSource, UICollectionViewDeleg
         aCell.currentMultimedia = arrMultimedia[indexPath.row]
         aCell.layer.borderWidth = 1
         aCell.layer.borderColor = UIColor.black.cgColor
+        aCell.actNewMultimediaCellAdded = {
+            
+            aMultimedia in
+            self.arrMultimedia[indexPath.row] = aMultimedia
+            self.arrMultimedia.insert(Multimedia.getDefaultMultimedia(),
+                                      at: 0)
+        }
         return aCell
     }
 }

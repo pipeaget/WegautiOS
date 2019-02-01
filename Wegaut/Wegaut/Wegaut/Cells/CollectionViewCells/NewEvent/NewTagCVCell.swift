@@ -20,21 +20,15 @@ class NewTagCVCell: UICollectionViewCell {
     
     //MARK: - OUTLETS
     
-    @IBOutlet weak var btnTagImage: UIButton!
+    @IBOutlet weak var imgvwTag: UIImageView!
     
     //MARK: - FUNCTIONS
     
     func drawCell() {
-        guard let aTag = currentTag else { return }
-        btnTagImage.setImage(aTag.tagImage,
-                                    for: UIControl.State.normal)
-    }
-    
-    //MARK: - ACTIONS
-    
-    @IBAction func actSelectDeselectTag(_ sender: UIButton) {
         
-        guard var aTag = currentTag else { return }
-        aTag.tagIsSelected = !aTag.tagIsSelected
+        self.layer.cornerRadius = self.frame.width / 2
+        guard let aTag = currentTag else { return }
+        imgvwTag.image = aTag.tagStateImage
+        self.backgroundColor = aTag.tagIsSelected ? UIColor.white : UIColor.lightPurple
     }
 }

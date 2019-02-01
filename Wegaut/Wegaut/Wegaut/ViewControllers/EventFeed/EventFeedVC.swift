@@ -12,12 +12,14 @@ class EventFeedVC: UIViewController {
     
     //MARK: - VARIABLES
     
-    var arrEvents: [Event]! {
+    var arrEvents: [Event]!
+    var arrFilteredEvents: [Event]!
+    var selectedEvent: Event!
+    var isSearching: Bool = false {
         didSet {
             tvFeed.reloadData()
         }
     }
-    var selectedEvent: Event!
     
     //MARK: - OUTLETS
     
@@ -39,8 +41,10 @@ class EventFeedVC: UIViewController {
         
         super.viewDidLoad()
         sbEvents.barTintColor = UIColor.deepPurple
+        sbEvents.tintColor = UIColor.white
         sbEvents.placeholder = "EVF_SEARCH".localized
         arrEvents = Event.getEvents()
+        arrFilteredEvents = []
         self.addImageLogoToNavBar()
     }
 
@@ -62,6 +66,11 @@ class EventFeedVC: UIViewController {
     
     //MARK: - FUNCTIONS
     
+    func updateSearchResults(searchText: String) {
+        
+        arrFilteredEvents =  arrEvents.filter{$0.eveName.lowercased().contains(searchText.lowercased())}
+        tvFeed.reloadData()
+    }
     
     //MARK: - ACTIONS
 
@@ -71,7 +80,7 @@ extension EventFeedVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return arrEvents.count
+        return isSearching ? arrFilteredEvents.count : arrEvents.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -83,24 +92,25 @@ extension EventFeedVC: UITableViewDataSource, UITableViewDelegate {
         
         let aCell: EventFeedTVCell = tableView.dequeueReusableCell(withIdentifier: "EventFeedCell",
                                                                    for: indexPath) as! EventFeedTVCell
+        aCell.currentEvent = isSearching ? arrFilteredEvents[indexPath.row] : arrEvents[indexPath.row]
         return aCell
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-        let aCell: EventFeedTVCell = cell as! EventFeedTVCell
-        aCell.currentEvent = arrEvents[indexPath.row]
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        selectedEvent = arrEvents[indexPath.row]
+        selectedEvent = isSearching ? arrFilteredEvents[indexPath.row] : arrEvents[indexPath.row]
         self.performSegue(withIdentifier: "ShowDetail",
                           sender: nil)
     }
 }
 
 extension EventFeedVC: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        isSearching = searchBar.text != "" ? true : false
+        updateSearchResults(searchText: searchText)
+    }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
@@ -109,6 +119,7 @@ extension EventFeedVC: UISearchBarDelegate {
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         
+        isSearching = false
         self.dismissKeyboard()
     }
 }

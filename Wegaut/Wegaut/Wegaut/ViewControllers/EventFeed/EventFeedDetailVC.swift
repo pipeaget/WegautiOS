@@ -302,7 +302,7 @@ extension EventFeedDetailVC: UITableViewDataSource, UITableViewDelegate{
             
         case 4:
             let aCell: MultimediaTVCell = cell as! MultimediaTVCell
-            aCell.currentMultimedia = [Multimedia.getDefaultMultimediaWith(type: MultimediaType.image)]
+            aCell.currentMultimedia = [Multimedia.getDefaultMultimedia()]
             
         default:
             let aCell: OrganizersTVCell = cell as! OrganizersTVCell

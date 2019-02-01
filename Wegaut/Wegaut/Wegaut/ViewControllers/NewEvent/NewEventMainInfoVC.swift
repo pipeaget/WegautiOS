@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import CropViewController
+
+typealias validateMainInfoAction = (Bool)-> Void
 
 class NewEventMainInfoVC: UIViewController {
     
@@ -16,11 +19,12 @@ class NewEventMainInfoVC: UIViewController {
     var activeField: UITextField?
     var keyBoardHeight: CGFloat = 0
     var eventImage: UIImage?
+    var canProceedToOtherInfo: Bool = false
+    var actValidateMainInfo: validateMainInfoAction?
     
     //MARK: - OUTLETS
     
     @IBOutlet weak var svContainer: UIScrollView!
-    @IBOutlet weak var imgvwEventImage: UIImageView!
     @IBOutlet weak var btnNewImage: UIButton!
     @IBOutlet weak var ccEventName: FORAndroidTextfield!
     @IBOutlet weak var ccEventAccesType: FORAndroidTextfield!
@@ -57,7 +61,10 @@ class NewEventMainInfoVC: UIViewController {
         
         lblDescriptionCount.text = "0/250"
         
-        btnNewImage.contentMode = UIView.ContentMode.scaleAspectFill
+        btnNewImage.imageView?.contentMode = UIView.ContentMode.scaleAspectFit
+        btnNewImage.clipsToBounds = true
+        btnNewImage.imageView?.backgroundColor = UIColor.lightPurple
+        btnNewImage.backgroundColor = UIColor.lightPurple
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.keyboardWillShow(notification:)),
@@ -148,6 +155,25 @@ class NewEventMainInfoVC: UIViewController {
                      completion: nil)
     }
     
+    func presentCropViewController(anImage: UIImage) {
+        
+        let cropVC: CropViewController = CropViewController(image: anImage)
+        cropVC.delegate = self
+        self.present(cropVC,
+                     animated: true,
+                     completion: nil)
+    }
+    
+    func validateEventInfo() {
+        
+        canProceedToOtherInfo = (eventImage != nil && ccEventName.tfInput.text!.count > 4 && ccEventAccesType.tfInput.text!.count > 2 && ccEventAgeRange.tfInput.text!.count > 2 && ccEventDate.tfInput.text!.count > 2 && txtvwEventDescription.text.count > 10)
+        if canProceedToOtherInfo {
+            if let anAction = self.actValidateMainInfo {
+                anAction(true)
+            }
+        }
+    }
+    
     //MARK: - ACTIONS
 
     @IBAction func actNewImage(_ sender: UIButton) {
@@ -172,6 +198,14 @@ class NewEventMainInfoVC: UIViewController {
         })
         alert.addAction(cameraAction)
         alert.addAction(galleryAction)
+        if let anImage = eventImage {
+            
+            let editAction = UIAlertAction(title: "REG_EDIT".localized,
+                                           style: UIAlertAction.Style.default) { (alertAction) -> Void in
+                                            self.presentCropViewController(anImage: anImage)
+            }
+            alert.addAction(editAction)
+        }
         alert.addAction(cancelAction)
         self.present(alert,
                      animated: true,
@@ -192,9 +226,12 @@ extension NewEventMainInfoVC: UIImagePickerControllerDelegate, UINavigationContr
             btnNewImage.setImage(eventImage,
                                     for: UIControl.State.normal)
             btnNewImage.backgroundColor = UIColor.clear
+            validateEventInfo()
         }
-        self.dismiss(animated: true,
-                     completion: nil)
+        self.dismiss(animated: true) {
+            guard let anImage = self.eventImage else  { return }
+            self.presentCropViewController(anImage: anImage)
+        }
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -256,6 +293,7 @@ extension NewEventMainInfoVC: UITextFieldDelegate {
                     
                     popUpAlert.dismiss(animated: true)
                 }
+                self.validateEventInfo()
             }
             popUpAlert.show(animated: true)
             return false
@@ -279,6 +317,7 @@ extension NewEventMainInfoVC: UITextFieldDelegate {
                     
                     popUpAlert.dismiss(animated: true)
                 }
+                self.validateEventInfo()
             }
             popUpAlert.show(animated: true)
             return false
@@ -302,6 +341,7 @@ extension NewEventMainInfoVC: UITextFieldDelegate {
                 
                 aBool in
                 popUpAlert.dismiss(animated: true)
+                self.validateEventInfo()
             }
             popUpAlert.show(animated: true)
             return false
@@ -351,6 +391,7 @@ extension NewEventMainInfoVC: UITextFieldDelegate {
         default:
             break
         }
+        validateEventInfo()
     }
 }
 
@@ -423,4 +464,24 @@ fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [U
 // Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
     return input.rawValue
+}
+
+extension NewEventMainInfoVC: CropViewControllerDelegate {
+    
+    func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
+        
+        eventImage = image
+        btnNewImage.setImage(eventImage,
+                                for: UIControl.State.normal)
+        cropViewController.dismiss(animated: true,
+                                   completion: nil)
+    }
+}
+
+extension NewEventMainInfoVC: UIScrollViewDelegate {
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        
+        dismissKeyboard()
+    }
 }

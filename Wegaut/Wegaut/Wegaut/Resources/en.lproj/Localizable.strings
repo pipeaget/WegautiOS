@@ -38,6 +38,7 @@
 "TAG_GAM" = "Games";
 "TAG_HEA" = "Health";
 "TAG_GAR" = "Gardening";
+"TAG_MUS" = "Music";
 
 //MARK: - LEVELS
 
@@ -104,6 +105,7 @@
 "REG_CANCEL"    = "Cancel";
 "REG_CAMERA"    = "Camera";
 "REG_GALLERY"   = "Gallery";
+"REG_EDIT"      = "Edit";
 
 //MARK: - SELECTINTERESTSVC
 
