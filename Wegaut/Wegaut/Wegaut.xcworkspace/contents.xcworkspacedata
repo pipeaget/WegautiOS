@@ -7,4 +7,7 @@
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Wegaut/DataModel/STRUCTS/../../../Comment.swift">
+   </FileRef>
 </Workspace>

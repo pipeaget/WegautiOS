@@ -10,26 +10,58 @@ import UIKit
 
 enum activityType {
     
+    //FOLLOW
     case newFollower
     case newFollowing
+    
     case newLevel
-    case favouritedEvent
-    case goingEvent
-    case sharedEvent
+    
+    //EVENT
+    case newEvent
+    
+    var description: String {
+        
+        switch self {
+            
+        case .newFollower:  return "NOT_FOLLOW".localized
+        case .newFollowing: return "NOT_FLWING".localized
+        case .newLevel:     return "".localized
+        case .newEvent:     return "".localized
+            
+        }
+    }
 }
 
 struct Activity {
     
     var actTitle: String
     var actType: activityType
-    var actUser: User
+    var actUser: User?
     var actEvent: Event?
     var actDate: String
+    
+    static func getNotificationFollowerType(aNotification: Activity)-> activityType {
+        
+        if let aUser = aNotification.actUser {
+            
+            if User.getFollowers().contains(where: {$0.usEmail == aUser.usEmail}) && User.getFollowing().contains(where: {$0.usEmail == aUser.usEmail}) {
+                
+                return activityType.newFollowing
+            } else if User.getFollowers().contains(where: {$0.usEmail == aUser.usEmail}){
+                
+                return activityType.newFollower
+            }
+        } else if let _ = aNotification.actEvent {
+            
+            return activityType.newLevel
+        }
+        return activityType.newLevel
+    }
     
     static func getActivities()-> [Activity] {
         
         return [Activity(actTitle: "",
-                         actType: activityType.goingEvent,
+                         actType: activityType.newEvent,
                          actUser: User(usName: "Emma Roberts",
                                        usEmail: "example@example.com",
                                        usFirstName: "Emma",
@@ -47,7 +79,7 @@ struct Activity {
                                        usSharedEvents: [],
                                        usActivities: [],
                                        usTags: []),
-                         actEvent: Event(eveImageURL: "Concurso de videojuegos",
+                         actEvent: Event(eveImageURL: "https://www.videojuegosmx.com/VJMXConcurso18-V4-VJMX.png",
                                          eveName: "Concurso de videojuegos",
                                          evePlace: "Cinemex Antara",
                                          eveAddress: "Ejercito Nacional No. 843 - B Col. Granada, 11520 Miguel Hidalgo, CDMX",
@@ -57,7 +89,6 @@ struct Activity {
                                          evePrice: "General $900 | VIP $1,250",
                                          eveDescription: "Concurso de videojuegos", eveStatus: true,
                                          eveTags: [],
-                                         eveAssitants: [],
                                          evePublications: Publication.getPublications(),
                                          eveComments: [],
                                          eveMultimedia: [],
@@ -105,7 +136,6 @@ struct Activity {
                                          evePrice: "General $900 | VIP $1,250",
                                          eveDescription: "Concurso de videojuegos", eveStatus: true,
                                          eveTags: [],
-                                         eveAssitants: [],
                                          evePublications: Publication.getPublications(),
                                          eveComments: [],
                                          eveMultimedia: [],
@@ -125,7 +155,7 @@ struct Activity {
                                          eveFollowers: []),
                          actDate: "03:02 PM | 13/09/2018"),
                 Activity(actTitle: "Master Chief Class",
-                         actType: activityType.sharedEvent,
+                         actType: activityType.newEvent,
                          actUser: User(usName: "Emma Watson",
                                        usEmail: "example@example.com",
                                        usFirstName: "Emma",
@@ -143,7 +173,7 @@ struct Activity {
                                        usSharedEvents: [],
                                        usActivities: [],
                                        usTags: []),
-                         actEvent: Event(eveImageURL: "Master Chief Class",
+                         actEvent: Event(eveImageURL: "https://news.alistguide.com.au/wp-content/uploads/2015/06/image.jpg",
                                          eveName: "Master Chief Class",
                                          evePlace: "Cinemex Antara",
                                          eveAddress: "Ejercito Nacional No. 843 - B Col. Granada, 11520 Miguel Hidalgo, CDMX",
@@ -153,7 +183,6 @@ struct Activity {
                                          evePrice: "General $900 | VIP $1,250",
                                          eveDescription: "Master Chief Class", eveStatus: true,
                                          eveTags: [],
-                                         eveAssitants: [],
                                          evePublications: Publication.getPublications(),
                                          eveComments: [],
                                          eveMultimedia: [],
@@ -178,7 +207,7 @@ struct Activity {
                          actEvent: nil,
                          actDate: "03:02 PM | 12/09/2018"),
                 Activity(actTitle: "Concurso de videojuegos",
-                         actType: activityType.sharedEvent,
+                         actType: activityType.newEvent,
                          actUser: User(usName: "Emma Roberts",
                                        usEmail: "example@example.com",
                                        usFirstName: "Emma",
@@ -196,7 +225,7 @@ struct Activity {
                                        usSharedEvents: [],
                                        usActivities: [],
                                        usTags: []),
-                         actEvent: Event(eveImageURL: "Concurso de videojuegos",
+                         actEvent: Event(eveImageURL: "https://www.videojuegosmx.com/VJMXConcurso18-V4-VJMX.png",
                                          eveName: "Concurso de videojuegos",
                                          evePlace: "Cinemex Antara",
                                          eveAddress: "Ejercito Nacional No. 843 - B Col. Granada, 11520 Miguel Hidalgo, CDMX",
@@ -206,7 +235,6 @@ struct Activity {
                                          evePrice: "General $900 | VIP $1,250",
                                          eveDescription: "Concurso de videojuegos", eveStatus: true,
                                          eveTags: [],
-                                         eveAssitants: [],
                                          evePublications: Publication.getPublications(),
                                          eveComments: [],
                                          eveMultimedia: [],

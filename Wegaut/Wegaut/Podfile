@@ -13,5 +13,7 @@ target 'Wegaut' do
     pod 'ReachabilitySwift'
     pod 'SDWebImage'
     pod 'CropViewController'
+    pod 'Firebase/Core'
+    pod 'Firebase/Auth'
 
 end

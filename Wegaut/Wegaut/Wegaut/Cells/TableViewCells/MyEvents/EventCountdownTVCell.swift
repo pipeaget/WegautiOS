@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import BRCountDownView
 
 class EventCountdownTVCell: UITableViewCell {
     
@@ -18,7 +19,7 @@ class EventCountdownTVCell: UITableViewCell {
             drawCell()
         }
     }
-    /*lazy var countdownView: BRCountDownView = {
+    lazy var countdownView: BRCountDownView = {
         let countdownView = BRCountDownView(timeSeconds: 100000)
         countdownView.animationStyle = .slideInFromBottom
         
@@ -92,7 +93,7 @@ class EventCountdownTVCell: UITableViewCell {
         }
         
         return countdownView
-    }()*/
+    }()
     
     //MARK: - OUTLETS
     
@@ -120,35 +121,28 @@ class EventCountdownTVCell: UITableViewCell {
     func drawCell(){
         
         guard let anEvent: Event = currentEvent else{
-           
+            
             return
         }
         /*if let anURL = URL(string: anEvent.eveImageURL){
-            
-            imgvwEvent.sd_setImage(with: anURL,
-                                   placeholderImage: #imageLiteral(resourceName: "BGLogo"),
-                                   options: SDWebImageOptions.highPriority,
-                                   completed: nil)
-        }*/
+         
+         imgvwEvent.sd_setImage(with: anURL,
+         placeholderImage: #imageLiteral(resourceName: "BGLogo"),
+         options: SDWebImageOptions.highPriority,
+         completed: nil)
+         }*/
         imgvwEvent.image = UIImage(named: anEvent.eveImageURL)
         imgvwEvent.clipsToBounds = true
         lblEventName.text = anEvent.eveName
-        let strAddress: NSMutableAttributedString = NSMutableAttributedString(string: anEvent.eveAddress)
-        lblEventAddress.attributedText = strAddress.getStringWith(anImage: #imageLiteral(resourceName: "ICAddress"),
-                                                                  isInLeftPosition: true,
-                                                                  currentFont: UIFont.systemFont(ofSize: 8))
+        lblEventAddress.text = anEvent.eveAddress
         lblEventDate.text = anEvent.eveDate
-        
-        /*vwTimer.
-        
-        countdownView.layer.borderWidth = 1.0
-        countdownView.layer.borderColor = UIColor.black.cgColor
         
         // get center.
         countdownView.frame = CGRect(x: 0,
                                      y: 0,
                                      width: 189,
                                      height: 74)
-        self.vwTimer.addSubview(countdownView)*/
+        countdownView.isUserInteractionEnabled = false
+        self.vwTimer.addSubview(countdownView)
     }
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import CropViewController
+import FirebaseAuth
 
 class RegisterVC: UIViewController {
     
@@ -244,6 +245,26 @@ class RegisterVC: UIViewController {
                                   forKey: WegautConstants.IS_USER_LOGGED)
         self.performSegue(withIdentifier: "showInterests",
                           sender: nil)
+        
+        /*if tfEmail.text!.isAValidEmail && tfPassword.text!.count > 6 {
+            
+            Auth.auth().createUser(withEmail: tfEmail.text!,
+                                   password: tfPassword.text!) { (authResult, error) in
+                                    
+                                    if let anError = error {
+                                        
+                                        print(anError.localizedDescription)
+                                    } else {
+                                        
+                                        print("Welcome \(authResult!.user.email)!!!")
+                                        
+                                    }
+            }
+            
+        } else {
+            
+            //HANDLE INPUT DATA
+        }*/
     }
 }
 

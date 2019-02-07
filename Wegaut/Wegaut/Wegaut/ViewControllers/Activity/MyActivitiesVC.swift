@@ -12,16 +12,25 @@ class MyActivitiesVC: UIViewController {
     
     //MARK: - VARIABLES
     
-    var arrActivities: [Activity]!
+    var arrActivities: [Activity]! {
+        didSet {
+            updateSubActivities()
+        }
+    }
     var arrTodayActivities: [Activity]!
     var arrYesterdayActivities: [Activity]!
     var arrFilteredActivities: [Activity]!
     var selectedActivity: Activity!
+    var isSearching: Bool = false {
+        didSet {
+            tvActivities.reloadData()
+        }
+    }
     
     //MARK: - OUTLETS
     
     @IBOutlet weak var tvActivities: UITableView!
-    var scSearchActivities: UISearchController!
+    @IBOutlet weak var sbActivities: UISearchBar!
     var vwSearchFooter: FORFooterSearchResults!
     var rcActivities: UIRefreshControl!
     
@@ -34,27 +43,25 @@ class MyActivitiesVC: UIViewController {
         arrTodayActivities = []
         arrYesterdayActivities = []
         arrFilteredActivities = []
-        definesPresentationContext = true
         getActivities()
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.navigationBar.isHidden = false
+        sbActivities.delegate = self
+        sbActivities.showsCancelButton = true
     }
 
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        addSearchBar()
+        sbActivities.barTintColor = UIColor.deepPurple
+        sbActivities.tintColor = UIColor.white
+        sbActivities.placeholder = "EVF_SEARCH".localized
         tvActivities.rowHeight = UITableView.automaticDimension
-        tvActivities.clearsContextBeforeDrawing = true
-        vwSearchFooter = FORFooterSearchResults(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 64))
+        vwSearchFooter = FORFooterSearchResults(frame: CGRect(x: 0,
+                                                              y: 0,
+                                                              width: UIScreen.main.bounds.width,
+                                                              height: 64))
         addRefreshControlToTableView()
-        if #available(iOS 11.0, *){
-            
-            navigationItem.searchController = scSearchActivities
-        }else{
-            
-            tvActivities.tableHeaderView = scSearchActivities.searchBar
-        }
         self.addImageLogoToNavBar()
     }
 
@@ -67,39 +74,35 @@ class MyActivitiesVC: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        //TODO: MANAGE EACH CELL TYPE
+        if segue.identifier == "ShowEvent" {
+            
+            let destinationVC: EventFeedDetailVC = segue.destination as! EventFeedDetailVC
+            destinationVC.currentEvent = selectedActivity.actEvent
+        } else if segue.identifier == "ShowProfile" {
+            
+            let destinationVC: ProfileVC =  segue.destination as! ProfileVC
+            destinationVC.userData = selectedActivity.actUser
+        }
     }
     
     //MARK: - FUNCTIONS
     
-    func addSearchBar(){
+    func updateSubActivities() {
         
-    tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
-        tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.black], for: .selected)
-        scSearchActivities = UISearchController(searchResultsController: nil)
-        scSearchActivities.searchResultsUpdater = self
-        scSearchActivities.searchBar.backgroundColor = UIColor.deepPurple
-        scSearchActivities.obscuresBackgroundDuringPresentation = false
-        scSearchActivities.searchBar.placeholder = "EVF_SEARCH".localized
-        scSearchActivities.searchBar.tintColor = UIColor.white
-        scSearchActivities.searchBar.scopeButtonTitles = ["NOT_NAME".localized, "NOT_USER".localized]
-        scSearchActivities.searchBar.barStyle = UIBarStyle.black
-        if let textfield = scSearchActivities.searchBar.value(forKey: "searchField") as? UITextField {
-            textfield.textColor = UIColor.mediumPurple
-            if let backgroundview = textfield.subviews.first {
-                backgroundview.backgroundColor = UIColor.white
-                backgroundview.layer.cornerRadius = 10;
-                backgroundview.clipsToBounds = true;
-            }
-        }
-        scSearchActivities.searchBar.delegate = self
-    }
-    
-    @objc func getActivities(){
-        
-        arrActivities = Activity.getActivities()
         arrTodayActivities = arrActivities.filter{$0.actDate == "03:02 PM | 13/09/2018"}
         arrYesterdayActivities = arrActivities.filter{$0.actDate != "03:02 PM | 13/09/2018"}
+    }
+    
+    func updateSearchResults(searchText: String) {
+        
+        arrFilteredActivities = arrActivities.filter{$0.actTitle.lowercased().contains(searchText.lowercased())}
+        tvActivities.reloadData()
+    }
+    
+    @objc func getActivities() {
+        
+        arrActivities = Activity.getActivities()
+        updateSubActivities()
         if self.rcActivities != nil{
             self.rcActivities.endRefreshing()
         }
@@ -114,50 +117,31 @@ class MyActivitiesVC: UIViewController {
         tvActivities.addSubview(rcActivities)
     }
     
-    /// Used to validate the searchbar text.
-    ///
-    /// - Returns: If the text is empty returns a TRUE; otherwise a FALSE.
-    func searchBarIsEmpty()->Bool{
+    func showEvent() {
         
-        return scSearchActivities.searchBar.text?.isEmpty ?? true
+        self.performSegue(withIdentifier: "ShowEvent",
+                          sender: nil)
     }
     
-    /// Used to update the arrFilteredBanks according to the searchBar text (comparison is case sensitive).
-    ///
-    /// - Parameters:
-    ///   - searchText: The search you want to search in the banks.
-    func filterContentForSearchText(_ searchText: String, scope:String) {
+    func changeFollowType(indexPath: IndexPath)-> [Activity] {
         
-        switch scope{
+        var arrToReturn: [Activity] = arrActivities
+        if arrToReturn[indexPath.row].actType == activityType.newFollower {
             
-        case "NOT_NAME".localized:
-            arrFilteredActivities = arrActivities.filter{$0.actTitle.lowercased().contains(searchText.lowercased())}
-            break
+            arrToReturn[indexPath.row].actType = activityType.newFollowing
             
-        case "NOT_USER".localized:
-            arrFilteredActivities = arrActivities.filter{User.getUserCompleteName(user: $0.actUser).lowercased().contains(searchText.lowercased())}
-            break
+        } else {
             
-        default:
-            break
+            arrToReturn[indexPath.row].actType = activityType.newFollower
         }
-        tvActivities.reloadData()
+        return arrToReturn
     }
     
-    /// Used to verify if the UISearchController is active
-    ///
-    /// - Returns: If the UISearchController is in use returns a TRUE; otherwise FALSE.
-    func isFiltering()->Bool{
+    func showFollow() {
         
-        if scSearchActivities != nil{
-            
-            return scSearchActivities.isActive && !searchBarIsEmpty()
-        }
-        return false
+        self.performSegue(withIdentifier: "ShowProfile",
+                          sender: nil)
     }
-    
-    //MARK: - ACTIONS
-
 }
 
 //MARK: - EXTENSIONS
@@ -166,7 +150,7 @@ extension MyActivitiesVC: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        if (arrActivities.count == 0){
+        if arrActivities.count == 0 {
             
             let screenSize:CGSize = UIScreen.main.bounds.size
             
@@ -184,7 +168,7 @@ extension MyActivitiesVC: UITableViewDataSource, UITableViewDelegate{
             vwHeader.addSubview(lblTitle)
             
             return vwHeader
-        } else {
+        } else if !isSearching  {
             
             let screenSize: CGRect = UIScreen.main.bounds
             let aView: UIView = UIView(frame: CGRect(x: 0,
@@ -206,64 +190,88 @@ extension MyActivitiesVC: UITableViewDataSource, UITableViewDelegate{
             aView.addSubview(lblTitle)
             return aView
         }
+        return nil
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        if (arrActivities.count == 0){
+        if arrActivities.count == 0 {
             
             return 50
+        } else if !isSearching {
+            
+            return 30
         }
-        return 30
+        return 0
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        return 2
+        return isSearching ? 1 : 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        isFiltering() ? vwSearchFooter.setIsFilteringToShow(filteredItemCount: arrFilteredActivities.count, of: arrActivities.count) : vwSearchFooter.setNotFiltering()
-        return isFiltering() ? arrFilteredActivities.count : getActivitiesForSection(section: section)
+        isSearching ? vwSearchFooter.setIsFilteringToShow(filteredItemCount: arrFilteredActivities.count, of: arrActivities.count) : vwSearchFooter.setNotFiltering()
+        return isSearching ? arrFilteredActivities.count : (section == 0 ? arrTodayActivities.count : arrYesterdayActivities.count)
     }
     
     func getActivitiesForSection(section: Int)-> Int {
         
-        return section == 0 ? arrTodayActivities.count : arrYesterdayActivities.count
+        return isSearching ? arrFilteredActivities.count : (section == 0 ? arrTodayActivities.count : arrYesterdayActivities.count)
     }
     
     func getCorresponingArrayForSection(section: Int)-> [Activity] {
         
-        return section == 0 ? arrTodayActivities : arrYesterdayActivities
+        return isSearching ? arrFilteredActivities : (section == 0 ? arrTodayActivities : arrYesterdayActivities)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        switch isFiltering() ? arrFilteredActivities[indexPath.row].actType : getCorresponingArrayForSection(section: indexPath.section)[indexPath.row].actType {
+        switch isSearching ? arrFilteredActivities[indexPath.row].actType : getCorresponingArrayForSection(section: indexPath.section)[indexPath.row].actType {
             
-        case activityType.goingEvent, activityType.favouritedEvent, activityType.sharedEvent:
+        case activityType.newEvent:
             let aCell: NotificationEventTVCell = tableView.dequeueReusableCell(withIdentifier: "NotificationEvent", for: indexPath) as! NotificationEventTVCell
-            aCell.currentNotification = isFiltering() ? arrFilteredActivities[indexPath.row] : getCorresponingArrayForSection(section: indexPath.section)[indexPath.row]
+            aCell.currentNotification = isSearching ? arrFilteredActivities[indexPath.row] : getCorresponingArrayForSection(section: indexPath.section)[indexPath.row]
             aCell.layer.masksToBounds = true
+            aCell.actShowNotificationEvent = {
+                
+                self.selectedActivity = self.isSearching ? self.arrFilteredActivities[indexPath.row] : self.getCorresponingArrayForSection(section: indexPath.section)[indexPath.row]
+                self.showEvent()
+            }
             return aCell
             
-        case activityType.newFollower:
+        case activityType.newFollower, activityType.newFollowing:
             let aCell: NotificationFollowTVCell = tableView.dequeueReusableCell(withIdentifier: "NotificationFollow", for: indexPath) as! NotificationFollowTVCell
-            aCell.currentNotification = isFiltering() ? arrFilteredActivities[indexPath.row] : getCorresponingArrayForSection(section: indexPath.section)[indexPath.row]
+            aCell.currentNotification = isSearching ? arrFilteredActivities[indexPath.row] : getCorresponingArrayForSection(section: indexPath.section)[indexPath.row]
             aCell.layer.masksToBounds = true
+            aCell.actFollow = {
+                
+                aBool in
+                self.selectedActivity = self.isSearching ? self.arrFilteredActivities[indexPath.row] : self.getCorresponingArrayForSection(section: indexPath.section)[indexPath.row]
+                if aBool {
+                    
+                    self.showFollow()
+                    
+                } else {
+                    
+                    self.arrActivities = self.changeFollowType(indexPath: indexPath)
+                    aCell.currentNotification = self.isSearching ? self.arrFilteredActivities[indexPath.row] : self.getCorresponingArrayForSection(section: indexPath.section)[indexPath.row]
+                }
+            }
             return aCell
             
         case activityType.newLevel:
             let aCell: NotificationBadgeTVCell = tableView.dequeueReusableCell(withIdentifier: "NotificationBadge", for: indexPath) as! NotificationBadgeTVCell
-            aCell.currentNotification = isFiltering() ? arrFilteredActivities[indexPath.row] : getCorresponingArrayForSection(section: indexPath.section)[indexPath.row]
+            aCell.currentNotification = isSearching ? arrFilteredActivities[indexPath.row] : getCorresponingArrayForSection(section: indexPath.section)[indexPath.row]
             aCell.layer.masksToBounds = true
+            aCell.actSeeMedal = {
+                
+                self.performSegue(withIdentifier: "SeeMedals",
+                                  sender: nil)
+            }
             return aCell
             
-        case .newFollowing:
-            return UITableViewCell()
-            
-        
         }
     }
     
@@ -274,7 +282,7 @@ extension MyActivitiesVC: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         
-        if isFiltering() && (scSearchActivities.searchBar.text!.count > 0){
+        if isSearching && (sbActivities.text!.count > 0){
             return vwSearchFooter
         }
         return  nil
@@ -282,21 +290,10 @@ extension MyActivitiesVC: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         
-        if isFiltering() && (scSearchActivities.searchBar.text!.count > 0){
+        if isSearching && (sbActivities.text!.count > 0){
             return 50
         }
         return 0
-    }
-}
-
-//MARK: UISearchResultsUpdating
-
-extension MyActivitiesVC: UISearchResultsUpdating{
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        
-        let scope = scSearchActivities.searchBar.scopeButtonTitles![scSearchActivities.searchBar.selectedScopeButtonIndex]
-        filterContentForSearchText(scSearchActivities.searchBar.text!.folding(options: String.CompareOptions.diacriticInsensitive, locale: Locale.current), scope: scope)
     }
 }
 
@@ -304,9 +301,30 @@ extension MyActivitiesVC: UISearchResultsUpdating{
 
 extension MyActivitiesVC: UISearchBarDelegate{
     
-    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        filterContentForSearchText(searchBar.text!, scope: searchBar.scopeButtonTitles![selectedScope])
+        isSearching = searchBar.text != "" ? true : false
+        updateSearchResults(searchText: searchText)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        self.dismissKeyboard()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
+        isSearching = false
+        searchBar.text = ""
+        self.dismissKeyboard()
+    }
+}
+
+extension MyActivitiesVC: UIScrollViewDelegate {
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        
+        dismissKeyboard()
     }
 }
 

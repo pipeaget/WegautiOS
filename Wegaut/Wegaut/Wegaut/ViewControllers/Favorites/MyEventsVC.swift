@@ -71,6 +71,11 @@ extension MyEventsVC: UITableViewDataSource, UITableViewDelegate{
         return arrMyEvents.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 190
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let aCell: EventCountdownTVCell = tableView.dequeueReusableCell(withIdentifier: "CountDownCell",

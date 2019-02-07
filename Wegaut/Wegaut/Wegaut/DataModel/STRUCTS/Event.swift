@@ -104,7 +104,6 @@ struct Event {
     var eveDescription: String
     var eveStatus: Bool
     var eveTags: [Tag]
-    var eveAssitants: [User]
     var evePublications: [Publication]
     var eveComments: [Comment]
     var eveMultimedia: [Multimedia]
@@ -129,7 +128,6 @@ struct Event {
                      eveDescription: "",
                      eveStatus: true,
                      eveTags:[],
-                     eveAssitants: [],
                      evePublications: [],
                      eveComments: [],
                      eveMultimedia: [],
@@ -155,9 +153,8 @@ struct Event {
                       eveDescription: "Premier Sicario 2",
                       eveStatus: true,
                       eveTags: [],
-                      eveAssitants: [],
                       evePublications: Publication.getPublications(),
-                      eveComments: [],
+                      eveComments: Comment.getcomments(),
                       eveMultimedia: [],
                       eveOrganizers: [Organizer(orgName: "Sony Pictures",
                                                 orgImageURL: "N/A",
@@ -168,8 +165,8 @@ struct Event {
                                         Sponsorship(spoName: "Nike",
                                                     spoImageURL: "N/A",
                                                     spoLocalImage: UIImage())],
-                      eveAssistants: [],
-                      eveUserFavorited: [],
+                      eveAssistants: [User.getUserData()],
+                      eveUserFavorited: [User.getUserData()],
                       eveShared: [],
                       eveCheckIns: [],
                       eveFollowers: []),
@@ -184,7 +181,6 @@ struct Event {
                       eveDescription: "Premier Los Increíbles 2",
                       eveStatus: false,
                       eveTags: [],
-                      eveAssitants: [],
                       evePublications: Publication.getPublications(),
                       eveComments: [],
                       eveMultimedia: [],
@@ -210,7 +206,6 @@ struct Event {
                       eveDescription: "Premier Tangueros",
                       eveStatus: true,
                       eveTags: [],
-                      eveAssitants: [],
                       evePublications: Publication.getPublications(),
                       eveComments: [],
                       eveMultimedia: [],
@@ -236,7 +231,6 @@ struct Event {
                       eveDescription: "Premier Tangueros",
                       eveStatus: false,
                       eveTags: [],
-                      eveAssitants: [],
                       evePublications: Publication.getPublications(),
                       eveComments: [],
                       eveMultimedia: [],

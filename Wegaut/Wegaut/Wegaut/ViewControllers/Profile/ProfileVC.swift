@@ -25,6 +25,7 @@ class ProfileVC: UIViewController {
         }
     }
     var selectedEvent: Event?
+    var isOtherUserProfile: Bool = false
     
     //MARK: - OUTLETS
     
@@ -41,6 +42,7 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var lblEvents: UILabel!
     @IBOutlet weak var cvEvents: UICollectionView!
     
+    @IBOutlet weak var vwUserEvents: UIView!
     @IBOutlet weak var imgvwSection1: UIImageView!
     @IBOutlet weak var lblSection1: UILabel!
     @IBOutlet weak var btnSection1: UIButton!
@@ -71,7 +73,15 @@ class ProfileVC: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        userData = User.getUserData()
+        if userData == nil {
+            
+            userData = User.getUserData()
+        } else {
+            
+            isOtherUserProfile = true
+        }
+        imgvwNewProfilePic.isHidden = isOtherUserProfile
+        vwUserEvents.isHidden = isOtherUserProfile
         arrMyEvents = Event.getEvents()
         arrGoingEvents = Event.getEvents()
         arrFavoriteEvents = Event.getEvents()
@@ -195,30 +205,33 @@ class ProfileVC: UIViewController {
 
     @IBAction func actProfilePic(_ sender: UIButton) {
         
-        let alert = UIAlertController(title: nil,
-                                      message: "REG_PHOTOMSSG".localized,
-                                      preferredStyle: .actionSheet)
-        let cancelAction = UIAlertAction(title: "REG_CANCEL".localized,
-                                         style: .cancel,
-                                         handler: nil)
-        let cameraAction = UIAlertAction(title: "REG_CAMERA".localized,
-                                         style: .default,
-                                         handler: {
-                                            (alertaction) in
-                                            self.getImageFromCamera()
-        })
-        let galleryAction = UIAlertAction(title: "REG_GALLERY".localized,
-                                          style: .default,
-                                          handler: {
-                                            (alertaction) -> Void in
-                                            self.getImageFromPhotoLibrary()
-        })
-        alert.addAction(cameraAction)
-        alert.addAction(galleryAction)
-        alert.addAction(cancelAction)
-        self.present(alert,
-                     animated: true,
-                     completion: nil)
+        if !isOtherUserProfile {
+            
+            let alert = UIAlertController(title: nil,
+                                          message: "REG_PHOTOMSSG".localized,
+                                          preferredStyle: .actionSheet)
+            let cancelAction = UIAlertAction(title: "REG_CANCEL".localized,
+                                             style: .cancel,
+                                             handler: nil)
+            let cameraAction = UIAlertAction(title: "REG_CAMERA".localized,
+                                             style: .default,
+                                             handler: {
+                                                (alertaction) in
+                                                self.getImageFromCamera()
+            })
+            let galleryAction = UIAlertAction(title: "REG_GALLERY".localized,
+                                              style: .default,
+                                              handler: {
+                                                (alertaction) -> Void in
+                                                self.getImageFromPhotoLibrary()
+            })
+            alert.addAction(cameraAction)
+            alert.addAction(galleryAction)
+            alert.addAction(cancelAction)
+            self.present(alert,
+                         animated: true,
+                         completion: nil)
+        }
     }
     
     @IBAction func actSelectSegmentIndex(_ sender: UIButton) {

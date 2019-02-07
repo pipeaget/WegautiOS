@@ -9,37 +9,18 @@
 import UIKit
 import SDWebImage
 
+typealias followAction = (Bool)-> Void
+
 class NotificationFollowTVCell: UITableViewCell {
-    
-    //MARK: - ENUMS
-    
-    enum notificationFollowerType {
-        
-        case follwing
-        case follower
-        case noExists
-        
-        var description: String {
-            
-            switch self {
-                
-            case notificationFollowerType.follower: return "NOT_FOLLOW".localized
-            case notificationFollowerType.follwing: return "NOT_FLWING".localized
-            case notificationFollowerType.noExists: return ""
-                
-            }
-        }
-    }
     
     //MARK: - VARIABLES
     
-    var currentNotification: Activity?{
+    var currentNotification: Activity? {
         didSet{
             drawCell()
         }
     }
-    
-    var currentFollowerType: notificationFollowerType?
+    var actFollow: followAction?
     
     //MARK: - OUTLETS
     
@@ -53,54 +34,49 @@ class NotificationFollowTVCell: UITableViewCell {
     //MARK: - VIEW LIFECYCLE
     
     override func awakeFromNib() {
+        
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
+        
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     //MARK: - FUNCTIONS
     
     func drawCell(){
         
-        guard let aNotification = currentNotification else{
+        guard let aNotification = currentNotification,
+              let anUser = aNotification.actUser else {
             return
         }
-        getFollowerType()
         vwContainer.cornerRadius(cornerRadius: 10)
         imgvwProfilePic.cornerRadius(cornerRadius: nil)
-        if let anURL = URL(string: aNotification.actUser.usProfileImageURL){
+        if let anURL = URL(string: anUser.usProfileImageURL){
             
             imgvwProfilePic.sd_setImage(with: anURL,
                                         placeholderImage: #imageLiteral(resourceName: "BGLogo"),
                                         options: SDWebImageOptions.highPriority,
                                         completed: nil)
         }
-        lblUser.text = User.getUserCompleteName(user: aNotification.actUser)
+        lblUser.text = User.getUserCompleteName(user: anUser)
         lblNotification.text = aNotification.actTitle
         lblTimelapse.text = "\(aNotification.actDate)"
         btnFollow.isHidden = false
         btnFollow.cornerRadius(cornerRadius: 5)
-        if let aFollowerType = currentFollowerType {
-            
-            btnFollow.setTitle(aFollowerType.description, for: UIControl.State.normal)
-        } else {
-            
-            btnFollow.isHidden = true
-        }
+        btnFollow.setTitle(aNotification.actType.description,
+                           for: UIControl.State.normal)
     }
     
-    func getFollowerType(){
+    //MARK: - ACTIONS
+    
+    @IBAction func actBtnFollow(_ sender: UIButton) {
         
-        switch currentNotification!.actType {
+        guard let aNotification = currentNotification else { return }
+        if let anAction = self.actFollow {
             
-        case activityType.newFollower:  currentFollowerType = notificationFollowerType.follower
-        case activityType.newFollowing: currentFollowerType = notificationFollowerType.follwing
-        default:                        currentFollowerType = notificationFollowerType.noExists
+            anAction(aNotification.actType == activityType.newFollowing ? true : false)
         }
     }
 }

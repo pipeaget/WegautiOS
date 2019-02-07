@@ -49,6 +49,11 @@ struct User {
                     usTags: [])
     }
     
+    static func isUserInArray(anArray: [User])-> Bool {
+        
+        return anArray.contains(where: {$0.usEmail == User.getUserData().usEmail})
+    }
+    
     static func getFollowers()-> [User] {
         
         return [User(usName: "Jessy Jacke",

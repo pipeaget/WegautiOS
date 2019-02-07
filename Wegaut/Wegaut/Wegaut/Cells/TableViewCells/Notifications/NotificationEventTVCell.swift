@@ -9,6 +9,8 @@
 import UIKit
 import SDWebImage
 
+typealias showNotificationEventAction = ()-> Void
+
 class NotificationEventTVCell: UITableViewCell {
     
     //MARK: - VARIABLES
@@ -18,6 +20,7 @@ class NotificationEventTVCell: UITableViewCell {
             drawCell()
         }
     }
+    var actShowNotificationEvent: showNotificationEventAction?
     
     //MARK: - OUTLETS
     
@@ -26,7 +29,7 @@ class NotificationEventTVCell: UITableViewCell {
     @IBOutlet weak var lblUser: UILabel!
     @IBOutlet weak var lblNotification: UILabel!
     @IBOutlet weak var lblTimeLapse: UILabel!
-    @IBOutlet weak var imgvwNotificationPic: UIImageView!
+    @IBOutlet weak var btnNotificationAction: UIButton!
     
     //MARK: - VIEW LIFECYCLE
     
@@ -44,12 +47,13 @@ class NotificationEventTVCell: UITableViewCell {
 
     func drawCell(){
         
-        guard let aNotification = currentNotification else{
+        guard let aNotification = currentNotification,
+              let anUser = aNotification.actUser else {
             return
         }
         vwContainer.cornerRadius(cornerRadius: 10)
         imgvwProfilePic.cornerRadius(cornerRadius: nil)
-        if let anURL = URL(string: aNotification.actUser.usProfileImageURL){
+        if let anURL = URL(string: anUser.usProfileImageURL){
             
             imgvwProfilePic.sd_setImage(with: anURL,
                                         placeholderImage: #imageLiteral(resourceName: "BGLogo"),
@@ -59,8 +63,9 @@ class NotificationEventTVCell: UITableViewCell {
             
             imgvwProfilePic.image = #imageLiteral(resourceName: "BGLogo")
         }
-        imgvwNotificationPic.image = getImageForNotificationType()
-        lblUser.text = User.getUserCompleteName(user: aNotification.actUser)
+        btnNotificationAction.imageView?.contentMode = UIView.ContentMode.scaleAspectFit
+        btnNotificationAction.imageView?.image = getImageForNotificationType()
+        lblUser.text = User.getUserCompleteName(user: anUser)
         lblNotification.text = aNotification.actTitle
         lblTimeLapse.text = "\(aNotification.actDate)"
     }
@@ -70,10 +75,19 @@ class NotificationEventTVCell: UITableViewCell {
         guard let aNotification = currentNotification else  { return #imageLiteral(resourceName: "LGNavBar")}
         switch aNotification.actType {
             
-        case activityType.favouritedEvent: return #imageLiteral(resourceName: "ICFavoriteOn")
-        case activityType.goingEvent:      return #imageLiteral(resourceName: "ICPurpleCalendar")
-        case activityType.sharedEvent:     return #imageLiteral(resourceName: "ICFollowBack")
-        default:                           return #imageLiteral(resourceName: "LGNavBar")
+        case activityType.newEvent: return #imageLiteral(resourceName: "ICDatePurple")
+        default:                    return #imageLiteral(resourceName: "LGNavBar")
         }
     }
+    
+    //MARK: - ACTIONS
+    
+    @IBAction func actBtnNotificationAction(_ sender: UIButton) {
+        
+        if let anAction = self.actShowNotificationEvent {
+            
+            anAction()
+        }
+    }
+    
 }

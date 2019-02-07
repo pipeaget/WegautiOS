@@ -60,13 +60,16 @@ class EventDetailTVCell: UITableViewCell {
             
             return
         }
-        /*if let anURL = URL(string: anEvent.eveImageURL){
+        if let anURL = URL(string: anEvent.eveImageURL){
+            
             imgvwEvent.sd_setImage(with: anURL,
                                    placeholderImage: #imageLiteral(resourceName: "BGLogo"),
                                    options: SDWebImageOptions.highPriority,
                                    completed: nil)
-        }*/
-        imgvwEvent.image = UIImage(named: anEvent.eveImageURL)
+        } else {
+            
+            imgvwEvent.image = UIImage(named: anEvent.eveImageURL)
+        }
         lblEventName.text = anEvent.eveName
         let strEventPlace: NSMutableAttributedString = NSMutableAttributedString(string: anEvent.evePlace,
                                                                    attributes: [NSAttributedString.Key.font : UIFont(name: "Avenir", size: 20) ?? UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.regular)])
@@ -85,7 +88,7 @@ class EventDetailTVCell: UITableViewCell {
         strEventDate.append(strEventSchedule)
         lblEventDate.attributedText = strEventDate
         
-        let strEventAssistants: NSMutableAttributedString = NSMutableAttributedString(string: "\(anEvent.eveAssitants.count)",
+        let strEventAssistants: NSMutableAttributedString = NSMutableAttributedString(string: "\(anEvent.eveAssistants.count)",
                                                                   attributes: [NSAttributedString.Key.font : UIFont(name: "Avenir", size: 14) ?? UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.regular)])
         strEventAssistants.append(NSAttributedString(string: "\n"))
         let strEventPrice: NSAttributedString = NSAttributedString(string: anEvent.evePrice,

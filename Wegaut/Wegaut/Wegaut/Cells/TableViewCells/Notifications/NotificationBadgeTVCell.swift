@@ -9,6 +9,8 @@
 import UIKit
 import SDWebImage
 
+typealias seeMedalAction = ()-> Void
+
 class NotificationBadgeTVCell: UITableViewCell {
     
     //MARK: - VARIABLES
@@ -18,6 +20,7 @@ class NotificationBadgeTVCell: UITableViewCell {
             drawCell()
         }
     }
+    var actSeeMedal: seeMedalAction?
     
     //MARK: - OUTLETS
     
@@ -25,7 +28,7 @@ class NotificationBadgeTVCell: UITableViewCell {
     @IBOutlet weak var lblUser: UILabel!
     @IBOutlet weak var lblNotification: UILabel!
     @IBOutlet weak var lblTimelapse: UILabel!
-    @IBOutlet weak var imgvwBadge: UIImageView!
+    @IBOutlet weak var btnBadge: UIButton!
     
     //MARK: - VIEW LIFECYCLE
 
@@ -43,12 +46,24 @@ class NotificationBadgeTVCell: UITableViewCell {
     
     func drawCell(){
         
-        guard let aNotification = currentNotification else{
+        guard let aNotification = currentNotification,
+              let aUser = aNotification.actUser else{
             return
         }
         vwContainer.cornerRadius(cornerRadius: 10)
-        lblUser.text = User.getUserCompleteName(user: aNotification.actUser)
+        lblUser.text = User.getUserCompleteName(user: aUser)
         lblNotification.text = aNotification.actTitle
         lblTimelapse.text = "\(aNotification.actDate)"
+        btnBadge.imageView?.contentMode = UIView.ContentMode.scaleAspectFit
+    }
+    
+    //MARK: - ACTIONS
+    
+    @IBAction func actBtnBadge(_ sender: UIButton) {
+        
+        if let anAction = self.actSeeMedal {
+            
+            anAction()
+        }
     }
 }

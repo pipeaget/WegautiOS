@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D52A5E58220BC35900849266 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D52A5E57220BC35900849266 /* GoogleService-Info.plist */; };
 		D52CB3EC214AD284007C58D2 /* WegautConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52CB3EB214AD284007C58D2 /* WegautConstants.swift */; };
 		D52CB3EF214AD40C007C58D2 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52CB3EE214AD40C007C58D2 /* UIViewControllerExtensions.swift */; };
 		D53E120A21FF821E000552BC /* UIDeviceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53E120921FF821E000552BC /* UIDeviceExtensions.swift */; };
@@ -120,6 +121,7 @@
 		BAE21DFAFE1FC24330F5A26F /* Pods_WegautUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WegautUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0B5A281DCD7ED4346D02AA6 /* Pods-Wegaut.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wegaut.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wegaut/Pods-Wegaut.debug.xcconfig"; sourceTree = "<group>"; };
 		CE1C11ED81BD8501D3A1D65A /* Pods-WegautTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WegautTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WegautTests/Pods-WegautTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D52A5E57220BC35900849266 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D52CB3EB214AD284007C58D2 /* WegautConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WegautConstants.swift; sourceTree = "<group>"; };
 		D52CB3EE214AD40C007C58D2 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		D53E120921FF821E000552BC /* UIDeviceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtensions.swift; sourceTree = "<group>"; };
@@ -168,7 +170,7 @@
 		D5D14651214EA865005C2FC5 /* Multimedia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Multimedia.swift; sourceTree = "<group>"; };
 		D5D14652214EA865005C2FC5 /* DropDownOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownOption.swift; sourceTree = "<group>"; };
 		D5D14653214EA865005C2FC5 /* Publication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Publication.swift; sourceTree = "<group>"; };
-		D5D14654214EA865005C2FC5 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		D5D14654214EA865005C2FC5 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Comment.swift; path = ../../../Comment.swift; sourceTree = "<group>"; };
 		D5D14655214EA865005C2FC5 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D5D14661214EA881005C2FC5 /* FORFooterSearchResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FORFooterSearchResults.swift; sourceTree = "<group>"; };
 		D5D14662214EA881005C2FC5 /* FORPopUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FORPopUpView.swift; sourceTree = "<group>"; };
@@ -501,8 +503,8 @@
 		D5D146B7214EA9C1005C2FC5 /* EventFeed */ = {
 			isa = PBXGroup;
 			children = (
-				D5D146B8214EA9D0005C2FC5 /* EventFeedDetailVC.swift */,
 				D5D146BB214EA9D0005C2FC5 /* EventFeedVC.swift */,
+				D5D146B8214EA9D0005C2FC5 /* EventFeedDetailVC.swift */,
 				D5D146BA214EA9D0005C2FC5 /* MoreCommentsVC.swift */,
 			);
 			path = EventFeed;
@@ -521,8 +523,8 @@
 		D5D146CB214EAA12005C2FC5 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
-				D5D146CE214EAA45005C2FC5 /* EventTimelineVC.swift */,
 				D5D146CF214EAA45005C2FC5 /* MyEventsVC.swift */,
+				D5D146CE214EAA45005C2FC5 /* EventTimelineVC.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -597,9 +599,9 @@
 		D5E20F0921478EB60099C1BD /* XIBS */ = {
 			isa = PBXGroup;
 			children = (
-				D5E20EE421478B3A0099C1BD /* LaunchScreen.storyboard */,
 				D5D146E4214EAA9B005C2FC5 /* Onboarding.storyboard */,
 				D5EBD477214982D700FEEBA4 /* Login.storyboard */,
+				D5E20EE421478B3A0099C1BD /* LaunchScreen.storyboard */,
 				D5D146E8214EAAD0005C2FC5 /* Main.storyboard */,
 				D5D146E6214EAAA3005C2FC5 /* AddNewEvent.storyboard */,
 				D5EA546E219D1A170048CFED /* NoConnection.xib */,
@@ -628,6 +630,7 @@
 			children = (
 				D5D14638214DBE13005C2FC5 /* Fonts */,
 				D5E20EE721478B3A0099C1BD /* Info.plist */,
+				D52A5E57220BC35900849266 /* GoogleService-Info.plist */,
 				D5E20EE221478B3A0099C1BD /* Assets.xcassets */,
 				D5D14634214D8505005C2FC5 /* Localizable.strings */,
 			);
@@ -701,6 +704,7 @@
 				D5D1463D214DBE33005C2FC5 /* Avenir Next.ttc in Resources */,
 				D5D1463E214DBE33005C2FC5 /* Avenir.ttc in Resources */,
 				D5D14632214D8505005C2FC5 /* Localizable.strings in Resources */,
+				D52A5E58220BC35900849266 /* GoogleService-Info.plist in Resources */,
 				D5EBD478214982D700FEEBA4 /* Login.storyboard in Resources */,
 				D5EA546F219D1A170048CFED /* NoConnection.xib in Resources */,
 				D5E20EE621478B3A0099C1BD /* LaunchScreen.storyboard in Resources */,
@@ -741,16 +745,22 @@
 				"${BUILT_PRODUCTS_DIR}/BRCountDownView/BRCountDownView.framework",
 				"${BUILT_PRODUCTS_DIR}/Colours/Colours.framework",
 				"${BUILT_PRODUCTS_DIR}/CropViewController/CropViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BRCountDownView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Colours.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CropViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1010,7 +1020,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wegaut.Wegaut;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Aget.Wegaut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1030,7 +1040,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.wegaut.Wegaut;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Aget.Wegaut;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

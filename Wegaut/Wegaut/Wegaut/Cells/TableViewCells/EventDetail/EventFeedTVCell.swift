@@ -9,14 +9,18 @@
 import UIKit
 import SDWebImage
 
-typealias addRemoveFavorite = (UIButton)->Void
+typealias addRemoveFavoriteAction = ()-> Void
+typealias seeCommentsAction = ()-> Void
+typealias addRemoveToMyEventsAction = ()-> Void
 
 class EventFeedTVCell: UITableViewCell {
     
     //MARK: VARIABLES
     
-    var addRemoveFavorite:addRemoveFavorite?
-    var currentEvent:Event?{
+    var actAddRemoveFavorite: addRemoveFavoriteAction?
+    var actSeeComments: seeCommentsAction?
+    var actaddRemoveToMyEvents: addRemoveToMyEventsAction?
+    var currentEvent: Event?{
         didSet{
             drawUI()
         }
@@ -63,18 +67,34 @@ class EventFeedTVCell: UITableViewCell {
         imgvwEvent.image = UIImage(named: anEvent.eveImageURL)
         imgvwEvent.clipsToBounds = true
         imgvwEvent.cornerRadius(cornerRadius: 10)
-        //btnIsFavorite.setImage(anEvent.eveUserFavorited ? #imageLiteral(resourceName: "ICHearthON") : #imageLiteral(resourceName: "ICHearthOFF"), for: UIControl.State.normal)
+        btnIsFavorite.setImage(User.isUserInArray(anArray: anEvent.eveUserFavorited) ? #imageLiteral(resourceName: "ICHearthON") : #imageLiteral(resourceName: "ICHearthOFF"), for: UIControl.State.normal)
+        lblLikes.text = "\(anEvent.eveUserFavorited.count)"
         lblEventName.text = anEvent.eveName
         lblEventPlace.attributedText = anEvent.evePlace.getStringWith(anImage: #imageLiteral(resourceName: "ICPlace"))
         lblEventDate.attributedText = (anEvent.eveDate + ", " + anEvent.eveSchedule).getStringWith(anImage: #imageLiteral(resourceName: "ICDate"))
+        btnAdd.setImage(User.isUserInArray(anArray: anEvent.eveAssistants) ? #imageLiteral(resourceName: "ICDatePurple") : #imageLiteral(resourceName: "BBIAdd"), for: UIControl.State.normal)
     }
     
     //MARK: ACTIONS
 
     @IBAction func actFavorite(_ sender: UIButton) {
         
-        if let anAction = self.addRemoveFavorite{
-            anAction(sender)
+        if let anAction = self.actAddRemoveFavorite{
+            anAction()
+        }
+    }
+    
+    @IBAction func actBtnComments(_ sender: UIButton) {
+        
+        if let anAction = self.actSeeComments {
+            anAction()
+        }
+    }
+    
+    @IBAction func actBtnAdd(_ sender: UIButton) {
+        
+        if let anAction = self.actaddRemoveToMyEvents {
+            anAction()
         }
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,6 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #endif
         UserDefaults.standard.set(isOnDev,
                                   forKey: WegautConstants.IS_DEV_APP)
+        
+        //FIREBASE
+        FirebaseApp.configure()
         
         //Navigation bar appearance
         let navAppearance = UINavigationBar.appearance()

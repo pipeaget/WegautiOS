@@ -98,7 +98,7 @@ final public class BRCountDownView: UIControl {
     slideUpFromBottomTransition.subtype = CATransitionSubtype.fromTop
     slideUpFromBottomTransition.duration = duration
     slideUpFromBottomTransition.timingFunction =
-      CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
     slideUpFromBottomTransition.fillMode = CAMediaTimingFillMode.removed
     
     target.layer.add(slideUpFromBottomTransition,
@@ -413,7 +413,7 @@ extension UIView {
     slideUpFromBottomTransition.subtype = CATransitionSubtype.fromTop
     slideUpFromBottomTransition.duration = duration
     slideUpFromBottomTransition.timingFunction =
-      CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
     slideUpFromBottomTransition.fillMode = CAMediaTimingFillMode.removed
     
     layer.add(slideUpFromBottomTransition,
