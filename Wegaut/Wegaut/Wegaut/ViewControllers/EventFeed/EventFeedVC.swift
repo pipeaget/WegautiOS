@@ -144,7 +144,6 @@ extension EventFeedVC: UITableViewDataSource, UITableViewDelegate {
             vwHeader.addSubview(lblTitle)
             
             return vwHeader
-            
         }
         return nil
     }

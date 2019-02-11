@@ -144,7 +144,7 @@ extension SettingsVC: UITableViewDataSource, UITableViewDelegate{
                                                                               yesButtonTitle: "YES".localized,
                                                                               yesButtonColor: UIColor.deepPurple,
                                                                               noButtonTitle: "NO".localized,
-                                                                              noButtonColor: UIColor.mediumPurple))
+                                                                              noButtonColor: UIColor.deepPurple))
                 popUpAlert.yesNoSuccess = {
                     
                     success in

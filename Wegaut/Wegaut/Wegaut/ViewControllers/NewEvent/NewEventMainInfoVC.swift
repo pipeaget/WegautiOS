@@ -64,7 +64,7 @@ class NewEventMainInfoVC: UIViewController {
         btnNewImage.imageView?.contentMode = UIView.ContentMode.scaleAspectFit
         btnNewImage.clipsToBounds = true
         btnNewImage.imageView?.backgroundColor = UIColor.lightPurple
-        btnNewImage.backgroundColor = UIColor.lightPurple
+        btnNewImage.backgroundColor = UIColor.deepPurple
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.keyboardWillShow(notification:)),
@@ -282,7 +282,7 @@ extension NewEventMainInfoVC: UITextFieldDelegate {
                                                                            yesButtonTitle: "OK".localized,
                                                                            yesButtonColor: UIColor.deepPurple,
                                                                            noButtonTitle: "CANCEL".localized,
-                                                                           noButtonColor: UIColor.mediumPurple,
+                                                                           noButtonColor: UIColor.deepPurple,
                                                                            selectOptions: AssistantType.getAllAsistantTypes()))
             popUpAlert.yesNoSuccess = {
                 aBool in
@@ -306,7 +306,7 @@ extension NewEventMainInfoVC: UITextFieldDelegate {
                                                                            yesButtonTitle: "OK".localized,
                                                                            yesButtonColor: UIColor.deepPurple,
                                                                            noButtonTitle: "CANCEL".localized,
-                                                                           noButtonColor: UIColor.mediumPurple,
+                                                                           noButtonColor: UIColor.deepPurple,
                                                                            selectOptions: AgeRange.getAllAgeRanges()))
             popUpAlert.yesNoSuccess = {
                 aBool in
@@ -330,7 +330,7 @@ extension NewEventMainInfoVC: UITextFieldDelegate {
                                                                            yesButtonTitle: "OK".localized,
                                                                            yesButtonColor: UIColor.deepPurple,
                                                                            noButtonTitle: "CANCEL".localized,
-                                                                           noButtonColor: UIColor.mediumPurple))
+                                                                           noButtonColor: UIColor.deepPurple))
             popUpAlert.dateSelection = {
                 
                 aDate in

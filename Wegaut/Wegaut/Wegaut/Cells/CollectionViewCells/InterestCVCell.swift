@@ -27,10 +27,10 @@ class InterestCVCell: UICollectionViewCell {
     func updateView() {
         
         self.cornerRadius(cornerRadius: nil)
-        self.layer.borderColor = UIColor.white.cgColor
-        self.layer.borderWidth = 1
+        self.layer.borderWidth = 2
         guard let anInterest = currentInterest else { return }
-        imgvwInterest.get(image: anInterest.tagStateImage, with: anInterest.tagIsSelected ? UIColor.mediumPurple : UIColor.white)
-        self.backgroundColor = anInterest.tagIsSelected ? UIColor.white : UIColor.clear
+        imgvwInterest.image = anInterest.tagStateImage
+        self.layer.borderColor = UIColor.deepPurple.cgColor
+        self.backgroundColor = anInterest.tagIsSelected ? UIColor.deepPurple : UIColor.white
     }
 }

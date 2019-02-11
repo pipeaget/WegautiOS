@@ -29,6 +29,6 @@ class NewTagCVCell: UICollectionViewCell {
         self.layer.cornerRadius = self.frame.width / 2
         guard let aTag = currentTag else { return }
         imgvwTag.image = aTag.tagStateImage
-        self.backgroundColor = aTag.tagIsSelected ? UIColor.white : UIColor.lightPurple
+        self.backgroundColor = aTag.tagIsSelected ? UIColor.white : UIColor.deepPurple
     }
 }

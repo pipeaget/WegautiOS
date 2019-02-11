@@ -27,7 +27,6 @@ class WelcomeVC: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
     }
 
-
     override func viewDidLoad() {
         
         super.viewDidLoad()

@@ -70,7 +70,7 @@ class SettingsTVCell: UITableViewCell {
                                                          width: 39,
                                                          height: 31))
             swPushNotifications!.isOn = UserDefaults.standard.bool(forKey: WegautConstants.IS_PUSH_ENABLED)
-            swPushNotifications!.onTintColor = UIColor.mediumPurple
+            swPushNotifications!.onTintColor = UIColor.deepPurple
             self.accessoryView = swPushNotifications
         }else{
             

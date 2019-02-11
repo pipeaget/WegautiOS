@@ -138,10 +138,7 @@ extension CommentsTVCell: UITableViewDataSource, UITableViewDelegate {
                                width: 70,
                                height: 40)
         aBtnSend.backgroundColor = UIColor.clear
-        aBtnSend.setTitleColor(UIColor(red: 144/255,
-                                       green: 19/255,
-                                       blue: 254/255,
-                                       alpha: 1),
+        aBtnSend.setTitleColor(UIColor.deepPurple,
                                for: UIControl.State.normal)
         aBtnSend.setTitle("SEND".localized,
                           for: UIControl.State.normal)

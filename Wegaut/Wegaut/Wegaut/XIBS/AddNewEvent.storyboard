@@ -157,7 +157,7 @@
                                                     <constraint firstAttribute="height" constant="24" id="w5X-Sc-6lf"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
-                                                <color key="textColor" red="0.11372549019607843" green="0.11372549019607843" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="textColor" red="0.3294117647" green="0.098039215690000001" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000/000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mUk-4V-tmE">
@@ -575,7 +575,7 @@
                                                                     </imageView>
                                                                 </subviews>
                                                             </view>
-                                                            <color key="backgroundColor" red="0.56470588239999997" green="0.074509803920000006" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" red="0.3294117647" green="0.098039215690000001" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstItem="7Zw-oW-okM" firstAttribute="leading" secondItem="UOW-dw-Vck" secondAttribute="leading" constant="15" id="18N-AV-anS"/>
                                                                 <constraint firstItem="7Zw-oW-okM" firstAttribute="top" secondItem="UOW-dw-Vck" secondAttribute="top" constant="15" id="EBY-un-pgY"/>

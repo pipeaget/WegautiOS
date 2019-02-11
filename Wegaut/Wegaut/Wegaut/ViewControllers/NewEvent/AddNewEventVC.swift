@@ -53,6 +53,8 @@ class AddNewEventVC: UIViewController {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         self.navigationController?.navigationBar.isHidden = false
+        btnNext.cornerRadius(cornerRadius: 5)
+        btnNext.cornerRadius(cornerRadius: 5)
     }
 
     override func viewDidLoad() {

@@ -89,8 +89,8 @@ class RegisterVC: UIViewController {
         
         btnChangePhoto.imageView?.contentMode = UIView.ContentMode.scaleAspectFit
         btnChangePhoto.clipsToBounds = true
-        btnChangePhoto.imageView?.backgroundColor = UIColor.lightPurple
-        btnChangePhoto.backgroundColor = UIColor.lightPurple
+        btnChangePhoto.imageView?.backgroundColor = UIColor.deepPurple
+        btnChangePhoto.backgroundColor = UIColor.deepPurple
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.keyboardWillShow(notification:)),
@@ -256,8 +256,17 @@ class RegisterVC: UIViewController {
                                         print(anError.localizedDescription)
                                     } else {
                                         
-                                        print("Welcome \(authResult!.user.email)!!!")
-                                        
+                                        let alert: UIAlertController = UIAlertController(title: "¡Bienvenido!",
+                                                                                         message: "Hola \(authResult?.user.email)",
+                                                                                         preferredStyle: UIAlertController.Style.alert)
+                                        alert.addAction(UIAlertAction(title: "OK",
+                                                                      style: UIAlertAction.Style.default, handler: { (alert) in
+                                                                        
+                                                                        
+                                        }))
+                                        self.present(alert,
+                                                     animated: true,
+                                                     completion: nil)
                                     }
             }
             

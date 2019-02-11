@@ -97,6 +97,7 @@ class EventCountdownTVCell: UITableViewCell {
     
     //MARK: - OUTLETS
     
+    @IBOutlet weak var vwContainer: UIView!
     @IBOutlet weak var vwTimer: UIView!
     @IBOutlet weak var imgvwEvent: UIImageView!
     @IBOutlet weak var lblEventName: UILabel!
@@ -131,6 +132,8 @@ class EventCountdownTVCell: UITableViewCell {
          options: SDWebImageOptions.highPriority,
          completed: nil)
          }*/
+        vwContainer.clipsToBounds = true
+        vwContainer.layer.cornerRadius = 5
         imgvwEvent.image = UIImage(named: anEvent.eveImageURL)
         imgvwEvent.clipsToBounds = true
         lblEventName.text = anEvent.eveName

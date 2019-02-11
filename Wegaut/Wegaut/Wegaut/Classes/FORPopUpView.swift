@@ -224,7 +224,7 @@ class FORAlertData: NSObject{
         self.popYesButtonText = yesButtonTitle ?? "Aceptar"
         self.popYesButtonColor = yesButtonColor ?? UIColor.deepPurple
         self.popNoButtonText = noButtonTitle ?? "NO"
-        self.popNoButtonColor = noButtonColor ?? UIColor.mediumPurple
+        self.popNoButtonColor = noButtonColor ?? UIColor.deepPurple
         self.popSelectOptions = selectOptions
         
         //NOT REQUIRED VALUES
@@ -247,7 +247,7 @@ class FORAlertData: NSObject{
         self.popYesButtonText = yesButtonTitle ?? "Aceptar"
         self.popYesButtonColor = yesButtonColor ?? UIColor.deepPurple
         self.popNoButtonText = noButtonTitle ?? "NO"
-        self.popNoButtonColor = noButtonColor ?? UIColor.mediumPurple
+        self.popNoButtonColor = noButtonColor ?? UIColor.deepPurple
         
         //NOT REQUIRED VALUES
         
