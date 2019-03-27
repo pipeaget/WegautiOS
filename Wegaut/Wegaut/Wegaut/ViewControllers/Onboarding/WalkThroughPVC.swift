@@ -20,7 +20,7 @@ class WalkThroughPVC: UIPageViewController {
     
     //MARK: - VARIABLES
     
-    var walkThroughPVC:WalkThroughPVC?
+    var walkThroughPVC: WalkThroughPVC?
     var arrHeaders = ["WPC_H1".localized,
                       "WPC_H2".localized,
                       "WPC_H3".localized]
@@ -30,7 +30,7 @@ class WalkThroughPVC: UIPageViewController {
     var arrImages = ["BGLogo",
                      "BGLogo",
                      "BGLogo"]
-    var currentIndex = 0
+    var currentIndex: Int = 0
     weak var walkThroughDelegate: WalkThroughPVCDelegate?
     
     //MARK: - VIEW LIFECYCLE
@@ -59,7 +59,7 @@ class WalkThroughPVC: UIPageViewController {
     ///
     /// - Parameter index: The corresponding index for the view controller you need.
     /// - Returns: An optional WalkThroughContentVC initialized according to the index sended.
-    func getContentVC(at index: Int)->WalkThroughContentVC?{
+    func getContentVC(at index: Int)->WalkThroughContentVC? {
         
         if index < 0 || index >= arrHeaders.count{
             return nil
@@ -81,7 +81,7 @@ class WalkThroughPVC: UIPageViewController {
     }
     
     /// Used to move forward between the current WalkThroughContentVC.
-    func pageForward(){
+    func pageForward() {
         
         currentIndex += 1
         if let nextVC = getContentVC(at: currentIndex){

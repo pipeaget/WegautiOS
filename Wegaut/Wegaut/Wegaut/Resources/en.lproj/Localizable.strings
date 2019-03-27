@@ -23,6 +23,7 @@
 "TAG_PAR" = "Party";
 "TAG_ART" = "Art";
 "TAG_SOC" = "Social Causes";
+"TAG_ECO" = "Economy";
 "TAG_COM" = "Comedy";
 "TAG_TEA" = "Theater";
 "TAG_HAN" = "Handcrafting";
@@ -35,7 +36,8 @@
 "TAG_LIF" = "Lifestyle";
 "TAG_ENT" = "Entretainment";
 "TAG_FOO" = "Food";
-"TAG_GAM" = "Games";
+"TAG_GAM" = "Videogames";
+"TAG_CAR" = "Cars";
 "TAG_HEA" = "Health";
 "TAG_GAR" = "Gardening";
 "TAG_MUS" = "Music";

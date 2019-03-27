@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		59A79B16224711D900D82A09 /* MyBadgesPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A79B15224711D900D82A09 /* MyBadgesPVC.swift */; };
+		59A79B18224711FC00D82A09 /* MyBadgesContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A79B17224711FC00D82A09 /* MyBadgesContainerVC.swift */; };
+		59A79B1D22472A1800D82A09 /* BadgeCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A79B1C22472A1800D82A09 /* BadgeCVCell.swift */; };
 		D52A5E58220BC35900849266 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D52A5E57220BC35900849266 /* GoogleService-Info.plist */; };
 		D52CB3EC214AD284007C58D2 /* WegautConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52CB3EB214AD284007C58D2 /* WegautConstants.swift */; };
 		D52CB3EF214AD40C007C58D2 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52CB3EE214AD40C007C58D2 /* UIViewControllerExtensions.swift */; };
@@ -117,6 +120,9 @@
 		0CC4F014C17B7E4E6E4CC7B0 /* Pods-WegautUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WegautUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WegautUITests/Pods-WegautUITests.release.xcconfig"; sourceTree = "<group>"; };
 		17F33DD3A31A7DA1D3DC907C /* Pods-WegautUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WegautUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WegautUITests/Pods-WegautUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		1AA6765B6664F7C90B601730 /* Pods-WegautTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WegautTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WegautTests/Pods-WegautTests.release.xcconfig"; sourceTree = "<group>"; };
+		59A79B15224711D900D82A09 /* MyBadgesPVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBadgesPVC.swift; sourceTree = "<group>"; };
+		59A79B17224711FC00D82A09 /* MyBadgesContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBadgesContainerVC.swift; sourceTree = "<group>"; };
+		59A79B1C22472A1800D82A09 /* BadgeCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeCVCell.swift; sourceTree = "<group>"; };
 		70EC62B6E2DF73A38F3A4B44 /* Pods_WegautTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WegautTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAE21DFAFE1FC24330F5A26F /* Pods_WegautUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WegautUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0B5A281DCD7ED4346D02AA6 /* Pods-Wegaut.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wegaut.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wegaut/Pods-Wegaut.debug.xcconfig"; sourceTree = "<group>"; };
@@ -254,6 +260,16 @@
 				BAE21DFAFE1FC24330F5A26F /* Pods_WegautUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		59A79B192247121400D82A09 /* MyBadges */ = {
+			isa = PBXGroup;
+			children = (
+				D5D146D8214EAA58005C2FC5 /* MyBadgesVC.swift */,
+				59A79B15224711D900D82A09 /* MyBadgesPVC.swift */,
+				59A79B17224711FC00D82A09 /* MyBadgesContainerVC.swift */,
+			);
+			path = MyBadges;
 			sourceTree = "<group>";
 		};
 		C74A198167CC05101A5B83F6 /* Pods */ = {
@@ -396,6 +412,7 @@
 				D5CE616F219E4090001F7E3C /* RecentPublicationsCVCell.swift */,
 				D5CE616E219E4090001F7E3C /* TagCVCell.swift */,
 				D55CC4AC21C0427F000A1C43 /* NewEvent */,
+				59A79B1C22472A1800D82A09 /* BadgeCVCell.swift */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -493,9 +510,9 @@
 		D5D146B0214EA9A2005C2FC5 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				D5D146B2214EA9B9005C2FC5 /* WalkThroughContentVC.swift */,
-				D5D146B1214EA9B9005C2FC5 /* WalkThroughPVC.swift */,
 				D5D146B3214EA9B9005C2FC5 /* WalkThroughVC.swift */,
+				D5D146B1214EA9B9005C2FC5 /* WalkThroughPVC.swift */,
+				D5D146B2214EA9B9005C2FC5 /* WalkThroughContentVC.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -534,7 +551,7 @@
 			children = (
 				D5D146D7214EAA57005C2FC5 /* ProfileVC.swift */,
 				D5CE6161219E3580001F7E3C /* FollowersVC.swift */,
-				D5D146D8214EAA58005C2FC5 /* MyBadgesVC.swift */,
+				59A79B192247121400D82A09 /* MyBadges */,
 				D5CE6160219E33C2001F7E3C /* Settings */,
 			);
 			path = Profile;
@@ -798,6 +815,7 @@
 				D55CC4A321C041D1000A1C43 /* NewOrganizerTVCell.swift in Sources */,
 				D5CE6170219E4090001F7E3C /* EventCVCell.swift in Sources */,
 				D5D1465B214EA866005C2FC5 /* Sponsorship.swift in Sources */,
+				59A79B18224711FC00D82A09 /* MyBadgesContainerVC.swift in Sources */,
 				D5D4B00121537B6C0033317E /* EventInfoTVCell.swift in Sources */,
 				D5D146BE214EA9D0005C2FC5 /* MoreCommentsVC.swift in Sources */,
 				D5D14637214D8BE6005C2FC5 /* RegisterVC.swift in Sources */,
@@ -824,6 +842,7 @@
 				D5E78F3A2162B287001E17D1 /* ForgotPasswordVC.swift in Sources */,
 				D5D146DC214EAA58005C2FC5 /* SimpleDetailVC.swift in Sources */,
 				D55CC4AE21C042A2000A1C43 /* NewOrganizerCVCell.swift in Sources */,
+				59A79B16224711D900D82A09 /* MyBadgesPVC.swift in Sources */,
 				D55CC4B221C042C2000A1C43 /* NewMultimediaCVCell.swift in Sources */,
 				D5F198EE21B063930082DE73 /* NewEventMainInfoVC.swift in Sources */,
 				D5D146B6214EA9B9005C2FC5 /* WalkThroughVC.swift in Sources */,
@@ -831,6 +850,7 @@
 				D5D14692214EA94D005C2FC5 /* EventFeedTVCell.swift in Sources */,
 				D5D14699214EA958005C2FC5 /* RecentPublicationsTVCell.swift in Sources */,
 				D5D146BF214EA9D0005C2FC5 /* EventFeedVC.swift in Sources */,
+				59A79B1D22472A1800D82A09 /* BadgeCVCell.swift in Sources */,
 				D5D146E3214EAA79005C2FC5 /* NSMutableAttributedStringExtensions.swift in Sources */,
 				D5D4AFFF21535EDE0033317E /* NSAttributedStringExtensions.swift in Sources */,
 				D5D14698214EA958005C2FC5 /* RecentCommentTVCell.swift in Sources */,

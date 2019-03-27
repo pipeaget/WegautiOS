@@ -25,6 +25,10 @@ class WelcomeVC: UIViewController {
         
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
+        if UserDefaults.standard.bool(forKey: WegautConstants.IS_TUTORIAL_ALREADY_SEEN) {
+            
+            showTutorial()
+        }
     }
 
     override func viewDidLoad() {
@@ -39,6 +43,18 @@ class WelcomeVC: UIViewController {
         let tgrDismissKeyboard: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
                                                                                 action: #selector(self.dismissKeyboard))
         self.view.addGestureRecognizer(tgrDismissKeyboard)
+    }
+    
+    //MARK: - FUNCTIONS
+    
+    func showTutorial() {
+        
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Onboarding",
+                                                    bundle: Bundle.main)
+        let tutorialVC: UIViewController = storyBoard.instantiateViewController(withIdentifier: "WalkThroughVC") as! WalkThroughVC
+        self.present(tutorialVC,
+                     animated: true,
+                     completion: nil)
     }
     
     //MARK: - ACTIONS

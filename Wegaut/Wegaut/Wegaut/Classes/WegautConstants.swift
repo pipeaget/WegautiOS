@@ -23,7 +23,7 @@ struct WegautConstants{
     
     //MARK: -  USER STATUS
     
-    static let DISPLAY_TUTORIAL               = "displayTutorial"
+    static let IS_TUTORIAL_ALREADY_SEEN       = "displayTutorial"
     static let IS_USER_LOGGED                 = "IsUserLogged"
     
     //MARK: - APP USER PERMISSIONS

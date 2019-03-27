@@ -14,8 +14,8 @@
         <scene sceneID="9ty-mL-fOF">
             <objects>
                 <viewController id="kNm-oa-q5I" customClass="MyEventsVC" customModule="Wegaut" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="H2z-DU-ut0">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="H2z-DU-ut0">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uRa-GX-yqV">
@@ -499,7 +499,7 @@
         <scene sceneID="6VV-ER-jA6">
             <objects>
                 <viewController id="S6L-bR-UyD" customClass="SettingsVC" customModule="Wegaut" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="hv4-TG-V4d">
+                    <view key="view" contentMode="scaleToFill" id="hv4-TG-V4d">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -704,24 +704,56 @@
         <!--My BadgesVC-->
         <scene sceneID="kOS-T5-bQW">
             <objects>
-                <viewController id="Vrq-Ab-I5Q" customClass="MyBadgesVC" customModule="Wegaut" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Xu6-KH-fPj">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
+                <viewController storyboardIdentifier="MyBadgesVC" id="Vrq-Ab-I5Q" customClass="MyBadgesVC" customModule="Wegaut" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="Xu6-KH-fPj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ICx-fA-52W">
+                                <rect key="frame" x="40" y="20" width="240" height="29"/>
+                                <segments>
+                                    <segment title="Gold"/>
+                                    <segment title="Silver"/>
+                                    <segment title="Bronce"/>
+                                </segments>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="actSCBadges:" destination="Vrq-Ab-I5Q" eventType="valueChanged" id="zie-18-MtL"/>
+                                </connections>
+                            </segmentedControl>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k20-fi-xaF">
+                                <rect key="frame" x="20" y="68" width="280" height="319"/>
+                                <connections>
+                                    <segue destination="mKY-XN-bl4" kind="embed" id="xvO-2e-Wym"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.56470588235294117" green="0.074509803921568626" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="k20-fi-xaF" firstAttribute="bottom" secondItem="8P7-dj-hqf" secondAttribute="bottom" constant="20" id="AdO-EA-j1x"/>
+                            <constraint firstItem="ICx-fA-52W" firstAttribute="top" secondItem="8P7-dj-hqf" secondAttribute="top" constant="20" id="CbN-g4-cMx"/>
+                            <constraint firstItem="8P7-dj-hqf" firstAttribute="trailing" secondItem="k20-fi-xaF" secondAttribute="trailing" constant="20" id="L5T-xU-7yJ"/>
+                            <constraint firstItem="ICx-fA-52W" firstAttribute="leading" secondItem="8P7-dj-hqf" secondAttribute="leading" constant="40" id="Md1-XX-ASa"/>
+                            <constraint firstItem="k20-fi-xaF" firstAttribute="leading" secondItem="8P7-dj-hqf" secondAttribute="leading" constant="20" id="a6n-z4-0S1"/>
+                            <constraint firstItem="k20-fi-xaF" firstAttribute="top" secondItem="ICx-fA-52W" secondAttribute="bottom" constant="20" id="bpr-27-lU0"/>
+                            <constraint firstItem="8P7-dj-hqf" firstAttribute="trailing" secondItem="ICx-fA-52W" secondAttribute="trailing" constant="40" id="rca-CB-m2J"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="8P7-dj-hqf"/>
                     </view>
+                    <connections>
+                        <outlet property="scBadges" destination="ICx-fA-52W" id="dtQ-xu-KBg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YYz-O7-l5S" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5874" y="3323"/>
+            <point key="canvasLocation" x="5872.5" y="3322.5"/>
         </scene>
         <!--My EventsVC-->
         <scene sceneID="fxG-PW-cIB">
             <objects>
                 <viewController id="7As-du-itT" customClass="MyEventsVC" customModule="Wegaut" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" misplaced="YES" id="M8L-TP-V3O">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="R85-FB-9sY"/>
@@ -735,7 +767,7 @@
         <scene sceneID="48C-EO-8pD">
             <objects>
                 <viewController id="x7o-Lz-WRk" customClass="ProfileVC" customModule="Wegaut" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="PYG-oX-uwX">
+                    <view key="view" contentMode="scaleToFill" id="PYG-oX-uwX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1943,7 +1975,7 @@
             <objects>
                 <viewController id="yK0-Wg-t2l" customClass="SimpleDetailVC" customModule="Wegaut" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YG2-iB-Iue">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LnI-Vf-JxC">
@@ -2002,7 +2034,7 @@
         <scene sceneID="OKL-ub-hnl">
             <objects>
                 <viewController id="zys-Xz-Vat" customClass="DropDownDetailVC" customModule="Wegaut" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="Gsb-rL-Gkw">
+                    <view key="view" contentMode="scaleToFill" id="Gsb-rL-Gkw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -2078,6 +2110,79 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RjJ-4E-Hxb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4881" y="4163"/>
+        </scene>
+        <!--My BadgesPVC-->
+        <scene sceneID="Fuj-KX-eUS">
+            <objects>
+                <pageViewController storyboardIdentifier="MyBadgesPVC" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="mKY-XN-bl4" customClass="MyBadgesPVC" customModule="Wegaut" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WTi-Nk-EVC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5873" y="4062"/>
+        </scene>
+        <!--My Badges ContainerVC-->
+        <scene sceneID="zoV-hV-Cet">
+            <objects>
+                <viewController storyboardIdentifier="MyBadgesContainerVC" id="AA8-jH-pUG" customClass="MyBadgesContainerVC" customModule="Wegaut" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="czG-1M-wzH">
+                        <rect key="frame" x="0.0" y="0.0" width="280" height="319"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Mku-w8-l9u">
+                                <rect key="frame" x="0.0" y="0.0" width="280" height="319"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="nyK-ZM-6XF">
+                                    <size key="itemSize" width="88" height="89"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BadgeCell" id="ddg-4W-5lj" customClass="BadgeCVCell" customModule="Wegaut" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="88" height="89"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="88" height="89"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GMDCars" translatesAutoresizingMaskIntoConstraints="NO" id="bBr-YJ-Z39">
+                                                    <rect key="frame" x="0.0" y="0.0" width="88" height="89"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="bBr-YJ-Z39" secondAttribute="bottom" id="9sv-Ac-qXx"/>
+                                            <constraint firstItem="bBr-YJ-Z39" firstAttribute="leading" secondItem="ddg-4W-5lj" secondAttribute="leading" id="tqT-Dz-xKf"/>
+                                            <constraint firstAttribute="trailing" secondItem="bBr-YJ-Z39" secondAttribute="trailing" id="viY-s1-bbi"/>
+                                            <constraint firstItem="bBr-YJ-Z39" firstAttribute="top" secondItem="ddg-4W-5lj" secondAttribute="top" id="z5p-o3-k6k"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imgBadge" destination="bBr-YJ-Z39" id="zl5-zI-Bsr"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="AA8-jH-pUG" id="9I1-az-0Fx"/>
+                                    <outlet property="delegate" destination="AA8-jH-pUG" id="Xcs-HL-kPn"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.56470588239999997" green="0.074509803920000006" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="pbE-8X-cqN" firstAttribute="bottom" secondItem="Mku-w8-l9u" secondAttribute="bottom" id="IX8-LH-IIw"/>
+                            <constraint firstItem="Mku-w8-l9u" firstAttribute="top" secondItem="pbE-8X-cqN" secondAttribute="top" id="eFF-ae-h4q"/>
+                            <constraint firstItem="Mku-w8-l9u" firstAttribute="leading" secondItem="pbE-8X-cqN" secondAttribute="leading" id="j2e-ep-cLx"/>
+                            <constraint firstItem="pbE-8X-cqN" firstAttribute="trailing" secondItem="Mku-w8-l9u" secondAttribute="trailing" id="zPB-2s-M2C"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pbE-8X-cqN"/>
+                    </view>
+                    <size key="freeformSize" width="280" height="319"/>
+                    <connections>
+                        <outlet property="cvBadges" destination="Mku-w8-l9u" id="Or0-GW-Eqb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l1v-ZD-Rpi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5872.5" y="4606.875"/>
         </scene>
         <!--Event FeedVC-->
         <scene sceneID="s4M-Jd-i5P">
@@ -2935,12 +3040,12 @@ lblEventPrice</string>
         <scene sceneID="iCQ-7Q-7Ql">
             <objects>
                 <viewController id="mK0-sy-02A" customClass="MoreCommentsVC" customModule="Wegaut" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="EcE-nk-qtV">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="EcE-nk-qtV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="410"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ggM-MH-e2H">
-                                <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentCell" rowHeight="75" id="eeM-nk-7An" customClass="CommentTVCell" customModule="Wegaut" customModuleProvider="target">
@@ -3080,7 +3185,7 @@ lblEventPrice</string>
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="04F-hL-7I4">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -3156,6 +3261,7 @@ lblEventPrice</string>
         <image name="Apple" width="75" height="75"/>
         <image name="BBIAdd" width="47.472526550292969" height="47.472526550292969"/>
         <image name="BGLogo" width="115.19999694824219" height="142.32000732421875"/>
+        <image name="GMDCars" width="160" height="159"/>
         <image name="ICAdd" width="20" height="20"/>
         <image name="ICAssistants" width="24" height="18"/>
         <image name="ICBadge" width="76" height="119"/>
@@ -3187,8 +3293,8 @@ lblEventPrice</string>
         <image name="TBTimelineOn" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="g8C-GX-ZTi"/>
-        <segue reference="ST1-tY-gS1"/>
+        <segue reference="iTw-MQ-xlX"/>
+        <segue reference="TbL-rK-3zz"/>
         <segue reference="pjj-kf-YK5"/>
         <segue reference="A2H-cU-mLM"/>
     </inferredMetricsTieBreakers>

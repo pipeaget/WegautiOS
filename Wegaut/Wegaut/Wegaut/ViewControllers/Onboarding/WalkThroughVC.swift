@@ -12,7 +12,7 @@ class WalkThroughVC: UIViewController {
     
     //MARK: - VARIABLES
     
-    var walkThroughPVC:WalkThroughPVC?
+    var walkThroughPVC: WalkThroughPVC?
     
     //MARK: - OUTLETS
     
@@ -56,9 +56,9 @@ class WalkThroughVC: UIViewController {
     /// Used to update the user interface according to the current index displayed by the pcWalkThrough.
     func updateUI(){
         
-        if let index = walkThroughPVC?.currentIndex{
+        if let index = walkThroughPVC?.currentIndex {
             
-            switch index{
+            switch index {
                 
             case 0...1:
                 btnNext.setTitle("WAL_NXT".localized,
@@ -85,8 +85,8 @@ class WalkThroughVC: UIViewController {
     /// - Parameter sender: btnSkip
     @IBAction func actSkip(sender: UIButton){
         
-        UserDefaults.standard.set(false,
-                                  forKey: WegautConstants.DISPLAY_TUTORIAL)
+        UserDefaults.standard.set(true,
+                                  forKey: WegautConstants.IS_TUTORIAL_ALREADY_SEEN)
         self.dismiss(animated: true,
                      completion: nil)
     }
@@ -104,8 +104,8 @@ class WalkThroughVC: UIViewController {
                 walkThroughPVC?.pageForward()
                 
             case 2:
-                UserDefaults.standard.set(false,
-                                          forKey: WegautConstants.DISPLAY_TUTORIAL)
+                UserDefaults.standard.set(true,
+                                          forKey: WegautConstants.IS_TUTORIAL_ALREADY_SEEN)
                 dismiss(animated: true,
                         completion: nil)
                 
@@ -121,7 +121,7 @@ class WalkThroughVC: UIViewController {
 
 //MARK: - WalkThroughPVCDelegate
 
-extension WalkThroughVC: WalkThroughPVCDelegate{
+extension WalkThroughVC: WalkThroughPVCDelegate {
     
     func didUpdatePageIndex(currentIndex: Int) {
         
