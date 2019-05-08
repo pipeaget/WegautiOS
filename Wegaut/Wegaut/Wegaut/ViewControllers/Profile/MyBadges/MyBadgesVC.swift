@@ -31,6 +31,7 @@ class MyBadgesVC: UIViewController {
         
         super.viewDidLoad()
         self.addImageLogoToNavBar()
+        setupSegmentedControl()
     }
     
     override func didReceiveMemoryWarning() {
@@ -50,6 +51,14 @@ class MyBadgesVC: UIViewController {
     }
     
     //MARK: - FUNCTIONS
+    
+    func setupSegmentedControl() {
+        scBadges.removeAllSegments()
+        scBadges.selectedSegmentIndex = 0
+        scBadges.insertSegment(withTitle: "BA_BRO".localized, at: 0, animated: false)
+        scBadges.insertSegment(withTitle: "BA_SIL".localized, at: 1, animated: false)
+        scBadges.insertSegment(withTitle: "BA_GOL".localized, at: 2, animated: false)
+    }
     
     func updateUI() {
         

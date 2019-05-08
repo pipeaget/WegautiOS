@@ -237,6 +237,15 @@ open class CropViewController: UIViewController, TOCropViewControllerDelegate {
         set { toCropViewController.rotateButtonsHidden = newValue }
         get { return toCropViewController.rotateButtonsHidden }
     }
+    /**
+     When enabled, hides the 'Reset' button on the toolbar.
+
+     Default is false.
+     */
+    public var resetButtonHidden: Bool {
+        set { toCropViewController.resetButtonHidden = newValue }
+        get { return toCropViewController.resetButtonHidden }
+    }
     
     /**
      When enabled, hides the 'Aspect Ratio Picker' button on the toolbar.
@@ -396,6 +405,14 @@ open class CropViewController: UIViewController, TOCropViewControllerDelegate {
         return toCropViewController.preferredStatusBarStyle
     }
     
+    open override var preferredScreenEdgesDeferringSystemGestures: UIRectEdge {
+        if #available(iOS 11.0, *) {
+            return toCropViewController.preferredScreenEdgesDeferringSystemGestures
+        }
+        
+        return UIRectEdge.all
+    }
+    
     ///------------------------------------------------
     /// @name Object Creation
     ///------------------------------------------------
@@ -440,14 +457,6 @@ open class CropViewController: UIViewController, TOCropViewControllerDelegate {
         super.viewDidLayoutSubviews()
         toCropViewController.view.frame = view.bounds
         toCropViewController.viewDidLayoutSubviews()
-    }
-    
-    override open var preferredScreenEdgesDeferringSystemGestures: UIRectEdge {
-        if #available(iOS 11.0, *) {
-            return toCropViewController.preferredScreenEdgesDeferringSystemGestures
-        }
-        
-        return UIRectEdge.all
     }
     
     /**

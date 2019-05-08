@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		59A1B9BA226A8197005A007C /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A1B9B9226A8197005A007C /* Comment.swift */; };
+		59A2568922504DB100AA7EF0 /* UserProfileImageTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A2568822504DB100AA7EF0 /* UserProfileImageTVCell.swift */; };
+		59A2568B22504DC900AA7EF0 /* UsernameTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A2568A22504DC900AA7EF0 /* UsernameTVCell.swift */; };
+		59A2568D225052A900AA7EF0 /* LastNamesTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A2568C225052A900AA7EF0 /* LastNamesTVCell.swift */; };
+		59A2568F225052BA00AA7EF0 /* EmailTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A2568E225052BA00AA7EF0 /* EmailTVCell.swift */; };
+		59A25691225052CE00AA7EF0 /* PasswordTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A25690225052CE00AA7EF0 /* PasswordTVCell.swift */; };
+		59A25693225052F200AA7EF0 /* BirthdayTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A25692225052F200AA7EF0 /* BirthdayTVCell.swift */; };
+		59A256952250531200AA7EF0 /* AboutTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A256942250531200AA7EF0 /* AboutTVCell.swift */; };
 		59A79B16224711D900D82A09 /* MyBadgesPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A79B15224711D900D82A09 /* MyBadgesPVC.swift */; };
 		59A79B18224711FC00D82A09 /* MyBadgesContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A79B17224711FC00D82A09 /* MyBadgesContainerVC.swift */; };
 		59A79B1D22472A1800D82A09 /* BadgeCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A79B1C22472A1800D82A09 /* BadgeCVCell.swift */; };
@@ -57,7 +65,6 @@
 		D5D1465C214EA866005C2FC5 /* Multimedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D14651214EA865005C2FC5 /* Multimedia.swift */; };
 		D5D1465D214EA866005C2FC5 /* DropDownOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D14652214EA865005C2FC5 /* DropDownOption.swift */; };
 		D5D1465E214EA866005C2FC5 /* Publication.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D14653214EA865005C2FC5 /* Publication.swift */; };
-		D5D1465F214EA866005C2FC5 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D14654214EA865005C2FC5 /* Comment.swift */; };
 		D5D14660214EA866005C2FC5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D14655214EA865005C2FC5 /* User.swift */; };
 		D5D14664214EA882005C2FC5 /* FORFooterSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D14661214EA881005C2FC5 /* FORFooterSearchResults.swift */; };
 		D5D14665214EA882005C2FC5 /* FORPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D14662214EA881005C2FC5 /* FORPopUpView.swift */; };
@@ -120,6 +127,14 @@
 		0CC4F014C17B7E4E6E4CC7B0 /* Pods-WegautUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WegautUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WegautUITests/Pods-WegautUITests.release.xcconfig"; sourceTree = "<group>"; };
 		17F33DD3A31A7DA1D3DC907C /* Pods-WegautUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WegautUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WegautUITests/Pods-WegautUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		1AA6765B6664F7C90B601730 /* Pods-WegautTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WegautTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WegautTests/Pods-WegautTests.release.xcconfig"; sourceTree = "<group>"; };
+		59A1B9B9226A8197005A007C /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		59A2568822504DB100AA7EF0 /* UserProfileImageTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileImageTVCell.swift; sourceTree = "<group>"; };
+		59A2568A22504DC900AA7EF0 /* UsernameTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameTVCell.swift; sourceTree = "<group>"; };
+		59A2568C225052A900AA7EF0 /* LastNamesTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastNamesTVCell.swift; sourceTree = "<group>"; };
+		59A2568E225052BA00AA7EF0 /* EmailTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailTVCell.swift; sourceTree = "<group>"; };
+		59A25690225052CE00AA7EF0 /* PasswordTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTVCell.swift; sourceTree = "<group>"; };
+		59A25692225052F200AA7EF0 /* BirthdayTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayTVCell.swift; sourceTree = "<group>"; };
+		59A256942250531200AA7EF0 /* AboutTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTVCell.swift; sourceTree = "<group>"; };
 		59A79B15224711D900D82A09 /* MyBadgesPVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBadgesPVC.swift; sourceTree = "<group>"; };
 		59A79B17224711FC00D82A09 /* MyBadgesContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBadgesContainerVC.swift; sourceTree = "<group>"; };
 		59A79B1C22472A1800D82A09 /* BadgeCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeCVCell.swift; sourceTree = "<group>"; };
@@ -176,7 +191,6 @@
 		D5D14651214EA865005C2FC5 /* Multimedia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Multimedia.swift; sourceTree = "<group>"; };
 		D5D14652214EA865005C2FC5 /* DropDownOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownOption.swift; sourceTree = "<group>"; };
 		D5D14653214EA865005C2FC5 /* Publication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Publication.swift; sourceTree = "<group>"; };
-		D5D14654214EA865005C2FC5 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Comment.swift; path = ../../../Comment.swift; sourceTree = "<group>"; };
 		D5D14655214EA865005C2FC5 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D5D14661214EA881005C2FC5 /* FORFooterSearchResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FORFooterSearchResults.swift; sourceTree = "<group>"; };
 		D5D14662214EA881005C2FC5 /* FORPopUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FORPopUpView.swift; sourceTree = "<group>"; };
@@ -260,6 +274,20 @@
 				BAE21DFAFE1FC24330F5A26F /* Pods_WegautUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		59A256872250493E00AA7EF0 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				59A2568822504DB100AA7EF0 /* UserProfileImageTVCell.swift */,
+				59A2568A22504DC900AA7EF0 /* UsernameTVCell.swift */,
+				59A2568C225052A900AA7EF0 /* LastNamesTVCell.swift */,
+				59A2568E225052BA00AA7EF0 /* EmailTVCell.swift */,
+				59A25692225052F200AA7EF0 /* BirthdayTVCell.swift */,
+				59A25690225052CE00AA7EF0 /* PasswordTVCell.swift */,
+				59A256942250531200AA7EF0 /* AboutTVCell.swift */,
+			);
+			path = Register;
 			sourceTree = "<group>";
 		};
 		59A79B192247121400D82A09 /* MyBadges */ = {
@@ -356,9 +384,9 @@
 		D5CAD99921A77EE4002D2335 /* STRUCTS */ = {
 			isa = PBXGroup;
 			children = (
+				59A1B9B9226A8197005A007C /* Comment.swift */,
 				D5D14655214EA865005C2FC5 /* User.swift */,
 				D5D1464D214EA864005C2FC5 /* Event.swift */,
-				D5D14654214EA865005C2FC5 /* Comment.swift */,
 				D5D14651214EA865005C2FC5 /* Multimedia.swift */,
 				D5D1464E214EA865005C2FC5 /* Organizer.swift */,
 				D5D14650214EA865005C2FC5 /* Sponsorship.swift */,
@@ -430,6 +458,7 @@
 		D5D14667214EA88E005C2FC5 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				59A256872250493E00AA7EF0 /* Register */,
 				D5D1467A214EA909005C2FC5 /* NewEvent */,
 				D5D14679214EA8FF005C2FC5 /* EventDetail */,
 				D5D14678214EA8F5005C2FC5 /* MyEventDetail */,
@@ -758,30 +787,26 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Wegaut/Pods-Wegaut-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Wegaut/Pods-Wegaut-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BRCountDownView/BRCountDownView.framework",
-				"${BUILT_PRODUCTS_DIR}/Colours/Colours.framework",
 				"${BUILT_PRODUCTS_DIR}/CropViewController/CropViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BRCountDownView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Colours.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CropViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Wegaut/Pods-Wegaut-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Wegaut/Pods-Wegaut-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -823,8 +848,10 @@
 				D5D1465E214EA866005C2FC5 /* Publication.swift in Sources */,
 				D5D146D3214EAA4D005C2FC5 /* MyActivitiesVC.swift in Sources */,
 				D5D1469B214EA958005C2FC5 /* RecentCommentsTVCell.swift in Sources */,
+				59A2568922504DB100AA7EF0 /* UserProfileImageTVCell.swift in Sources */,
 				D5D146A2214EA968005C2FC5 /* NotificationFollowTVCell.swift in Sources */,
 				D5D14691214EA94D005C2FC5 /* CommentsTVCell.swift in Sources */,
+				59A1B9BA226A8197005A007C /* Comment.swift in Sources */,
 				D5D146DB214EAA58005C2FC5 /* EditProfileVC.swift in Sources */,
 				D5D1465C214EA866005C2FC5 /* Multimedia.swift in Sources */,
 				D55CC4B621C05A90000A1C43 /* PlaceTVCell.swift in Sources */,
@@ -839,6 +866,7 @@
 				D5D146DE214EAA58005C2FC5 /* MyBadgesVC.swift in Sources */,
 				D5CE6173219E4090001F7E3C /* InterestCVCell.swift in Sources */,
 				D5D1462D214D7CC5005C2FC5 /* UIImageExtension.swift in Sources */,
+				59A2568B22504DC900AA7EF0 /* UsernameTVCell.swift in Sources */,
 				D5E78F3A2162B287001E17D1 /* ForgotPasswordVC.swift in Sources */,
 				D5D146DC214EAA58005C2FC5 /* SimpleDetailVC.swift in Sources */,
 				D55CC4AE21C042A2000A1C43 /* NewOrganizerCVCell.swift in Sources */,
@@ -852,11 +880,15 @@
 				D5D146BF214EA9D0005C2FC5 /* EventFeedVC.swift in Sources */,
 				59A79B1D22472A1800D82A09 /* BadgeCVCell.swift in Sources */,
 				D5D146E3214EAA79005C2FC5 /* NSMutableAttributedStringExtensions.swift in Sources */,
+				59A2568F225052BA00AA7EF0 /* EmailTVCell.swift in Sources */,
 				D5D4AFFF21535EDE0033317E /* NSAttributedStringExtensions.swift in Sources */,
 				D5D14698214EA958005C2FC5 /* RecentCommentTVCell.swift in Sources */,
 				D5F198F021B0643D0082DE73 /* NewEventOtherInfoVC.swift in Sources */,
+				59A2568D225052A900AA7EF0 /* LastNamesTVCell.swift in Sources */,
 				D5D14658214EA866005C2FC5 /* Event.swift in Sources */,
+				59A256952250531200AA7EF0 /* AboutTVCell.swift in Sources */,
 				D5D146A1214EA968005C2FC5 /* NotificationEventTVCell.swift in Sources */,
+				59A25691225052CE00AA7EF0 /* PasswordTVCell.swift in Sources */,
 				D5CE6162219E3580001F7E3C /* FollowersVC.swift in Sources */,
 				D5D1469D214EA960005C2FC5 /* EventCountdownTVCell.swift in Sources */,
 				D5D14629214D75E5005C2FC5 /* StringExtensions.swift in Sources */,
@@ -870,11 +902,11 @@
 				D52CB3EC214AD284007C58D2 /* WegautConstants.swift in Sources */,
 				D5D146BD214EA9D0005C2FC5 /* AddNewEventVC.swift in Sources */,
 				D5D14693214EA94D005C2FC5 /* OrganizersTVCell.swift in Sources */,
-				D5D1465F214EA866005C2FC5 /* Comment.swift in Sources */,
 				D5D146DF214EAA58005C2FC5 /* SettingsVC.swift in Sources */,
 				D5D146DA214EAA58005C2FC5 /* DropDownDetailVC.swift in Sources */,
 				D5D14656214EA866005C2FC5 /* Tag.swift in Sources */,
 				D5D146D0214EAA45005C2FC5 /* EventTimelineVC.swift in Sources */,
+				59A25693225052F200AA7EF0 /* BirthdayTVCell.swift in Sources */,
 				D5D14659214EA866005C2FC5 /* Organizer.swift in Sources */,
 				D5CB94DE2149973D00009BCB /* LoginVC.swift in Sources */,
 				D5A7710E2200D66900F49D06 /* EventAnnotation.swift in Sources */,
@@ -1033,14 +1065,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LUY25X6XJ5;
+				DEVELOPMENT_TEAM = 9ZZ3GWSWT5;
 				INFOPLIST_FILE = "$(SRCROOT)/Wegaut/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Aget.Wegaut;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Wegaut.Aget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1053,14 +1085,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LUY25X6XJ5;
+				DEVELOPMENT_TEAM = 9ZZ3GWSWT5;
 				INFOPLIST_FILE = "$(SRCROOT)/Wegaut/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Aget.Wegaut;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Wegaut.Aget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
