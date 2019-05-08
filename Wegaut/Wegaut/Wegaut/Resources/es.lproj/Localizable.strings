@@ -100,6 +100,7 @@
 "REG_LN"        = "Apellidos";
 "REG_EM"        = "Email";
 "REG_PSSWD"     = "Contraseña";
+"REG_CPSSWD"    = "Confirmar contraseña";
 "REG_BIRTH"     = "Cumpleaños";
 "REG_ABOUT"     = "Cuentanos sobre ti";
 "REG_DESC"      = "Usa este espacio para describirte...";
@@ -108,6 +109,7 @@
 "REG_CAMERA"    = "Camára";
 "REG_GALLERY"   = "Galería";
 "REG_EDIT"      = "Editar";
+"REG_PABIRTH"   = "Selecciona tu fecha de nacimiento:";
 
 //MARK: - SELECTINTERESTSVC
 
@@ -276,6 +278,12 @@
 "PRO_GOING"  = "I'm going";
 "PRO_FAVS"   = "Favorites";
 "PRO_SHARED" = "Shared";
+
+//MARK: - MYBADGESVC
+
+"BA_BRO" = "Bronce";
+"BA_SIL" = "Plata";
+"BA_GOL" = "Oro";
 
 //MARK: - FOLLOWERSVC
 

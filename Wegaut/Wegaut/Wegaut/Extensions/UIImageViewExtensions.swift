@@ -10,9 +10,9 @@ import UIKit
 
 extension UIImageView {
     
-    func get(image:UIImage?, with tintColor:UIColor?){
+    func getImageWith(tintColor:UIColor?) {
         
-        if let anImage = image {
+        if let anImage = self.image {
             let imageToColor: UIImage = anImage.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
             if let aTintColor = tintColor {
                 

@@ -34,16 +34,16 @@ class MyBadgesContainerVC: UIViewController {
     func getBadgeTypeAccordingTo(index: Int) -> BadgeType {
         
         switch index {
-        case 0:  return BadgeType.gold
+        case 0:  return BadgeType.bronze
         case 1:  return BadgeType.silver
-        default: return BadgeType.bronze
+        default: return BadgeType.gold
         }
     }
 }
 
 //MARK: - EXTENSIONS
 
-extension MyBadgesContainerVC: UICollectionViewDataSource, UICollectionViewDelegate {
+extension MyBadgesContainerVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -55,5 +55,10 @@ extension MyBadgesContainerVC: UICollectionViewDataSource, UICollectionViewDeleg
         let aCell: BadgeCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: "BadgeCell", for: indexPath) as! BadgeCVCell
         aCell.currentBadge = arrBadges[indexPath.row]
         return aCell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let cellHeight: CGFloat = (collectionView.frame.width - 80) / 3
+        return CGSize(width: cellHeight, height: cellHeight)
     }
 }

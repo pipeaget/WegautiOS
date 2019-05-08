@@ -9,8 +9,6 @@ target 'Wegaut' do
   # Pods for Wegaut
 
     pod 'BRCountDownView'
-    pod 'Colours'
-    pod 'ReachabilitySwift'
     pod 'SDWebImage'
     pod 'CropViewController'
     pod 'Firebase/Core'

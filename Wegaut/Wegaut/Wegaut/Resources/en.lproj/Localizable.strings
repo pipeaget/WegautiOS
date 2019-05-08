@@ -100,6 +100,7 @@
 "REG_LN"        = "Last names";
 "REG_EM"        = "Email";
 "REG_PSSWD"     = "Password";
+"REG_CPSSWD"    = "Confirm password";
 "REG_BIRTH"     = "Birthday";
 "REG_ABOUT"     = "Tell us about you";
 "REG_DESC"      = "Use this space to describe yourself...";
@@ -108,6 +109,7 @@
 "REG_CAMERA"    = "Camera";
 "REG_GALLERY"   = "Gallery";
 "REG_EDIT"      = "Edit";
+"REG_PABIRTH"   = "Select your birthdate:";
 
 //MARK: - SELECTINTERESTSVC
 
@@ -282,6 +284,12 @@
 "FO_FWR" = "Followers";
 "FO_FWG" = "Following";
 "FO_SEA" = "Search people";
+
+//MARK: - MYBADGESVC
+
+"BA_BRO" = "Bronze";
+"BA_SIL" = "Silver";
+"BA_GOL" = "Gold";
 
 //MARK: - SETTINGSVC
 

@@ -334,6 +334,9 @@ typealias SelectionAction = (Int)->Void
 /// Used to obtain the corresponding date selected by the user from a Date Selection alert.
 typealias DateSelectionAction = (Date)->Void
 
+/// Used to obtain the corresponding option selected by the user from a Selection alert.
+typealias OptionSelectionAction = (String)->Void
+
 //MARK: - FORAlertUIConstructor
 
 class FORPopUpView: UIView, ModalPopUp {
@@ -351,6 +354,7 @@ class FORPopUpView: UIView, ModalPopUp {
     var forgotPasswordSuccess: YesNoAction?
     var yesNoSuccess: YesNoAction?
     var dateSelection: DateSelectionAction?
+    var pickerSelection: OptionSelectionAction?
 
     //MARK: OUTLETS
     
@@ -686,7 +690,7 @@ class FORPopUpView: UIView, ModalPopUp {
         btnYes.setTitleColor(UIColor.white,
                              for: UIControl.State.normal)
         btnYes.addTarget(self,
-                         action: #selector(actYes),
+                         action: #selector(actSelection),
                          for: UIControl.Event.touchUpInside)
         btnYes.cornerRadius(cornerRadius: 5)
         vwDialog.addSubview(btnYes)
@@ -1085,6 +1089,14 @@ class FORPopUpView: UIView, ModalPopUp {
         if let anAction = self.dateSelection{
             
             anAction(self.dateSelected ?? Date())
+        }
+    }
+    
+    @objc func actSelection() {
+        
+        if let anAction = self.pickerSelection {
+            
+            anAction(self.arrSelectOptions[selectedSegmentIndex ?? 0])
         }
     }
 }

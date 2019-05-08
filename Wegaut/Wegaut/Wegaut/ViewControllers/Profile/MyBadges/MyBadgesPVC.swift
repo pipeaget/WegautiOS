@@ -22,11 +22,7 @@ class MyBadgesPVC: UIPageViewController {
     
     var mybadgesPVC: MyBadgesPVC?
     var arrHeaders: [String] = ["", "", ""]
-    var currentIndex: Int = 0 {
-        didSet {
-            getContentVC(at: currentIndex)
-        }
-    }
+    var currentIndex: Int = 0
     weak var myBadgesDelegate: MyBadgesPVCDelegate?
 
     override func viewDidLoad() {
