@@ -635,7 +635,7 @@
                                                             <constraint firstAttribute="height" constant="20" id="heg-Kl-nda"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Escribe aquí tú mail" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hPK-cW-07y">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Escribe aquí tú mail" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hPK-cW-07y">
                                                         <rect key="frame" x="30" y="5" width="195" height="30"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="oeH-2z-jiB"/>
@@ -860,7 +860,7 @@
                 <navigationController storyboardIdentifier="RootLogin" automaticallyAdjustsScrollViewInsets="NO" id="VZq-1v-vFL" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6Pa-CX-7ZK">
-                        <rect key="frame" x="0.0" y="20" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

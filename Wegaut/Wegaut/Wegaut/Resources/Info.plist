@@ -26,14 +26,6 @@
 				<string>googlemaps</string>
 			</array>
 		</dict>
-		<dict>
-			<key>CFBundleURLName</key>
-			<string>https://waze.com/ul</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>waze</string>
-			</array>
-		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>

@@ -81,9 +81,14 @@ extension SelectInterestsVC: UICollectionViewDataSource, UICollectionViewDelegat
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+
+      if UIScreen.main.traitCollection.userInterfaceIdiom == .phone {
         let cellSize:CGFloat = (cvInterests.frame.width - 20) / 2
         return CGSize(width: cellSize, height: cellSize)
+      } else {
+        let cellSize:CGFloat = (cvInterests.frame.width - 40) / 4
+        return CGSize(width: cellSize, height: cellSize)
+      }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

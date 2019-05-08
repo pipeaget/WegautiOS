@@ -138,7 +138,7 @@ class EventFeedDetailVC: UIViewController {
                         navOptionsAlert.addAction(actGoogleMaps)
                     }
                     
-                    if (UIApplication.shared.canOpenURL(URL(string: "https://waze.com/ul")!)){
+                    /*if (UIApplication.shared.canOpenURL(URL(string: "https://waze.com/ul")!)){
                         
                         let actWaze: UIAlertAction = UIAlertAction(title: "Waze",
                                                                    style: UIAlertAction.Style.default) { (alert) in
@@ -157,7 +157,7 @@ class EventFeedDetailVC: UIViewController {
                                                                     })
                         }
                         navOptionsAlert.addAction(actWaze)
-                    }
+                    }*/
                 }
             }
         }
