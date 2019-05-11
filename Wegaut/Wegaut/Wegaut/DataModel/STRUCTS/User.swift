@@ -30,6 +30,39 @@ struct User {
     var usActivities: [Activity]
     var usTags: [Tag]
     
+    static func convertUserToDic(_ user:User)-> [String:Any] {
+        
+        var dicToReturn: [String: Any] = [:]
+        dicToReturn["usId"]              = user.usId
+        dicToReturn["usName"]            = user.usName
+        dicToReturn["usEmail"]           = user.usEmail
+        dicToReturn["usFirstName"]       = user.usFirstName
+        dicToReturn["usLastNames"]       = user.usLastNames
+        dicToReturn["usProfileImageURL"] = user.usProfileImageURL
+        dicToReturn["usBirthdate"]       = user.usBirthdate
+        dicToReturn["usPassword"]        = user.usPassword
+        dicToReturn["usDescription"]     = user.usDescription
+        dicToReturn["usWegautLevel"]     = user.usWegautLevel.description
+        dicToReturn["usFollowers"]       = convertUsersToDic(user.usFollowers)
+        dicToReturn["usFollowing"]       = convertUsersToDic(user.usFollowing)
+        dicToReturn["usCreatedEvents"]   = user.usCreatedEvents
+        dicToReturn["usAssistingEvents"] = user.usAssistingEvents
+        dicToReturn["usFavouriteEvents"] = user.usFavouriteEvents
+        dicToReturn["usSharedEvents"]    = user.usSharedEvents
+        dicToReturn["usActivities"]      = user.usActivities
+        dicToReturn["usTags"]            = user.usTags
+        return dicToReturn
+    }
+    
+    static func convertUsersToDic(_ users: [User]) -> [String: Any] {
+        
+        var arrDicUsers: [[String: Any]] = [[:]]
+        for user in users {
+            arrDicUsers.append(convertUserToDic(user))
+        }
+        return ["users" : arrDicUsers]
+    }
+    
     static func getUserData()-> User{
         
       return User(usId: "",

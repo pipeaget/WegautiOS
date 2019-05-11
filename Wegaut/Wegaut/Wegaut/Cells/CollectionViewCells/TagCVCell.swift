@@ -32,6 +32,6 @@ class TagCVCell: UICollectionViewCell {
             return
         }
         imgvwSelectionState.image = aTag.tagIsSelected ? #imageLiteral(resourceName: "ICCircleOn") : #imageLiteral(resourceName: "ICCircleOff")
-        lblTagName.text = aTag.tagName
+        lblTagName.text = aTag.tagId.tagName
     }
 }

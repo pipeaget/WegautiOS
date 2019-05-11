@@ -46,7 +46,7 @@
 //MARK: - LEVELS
 
 "LV_1" = "NOOB";
-"LV_2" = "MITAD";
+"LV_2" = "HALF";
 "LV_3" = "PRO";
 
 //MARK: - ASSISTANT TYPES
@@ -149,6 +149,11 @@
 "EVF_TAGS"      = "Category";
 "EVF_NO_EVENTS" = "Currently there's any available events...";
 "EVF_SEARCH"    = "Busca eventos";
+"EVF_PHO"       = "Photo";
+"EVF_VID"       = "Video";
+"EVF_URL"       = "URL";
+"EVF_IMA"       = "Image";
+"EVF_VID"       = "Video";
 
 //MARK: - EVENTFEEDDETAILVC
 

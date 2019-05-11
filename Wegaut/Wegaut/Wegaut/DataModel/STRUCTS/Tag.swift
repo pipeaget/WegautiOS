@@ -27,6 +27,28 @@ enum TagIdentifier {
     case health
     case gardening
     case music
+    
+    var tagName: String {
+        switch self {
+        case .party:         return "TAG_PAR".localized
+        case .socialCauses:  return "TAG_SOC".localized
+        case .economy:       return "TAG_ECO".localized
+        case .theater:       return "TAG_TEA".localized
+        case .education:     return "TAG_EDU".localized
+        case .dance:         return "TAG_DAN".localized
+        case .movies:        return "TAG_MOV".localized
+        case .fitness:       return "TAG_FIT".localized
+        case .shopping:      return "TAG_SHO".localized
+        case .sports:        return "TAG_SPO".localized
+        case .lifeStyle:     return "TAG_LIF".localized
+        case .food:          return "TAG_FOO".localized
+        case .videogames:    return "TAG_GAM".localized
+        case .cars:          return "TAG_CAR".localized
+        case .health:        return "TAG_HEA".localized
+        case .gardening:     return "TAG_GAR".localized
+        case .music:         return "TAG_MUS".localized
+        }
+    }
 }
 
 enum BadgeType {
@@ -208,34 +230,8 @@ struct Tag {
     
     var tagId: TagIdentifier
     var tagIsSelected: Bool
-    var tagName: String {
-        
-        switch self.tagId {
-            
-        case .party:         return "TAG_PAR".localized
-        case .socialCauses:  return "TAG_SOC".localized
-        case .economy:       return "TAG_ECO".localized
-        case .theater:       return "TAG_TEA".localized
-        case .education:     return "TAG_EDU".localized
-        case .dance:         return "TAG_DAN".localized
-        case .movies:        return "TAG_MOV".localized
-        case .fitness:       return "TAG_FIT".localized
-        case .shopping:      return "TAG_SHO".localized
-        case .sports:        return "TAG_SPO".localized
-        case .lifeStyle:     return "TAG_LIF".localized
-        case .food:          return "TAG_FOO".localized
-        case .videogames:    return "TAG_GAM".localized
-        case .cars:          return "TAG_CAR".localized
-        case .health:        return "TAG_HEA".localized
-        case .gardening:     return "TAG_GAR".localized
-        case .music:         return "TAG_MUS".localized
-        }
-    }
-    
     var tagStateImage: UIImage {
-        
         switch self.tagId {
-            
         case .party:         return self.tagIsSelected ? #imageLiteral(resourceName: "TAGPartyDeselected") : #imageLiteral(resourceName: "TAGPartySelected")
         case .socialCauses:  return self.tagIsSelected ? #imageLiteral(resourceName: "TAGSocialCausesDeselected") : #imageLiteral(resourceName: "TAGSocialCausesSelected")
         case .economy:       return self.tagIsSelected ? #imageLiteral(resourceName: "TAGEconomyDeselected") : #imageLiteral(resourceName: "TAGEconomySelected")
@@ -254,6 +250,15 @@ struct Tag {
         case .gardening:     return self.tagIsSelected ? #imageLiteral(resourceName: "TAGGardeningDeselected") : #imageLiteral(resourceName: "TAGGardeningSelected")
         case .music:         return self.tagIsSelected ? #imageLiteral(resourceName: "TAGMusicDeselected") : #imageLiteral(resourceName: "TAGMusicSelected") 
         }
+    }
+    
+    static func convertTagsToDic(_ tags: [Tag]) -> [String] {
+    
+        var arrToReturn: [String] = []
+        for tag in tags {
+            arrToReturn.append(tag.tagId.tagName)
+        }
+        return arrToReturn
     }
     
     static func getTags()->[Tag] {

@@ -52,11 +52,11 @@ class MainInfoTVCell: UITableViewCell {
         lblAssistants.adjustsFontSizeToFitWidth = true
         lblAssistants.attributedText = "MIC_ASS".localized.getStringWith(anImage: #imageLiteral(resourceName: "ICFollowersOn"))
         lblCheckInsQuantity.adjustsFontSizeToFitWidth = true
-        lblCheckInsQuantity.text = "\(anEvent.eveCheckIns)"
+        lblCheckInsQuantity.text = "\(anEvent.eveUsersCheckIns)"
         lblCheckIns.adjustsFontSizeToFitWidth = true
         lblCheckIns.attributedText = "MIC_CHE".localized.getStringWith(anImage: #imageLiteral(resourceName: "ICPin"))
         lblFollowersQuantity.adjustsFontSizeToFitWidth = true
-        lblFollowersQuantity.text = "\(anEvent.eveFollowers)"
+        lblFollowersQuantity.text = "\(anEvent.eveUsersFollowers)"
         lblFollowers.adjustsFontSizeToFitWidth = true
         lblFollowers.attributedText = "MIC_FOL".localized.getStringWith(anImage: #imageLiteral(resourceName: "ICEye"))
         lblPlace.adjustsFontSizeToFitWidth = true

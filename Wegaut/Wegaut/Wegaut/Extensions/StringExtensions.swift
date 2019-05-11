@@ -20,6 +20,11 @@ extension String{
                                                    comment: "") as String
     }
     
+    func localizeString(_ language: String) -> String {
+        guard let path = Bundle.main.path (forResource: language, ofType: "lproj"), let languageBundle = Bundle(path: path) else { return "" }
+        return languageBundle.localizedString(forKey: self, value: "", table: nil)
+    }
+    
     /// Used to validate if a string is a valid email
     var isAValidEmail:Bool{
         let emailregex = "[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}"
@@ -32,6 +37,14 @@ extension String{
         let urlRegex = "[-\\w\\.]++(:\\d+)?(/([\\w/_\\.]*(\\?\\S+)?)?)?"
         let urlTest = NSPredicate(format: "SELF MATCHES %@", urlRegex)
         return urlTest.evaluate(with: self)
+    }
+    
+    func stringToDateEddMMMyyyy()-> Date {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "E d MMM yyyy"
+        guard let date = dateFormatter.date(from: self) else { return Date() }
+        return date
     }
     
     /// Used to replace diagonals with dash

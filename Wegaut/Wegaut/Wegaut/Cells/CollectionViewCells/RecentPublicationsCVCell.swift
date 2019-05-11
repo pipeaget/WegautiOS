@@ -74,8 +74,7 @@ class RecentPublicationsCVCell: UICollectionViewCell {
                                                                y: 0,
                                                                width: imgvwPublication.frame.width,
                                                                height: imgvwPublication.frame.height))
-        if  let aPubStr = publication.pubUrl,
-            let aPubURL = URL(string: aPubStr) {
+        if  let aPubURL = URL(string: publication.pubUrl) {
             wvPublication.loadRequest(URLRequest(url: aPubURL))
             wvPublication.delegate = self
         }

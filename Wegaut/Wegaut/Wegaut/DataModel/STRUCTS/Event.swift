@@ -106,9 +106,45 @@ struct Event {
     var eveSponsorships: [Sponsorship]
     var eveAssistants: [User]
     var eveUserFavorited: [User]
-    var eveShared: [User]
-    var eveCheckIns: [User]
-    var eveFollowers: [User]
+    var eveUsersShared: [User]
+    var eveUsersCheckIns: [User]
+    var eveUsersFollowers: [User]
+    
+    static func convertEventToDic(_ event: Event) -> [String: Any] {
+        
+        var dictToReturn: [String: Any] = [:]
+        dictToReturn["eveImageURL"]      = event.eveImageURL
+        dictToReturn["eveName"]          = event.eveName
+        dictToReturn["evePlace"]         = event.evePlace
+        dictToReturn["eveAddress"]       = event.eveAddress
+        dictToReturn["eveDate"]          = event.eveDate
+        dictToReturn["eveSchedule"]      = event.eveSchedule
+        dictToReturn["eveAssitantsType"] = event.eveAssitantsType
+        dictToReturn["evePrice"]         = event.evePrice
+        dictToReturn["eveDescription"]   = event.eveDescription
+        dictToReturn["eveStatus"]        = event.eveStatus
+        dictToReturn["eveTags"]          = Tag.convertTagsToDic(event.eveTags)
+        dictToReturn["evePublications"]  = Publication.convertPublicationsToDic(event.evePublications)
+        dictToReturn["eveComments"]      = Comment.convertCommentsToDic(event.eveComments)
+        dictToReturn["eveMultimedia"]    = Multimedia.convertMultimediasToDic(event.eveMultimedia)
+        dictToReturn["eveOrganizers"]    = Organizer.convertOrganizersToDic(event.eveOrganizers)
+        dictToReturn["eveSponsorships"]  = Sponsorship.convertSponsorshipsToDic(event.eveSponsorships)
+        dictToReturn["eveAssistants"]    = User.convertUsersToDic(event.eveAssistants)
+        dictToReturn["eveUserFavorited"] = User.convertUsersToDic(event.eveUserFavorited)
+        dictToReturn["eveShared"]        = User.convertUsersToDic(event.eveUsersShared)
+        dictToReturn["eveCheckIns"]      = User.convertUsersToDic(event.eveUsersCheckIns)
+        dictToReturn["eveFollowers"]     = User.convertUsersToDic(event.eveUsersFollowers)
+        return dictToReturn
+    }
+    
+    static func convertEventsToDic(_ events: [Event])-> [String: Any] {
+        
+        var arrEvents: [[String: Any]] = [[:]]
+        for event in events {
+            arrEvents.append(convertEventToDic(event))
+        }
+        return ["events": arrEvents]
+    }
     
     static func getNewEvent()-> Event {
         
@@ -130,9 +166,9 @@ struct Event {
                      eveSponsorships: [],
                      eveAssistants: [],
                      eveUserFavorited: [],
-                     eveShared: [],
-                     eveCheckIns: [],
-                     eveFollowers: [])
+                     eveUsersShared: [],
+                     eveUsersCheckIns: [],
+                     eveUsersFollowers: [])
     }
     
     static func getEvents()->[Event]{
@@ -162,9 +198,9 @@ struct Event {
                                                   spoLocalImage: UIImage())],
                     eveAssistants: [User.getUserData()],
                     eveUserFavorited: [User.getUserData()],
-                    eveShared: [],
-                    eveCheckIns: [],
-                    eveFollowers: []),
+                    eveUsersShared: [],
+                    eveUsersCheckIns: [],
+                    eveUsersFollowers: []),
               Event(eveImageURL: "Ceremonia",
                     eveName: "Festival Ceremonia GNP 2019",
                     evePlace: "Centro Dinamico Pegaso, Toluca, MEX",
@@ -190,9 +226,9 @@ struct Event {
                                                   spoLocalImage: UIImage())],
                     eveAssistants: [User.getUserData()],
                     eveUserFavorited: [User.getUserData()],
-                    eveShared: [],
-                    eveCheckIns: [],
-                    eveFollowers: []),
+                    eveUsersShared: [],
+                    eveUsersCheckIns: [],
+                    eveUsersFollowers: []),
               Event(eveImageURL: "Vive",
                     eveName: "Vive Latino",
                     evePlace: "Foro Sol, Ciudad de México, México",
@@ -218,9 +254,9 @@ struct Event {
                                                   spoLocalImage: UIImage())],
                     eveAssistants: [User.getUserData()],
                     eveUserFavorited: [User.getUserData()],
-                    eveShared: [],
-                    eveCheckIns: [],
-                    eveFollowers: []),
+                    eveUsersShared: [],
+                    eveUsersCheckIns: [],
+                    eveUsersFollowers: []),
               Event(eveImageURL: "Tenis",
                     eveName: "Abierto Mexicano de Tennis Telcel",
                     evePlace: "Teatro Telcel",
@@ -246,9 +282,9 @@ struct Event {
                                                   spoLocalImage: UIImage())],
                     eveAssistants: [User.getUserData()],
                     eveUserFavorited: [User.getUserData()],
-                    eveShared: [],
-                    eveCheckIns: [],
-                    eveFollowers: []),
+                    eveUsersShared: [],
+                    eveUsersCheckIns: [],
+                    eveUsersFollowers: []),
               Event(eveImageURL: "Boda",
                     eveName: "La boda de mi mejor amigo",
                     evePlace: "Cinemex Antara",
@@ -274,9 +310,9 @@ struct Event {
                                                   spoLocalImage: UIImage())],
                     eveAssistants: [User.getUserData()],
                     eveUserFavorited: [User.getUserData()],
-                    eveShared: [],
-                    eveCheckIns: [],
-                    eveFollowers: []),
+                    eveUsersShared: [],
+                    eveUsersCheckIns: [],
+                    eveUsersFollowers: []),
               Event(eveImageURL: "Wegaut",
                       eveName: "Wegaut Launch",
                       evePlace: "Joy Room Antara",
@@ -299,9 +335,9 @@ struct Event {
                                                     spoLocalImage: UIImage())],
                       eveAssistants: [User.getUserData()],
                       eveUserFavorited: [User.getUserData()],
-                      eveShared: [],
-                      eveCheckIns: [],
-                      eveFollowers: []),
+                      eveUsersShared: [],
+                      eveUsersCheckIns: [],
+                      eveUsersFollowers: []),
                 Event(eveImageURL: "Increibles",
                       eveName: "Los Increíbles 2 - Premiere México",
                       evePlace: "Cinepolis Universidad",
@@ -324,9 +360,9 @@ struct Event {
                                                     spoLocalImage: UIImage())],
                       eveAssistants: [],
                       eveUserFavorited: [],
-                      eveShared: [],
-                      eveCheckIns: [],
-                      eveFollowers: []),
+                      eveUsersShared: [],
+                      eveUsersCheckIns: [],
+                      eveUsersFollowers: []),
                 Event(eveImageURL: "Tangueros",
                       eveName: "Tangueros",
                       evePlace: "Lunario del Auditorio Nacional",
@@ -349,9 +385,9 @@ struct Event {
                                                     spoLocalImage: UIImage())],
                       eveAssistants: [],
                       eveUserFavorited: [],
-                      eveShared: [],
-                      eveCheckIns: [],
-                      eveFollowers: []),
+                      eveUsersShared: [],
+                      eveUsersCheckIns: [],
+                      eveUsersFollowers: []),
                 Event(eveImageURL: "Miserables",
                       eveName: "Los Miserables",
                       evePlace: "Teatro Telcel",
@@ -374,8 +410,8 @@ struct Event {
                                                     spoLocalImage: UIImage())],
                       eveAssistants: [],
                       eveUserFavorited: [],
-                      eveShared: [],
-                      eveCheckIns: [],
-                      eveFollowers: [])]
+                      eveUsersShared: [],
+                      eveUsersCheckIns: [],
+                      eveUsersFollowers: [])]
     }
 }

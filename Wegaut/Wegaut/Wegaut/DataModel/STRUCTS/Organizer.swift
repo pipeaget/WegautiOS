@@ -14,6 +14,23 @@ struct Organizer {
     var orgImageURL: String
     var orgLocalImage: UIImage
     
+    static func convertOrganizerToDic(_ organizer: Organizer)-> [String: Any] {
+        
+        var dictToReturn: [String: Any] = [:]
+        dictToReturn["orgName"] = organizer.orgName
+        dictToReturn["orgImageURL"] = organizer.orgImageURL
+        return dictToReturn
+    }
+    
+    static func convertOrganizersToDic(_ organizers: [Organizer])-> [String: Any] {
+        
+        var arrOrganizers: [[String: Any]] = [[:]]
+        for organizer in organizers {
+            arrOrganizers.append(convertOrganizerToDic(organizer))
+        }
+        return ["organizers": arrOrganizers]
+    }
+    
     static func getAllOrganizers()->[Organizer]{
         
         return [Organizer(orgName: "CitiBanamex",

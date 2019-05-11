@@ -25,4 +25,18 @@ enum Level {
         case Level.high:   return "LV_3".localized
         }
     }
+    
+    func getLevelFromString(_ strLevel: String) -> Level {
+        
+        switch strLevel {
+        case "NOOB":
+            return Level.noob
+            
+        case "HALF":
+            return Level.medium
+            
+        default:
+            return Level.high
+        }
+    }
 }

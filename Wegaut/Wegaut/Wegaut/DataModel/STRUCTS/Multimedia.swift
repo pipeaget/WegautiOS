@@ -13,19 +13,45 @@ enum MultimediaType {
     case url
     case image
     case video
+    
+    var description: String {
+        switch self {
+        case .url:   return "EVF_URL".localized
+        case .image: return "EVF_IMA".localized
+        case .video: return "EVF_VID".localized
+        }
+    }
 }
 
 struct Multimedia {
     
     var mulMediaType: MultimediaType
-    var mulImageURL: String?
     var mulLocalImage: UIImage?
-    var mulVideoURL: String?
     var mulLocalVideo: Data?
-    var mulURL: String?
+    var mulURL: String
     var mulUser: User
     var mulDate: String
     var mulIsFavorite: Bool
+    
+    static func convertMultimediaToDic(_ multimedia: Multimedia)-> [String: Any] {
+        
+        var dicToReturn: [String: Any] = [:]
+        dicToReturn["mulMediaType"] = multimedia.mulMediaType.description
+        dicToReturn["mulURL"] = multimedia.mulURL
+        dicToReturn["mulUser"] = User.convertUserToDic(multimedia.mulUser)
+        dicToReturn["mulDate"] = multimedia.mulDate
+        dicToReturn["mulIsFavorite"] = multimedia.mulIsFavorite
+        return dicToReturn
+    }
+    
+    static func convertMultimediasToDic(_ multimedia: [Multimedia])-> [String: Any] {
+        
+        var arrMultimedia: [[String: Any]] = [[:]]
+        for multimedia in multimedia {
+            arrMultimedia.append(convertMultimediaToDic(multimedia))
+        }
+        return ["multimedia": arrMultimedia]
+    }
     
     static func getDefaultMultimedia()-> Multimedia {
         

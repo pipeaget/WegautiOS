@@ -14,7 +14,25 @@ struct Comment {
     var comText: String
     var comDate: String
     
-    static func getcomments()->[Comment]{
+    static func convertCommentToDic(_ comment: Comment)-> [String: Any] {
+        
+        var dicToReturn: [String: Any] = [:]
+        dicToReturn["comUser"] = User.convertUserToDic(comment.comUser)
+        dicToReturn["comText"] = comment.comText
+        dicToReturn["comDate"] = comment.comDate
+        return dicToReturn
+    }
+    
+    static func convertCommentsToDic(_ comments: [Comment])-> [String: Any] {
+        
+        var arrComments: [[String: Any]] = [[:]]
+        for comment in comments {
+            arrComments.append(convertCommentToDic(comment))
+        }
+        return ["comments": arrComments]
+    }
+    
+    static func getComments()-> [Comment]{
         
       return [Comment(comUser: User(usId: "", usName: "Emma Roberts",
                                       usEmail: "example@example.com",
