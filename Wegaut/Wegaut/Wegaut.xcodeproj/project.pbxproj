@@ -300,6 +300,13 @@
 			path = MyBadges;
 			sourceTree = "<group>";
 		};
+		8266BCB92283A07C009583B5 /* No Connection */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "No Connection";
+			sourceTree = "<group>";
+		};
 		C74A198167CC05101A5B83F6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -311,13 +318,6 @@
 				0CC4F014C17B7E4E6E4CC7B0 /* Pods-WegautUITests.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		D52E50E9216A8C9900B2AB6F /* No Connection */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "No Connection";
 			sourceTree = "<group>";
 		};
 		D55CC4AC21C0427F000A1C43 /* NewEvent */ = {
@@ -659,7 +659,7 @@
 			isa = PBXGroup;
 			children = (
 				D5E20EDB21478B390099C1BD /* AppDelegate.swift */,
-				D52E50E9216A8C9900B2AB6F /* No Connection */,
+				8266BCB92283A07C009583B5 /* No Connection */,
 				D5D146B0214EA9A2005C2FC5 /* Onboarding */,
 				D5CB94DC2149972900009BCB /* Login */,
 				D5D146B7214EA9C1005C2FC5 /* EventFeed */,
@@ -793,6 +793,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -802,6 +803,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

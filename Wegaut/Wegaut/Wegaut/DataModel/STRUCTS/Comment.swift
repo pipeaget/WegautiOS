@@ -16,7 +16,7 @@ struct Comment {
     
     static func getcomments()->[Comment]{
         
-        return [Comment(comUser: User(usName: "Emma Roberts",
+      return [Comment(comUser: User(usId: "", usName: "Emma Roberts",
                                       usEmail: "example@example.com",
                                       usFirstName: "Emma",
                                       usLastNames: "Roberts",
@@ -36,7 +36,7 @@ struct Comment {
                                       usTags: []),
                         comText: "I'm so excited about this event!",
                         comDate: "18/06/18"),
-                Comment(comUser: User(usName: "Emma Roberts",
+              Comment(comUser: User(usId: "", usName: "Emma Roberts",
                     usEmail: "example@example.com",
                     usFirstName: "Emma",
                     usLastNames: "Roberts",
@@ -56,7 +56,7 @@ struct Comment {
                     usTags: []),
                         comText: "Can't wait to be there!",
                         comDate: "17/06/18"),
-            Comment(comUser: User(usName: "Emma Roberts",
+              Comment(comUser: User(usId: "", usName: "Emma Roberts",
                                   usEmail: "example@example.com",
                                   usFirstName: "Emma",
                                   usLastNames: "Roberts",

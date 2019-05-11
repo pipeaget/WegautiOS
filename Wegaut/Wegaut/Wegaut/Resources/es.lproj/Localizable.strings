@@ -17,6 +17,7 @@
 "CANCEL"      = "Cancel";
 "SENDCOMMENT" = "Escribe un comentario...";
 "SENDPREF"    = "Escr";
+"ERROR"       = "ERROR";
 
 //MARK: - TAGS
 
@@ -83,6 +84,7 @@
 "LOG_INVPSSWD" = "La contraseña no es válida";
 "LOG_MAILTIT"  = "Correo Enviado";
 "LOG_MAILSENT" = "Un correo de recuperación de contraseña ha sido enviado a la cuenta solicitada.";
+"LOG_FAIL"     = "Una o más de tus credenciales están mal. Por favor, vuelve a ingresarlas.";
 
 //MARK: - FORGOTPASSWORDVC
 
@@ -110,6 +112,15 @@
 "REG_GALLERY"   = "Galería";
 "REG_EDIT"      = "Editar";
 "REG_PABIRTH"   = "Selecciona tu fecha de nacimiento:";
+"REG_INVUSNAME" = "El nombre de usuario no es válido";
+"REG_INVLANAME" = "Los apellidos no son válidos";
+"REG_INVBIRTH"  = "La fecha de nacimiento no es válida";
+"REG_INVMAIL"   = "El email no es válido";
+"REG_INVPASS"   = "La contraseña no es válida";
+"REG_INVCOPASS" = "Las contraseñas no coinciden";
+"REG_WELCOME"   = "¡Bienvenido!";
+"REG_HELLO"     = "Hola";
+"REG_DESC"      = "Cuéntanos aquí un poco sobre ti";
 
 //MARK: - SELECTINTERESTSVC
 

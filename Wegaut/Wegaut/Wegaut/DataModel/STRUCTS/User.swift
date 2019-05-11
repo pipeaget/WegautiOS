@@ -9,7 +9,8 @@
 import UIKit
 
 struct User {
-    
+
+    var usId: String
     var usName: String
     var usEmail: String
     var usFirstName: String
@@ -31,7 +32,8 @@ struct User {
     
     static func getUserData()-> User{
         
-        return User(usName: "Emma Roberts",
+      return User(usId: "",
+                  usName: "Emma Roberts",
                     usEmail: "example@example.com",
                     usFirstName: "Emma",
                     usLastNames: "Roberts",
@@ -50,6 +52,27 @@ struct User {
                     usActivities: [],
                     usTags: [])
     }
+
+  static func newUser() -> User {
+    return User(usId: "", usName: "",
+                usEmail: "",
+                usFirstName: "",
+                usLastNames: "",
+                usProfileImageURL: "",
+                usProfileImage: #imageLiteral(resourceName: "ICFollowBack"),
+                usBirthdate: "",
+                usPassword: "",
+                usDescription: "REG_DESC".localized,
+                usWegautLevel: Level.noob,
+                usFollowers: [],
+                usFollowing: [],
+                usCreatedEvents: [],
+                usAssistingEvents: [],
+                usFavouriteEvents: [],
+                usSharedEvents: [],
+                usActivities: [],
+                usTags: [])
+  }
     
     static func isUserInArray(anArray: [User])-> Bool {
         
@@ -58,7 +81,7 @@ struct User {
     
     static func getFollowers()-> [User] {
         
-        return [User(usName: "Jessy Jacke",
+      return [User(usId: "", usName: "Jessy Jacke",
                      usEmail: "example@example.com",
                      usFirstName: "Jessy",
                      usLastNames: "Jacke",
@@ -76,7 +99,7 @@ struct User {
                      usSharedEvents: [],
                      usActivities: [],
                      usTags: []),
-                User(usName: "Erick Smith",
+              User(usId: "", usName: "Erick Smith",
                      usEmail: "example@example.com",
                      usFirstName: "Erick",
                      usLastNames: "Smith",
@@ -94,7 +117,7 @@ struct User {
                      usSharedEvents: [],
                      usActivities: [],
                      usTags: []),
-                User(usName: "Lucia Don",
+              User(usId: "", usName: "Lucia Don",
                      usEmail: "example@example.com",
                      usFirstName: "Lucia",
                      usLastNames: "Don",
@@ -112,7 +135,7 @@ struct User {
                      usSharedEvents: [],
                      usActivities: [],
                      usTags: []),
-                User(usName: "Soona Ten",
+              User(usId: "", usName: "Soona Ten",
                      usEmail: "example@example.com",
                      usFirstName: "Soona",
                      usLastNames: "Ten",
@@ -130,7 +153,7 @@ struct User {
                      usSharedEvents: [],
                      usActivities: [],
                      usTags: []),
-                User(usName: "Elizabeth Watson",
+              User(usId: "", usName: "Elizabeth Watson",
                      usEmail: "example@example.com",
                      usFirstName: "Elizabeth",
                      usLastNames: "Watson",
@@ -152,7 +175,7 @@ struct User {
     
     static func getFollowing()-> [User] {
         
-        return [User(usName: "Elizabeth Watson",
+      return [User(usId: "", usName: "Elizabeth Watson",
                      usEmail: "example@example.com",
                      usFirstName: "Elizabeth",
                      usLastNames: "Watson",
@@ -170,7 +193,7 @@ struct User {
                      usSharedEvents: [],
                      usActivities: [],
                      usTags: []),
-                User(usName: "Jessy Jacke",
+              User(usId: "", usName: "Jessy Jacke",
                      usEmail: "example@example.com",
                      usFirstName: "Jessy",
                      usLastNames: "Jacke",
@@ -188,7 +211,7 @@ struct User {
                      usSharedEvents: [],
                      usActivities: [],
                      usTags: []),
-                User(usName: "Erick Smith",
+              User(usId: "", usName: "Erick Smith",
                      usEmail: "example@example.com",
                      usFirstName: "Erick",
                      usLastNames: "Smith",
@@ -206,7 +229,7 @@ struct User {
                      usSharedEvents: [],
                      usActivities: [],
                      usTags: []),
-                User(usName: "Lucia Don",
+                User(usId: "", usName: "Lucia Don",
                      usEmail: "example@example.com",
                      usFirstName: "Lucia",
                      usLastNames: "Don",
@@ -224,7 +247,7 @@ struct User {
                      usSharedEvents: [],
                      usActivities: [],
                      usTags: []),
-                User(usName: "Soona Ten",
+                User(usId: "", usName: "Soona Ten",
                      usEmail: "example@example.com",
                      usFirstName: "Soona",
                      usLastNames: "Ten",

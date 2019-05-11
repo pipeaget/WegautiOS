@@ -17,6 +17,7 @@
 "CANCEL"      = "Cancel";
 "SENDCOMMENT" = "Write your comment here...";
 "SENDPREF"    = "Wri";
+"ERROR"       = "ERROR";
 
 //MARK: - TAGS
 
@@ -83,6 +84,7 @@
 "LOG_INVPSSWD" = "The password isn't valid";
 "LOG_MAILTIT"  = "Email sent";
 "LOG_MAILSENT" = "An email for recovering password has been sent to your account.";
+"LOG_FAIL"     = "One or more of your credentials are invalid. Please try re-enter them.";
 
 //MARK: - FORGOTPASSWORDVC
 
@@ -110,6 +112,15 @@
 "REG_GALLERY"   = "Gallery";
 "REG_EDIT"      = "Edit";
 "REG_PABIRTH"   = "Select your birthdate:";
+"REG_INVUSNAME" = "The username isn't valid";
+"REG_INVLANAME" = "The last names aren't valid";
+"REG_INVBIRTH"  = "The birthdate isn't valid";
+"REG_INVMAIL"   = "The email isn't valid";
+"REG_INVPASS"   = "The password isn't valid";
+"REG_INVCOPASS" = "The confirm password isn't valid";
+"REG_WELCOME"   = "WELCOME!!!";
+"REG_HELLO"     = "Hello";
+"REG_DESC"      = "Tell us a about you";
 
 //MARK: - SELECTINTERESTSVC
 

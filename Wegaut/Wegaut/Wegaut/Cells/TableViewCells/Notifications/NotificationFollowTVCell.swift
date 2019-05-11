@@ -65,6 +65,8 @@ class NotificationFollowTVCell: UITableViewCell {
         lblTimelapse.text = "\(aNotification.actDate)"
         btnFollow.isHidden = false
         btnFollow.cornerRadius(cornerRadius: 5)
+        btnFollow.backgroundColor = (aNotification.actType == .newFollower) ? UIColor.lightGray : UIColor.deepPurple
+        btnFollow.setTitleColor((aNotification.actType == .newFollower) ? UIColor.black : UIColor.white, for: UIControl.State.normal)
         btnFollow.setTitle(aNotification.actType.description,
                            for: UIControl.State.normal)
     }

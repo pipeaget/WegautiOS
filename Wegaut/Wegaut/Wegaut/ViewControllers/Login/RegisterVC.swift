@@ -9,6 +9,7 @@
 import UIKit
 import CropViewController
 import FirebaseAuth
+import FirebaseDatabase
 
 class RegisterVC: UIViewController {
     
@@ -18,6 +19,8 @@ class RegisterVC: UIViewController {
     var keyBoardHeight: CGFloat = 0
     var currentUser: User!
     var confirmPassword: String = ""
+    var tfError: UITextField!
+    var dbRef: DatabaseReference!
     
     //MARK: - OUTLETS
     
@@ -38,8 +41,9 @@ class RegisterVC: UIViewController {
         
         super.viewDidLoad()
         arrTextfields = []
-        currentUser = User.getUserData()
+        currentUser = User.newUser()
         lblTitle.text = "REG_TIT".localized
+        dbRef = Database.database().reference()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.keyboardWillShow(notification:)),
                                                name: UIResponder.keyboardWillShowNotification,
@@ -183,40 +187,90 @@ class RegisterVC: UIViewController {
     }
     
     @objc func actRegister(_ sender: UIButton) {
-        
-        UserDefaults.standard.set(true,
-                                  forKey: WegautConstants.IS_USER_LOGGED)
-        self.performSegue(withIdentifier: "showInterests",
-                          sender: nil)
-        
-        /*if tfEmail.text!.isAValidEmail && tfPassword.text!.count > 6 {
-            
-            Auth.auth().createUser(withEmail: tfEmail.text!,
-                                   password: tfPassword.text!) { (authResult, error) in
-                                    
-                                    if let anError = error {
-                                        
-                                        print(anError.localizedDescription)
-                                    } else {
-                                        
-                                        let alert: UIAlertController = UIAlertController(title: "¡Bienvenido!",
-                                                                                         message: "Hola \(authResult?.user.email)",
-                                                                                         preferredStyle: UIAlertController.Style.alert)
-                                        alert.addAction(UIAlertAction(title: "OK",
-                                                                      style: UIAlertAction.Style.default, handler: { (alert) in
-                                                                        
-                                                                        
-                                        }))
-                                        self.present(alert,
-                                                     animated: true,
-                                                     completion: nil)
-                                    }
+
+      var strErrorMessage: String = ""
+      if currentUser.usName.isEmpty{
+
+        strErrorMessage = "REG_INVUSNAME".localized
+        tfError = arrTextfields[0]
+      } else if currentUser.usLastNames.isEmpty{
+
+        strErrorMessage = "REG_INVLANAME".localized
+        tfError = arrTextfields[1]
+      } else if !currentUser.usEmail.isAValidEmail {
+
+        strErrorMessage = "REG_INVMAIL".localized
+        tfError = arrTextfields[2]
+      } else if currentUser.usBirthdate.isEmpty {
+
+        strErrorMessage = "REG_INVBIRTH".localized
+        tfError = arrTextfields[3]
+      } else if currentUser.usPassword.isEmpty {
+
+        strErrorMessage = "REG_INVPASS".localized
+        tfError = arrTextfields[4]
+      } else if confirmPassword.isEmpty {
+
+        strErrorMessage = "REG_INVCOPASS".localized
+        tfError = arrTextfields[5]
+      }
+      if strErrorMessage != "" {
+
+        let alertVC: UIAlertController = UIAlertController(title: "ERROR",
+                                                           message: strErrorMessage,
+                                                           preferredStyle: UIAlertController.Style.alert)
+        alertVC.addAction(UIAlertAction(title: "OK",
+                                        style: UIAlertAction.Style.destructive,
+                                        handler: nil))
+        self.present(alertVC,
+                     animated: true) {
+                      if let _ = self.tfError {
+
+                        self.tfError?.showInvalidInputStateWhen(isValidInput: true)
+                      }
+        }
+      } else {
+        Auth.auth().createUser(withEmail: currentUser.usEmail, password: currentUser.usPassword) { (authResult, error) in
+
+          if let anError = error {
+
+            print(anError.localizedDescription)
+          } else {
+            dump(authResult?.user)
+            if let anUser = authResult?.user {
+              self.dbRef.child("users").child(anUser.uid).setValue(["usId": anUser.uid,
+                                                                    "usName": self.currentUser.usName,
+                                                                    "usEmail": self.currentUser.usEmail,
+                                                                    "usFirstName": self.currentUser.usFirstName,
+                                                                    "usLastNames": self.currentUser.usLastNames,
+                                                                    "usBirthdate": self.currentUser.usBirthdate,
+                                                                    "usPassword": self.currentUser.usPassword,
+                                                                    "usDescription": self.currentUser.usDescription,
+                                                                    "usWegautLevel": self.currentUser.usWegautLevel.description])
+              let alert: UIAlertController = UIAlertController(title: "REG_WELCOME".localized,
+                                                               message: "REG_HELLO".localized + " \(self.currentUser.usName)",
+                preferredStyle: UIAlertController.Style.alert)
+              alert.addAction(UIAlertAction(title: "OK",
+                                            style: UIAlertAction.Style.default, handler: { (alert) in
+
+
+              }))
+              self.present(alert, animated: true, completion: {
+                self.dismiss(animated: true, completion: {
+                  UserDefaults.standard.set(true,
+                                            forKey: WegautConstants.IS_USER_LOGGED)
+                  let storyBoard: UIStoryboard = UIStoryboard(name: "Main",
+                                                              bundle: Bundle.main)
+                  let rootNavigation: UITabBarController = storyBoard.instantiateViewController(withIdentifier: "RootNavigation") as! UITabBarController
+                  self.present(rootNavigation,
+                               animated: true,
+                               completion: nil)
+                })
+              })
             }
-            
-        } else {
-            
-            //HANDLE INPUT DATA
-        }*/
+          }
+        }
+      }
     }
 }
 

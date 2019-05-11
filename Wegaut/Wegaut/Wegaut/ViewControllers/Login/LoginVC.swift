@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginVC: UIViewController {
     
@@ -130,15 +131,27 @@ class LoginVC: UIViewController {
                             }
             }
         } else {
-            
-            UserDefaults.standard.set(true,
-                                      forKey: WegautConstants.IS_USER_LOGGED)
-            let storyBoard: UIStoryboard = UIStoryboard(name: "Main",
-                                                        bundle: Bundle.main)
-            let rootNavigation: UITabBarController = storyBoard.instantiateViewController(withIdentifier: "RootNavigation") as! UITabBarController
-            self.present(rootNavigation,
-                         animated: true,
-                         completion: nil)
+
+          Auth.auth().signIn(withEmail: tfUser.text!, password: tfPassword.text!) { (authResult, error) in
+            if let anError = error {
+              let anAlert = UIAlertController(title: "ERROR".localized, message: "LOG_FAIL".localized, preferredStyle: UIAlertController.Style.alert)
+              anAlert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertAction.Style.destructive, handler: { (alert) in
+                self.tfUser.showInvalidInputStateWhen(isValidInput: true)
+                self.tfUser.text = ""
+                self.tfPassword.showInvalidInputStateWhen(isValidInput: true)
+                self.tfPassword.text = ""
+              }))
+            } else {
+              UserDefaults.standard.set(true,
+                                        forKey: WegautConstants.IS_USER_LOGGED)
+              let storyBoard: UIStoryboard = UIStoryboard(name: "Main",
+                                                          bundle: Bundle.main)
+              let rootNavigation: UITabBarController = storyBoard.instantiateViewController(withIdentifier: "RootNavigation") as! UITabBarController
+              self.present(rootNavigation,
+                           animated: true,
+                           completion: nil)
+            }
+          }
         }
     }
     
