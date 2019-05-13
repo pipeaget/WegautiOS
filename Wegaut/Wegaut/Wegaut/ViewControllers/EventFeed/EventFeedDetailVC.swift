@@ -57,7 +57,7 @@ class EventFeedDetailVC: UIViewController {
         if segue.identifier == "ShowMoreComments"{
             
             let destinationVC = segue.destination as! MoreCommentsVC
-            destinationVC.currentComments = Comment.getcomments()
+            destinationVC.currentComments = Comment.getComments()
         }
     }
     
@@ -298,7 +298,7 @@ extension EventFeedDetailVC: UITableViewDataSource, UITableViewDelegate{
             
         case 3:
             let aCell: CommentsTVCell = cell as! CommentsTVCell
-            aCell.currentCommentaries = Comment.getcomments()
+            aCell.currentCommentaries = Comment.getComments()
             
         case 4:
             let aCell: MultimediaTVCell = cell as! MultimediaTVCell

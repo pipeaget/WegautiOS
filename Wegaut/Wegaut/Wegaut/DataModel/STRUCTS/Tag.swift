@@ -252,6 +252,11 @@ struct Tag {
         }
     }
     
+    static func convertDicToTag()-> Tag? {
+        
+        if let a
+    }
+    
     static func convertTagsToDic(_ tags: [Tag]) -> [String] {
     
         var arrToReturn: [String] = []

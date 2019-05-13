@@ -39,7 +39,7 @@ class MultimediaCVCell: UICollectionViewCell {
     func updateCell() {
         
         guard let aMultimediafile = currentMultimediaFile else { return }
-        if let aStr = aMultimediafile.mulImageURL , let aURL = URL(string: aStr) {
+        if let aURL = URL(string: aMultimediafile.mulURL) {
             
             imgvwMultimedia.sd_setImage(with: aURL,
                                         placeholderImage: #imageLiteral(resourceName: "BGLogo"),

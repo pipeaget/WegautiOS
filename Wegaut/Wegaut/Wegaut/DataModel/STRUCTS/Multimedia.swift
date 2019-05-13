@@ -56,7 +56,6 @@ struct Multimedia {
     static func getDefaultMultimedia()-> Multimedia {
         
         return Multimedia(mulMediaType: MultimediaType.image,
-                          mulImageURL: nil,
                           mulLocalImage: #imageLiteral(resourceName: "ICFollow"),
                           mulVideoURL: nil,
                           mulLocalVideo: nil,

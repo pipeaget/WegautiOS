@@ -25,6 +25,21 @@ enum AssistantType: String {
         }
     }
     
+    static func getAssistantTypeFromDescription(_ string: String)-> AssistantType {
+        
+        switch string {
+        case "Todos": return AssistantType.forAll
+        case "All": return AssistantType.forAll
+        case "Público": return AssistantType.forPublic
+        case "Public": return AssistantType.forPublic
+        case "Tickets en venta": return AssistantType.byTicket
+        case "Selling Tickets": return AssistantType.byTicket
+        case "Solo por invitación": return AssistantType.byInvite
+        case "Only by Invite": return AssistantType.byInvite
+        default: return AssistantType.byTicket
+        }
+    }
+    
     static func getAllAsistantTypes()-> [String] {
         
         return [AssistantType.forAll.description,
@@ -110,6 +125,51 @@ struct Event {
     var eveUsersCheckIns: [User]
     var eveUsersFollowers: [User]
     
+    static func convertDicToEvent(_ aDic: [String: Any])-> Event? {
+        
+        if let anImageURL = aDic["eveImageURL"] as? String,
+           let aName = aDic["eveName"] as? String,
+            let aPlace = aDic["evePlace"] as? String,
+            let anAddress = aDic["eveAddress"] as? String,
+            let aDate = aDic["eveDate"] as? String,
+            let aSchedule = aDic["eveSchedule"] as? String,
+            let anAssistantsType = aDic["eveAssitantsType"] as? String,
+            let aPrice = aDic["evePrice"] as? String,
+            let aDescription = aDic["eveDescription"] as? String,
+            let aStatus = aDic["eveStatus"] as? String,
+            let aTags = aDic["eveTags"] as? [String: Any],
+            let aPublications = aDic["evePublications"] as? [String: Any],
+            let aComments = aDic["eveComments"] as? [String: Any],
+            let aMultimedias = aDic["eveMultimedia"] as? [String: Any],
+            let anOrganizers = aDic["eveOrganizers"] as? [String: Any],
+            let aSponsorships = aDic["eveSponsorships"] as? [String: Any],
+            let anAssitants = aDic["eveAssistants"] as? [String: Any],
+            let aFavourited = aDic["eveUserFavorited"] as? [String: Any],
+            let aShared = aDic["eveShared"] as? [String: Any],
+            let aCheckIns = aDic["eveCheckIns"] as? [String: Any],
+            let aFollowers = aDic["eveFollowers"] as? [String: Any] {
+            
+            return Event(eveImageURL: anImageURL, eveName: aName, evePlace: aPlace, eveAddress: anAddress, eveDate: aDate, eveSchedule: aSchedule, eveAssitantsType: AssistantType.getAssistantTypeFromDescription(anAssistantsType), evePrice: aPrice, eveDescription: aDescription, eveStatus: aStatus.getBoolFromString(), eveTags: <#T##[Tag]#>, evePublications: Publication.convertDicToPublications(aPublications), eveComments: <#T##[Comment]#>, eveMultimedia: <#T##[Multimedia]#>, eveOrganizers: <#T##[Organizer]#>, eveSponsorships: <#T##[Sponsorship]#>, eveAssistants: User.convertDicToUsers(anAssitants), eveUserFavorited: User.convertDicToUsers(aFavourited), eveUsersShared: User.convertDicToUsers(aShared), eveUsersCheckIns: User.convertDicToUsers(aCheckIns), eveUsersFollowers: User.convertDicToUsers(aFollowers))
+            
+        } else  {
+            return nil
+        }
+    }
+    
+    static func convertDicToEvents(_ aDic: [String: Any]) -> [Event] {
+        
+        var arrEvents: [Event] = []
+        if let anEvents = aDic["events"] as? [[String: Any]] {
+            for event in anEvents {
+                if let anEvent = Event.convertDicToEvent(event) {
+                    arrEvents.append(anEvent)
+                }
+            }
+            return arrEvents
+        }
+        return arrEvents
+    }
+    
     static func convertEventToDic(_ event: Event) -> [String: Any] {
         
         var dictToReturn: [String: Any] = [:]
@@ -185,7 +245,7 @@ struct Event {
                     eveStatus: true,
                     eveTags: [],
                     evePublications: Publication.getPublications(),
-                    eveComments: Comment.getcomments(),
+                    eveComments: Comment.getComments(),
                     eveMultimedia: [],
                     eveOrganizers: [Organizer(orgName: "Corona",
                                               orgImageURL: "N/A",
@@ -213,7 +273,7 @@ struct Event {
                     eveStatus: true,
                     eveTags: [],
                     evePublications: Publication.getPublications(),
-                    eveComments: Comment.getcomments(),
+                    eveComments: Comment.getComments(),
                     eveMultimedia: [],
                     eveOrganizers: [Organizer(orgName: "GNP",
                                               orgImageURL: "N/A",

@@ -47,6 +47,11 @@ extension String{
         return date
     }
     
+    func getBoolFromString()-> Bool {
+        
+        return self == "true" ? true : false
+    }
+    
     /// Used to replace diagonals with dash
     var dateSendFormat:String{
         

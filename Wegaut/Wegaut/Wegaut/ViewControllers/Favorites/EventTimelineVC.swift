@@ -39,7 +39,7 @@ class EventTimelineVC: UIViewController {
         if segue.identifier == "showAllComments" {
             
             let destinationVC: MoreCommentsVC = segue.destination as! MoreCommentsVC
-            destinationVC.currentComments = Comment.getcomments()
+            destinationVC.currentComments = Comment.getComments()
         }
     }
 }
@@ -164,7 +164,7 @@ extension EventTimelineVC: UITableViewDataSource, UITableViewDelegate {
             
         default:
             let aCell: RecentCommentsTVCell = cell as! RecentCommentsTVCell
-            aCell.currentComments = Comment.getcomments()
+            aCell.currentComments = Comment.getComments()
         }
     }
 }

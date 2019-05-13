@@ -33,6 +33,42 @@ struct Publication {
     var pubTitle: String
     var pubDate: String
     
+    static func getPublicationTypeFrom(_ strPublicationType: String) -> publicationType {
+        switch strPublicationType {
+        case "Photo": return publicationType.photo
+        case "Video": return publicationType.video
+        default:      return publicationType.url
+        }
+    }
+    
+    static func convertDicToPublication(_ aDic: [String: Any])-> Publication? {
+        
+        if let aPubType = aDic["pubType"] as? String,
+           let aPubURL = aDic["pubUrl"] as? String,
+           let aPubUser = aDic["pubUser"] as? [String: Any],
+           let aPubTitle = aDic["pubTitle"] as? String,
+            let aPubDate = aDic["pubDate"] as? String {
+            
+            return Publication(pubType: Publication.getPublicationTypeFrom(aPubType), pubImage: nil, pubVideo: nil, pubUrl: aPubURL, pubUser: User.convertDicToUser(aPubUser), pubTitle: aPubTitle, pubDate: aPubDate)
+        } else {
+            return nil
+        }
+    }
+    
+    static func convertDicToPublications(_ aDic: [String:Any])-> [Publication] {
+        
+        var arrPublications: [Publication] = []
+        if let aPublications = aDic["publications"] as? [[String: Any]] {
+            for publication in aPublications {
+                if let aPublication = Publication.convertDicToPublication(publication) {
+                    arrPublications.append(aPublication)
+                }
+                return arrPublications
+            }
+        }
+        return arrPublications
+    }
+    
     static func convertPublicationToDic(_ publication: Publication)-> [String: Any] {
         
         var dicToReturn: [String: Any] = [:]

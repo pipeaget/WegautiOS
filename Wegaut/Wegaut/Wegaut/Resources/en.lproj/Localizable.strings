@@ -143,12 +143,12 @@
 
 //MARK: - EVENTFEEDVC
 
-"EVF_TIT"   = "Feed";
-"EVF_NAME"  = "Name";
-"EVF_PLACE" = "Place";
-"EVF_TAGS"  = "Category";
+"EVF_TIT"       = "Feed";
+"EVF_NAME"      = "Name";
+"EVF_PLACE"     = "Place";
+"EVF_TAGS"      = "Category";
 "EVF_NO_EVENTS" = "Currently there's any available events...";
-"EVF_SEARCH" = "Search events";
+"EVF_SEARCH"    = "Search events";
 
 //MARK: - EVENTFEEDDETAILVC
 

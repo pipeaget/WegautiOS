@@ -10,6 +10,7 @@ import UIKit
 import CropViewController
 import FirebaseAuth
 import FirebaseDatabase
+import FirebaseStorage
 
 class RegisterVC: UIViewController {
     
@@ -179,6 +180,37 @@ class RegisterVC: UIViewController {
         }
     }
     
+    func uploadProfileImage() {
+        if let aUserData = UserDefaults.standard.object(forKey: WegautConstants.USER_DATA) as? [String:String],
+            let aUser = User.dataToUser(aDic: aUserData),
+            let anImageScaled = uploadProfileImage().imageView?.image?.scaleImage(toSize: CGSize(width: 200, height: 200)),
+            let anImageData = UIImagePNGRepresentation(anImageScaled.fixOrientation()){
+            let storage = Storage.storage()
+            let storageRef = storage.reference()
+            let profileImagesRef = storageRef.child("ProfileUsersImages/\(aUser.usId)")
+            profileImagesRef.put(anImageData, metadata: nil) { (metadata, error) in
+                KVNProgress.show(withStatus: "Actualizando foto de perfil")
+                if error != nil{
+                    KVNProgress.dismiss()
+                    let alert:UIAlertController = UIAlertController(title: "ERROR", message: "Hubo un problema mientras se actualizaba la foto de perfil del usuario, inténtalo más tarde", preferredStyle: UIAlertControllerStyle.alert)
+                    let okAlert:UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
+                    alert.addAction(okAlert)
+                    self.present(alert, animated: true, completion: nil)
+                    return
+                }else{
+                    KVNProgress.showSuccess(withStatus: "Foto de perfil actualizada")
+                    print(metadata!.downloadURL)
+                    NotificationCenter.default.post(name: Constants.loadUserInfo, object: nil)
+                }
+            }
+        }else{
+            let alert:UIAlertController = UIAlertController(title: "ERROR", message: "Hubo un problema mientras se obtenía la información del usuario, cierra sesión e inténtalo más tarde", preferredStyle: UIAlertController.Style.alert)
+            let okAlert:UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+            alert.addAction(okAlert)
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     //MARK: - ACTIONS
     
     @IBAction func actClose(_ sender: UIButton) {
@@ -236,7 +268,6 @@ class RegisterVC: UIViewController {
 
             print(anError.localizedDescription)
           } else {
-            dump(authResult?.user)
             if let anUser = authResult?.user {
               self.dbRef.child("users").child(anUser.uid).setValue(["usId": anUser.uid,
                                                                     "usName": self.currentUser.usName,
@@ -247,6 +278,8 @@ class RegisterVC: UIViewController {
                                                                     "usPassword": self.currentUser.usPassword,
                                                                     "usDescription": self.currentUser.usDescription,
                                                                     "usWegautLevel": self.currentUser.usWegautLevel.description])
+                UserDefaults.standard.set(User.convertUserToDic(self.currentUser), forKey: WegautConstants.USER_DATA)
+                self.uploadProfileImage()
               let alert: UIAlertController = UIAlertController(title: "REG_WELCOME".localized,
                                                                message: "REG_HELLO".localized + " \(self.currentUser.usName)",
                 preferredStyle: UIAlertController.Style.alert)
@@ -257,8 +290,7 @@ class RegisterVC: UIViewController {
               }))
               self.present(alert, animated: true, completion: {
                 self.dismiss(animated: true, completion: {
-                  UserDefaults.standard.set(true,
-                                            forKey: WegautConstants.IS_USER_LOGGED)
+                  UserDefaults.standard.set(true,forKey: WegautConstants.IS_USER_LOGGED)
                   let storyBoard: UIStoryboard = UIStoryboard(name: "Main",
                                                               bundle: Bundle.main)
                   let rootNavigation: UITabBarController = storyBoard.instantiateViewController(withIdentifier: "RootNavigation") as! UITabBarController

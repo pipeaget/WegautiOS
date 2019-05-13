@@ -30,6 +30,46 @@ struct User {
     var usActivities: [Activity]
     var usTags: [Tag]
     
+    static func convertDicToUser(_ aDic: [String: Any])-> User? {
+        
+        if let anId             = aDic["usId"] as? String,
+           let aName            = aDic["usName"] as? String,
+           let anEmail          = aDic["usEmail"] as? String,
+           let aFirstName       = aDic["usFirstName"] as? String,
+           let aLastName        = aDic["usLastName"] as? String,
+           let aProfileImage    = aDic["usProfileImageURL"] as? String,
+           let aBirthdate       = aDic["usBirthdate"] as? String,
+           let aPassword        = aDic["usPassword"] as? String,
+           let aDescription     = aDic["usDescription"] as? String,
+           let aWegautLevel     = aDic["usWegautLevel"] as? String,
+           let aFollowers       = aDic["usFollowers"] as? String,
+           let aFollowing       = aDic["usFollowing"] as? String,
+           let aCreatedEvents   = aDic["usCreatedEvents"] as? String,
+           let anAssitingEvents = aDic["usAssistingEvents"] as? String,
+           let aFavouriteEvents = aDic["usFavouriteEvents"] as? String,
+           let aSharedEvents    = aDic["usSharedEvents"] as? String,
+           let anActivities     = aDic["usActivities"] as? String,
+           let aTags            = aDic["usTags"] as? String {
+            return User(usId: anId, usName: aName, usEmail: anEmail, usFirstName: aFirstName, usLastNames: aLastName, usProfileImageURL: aProfileImage, usProfileImage: #imageLiteral(resourceName: "LGNavBar"), usBirthdate: aBirthdate, usPassword: aPassword, usDescription: aDescription, usWegautLevel: Level.getLevelFromString(aWegautLevel), usFollowers: User.convertDicToUsers(aFollowers), usFollowing: User.convertDicToUsers(aFollowing), usCreatedEvents: <#T##[Event]#>, usAssistingEvents: <#T##[Event]#>, usFavouriteEvents: <#T##[Event]#>, usSharedEvents: <#T##[Event]#>, usActivities: <#T##[Activity]#>, usTags: <#T##[Tag]#>)
+        }else{
+            return nil
+        }
+    }
+    
+    static func convertDicToUsers(_ aDic: [String: Any]) -> [User] {
+        
+        var arrUsers: [User] = []
+        if let aUsers = aDic["users"] as? [[String: Any]] {
+            for user in aUsers {
+                if let aUser = User.convertDicToUser(user) {
+                    arrUsers.append(aUser)
+                }
+            }
+            return arrUsers
+        }
+        return arrUsers
+    }
+    
     static func convertUserToDic(_ user:User)-> [String:Any] {
         
         var dicToReturn: [String: Any] = [:]
