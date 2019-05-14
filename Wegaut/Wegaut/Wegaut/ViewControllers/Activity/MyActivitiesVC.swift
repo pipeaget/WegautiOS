@@ -126,13 +126,13 @@ class MyActivitiesVC: UIViewController {
     func changeFollowType(indexPath: IndexPath)-> [Activity] {
         
         var arrToReturn: [Activity] = arrActivities
-        if arrToReturn[indexPath.row].actType == activityType.newFollower {
+        if arrToReturn[indexPath.row].actType == ActivityType.newFollower {
             
-            arrToReturn[indexPath.row].actType = activityType.newFollowing
+            arrToReturn[indexPath.row].actType = ActivityType.newFollowing
             
         } else {
             
-            arrToReturn[indexPath.row].actType = activityType.newFollower
+            arrToReturn[indexPath.row].actType = ActivityType.newFollower
         }
         return arrToReturn
     }
@@ -230,7 +230,7 @@ extension MyActivitiesVC: UITableViewDataSource, UITableViewDelegate{
         
         switch isSearching ? arrFilteredActivities[indexPath.row].actType : getCorresponingArrayForSection(section: indexPath.section)[indexPath.row].actType {
             
-        case activityType.newEvent:
+        case ActivityType.newEvent:
             let aCell: NotificationEventTVCell = tableView.dequeueReusableCell(withIdentifier: "NotificationEvent", for: indexPath) as! NotificationEventTVCell
             aCell.currentNotification = isSearching ? arrFilteredActivities[indexPath.row] : getCorresponingArrayForSection(section: indexPath.section)[indexPath.row]
             aCell.layer.masksToBounds = true
@@ -241,7 +241,7 @@ extension MyActivitiesVC: UITableViewDataSource, UITableViewDelegate{
             }
             return aCell
             
-        case activityType.newFollower, activityType.newFollowing:
+        case ActivityType.newFollower, ActivityType.newFollowing:
             let aCell: NotificationFollowTVCell = tableView.dequeueReusableCell(withIdentifier: "NotificationFollow", for: indexPath) as! NotificationFollowTVCell
             aCell.currentNotification = isSearching ? arrFilteredActivities[indexPath.row] : getCorresponingArrayForSection(section: indexPath.section)[indexPath.row]
             aCell.layer.masksToBounds = true
@@ -261,7 +261,7 @@ extension MyActivitiesVC: UITableViewDataSource, UITableViewDelegate{
             }
             return aCell
             
-        case activityType.newLevel:
+        case ActivityType.newLevel:
             let aCell: NotificationBadgeTVCell = tableView.dequeueReusableCell(withIdentifier: "NotificationBadge", for: indexPath) as! NotificationBadgeTVCell
             aCell.currentNotification = isSearching ? arrFilteredActivities[indexPath.row] : getCorresponingArrayForSection(section: indexPath.section)[indexPath.row]
             aCell.layer.masksToBounds = true

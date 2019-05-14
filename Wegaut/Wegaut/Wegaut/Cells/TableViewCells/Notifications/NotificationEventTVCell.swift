@@ -75,7 +75,7 @@ class NotificationEventTVCell: UITableViewCell {
         guard let aNotification = currentNotification else  { return #imageLiteral(resourceName: "LGNavBar")}
         switch aNotification.actType {
             
-        case activityType.newEvent: return #imageLiteral(resourceName: "ICDatePurple")
+        case ActivityType.newEvent: return #imageLiteral(resourceName: "ICDatePurple")
         default:                    return #imageLiteral(resourceName: "LGNavBar")
         }
     }

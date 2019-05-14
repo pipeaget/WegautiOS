@@ -279,8 +279,10 @@
 //MARK: - MYACTIVITIESVC
 
 "NOT_TIT"       = "Actividad";
-"NOT_FOLLOW"    = "Seguir";
-"NOT_FLWING"    = "Siguiendo";
+"NOT_FOLLOW"    = "Follow";
+"NOT_FLWING"    = "Following";
+"NOT_NEWLVL"    = "New Level";
+"NOT_NEWEV"     = "New Event";
 "NOT_USER"      = "Usuario";
 "NOT_NAME"      = "Notificación";
 "NOT_NO_EVENTS" = "Actualmente no hay notificaciones disponibles...";

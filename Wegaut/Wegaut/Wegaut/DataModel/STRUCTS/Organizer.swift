@@ -14,6 +14,29 @@ struct Organizer {
     var orgImageURL: String
     var orgLocalImage: UIImage
     
+    static func convertDicToOrganizer(_ aDic: [String: Any])-> Organizer? {
+        
+        if let aName = aDic["orgName"] as? String,
+           let aURL = aDic["orgImageURL"] as? String {
+            return Organizer(orgName: aName, orgImageURL: aURL, orgLocalImage: #imageLiteral(resourceName: "LGNavBar"))
+        }
+        return nil
+    }
+    
+    static func convertDicToOrganizers(_ aDic: [String: Any])-> [Organizer] {
+        
+        var arrOrganizers: [Organizer] = []
+        if let organizers = aDic["organizer"] as? [[String: Any]] {
+            for organizer in organizers {
+                if let anOrganizer = Organizer.convertDicToOrganizer(organizer) {
+                    arrOrganizers.append(anOrganizer)
+                }
+            }
+            return arrOrganizers
+        }
+        return arrOrganizers
+    }
+    
     static func convertOrganizerToDic(_ organizer: Organizer)-> [String: Any] {
         
         var dictToReturn: [String: Any] = [:]

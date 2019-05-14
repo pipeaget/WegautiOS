@@ -78,7 +78,7 @@ class NotificationFollowTVCell: UITableViewCell {
         guard let aNotification = currentNotification else { return }
         if let anAction = self.actFollow {
             
-            anAction(aNotification.actType == activityType.newFollowing ? true : false)
+            anAction(aNotification.actType == ActivityType.newFollowing ? true : false)
         }
     }
 }

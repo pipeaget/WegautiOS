@@ -14,6 +14,32 @@ struct Comment {
     var comText: String
     var comDate: String
     
+    static func convertDicToComment(_ aDic: [String: Any])-> Comment? {
+        
+        if let aUserData = aDic["comUser"] as? [String: Any],
+           let aUser = User.convertDicToUser(aUserData),
+           let aText = aDic["comText"] as? String,
+           let aDate = aDic["comDate"] as? String {
+            
+            return Comment(comUser: aUser, comText: aText, comDate: aDate)
+        }
+        return nil
+    }
+    
+    static func convertDicToComments(_ aDic: [String: Any])-> [Comment] {
+        
+        var arrComments: [Comment] = []
+        if let aComments = aDic["comments"] as? [[String: Any]] {
+            for comment in aComments {
+                if let aComment = Comment.convertDicToComment(comment) {
+                    arrComments.append(aComment)
+                }
+            }
+            return arrComments
+        }
+        return arrComments
+    }
+    
     static func convertCommentToDic(_ comment: Comment)-> [String: Any] {
         
         var dicToReturn: [String: Any] = [:]

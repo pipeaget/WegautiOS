@@ -21,6 +21,14 @@ enum MultimediaType {
         case .video: return "EVF_VID".localized
         }
     }
+    
+    static func getMultimediaTypeFrom(_ aDescription: String)-> MultimediaType {
+        switch aDescription {
+        case "URL":   return MultimediaType.url
+        case "Image": return MultimediaType.image
+        default:      return MultimediaType.video
+        }
+    }
 }
 
 struct Multimedia {
@@ -32,6 +40,33 @@ struct Multimedia {
     var mulUser: User
     var mulDate: String
     var mulIsFavorite: Bool
+    
+    static func convertDicToMultimedia(_ aDic: [String: Any])-> Multimedia? {
+        
+        if let aMediaType = aDic["mulMediaType"] as? String,
+           let aURL = aDic["mulURL"] as? String,
+            let aUserData = aDic["mulUser"] as? [String: Any],
+            let aUser = User.convertDicToUser(aUserData),
+            let aDate = aDic["mulDate"] as? String,
+            let aFavorite = aDic["mulIsFavorite"] as? Bool {
+            return Multimedia(mulMediaType: MultimediaType.getMultimediaTypeFrom(aMediaType), mulLocalImage: nil, mulLocalVideo: nil, mulURL: aURL, mulUser: aUser, mulDate: aDate, mulIsFavorite: aFavorite)
+        }
+        return nil
+    }
+    
+    static func convertDicToMultimedias(_ aDic: [String: Any])-> [Multimedia] {
+        
+        var arrMultimedia: [Multimedia] = []
+        if let multimedias = aDic["multimedia"] as? [[String: Any]] {
+            for multimedia in multimedias {
+                if let aMultimedia = Multimedia.convertDicToMultimedia(multimedia) {
+                    arrMultimedia.append(aMultimedia)
+                }
+            }
+            return arrMultimedia
+        }
+        return arrMultimedia
+    }
     
     static func convertMultimediaToDic(_ multimedia: Multimedia)-> [String: Any] {
         
@@ -57,9 +92,8 @@ struct Multimedia {
         
         return Multimedia(mulMediaType: MultimediaType.image,
                           mulLocalImage: #imageLiteral(resourceName: "ICFollow"),
-                          mulVideoURL: nil,
                           mulLocalVideo: nil,
-                          mulURL: nil,
+                          mulURL: "",
                           mulUser: User.getUserData(),
                           mulDate: "03:02 PM | 13/09/2018",
                           mulIsFavorite: false)

@@ -149,6 +149,11 @@
 "EVF_TAGS"      = "Category";
 "EVF_NO_EVENTS" = "Currently there's any available events...";
 "EVF_SEARCH"    = "Search events";
+"EVF_PHO"       = "Photo";
+"EVF_VID"       = "Video";
+"EVF_URL"       = "URL";
+"EVF_IMA"       = "Image";
+"EVF_VID"       = "Video";
 
 //MARK: - EVENTFEEDDETAILVC
 
@@ -273,11 +278,13 @@
 
 //MARK: - MYACTIVITIESVC
 
-"NOT_TIT"    = "Activity";
-"NOT_FOLLOW" = "Follow";
-"NOT_FLWING" = "Following";
-"NOT_USER"   = "User";
-"NOT_NAME"   = "Notification";
+"NOT_TIT"       = "Activity";
+"NOT_FOLLOW"    = "Follow";
+"NOT_FLWING"    = "Following";
+"NOT_NEWLVL"    = "New Level";
+"NOT_NEWEV"     = "New Event";
+"NOT_USER"      = "User";
+"NOT_NAME"      = "Notification";
 "NOT_NO_EVENTS" = "Currently there's any available notifications...";
 
 //MARK: - PROFILEVC

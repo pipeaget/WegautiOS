@@ -46,10 +46,11 @@ struct Publication {
         if let aPubType = aDic["pubType"] as? String,
            let aPubURL = aDic["pubUrl"] as? String,
            let aPubUser = aDic["pubUser"] as? [String: Any],
+           let aUser = User.convertDicToUser(aPubUser),
            let aPubTitle = aDic["pubTitle"] as? String,
-            let aPubDate = aDic["pubDate"] as? String {
+           let aPubDate = aDic["pubDate"] as? String {
             
-            return Publication(pubType: Publication.getPublicationTypeFrom(aPubType), pubImage: nil, pubVideo: nil, pubUrl: aPubURL, pubUser: User.convertDicToUser(aPubUser), pubTitle: aPubTitle, pubDate: aPubDate)
+            return Publication(pubType: Publication.getPublicationTypeFrom(aPubType), pubImage: nil, pubVideo: nil, pubUrl: aPubURL, pubUser: aUser, pubTitle: aPubTitle, pubDate: aPubDate)
         } else {
             return nil
         }

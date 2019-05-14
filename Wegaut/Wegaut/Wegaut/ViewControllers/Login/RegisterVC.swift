@@ -182,7 +182,7 @@ class RegisterVC: UIViewController {
     
     func uploadProfileImage() {
         if let aUserData = UserDefaults.standard.object(forKey: WegautConstants.USER_DATA) as? [String:String],
-            let aUser = User.dataToUser(aDic: aUserData),
+            let aUser = User.convertDicToUser(aUserData),
             let anImageScaled = uploadProfileImage().imageView?.image?.scaleImage(toSize: CGSize(width: 200, height: 200)),
             let anImageData = UIImagePNGRepresentation(anImageScaled.fixOrientation()){
             let storage = Storage.storage()

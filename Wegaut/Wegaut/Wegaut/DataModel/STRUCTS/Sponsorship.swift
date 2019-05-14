@@ -14,6 +14,30 @@ struct Sponsorship {
     var spoImageURL: String
     var spoLocalImage: UIImage
     
+    static func convertDicToSponsorship(_ aDic: [String: Any])-> Sponsorship? {
+        
+        if let aName = aDic["spoName"] as? String,
+            let anURL = aDic["spoImageURL"] as? String {
+            
+            return Sponsorship(spoName: aName, spoImageURL: anURL, spoLocalImage: #imageLiteral(resourceName: "LGNavBar"))
+        }
+        return nil
+    }
+    
+    static func convertDicToSponsorships(_ aDic: [String: Any])-> [Sponsorship] {
+        
+        var arrSponsorships: [Sponsorship] = []
+        if let sponsorships = aDic["sponsorship"] as? [[String: Any]] {
+            for sponsor in sponsorships {
+                if let aSponsor = Sponsorship.convertDicToSponsorship(sponsor) {
+                    arrSponsorships.append(aSponsor)
+                }
+            }
+            return arrSponsorships
+        }
+        return arrSponsorships
+    }
+    
     static func convertSponsorshipToDic(_ sponsorship: Sponsorship)-> [String: Any] {
         
         var dictToReturn: [String: Any] = [:]

@@ -137,7 +137,7 @@ struct Event {
             let aPrice = aDic["evePrice"] as? String,
             let aDescription = aDic["eveDescription"] as? String,
             let aStatus = aDic["eveStatus"] as? String,
-            let aTags = aDic["eveTags"] as? [String: Any],
+            let aTags = aDic["eveTags"] as? [String],
             let aPublications = aDic["evePublications"] as? [String: Any],
             let aComments = aDic["eveComments"] as? [String: Any],
             let aMultimedias = aDic["eveMultimedia"] as? [String: Any],
@@ -149,7 +149,7 @@ struct Event {
             let aCheckIns = aDic["eveCheckIns"] as? [String: Any],
             let aFollowers = aDic["eveFollowers"] as? [String: Any] {
             
-            return Event(eveImageURL: anImageURL, eveName: aName, evePlace: aPlace, eveAddress: anAddress, eveDate: aDate, eveSchedule: aSchedule, eveAssitantsType: AssistantType.getAssistantTypeFromDescription(anAssistantsType), evePrice: aPrice, eveDescription: aDescription, eveStatus: aStatus.getBoolFromString(), eveTags: <#T##[Tag]#>, evePublications: Publication.convertDicToPublications(aPublications), eveComments: <#T##[Comment]#>, eveMultimedia: <#T##[Multimedia]#>, eveOrganizers: <#T##[Organizer]#>, eveSponsorships: <#T##[Sponsorship]#>, eveAssistants: User.convertDicToUsers(anAssitants), eveUserFavorited: User.convertDicToUsers(aFavourited), eveUsersShared: User.convertDicToUsers(aShared), eveUsersCheckIns: User.convertDicToUsers(aCheckIns), eveUsersFollowers: User.convertDicToUsers(aFollowers))
+            return Event(eveImageURL: anImageURL, eveName: aName, evePlace: aPlace, eveAddress: anAddress, eveDate: aDate, eveSchedule: aSchedule, eveAssitantsType: AssistantType.getAssistantTypeFromDescription(anAssistantsType), evePrice: aPrice, eveDescription: aDescription, eveStatus: aStatus.getBoolFromString(), eveTags: Tag.convertArrToTags(aTags), evePublications: Publication.convertDicToPublications(aPublications), eveComments: Comment.convertDicToComments(aComments), eveMultimedia: Multimedia.convertDicToMultimedias(aMultimedias), eveOrganizers: Organizer.convertDicToOrganizers(anOrganizers), eveSponsorships: Sponsorship.convertDicToSponsorships(aSponsorships), eveAssistants: User.convertDicToUsers(anAssitants), eveUserFavorited: User.convertDicToUsers(aFavourited), eveUsersShared: User.convertDicToUsers(aShared), eveUsersCheckIns: User.convertDicToUsers(aCheckIns), eveUsersFollowers: User.convertDicToUsers(aFollowers))
             
         } else  {
             return nil
@@ -301,7 +301,7 @@ struct Event {
                     eveStatus: true,
                     eveTags: [],
                     evePublications: Publication.getPublications(),
-                    eveComments: Comment.getcomments(),
+                    eveComments: Comment.getComments(),
                     eveMultimedia: [],
                     eveOrganizers: [Organizer(orgName: "INDIO",
                                               orgImageURL: "N/A",
@@ -329,7 +329,7 @@ struct Event {
                     eveStatus: true,
                     eveTags: [],
                     evePublications: Publication.getPublications(),
-                    eveComments: Comment.getcomments(),
+                    eveComments: Comment.getComments(),
                     eveMultimedia: [],
                     eveOrganizers: [Organizer(orgName: "ATP",
                                               orgImageURL: "N/A",
@@ -357,7 +357,7 @@ struct Event {
                     eveStatus: true,
                     eveTags: [],
                     evePublications: Publication.getPublications(),
-                    eveComments: Comment.getcomments(),
+                    eveComments: Comment.getComments(),
                     eveMultimedia: [],
                     eveOrganizers: [Organizer(orgName: "Sony Pictures",
                                               orgImageURL: "N/A",
@@ -385,7 +385,7 @@ struct Event {
                       eveStatus: true,
                       eveTags: [],
                       evePublications: Publication.getPublications(),
-                      eveComments: Comment.getcomments(),
+                      eveComments: Comment.getComments(),
                       eveMultimedia: [],
                       eveOrganizers: [Organizer(orgName: "Ergaut",
                                                 orgImageURL: "N/A",

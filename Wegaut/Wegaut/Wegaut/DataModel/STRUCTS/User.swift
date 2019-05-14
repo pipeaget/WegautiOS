@@ -42,15 +42,15 @@ struct User {
            let aPassword        = aDic["usPassword"] as? String,
            let aDescription     = aDic["usDescription"] as? String,
            let aWegautLevel     = aDic["usWegautLevel"] as? String,
-           let aFollowers       = aDic["usFollowers"] as? String,
-           let aFollowing       = aDic["usFollowing"] as? String,
-           let aCreatedEvents   = aDic["usCreatedEvents"] as? String,
-           let anAssitingEvents = aDic["usAssistingEvents"] as? String,
-           let aFavouriteEvents = aDic["usFavouriteEvents"] as? String,
-           let aSharedEvents    = aDic["usSharedEvents"] as? String,
-           let anActivities     = aDic["usActivities"] as? String,
-           let aTags            = aDic["usTags"] as? String {
-            return User(usId: anId, usName: aName, usEmail: anEmail, usFirstName: aFirstName, usLastNames: aLastName, usProfileImageURL: aProfileImage, usProfileImage: #imageLiteral(resourceName: "LGNavBar"), usBirthdate: aBirthdate, usPassword: aPassword, usDescription: aDescription, usWegautLevel: Level.getLevelFromString(aWegautLevel), usFollowers: User.convertDicToUsers(aFollowers), usFollowing: User.convertDicToUsers(aFollowing), usCreatedEvents: <#T##[Event]#>, usAssistingEvents: <#T##[Event]#>, usFavouriteEvents: <#T##[Event]#>, usSharedEvents: <#T##[Event]#>, usActivities: <#T##[Activity]#>, usTags: <#T##[Tag]#>)
+           let aFollowers       = aDic["usFollowers"] as? [String: Any],
+           let aFollowing       = aDic["usFollowing"] as? [String: Any],
+           let aCreatedEvents   = aDic["usCreatedEvents"] as? [String: Any],
+           let anAssitingEvents = aDic["usAssistingEvents"] as? [String: Any],
+           let aFavouriteEvents = aDic["usFavouriteEvents"] as? [String: Any],
+           let aSharedEvents    = aDic["usSharedEvents"] as? [String: Any],
+           let anActivities     = aDic["usActivities"] as? [String: Any],
+           let aTags            = aDic["usTags"] as? [String] {
+            return User(usId: anId, usName: aName, usEmail: anEmail, usFirstName: aFirstName, usLastNames: aLastName, usProfileImageURL: aProfileImage, usProfileImage: #imageLiteral(resourceName: "LGNavBar"), usBirthdate: aBirthdate, usPassword: aPassword, usDescription: aDescription, usWegautLevel: Level.getLevelFromString(aWegautLevel), usFollowers: User.convertDicToUsers(aFollowers), usFollowing: User.convertDicToUsers(aFollowing), usCreatedEvents: Event.convertDicToEvents(aCreatedEvents), usAssistingEvents: Event.convertDicToEvents(anAssitingEvents), usFavouriteEvents: Event.convertDicToEvents(aFavouriteEvents), usSharedEvents: Event.convertDicToEvents(aSharedEvents), usActivities: Activity.convertDicToActivities(anActivities), usTags: Tag.convertArrToTags(aTags))
         }else{
             return nil
         }

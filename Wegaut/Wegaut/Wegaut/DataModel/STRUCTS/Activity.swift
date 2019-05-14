@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum activityType {
+enum ActivityType {
     
     //FOLLOW
     case newFollower
@@ -20,14 +20,20 @@ enum activityType {
     case newEvent
     
     var description: String {
-        
         switch self {
-            
         case .newFollower:  return "NOT_FOLLOW".localized
         case .newFollowing: return "NOT_FLWING".localized
-        case .newLevel:     return "".localized
-        case .newEvent:     return "".localized
-            
+        case .newLevel:     return "NOT_NEWLVL".localized
+        case .newEvent:     return "NOT_NEWEV".localized
+        }
+    }
+    
+    static func getActivityTypeFrom(_ aDescription: String)-> ActivityType {
+        switch aDescription {
+        case "Follow":    return ActivityType.newFollower
+        case "Following": return ActivityType.newFollowing
+        case "New Level": return ActivityType.newLevel
+        default:          return ActivityType.newEvent
         }
     }
 }
@@ -35,33 +41,86 @@ enum activityType {
 struct Activity {
     
     var actTitle: String
-    var actType: activityType
+    var actType: ActivityType
     var actUser: User?
     var actEvent: Event?
     var actDate: String
     
-    static func getNotificationFollowerType(aNotification: Activity)-> activityType {
+    static func convertDicToActivity(_ aDic: [String: Any])-> Activity? {
+        
+        if let aTitle = aDic[""] as? String,
+            let aType = aDic[""] as? String,
+            let aUserData = aDic[""] as? [String: Any],
+            let aUser = User.convertDicToUser(aUserData),
+            let anEventData = aDic[""] as? [String: Any],
+            let anEvent = Event.convertDicToEvent(anEventData),
+            let aDate = aDic[""] as? String {
+            
+            return Activity(actTitle: aTitle, actType: ActivityType.getActivityTypeFrom(aType), actUser: aUser, actEvent: anEvent, actDate: aDate)
+        }
+        return nil
+    }
+    
+    static func convertDicToActivities(_ aDic: [String: Any])-> [Activity] {
+        
+        var arrActivities: [Activity] = []
+        if let activities = aDic["activities"] as? [[String: Any]] {
+            for activity in activities {
+                if let anActivity = Activity.convertDicToActivity(activity) {
+                    arrActivities.append(anActivity)
+                }
+            }
+            return arrActivities
+        }
+        return arrActivities
+    }
+    
+    static func convertActivityToDic(_ activity: Activity)-> [String: Any] {
+        
+        var dicToReturn: [String: Any] = [:]
+        dicToReturn["actTitle"] = activity.actTitle
+        dicToReturn["actType"] = activity.actType.description
+        if let anUser = activity.actUser {
+            dicToReturn["actUser"] = User.convertUserToDic(anUser)
+        }
+        if let anEvent = activity.actEvent {
+            dicToReturn["actEvent"] = Event.convertEventToDic(anEvent)
+        }
+        dicToReturn["actDate"] = activity.actDate
+        return dicToReturn
+    }
+    
+    static func convertActivitiesToDic(_ activities: [Activity])-> [String: Any] {
+        
+        var dicToReturn: [[String: Any]] = [[:]]
+        for activity in activities {
+            dicToReturn.append(Activity.convertActivityToDic(activity))
+        }
+        return ["activities": dicToReturn]
+    }
+    
+    static func getNotificationFollowerType(aNotification: Activity)-> ActivityType {
         
         if let aUser = aNotification.actUser {
             
             if User.getFollowers().contains(where: {$0.usEmail == aUser.usEmail}) && User.getFollowing().contains(where: {$0.usEmail == aUser.usEmail}) {
                 
-                return activityType.newFollowing
+                return ActivityType.newFollowing
             } else if User.getFollowers().contains(where: {$0.usEmail == aUser.usEmail}){
                 
-                return activityType.newFollower
+                return ActivityType.newFollower
             }
         } else if let _ = aNotification.actEvent {
             
-            return activityType.newLevel
+            return ActivityType.newLevel
         }
-        return activityType.newLevel
+        return ActivityType.newLevel
     }
     
     static func getActivities()-> [Activity] {
         
         return [Activity(actTitle: "",
-                         actType: activityType.newEvent,
+                         actType: ActivityType.newEvent,
                          actUser: User(usId: "", usName: "Emma Roberts",
                                        usEmail: "example@example.com",
                                        usFirstName: "Emma",
@@ -109,7 +168,7 @@ struct Activity {
                                          eveUsersFollowers: []),
                          actDate: "03:02 PM | 13/09/2018"),
                 Activity(actTitle: "",
-                         actType: activityType.newFollower,
+                         actType: ActivityType.newFollower,
                          actUser: User(usId: "", usName: "Emma Roberts",
                                        usEmail: "example@example.com",
                                        usFirstName: "Emma",
@@ -157,7 +216,7 @@ struct Activity {
                                          eveUsersFollowers: []),
                          actDate: "03:02 PM | 13/09/2018"),
                 Activity(actTitle: "Master Chief Class",
-                         actType: activityType.newEvent,
+                         actType: ActivityType.newEvent,
                          actUser: User(usId: "", usName: "Emma Watson",
                                        usEmail: "example@example.com",
                                        usFirstName: "Emma",
@@ -205,12 +264,12 @@ struct Activity {
                                          eveUsersFollowers: []),
                          actDate: "03:02 PM | 13/09/2018"),
                 Activity(actTitle: "¡Felicidades!",
-                         actType: activityType.newLevel,
+                         actType: ActivityType.newLevel,
                          actUser: User.getUserData(),
                          actEvent: nil,
                          actDate: "03:02 PM | 12/09/2018"),
                 Activity(actTitle: "Concurso de videojuegos",
-                         actType: activityType.newEvent,
+                         actType: ActivityType.newEvent,
                          actUser: User(usId: "", usName: "Emma Roberts",
                                        usEmail: "example@example.com",
                                        usFirstName: "Emma",

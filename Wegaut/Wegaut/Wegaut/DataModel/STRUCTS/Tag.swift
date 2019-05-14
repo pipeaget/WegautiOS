@@ -49,6 +49,44 @@ enum TagIdentifier {
         case .music:         return "TAG_MUS".localized
         }
     }
+    
+    static func getTagIdentifierFrom(_ tagName: String)-> TagIdentifier {
+        switch tagName {
+        case "Party":           return TagIdentifier.party
+        case "Fiesta":          return TagIdentifier.party
+        case "Social Causes":   return TagIdentifier.socialCauses
+        case "Causas Sociales": return TagIdentifier.socialCauses
+        case "Economy":         return TagIdentifier.economy
+        case "Economia":        return TagIdentifier.economy
+        case "Theater":         return TagIdentifier.theater
+        case "Teatro":          return TagIdentifier.theater
+        case "Education":       return TagIdentifier.education
+        case "Educación":       return TagIdentifier.education
+        case "Dance":           return TagIdentifier.dance
+        case "Bailar":          return TagIdentifier.dance
+        case "Movies":          return TagIdentifier.movies
+        case "Películas":       return TagIdentifier.movies
+        case "Fitness":         return TagIdentifier.fitness
+        case "Shopping":        return TagIdentifier.shopping
+        case "Compras":         return TagIdentifier.shopping
+        case "Sports":          return TagIdentifier.sports
+        case "Deportes":        return TagIdentifier.sports
+        case "Lifestyle":       return TagIdentifier.lifeStyle
+        case "Food":            return TagIdentifier.food
+        case "Comida":          return TagIdentifier.food
+        case "Videogames":      return TagIdentifier.videogames
+        case "Videojuegos":     return TagIdentifier.videogames
+        case "Cars":            return TagIdentifier.cars
+        case "Coches":          return TagIdentifier.cars
+        case "Health":          return TagIdentifier.health
+        case "Salud":           return TagIdentifier.health
+        case "Gardening":       return TagIdentifier.gardening
+        case "Jardineria":      return TagIdentifier.gardening
+        case "Music":           return TagIdentifier.music
+        case "Música":          return TagIdentifier.music
+        default:                return TagIdentifier.music
+        }
+    }
 }
 
 enum BadgeType {
@@ -252,9 +290,13 @@ struct Tag {
         }
     }
     
-    static func convertDicToTag()-> Tag? {
+    static func convertArrToTags(_ tags: [String])-> [Tag] {
         
-        if let a
+        var arrTags: [Tag] = []
+        for tag in tags {
+            arrTags.append(Tag(tagId: TagIdentifier.getTagIdentifierFrom(tag), tagIsSelected: true))
+        }
+        return arrTags
     }
     
     static func convertTagsToDic(_ tags: [Tag]) -> [String] {
