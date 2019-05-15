@@ -36,22 +36,54 @@ struct User {
            let aName            = aDic["usName"] as? String,
            let anEmail          = aDic["usEmail"] as? String,
            let aFirstName       = aDic["usFirstName"] as? String,
-           let aLastName        = aDic["usLastName"] as? String,
+           let aLastName        = aDic["usLastNames"] as? String,
            let aProfileImage    = aDic["usProfileImageURL"] as? String,
            let aBirthdate       = aDic["usBirthdate"] as? String,
            let aPassword        = aDic["usPassword"] as? String,
            let aDescription     = aDic["usDescription"] as? String,
-           let aWegautLevel     = aDic["usWegautLevel"] as? String,
-           let aFollowers       = aDic["usFollowers"] as? [String: Any],
-           let aFollowing       = aDic["usFollowing"] as? [String: Any],
-           let aCreatedEvents   = aDic["usCreatedEvents"] as? [String: Any],
-           let anAssitingEvents = aDic["usAssistingEvents"] as? [String: Any],
-           let aFavouriteEvents = aDic["usFavouriteEvents"] as? [String: Any],
-           let aSharedEvents    = aDic["usSharedEvents"] as? [String: Any],
-           let anActivities     = aDic["usActivities"] as? [String: Any],
-           let aTags            = aDic["usTags"] as? [String] {
+           let aWegautLevel     = aDic["usWegautLevel"] as? String {
+            
+            var aFollowers: [String: Any] = [:]
+            if let followers = aDic["usFollowers"] as? [String: Any] {
+                aFollowers = followers
+            }
+            
+            var aFollowing: [String: Any] = [:]
+            if let following = aDic["usFollowing"] as? [String: Any] {
+                aFollowing = following
+            }
+            
+            var aCreatedEvents: [String: Any] = [:]
+            if let createdEvents = aDic["usCreatedEvents"] as? [String: Any] {
+                aCreatedEvents = createdEvents
+            }
+            
+            var anAssitingEvents: [String: Any] = [:]
+            if let assistingEvents = aDic["usAssistingEvents"] as? [String: Any] {
+                anAssitingEvents = assistingEvents
+            }
+            
+            var aFavouriteEvents: [String: Any] = [:]
+            if let favouriteEvents = aDic["usFavouriteEvents"] as? [String: Any] {
+                aFavouriteEvents = favouriteEvents
+            }
+            
+            var aSharedEvents: [String: Any] = [:]
+            if let sharedEvents = aDic["usSharedEvents"] as? [String: Any] {
+                aSharedEvents = sharedEvents
+            }
+            
+            var anActivities: [String: Any] = [:]
+            if let activities = aDic["usActivities"] as? [String: Any] {
+                anActivities = activities
+            }
+            
+            var aTags: [String] = []
+            if let tags = aDic["usTags"] as? [String] {
+                aTags = tags
+            }
             return User(usId: anId, usName: aName, usEmail: anEmail, usFirstName: aFirstName, usLastNames: aLastName, usProfileImageURL: aProfileImage, usProfileImage: #imageLiteral(resourceName: "LGNavBar"), usBirthdate: aBirthdate, usPassword: aPassword, usDescription: aDescription, usWegautLevel: Level.getLevelFromString(aWegautLevel), usFollowers: User.convertDicToUsers(aFollowers), usFollowing: User.convertDicToUsers(aFollowing), usCreatedEvents: Event.convertDicToEvents(aCreatedEvents), usAssistingEvents: Event.convertDicToEvents(anAssitingEvents), usFavouriteEvents: Event.convertDicToEvents(aFavouriteEvents), usSharedEvents: Event.convertDicToEvents(aSharedEvents), usActivities: Activity.convertDicToActivities(anActivities), usTags: Tag.convertArrToTags(aTags))
-        }else{
+        } else {
             return nil
         }
     }

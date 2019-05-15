@@ -11,6 +11,7 @@ import CropViewController
 import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
+import KVNProgress
 
 class RegisterVC: UIViewController {
     
@@ -180,30 +181,93 @@ class RegisterVC: UIViewController {
         }
     }
     
-    func uploadProfileImage() {
-        if let aUserData = UserDefaults.standard.object(forKey: WegautConstants.USER_DATA) as? [String:String],
-            let aUser = User.convertDicToUser(aUserData),
-            let anImageScaled = uploadProfileImage().imageView?.image?.scaleImage(toSize: CGSize(width: 200, height: 200)),
-            let anImageData = UIImagePNGRepresentation(anImageScaled.fixOrientation()){
-            let storage = Storage.storage()
-            let storageRef = storage.reference()
-            let profileImagesRef = storageRef.child("ProfileUsersImages/\(aUser.usId)")
-            profileImagesRef.put(anImageData, metadata: nil) { (metadata, error) in
-                KVNProgress.show(withStatus: "Actualizando foto de perfil")
-                if error != nil{
+    func uploadUserData() {
+        
+        KVNProgress.show(withStatus: "Registrando al usuario")
+        UserDefaults.standard.set(User.convertUserToDic(self.currentUser), forKey: WegautConstants.USER_DATA)
+        if let aUserData = UserDefaults.standard.object(forKey: WegautConstants.USER_DATA) as? [String: Any],
+           let aUser = User.convertDicToUser(aUserData) {
+            
+            Auth.auth().createUser(withEmail: currentUser.usEmail, password: currentUser.usPassword) { (authResult, error) in
+                
+                if let _ = error {
                     KVNProgress.dismiss()
-                    let alert:UIAlertController = UIAlertController(title: "ERROR", message: "Hubo un problema mientras se actualizaba la foto de perfil del usuario, inténtalo más tarde", preferredStyle: UIAlertControllerStyle.alert)
-                    let okAlert:UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil)
+                    let alert: UIAlertController = UIAlertController(title: "ERROR", message: "No fue posible realizar el registro", preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (alert) in
+                        UserDefaults.standard.set(nil, forKey: WegautConstants.USER_DATA)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                } else {
+                    if let anUser = authResult?.user {
+                        self.dbRef.child("users").child(anUser.uid).setValue(["usId": anUser.uid,
+                                                                              "usName": self.currentUser.usName,
+                                                                              "usEmail": self.currentUser.usEmail,
+                                                                              "usFirstName": self.currentUser.usFirstName,
+                                                                              "usLastNames": self.currentUser.usLastNames,
+                                                                              "usProfileImageURL": self.currentUser.usProfileImageURL,
+                                                                              "usBirthdate": self.currentUser.usBirthdate,
+                                                                              "usPassword": self.currentUser.usPassword,
+                                                                              "usDescription": self.currentUser.usDescription,
+                                                                              "usWegautLevel": self.currentUser.usWegautLevel.description,
+                                                                              "usFollowers": self.currentUser.usFollowers,
+                                                                              "usFollowing": self.currentUser.usFollowing,
+                                                                              "usCreatedEvents": self.currentUser.usCreatedEvents,
+                                                                              "usAssistingEvents": self.currentUser.usAssistingEvents,
+                                                                              "usFavouriteEvents": self.currentUser.usFavouriteEvents,
+                                                                              "usSharedEvents": self.currentUser.usSharedEvents,
+                                                                              "usActivities": self.currentUser.usActivities,
+                                                                              "usTags": self.currentUser.usTags])
+                        self.currentUser.usId = anUser.uid
+                        UserDefaults.standard.set(User.convertUserToDic(self.currentUser), forKey: WegautConstants.USER_DATA)
+                        self.uploadProfileImage(userId: aUser.usId)
+                    }
+                }
+            }
+        } else {
+            KVNProgress.dismiss()
+            let alert: UIAlertController = UIAlertController(title: "ERROR", message: "No fue posible realizar el registro", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (alert) in
+                UserDefaults.standard.set(nil, forKey: WegautConstants.USER_DATA)
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func uploadProfileImage(userId: String) {
+        if let anImageData = currentUser.usProfileImage.resize(targetSize: CGSize(width: 400, height: 400)).pngData(){
+            let storageRef = Storage.storage().reference().child("ProfileUsersImages").child("\(userId)")
+            storageRef.putData(anImageData, metadata: nil) { (metadata, error) in
+                if error != nil {
+                    KVNProgress.dismiss()
+                    let alert:UIAlertController = UIAlertController(title: "ERROR", message: "Hubo un problema mientras se actualizaba la foto de perfil del usuario, inténtalo más tarde", preferredStyle: UIAlertController.Style.alert)
+                    let okAlert:UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
                     alert.addAction(okAlert)
                     self.present(alert, animated: true, completion: nil)
                     return
                 }else{
-                    KVNProgress.showSuccess(withStatus: "Foto de perfil actualizada")
-                    print(metadata!.downloadURL)
-                    NotificationCenter.default.post(name: Constants.loadUserInfo, object: nil)
+                    KVNProgress.dismiss()
+                    dump(metadata!)
+                    let alert: UIAlertController = UIAlertController(title: "REG_WELCOME".localized,
+                                                                     message: "REG_HELLO".localized + " \(self.currentUser.usName)",
+                        preferredStyle: UIAlertController.Style.alert)
+                    alert.addAction(UIAlertAction(title: "OK",
+                                                  style: UIAlertAction.Style.default, handler: { (alert) in
+                                                    UserDefaults.standard.set(true,forKey: WegautConstants.IS_USER_LOGGED)
+                                                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main",
+                                                                                                bundle: Bundle.main)
+                                                    let rootNavigation: UITabBarController = storyBoard.instantiateViewController(withIdentifier: "RootNavigation") as! UITabBarController
+                                                    self.present(rootNavigation,
+                                                                 animated: true,
+                                                                 completion: nil)
+                                                    
+                    }))
+                    self.present(alert, animated: true, completion: {
+                        self.dismiss(animated: true, completion: nil)
+                    })
                 }
             }
-        }else{
+        } else {
+            KVNProgress.dismiss()
             let alert:UIAlertController = UIAlertController(title: "ERROR", message: "Hubo un problema mientras se obtenía la información del usuario, cierra sesión e inténtalo más tarde", preferredStyle: UIAlertController.Style.alert)
             let okAlert:UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
             alert.addAction(okAlert)
@@ -220,89 +284,52 @@ class RegisterVC: UIViewController {
     
     @objc func actRegister(_ sender: UIButton) {
 
-      var strErrorMessage: String = ""
-      if currentUser.usName.isEmpty{
-
-        strErrorMessage = "REG_INVUSNAME".localized
-        tfError = arrTextfields[0]
-      } else if currentUser.usLastNames.isEmpty{
-
-        strErrorMessage = "REG_INVLANAME".localized
-        tfError = arrTextfields[1]
-      } else if !currentUser.usEmail.isAValidEmail {
-
-        strErrorMessage = "REG_INVMAIL".localized
-        tfError = arrTextfields[2]
-      } else if currentUser.usBirthdate.isEmpty {
-
-        strErrorMessage = "REG_INVBIRTH".localized
-        tfError = arrTextfields[3]
-      } else if currentUser.usPassword.isEmpty {
-
-        strErrorMessage = "REG_INVPASS".localized
-        tfError = arrTextfields[4]
-      } else if confirmPassword.isEmpty {
-
-        strErrorMessage = "REG_INVCOPASS".localized
-        tfError = arrTextfields[5]
-      }
-      if strErrorMessage != "" {
-
-        let alertVC: UIAlertController = UIAlertController(title: "ERROR",
-                                                           message: strErrorMessage,
-                                                           preferredStyle: UIAlertController.Style.alert)
-        alertVC.addAction(UIAlertAction(title: "OK",
-                                        style: UIAlertAction.Style.destructive,
-                                        handler: nil))
-        self.present(alertVC,
-                     animated: true) {
-                      if let _ = self.tfError {
-
-                        self.tfError?.showInvalidInputStateWhen(isValidInput: true)
-                      }
+        KVNProgress.show(withStatus: "Validando información")
+        var strErrorMessage: String = ""
+        if currentUser.usName.isEmpty{
+            
+            strErrorMessage = "REG_INVUSNAME".localized
+            tfError = arrTextfields[0]
+        } else if currentUser.usLastNames.isEmpty{
+            
+            strErrorMessage = "REG_INVLANAME".localized
+            tfError = arrTextfields[1]
+        } else if !currentUser.usEmail.isAValidEmail {
+            
+            strErrorMessage = "REG_INVMAIL".localized
+            tfError = arrTextfields[2]
+        } else if currentUser.usBirthdate.isEmpty {
+            
+            strErrorMessage = "REG_INVBIRTH".localized
+            tfError = arrTextfields[3]
+        } else if currentUser.usPassword.isEmpty {
+            
+            strErrorMessage = "REG_INVPASS".localized
+            tfError = arrTextfields[4]
+        } else if confirmPassword.isEmpty {
+            
+            strErrorMessage = "REG_INVCOPASS".localized
+            tfError = arrTextfields[5]
         }
-      } else {
-        Auth.auth().createUser(withEmail: currentUser.usEmail, password: currentUser.usPassword) { (authResult, error) in
-
-          if let anError = error {
-
-            print(anError.localizedDescription)
-          } else {
-            if let anUser = authResult?.user {
-              self.dbRef.child("users").child(anUser.uid).setValue(["usId": anUser.uid,
-                                                                    "usName": self.currentUser.usName,
-                                                                    "usEmail": self.currentUser.usEmail,
-                                                                    "usFirstName": self.currentUser.usFirstName,
-                                                                    "usLastNames": self.currentUser.usLastNames,
-                                                                    "usBirthdate": self.currentUser.usBirthdate,
-                                                                    "usPassword": self.currentUser.usPassword,
-                                                                    "usDescription": self.currentUser.usDescription,
-                                                                    "usWegautLevel": self.currentUser.usWegautLevel.description])
-                UserDefaults.standard.set(User.convertUserToDic(self.currentUser), forKey: WegautConstants.USER_DATA)
-                self.uploadProfileImage()
-              let alert: UIAlertController = UIAlertController(title: "REG_WELCOME".localized,
-                                                               message: "REG_HELLO".localized + " \(self.currentUser.usName)",
-                preferredStyle: UIAlertController.Style.alert)
-              alert.addAction(UIAlertAction(title: "OK",
-                                            style: UIAlertAction.Style.default, handler: { (alert) in
-
-
-              }))
-              self.present(alert, animated: true, completion: {
-                self.dismiss(animated: true, completion: {
-                  UserDefaults.standard.set(true,forKey: WegautConstants.IS_USER_LOGGED)
-                  let storyBoard: UIStoryboard = UIStoryboard(name: "Main",
-                                                              bundle: Bundle.main)
-                  let rootNavigation: UITabBarController = storyBoard.instantiateViewController(withIdentifier: "RootNavigation") as! UITabBarController
-                  self.present(rootNavigation,
-                               animated: true,
-                               completion: nil)
-                })
-              })
+        KVNProgress.dismiss()
+        if strErrorMessage != "" {
+            
+            let alertVC: UIAlertController = UIAlertController(title: "ERROR",
+                                                               message: strErrorMessage,
+                                                               preferredStyle: UIAlertController.Style.alert)
+            alertVC.addAction(UIAlertAction(title: "OK",
+                                            style: UIAlertAction.Style.destructive,
+                                            handler: nil))
+            self.present(alertVC,
+                         animated: true) {
+                            if let _ = self.tfError {
+                                
+                                self.tfError?.showInvalidInputStateWhen(isValidInput: true)
+                            }
             }
-          }
+        } else {
+            self.uploadUserData()
         }
-      }
     }
 }
 
@@ -460,6 +487,7 @@ extension RegisterVC: EmailTVCellDelegate {
 extension RegisterVC: BirthdayTVCellDelegate {
     
     func textfieldBirthdayPressed() {
+        self.dismissKeyboard()
         showDateAlert()
     }
     

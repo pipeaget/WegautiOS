@@ -72,6 +72,7 @@ PODS:
   - GoogleUtilities/UserDefaults (5.5.0):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.1)
+  - KVNProgress (2.3.5)
   - leveldb-library (1.20)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
@@ -90,6 +91,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - Firebase/Storage
+  - KVNProgress
   - SDWebImage
 
 SPEC REPOS:
@@ -107,6 +109,7 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleUtilities
     - GTMSessionFetcher
+    - KVNProgress
     - leveldb-library
     - nanopb
     - SDWebImage
@@ -125,10 +128,11 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 1624046ab1bcc5e170061a56ef5679000b079c8e
   GoogleUtilities: 6481e6318c5fcabaaa8513ef8120f329055d7c10
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
+  KVNProgress: d7046cce142f1aeb740db39dc3cacfe910fac354
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
 
-PODFILE CHECKSUM: a3edf298d9d7e8a93de327e64a20af6f5fe32ff1
+PODFILE CHECKSUM: cbc6ed3f00677274163ed81a0e86636fa1a4b249
 
 COCOAPODS: 1.6.1

@@ -8,6 +8,7 @@ target 'Wegaut' do
 
   # Pods for Wegaut
 
+    pod 'KVNProgress'
     pod 'BRCountDownView'
     pod 'SDWebImage'
     pod 'CropViewController'
