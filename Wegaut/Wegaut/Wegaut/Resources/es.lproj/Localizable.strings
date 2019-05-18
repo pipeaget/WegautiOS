@@ -85,6 +85,7 @@
 "LOG_MAILTIT"  = "Correo Enviado";
 "LOG_MAILSENT" = "Un correo de recuperación de contraseña ha sido enviado a la cuenta solicitada.";
 "LOG_FAIL"     = "Una o más de tus credenciales están mal. Por favor, vuelve a ingresarlas.";
+"LOG_VALDATA"  = "Validando información...";
 
 //MARK: - FORGOTPASSWORDVC
 
@@ -94,6 +95,7 @@
 "FP_MAIL"    = "Escribe aquí tu mail";
 "FP_RPASS"   = "Obtener nueva contraseña";
 "FP_RECPASS" = "Un correo de recuperación de contraseña se ha enviado a tu bandeja.";
+"FP_ERR"     = "El correo no esta asociado a ninguna cuenta.";
 
 //MARK: - REGISTERVC
 
@@ -121,6 +123,9 @@
 "REG_WELCOME"   = "¡Bienvenido!";
 "REG_HELLO"     = "Hola";
 "REG_DESC"      = "Cuéntanos aquí un poco sobre ti";
+"REG_PROC"      = "Registrando al usuario...";
+"REG_ERR"       = "No fue posible realizar el registro";
+"REG_PROF_ERR"  = "Hubo un problema mientras se actualizaba la foto de perfil del usuario, puedes cambiarla más tarde.";
 
 //MARK: - SELECTINTERESTSVC
 

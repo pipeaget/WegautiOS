@@ -85,6 +85,7 @@
 "LOG_MAILTIT"  = "Email sent";
 "LOG_MAILSENT" = "An email for recovering password has been sent to your account.";
 "LOG_FAIL"     = "One or more of your credentials are invalid. Please try re-enter them.";
+"LOG_VALDATA"  = "Validating credentials...";
 
 //MARK: - FORGOTPASSWORDVC
 
@@ -94,6 +95,7 @@
 "FP_MAIL"    = "Write here your email";
 "FP_RPASS"   = "Get a new password";
 "FP_RECPASS" = "A recover password email has been sent to your inbox.";
+"FP_ERR"     = "The email isn't assigned to an account.";
 
 //MARK: - REGISTERVC
 
@@ -121,6 +123,9 @@
 "REG_WELCOME"   = "WELCOME!!!";
 "REG_HELLO"     = "Hello";
 "REG_DESC"      = "Tell us a about you";
+"REG_PROC"      = "Registering the user...";
+"REG_ERR"       = "The user can't be registered";
+"REG_PROF_ERR"  = "There was a problem during profile picture upload, you can change it later.";
 
 //MARK: - SELECTINTERESTSVC
 

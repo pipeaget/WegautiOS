@@ -73,7 +73,7 @@ class RegisterVC: UIViewController {
         
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue else { return }
         DispatchQueue.main.async {
-            self.cnTvRegisterBottom.constant = keyboardSize.height
+            self.cnTvRegisterBottom.constant = -keyboardSize.height
         }
     }
     
@@ -181,22 +181,34 @@ class RegisterVC: UIViewController {
         }
     }
     
+    func showRegisterErrorAlert()-> UIAlertController {
+        
+        let alert: UIAlertController = UIAlertController(title: "ERROR".localized, message: "REG_ERR".localized, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (alert) in
+            UserDefaults.standard.set(nil, forKey: WegautConstants.USER_DATA)
+        }))
+        return alert
+    }
+    
+    func showProfileUploadErrorAlert()-> UIAlertController {
+        
+        let alert:UIAlertController = UIAlertController(title: "ERROR".localized, message: "REG_PROF_ERR".localized, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertAction.Style.default, handler: nil))
+        return alert
+    }
+    
     func uploadUserData() {
         
-        KVNProgress.show(withStatus: "Registrando al usuario")
+        KVNProgress.show(withStatus: "REG_PROC".localized)
         UserDefaults.standard.set(User.convertUserToDic(self.currentUser), forKey: WegautConstants.USER_DATA)
         if let aUserData = UserDefaults.standard.object(forKey: WegautConstants.USER_DATA) as? [String: Any],
-           let aUser = User.convertDicToUser(aUserData) {
+           let _ = User.convertDicToUser(aUserData) {
             
             Auth.auth().createUser(withEmail: currentUser.usEmail, password: currentUser.usPassword) { (authResult, error) in
                 
                 if let _ = error {
                     KVNProgress.dismiss()
-                    let alert: UIAlertController = UIAlertController(title: "ERROR", message: "No fue posible realizar el registro", preferredStyle: UIAlertController.Style.alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (alert) in
-                        UserDefaults.standard.set(nil, forKey: WegautConstants.USER_DATA)
-                    }))
-                    self.present(alert, animated: true, completion: nil)
+                    self.present(self.showRegisterErrorAlert(), animated: true, completion: nil)
                 } else {
                     if let anUser = authResult?.user {
                         self.dbRef.child("users").child(anUser.uid).setValue(["usId": anUser.uid,
@@ -219,30 +231,25 @@ class RegisterVC: UIViewController {
                                                                               "usTags": self.currentUser.usTags])
                         self.currentUser.usId = anUser.uid
                         UserDefaults.standard.set(User.convertUserToDic(self.currentUser), forKey: WegautConstants.USER_DATA)
-                        self.uploadProfileImage(userId: aUser.usId)
+                        self.uploadProfileImage(userId: self.currentUser.usId)
                     }
                 }
             }
         } else {
             KVNProgress.dismiss()
-            let alert: UIAlertController = UIAlertController(title: "ERROR", message: "No fue posible realizar el registro", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (alert) in
-                UserDefaults.standard.set(nil, forKey: WegautConstants.USER_DATA)
-            }))
-            self.present(alert, animated: true, completion: nil)
+            self.present(self.showRegisterErrorAlert(), animated: true, completion: nil)
         }
     }
     
     func uploadProfileImage(userId: String) {
-        if let anImageData = currentUser.usProfileImage.resize(targetSize: CGSize(width: 400, height: 400)).pngData(){
-            let storageRef = Storage.storage().reference().child("ProfileUsersImages").child("\(userId)")
-            storageRef.putData(anImageData, metadata: nil) { (metadata, error) in
+        let storage = Storage.storage()
+        let storageRef = storage.reference()
+        let imagesRef = storageRef.child(WegautConstants.PROFILE_IMAGES_SOURCE+"\(userId)")
+        if let anImageData = currentUser.usProfileImage.pngData(){
+            imagesRef.putData(anImageData, metadata: nil) { (metadata, error) in
                 if error != nil {
                     KVNProgress.dismiss()
-                    let alert:UIAlertController = UIAlertController(title: "ERROR", message: "Hubo un problema mientras se actualizaba la foto de perfil del usuario, inténtalo más tarde", preferredStyle: UIAlertController.Style.alert)
-                    let okAlert:UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-                    alert.addAction(okAlert)
-                    self.present(alert, animated: true, completion: nil)
+                    self.present(self.showProfileUploadErrorAlert(), animated: true, completion: nil)
                     return
                 }else{
                     KVNProgress.dismiss()
@@ -268,10 +275,7 @@ class RegisterVC: UIViewController {
             }
         } else {
             KVNProgress.dismiss()
-            let alert:UIAlertController = UIAlertController(title: "ERROR", message: "Hubo un problema mientras se obtenía la información del usuario, cierra sesión e inténtalo más tarde", preferredStyle: UIAlertController.Style.alert)
-            let okAlert:UIAlertAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
-            alert.addAction(okAlert)
-            self.present(alert, animated: true, completion: nil)
+            self.present(self.showProfileUploadErrorAlert(), animated: true, completion: nil)
         }
     }
     
@@ -450,8 +454,6 @@ extension RegisterVC: UsernameTVCellDelegate {
     
     func usernameReturnPressed() {
         setCorrespondingFirstResponder(indexPath: 1)
-        /*guard let aCell: LastNamesTVCell = tvRegister.cellForRow(at: IndexPath(row: 0, section: 2)) as? LastNamesTVCell else { return }
-        aCell.tfLastNames.becomeFirstResponder()*/
     }
 }
 
@@ -463,10 +465,6 @@ extension RegisterVC: LastNamesTVCellDelegate {
     
     func lastNamesReturnPressed() {
         setCorrespondingFirstResponder(indexPath: 2)
-        /*guard let aCell: EmailTVCell = tvRegister.cellForRow(at: IndexPath(row: 0, section: 3)) as? EmailTVCell else {
-            print("Error")
-            return }
-        aCell.tfEmail.becomeFirstResponder()*/
     }
 }
 
@@ -479,8 +477,6 @@ extension RegisterVC: EmailTVCellDelegate {
     func emailReturnPressed() {
         dismissKeyboard()
         setCorrespondingFirstResponder(indexPath: 3)
-        /*guard let aCell: BirthdayTVCell = tvRegister.cellForRow(at: IndexPath(row: 0, section: 4)) as? BirthdayTVCell else { return }
-        aCell.tfBirthday.becomeFirstResponder()*/
     }
 }
 
@@ -497,8 +493,6 @@ extension RegisterVC: BirthdayTVCellDelegate {
     
     func birthdayReturnPressed() {
         setCorrespondingFirstResponder(indexPath: 4)
-        /*guard let aCell: PasswordTVCell = tvRegister.cellForRow(at: IndexPath(row: 0, section: 5)) as? PasswordTVCell else { return }
-        aCell.tfPassword.becomeFirstResponder()*/
     }
 }
 
@@ -514,8 +508,7 @@ extension RegisterVC: PasswordTVCellDelegate {
             guard let aCell: AboutTVCell = tvRegister.cellForRow(at: IndexPath(row: 0, section: 7)) as? AboutTVCell else { return }
             aCell.txtvwAbout.becomeFirstResponder()
         } else {
-            guard let aCell: PasswordTVCell = tvRegister.cellForRow(at: IndexPath(row: 0, section: 6)) as? PasswordTVCell else { return }
-            aCell.tfPassword.becomeFirstResponder()
+            setCorrespondingFirstResponder(indexPath: 6)
         }
     }
 }

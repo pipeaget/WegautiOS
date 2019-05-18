@@ -21,6 +21,7 @@ struct WegautConstants{
     static let IS_DEV_APP                     = "isOnDev"
     static let BASE_DEV_URL                   = "http://grubertek.vincoorbisdev.com/api/v1/"
     static let BASE_PROD_URL                  = "https://api.grubertek.mx/api/v1/"
+    static let PROFILE_IMAGES_SOURCE          = "ProfileImages/"
     
     //MARK: -  USER DATA
     

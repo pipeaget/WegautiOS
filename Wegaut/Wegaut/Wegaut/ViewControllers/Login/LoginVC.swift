@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import KVNProgress
 
 class LoginVC: UIViewController {
     
@@ -104,6 +105,7 @@ class LoginVC: UIViewController {
     
     @IBAction func actBtnLogin(_ sender: UIButton) {
         
+        KVNProgress.show(withStatus: "LOG_VALDATA".localized)
         var strErrorMessage: String = ""
         var tfError: UITextField?
         if !tfUser.text!.isAValidEmail {
@@ -117,23 +119,22 @@ class LoginVC: UIViewController {
         }
         if strErrorMessage != "" {
             
-            let alertVC: UIAlertController = UIAlertController(title: "ERROR",
+            let alertVC: UIAlertController = UIAlertController(title: "ERROR".localized,
                                                                message: strErrorMessage,
                                                                preferredStyle: UIAlertController.Style.alert)
-            alertVC.addAction(UIAlertAction(title: "OK",
+            alertVC.addAction(UIAlertAction(title: "OK".localized,
                                             style: UIAlertAction.Style.destructive,
                                             handler: nil))
-            self.present(alertVC,
-                         animated: true) {
+            KVNProgress.dismiss()
+            self.present(alertVC,animated: true) {
                             if let _ = tfError {
-                                
                                 tfError?.showInvalidInputStateWhen(isValidInput: true)
                             }
             }
         } else {
 
           Auth.auth().signIn(withEmail: tfUser.text!, password: tfPassword.text!) { (authResult, error) in
-            if let anError = error {
+            if let _ = error {
               let anAlert = UIAlertController(title: "ERROR".localized, message: "LOG_FAIL".localized, preferredStyle: UIAlertController.Style.alert)
               anAlert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertAction.Style.destructive, handler: { (alert) in
                 self.tfUser.showInvalidInputStateWhen(isValidInput: true)
@@ -141,15 +142,14 @@ class LoginVC: UIViewController {
                 self.tfPassword.showInvalidInputStateWhen(isValidInput: true)
                 self.tfPassword.text = ""
               }))
+                KVNProgress.dismiss()
+                self.present(anAlert, animated: true, completion: nil)
             } else {
-              UserDefaults.standard.set(true,
-                                        forKey: WegautConstants.IS_USER_LOGGED)
-              let storyBoard: UIStoryboard = UIStoryboard(name: "Main",
-                                                          bundle: Bundle.main)
+              UserDefaults.standard.set(true, forKey: WegautConstants.IS_USER_LOGGED)
+              let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
               let rootNavigation: UITabBarController = storyBoard.instantiateViewController(withIdentifier: "RootNavigation") as! UITabBarController
-              self.present(rootNavigation,
-                           animated: true,
-                           completion: nil)
+              KVNProgress.dismiss()
+              self.present(rootNavigation, animated: true, completion: nil)
             }
           }
         }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ForgotPasswordVC: UIViewController {
     
@@ -34,8 +35,10 @@ class ForgotPasswordVC: UIViewController {
         lblTitle.text = "FP_TIT".localized
         lblMessage.text = "FP_MESS".localized
         tfEmail.placeholder = "FP_MAIL".localized
+        tfEmail.delegate = self
         btnResetPassword.setTitle("FP_RPASS".localized,
                                   for: UIControl.State.normal)
+        btnResetPassword.cornerRadius(cornerRadius: 5)
     }
 
     //MARK: - ACTIONS
@@ -47,6 +50,7 @@ class ForgotPasswordVC: UIViewController {
     
     @IBAction func actResetPassword(_ sender: UIButton) {
         
+        dismissKeyboard()
         var strErrorMessage: String = ""
         var tfError: UITextField?
         if !tfEmail.text!.isAValidEmail {
@@ -56,32 +60,46 @@ class ForgotPasswordVC: UIViewController {
         }
         if strErrorMessage != "" {
             
-            let alertVC: UIAlertController = UIAlertController(title: "ERROR",
-                                                               message: strErrorMessage,
-                                                               preferredStyle: UIAlertController.Style.alert)
-            alertVC.addAction(UIAlertAction(title: "OK",
-                                            style: UIAlertAction.Style.destructive,
-                                            handler: nil))
-            self.present(alertVC,
-                         animated: true) {
+            let alertVC: UIAlertController = UIAlertController(title: "ERROR".localized, message: strErrorMessage, preferredStyle: UIAlertController.Style.alert)
+            alertVC.addAction(UIAlertAction(title: "OK".localized, style: UIAlertAction.Style.destructive, handler: nil))
+            self.present(alertVC, animated: true) {
                             if let _ = tfError {
-                                
                                 tfError?.showInvalidInputStateWhen(isValidInput: true)
                             }
             }
         } else {
             
-            let alertVC: UIAlertController = UIAlertController(title: "",
-                                                               message: "FP_RECPASS",
-                                                               preferredStyle: UIAlertController.Style.alert)
-            alertVC.addAction(UIAlertAction(title: "OK",
-                                            style: UIAlertAction.Style.destructive, handler: { (alert) in
-                                                
-                                                self.navigationController?.popViewController(animated: true)
-            }))
-            self.present(alertVC,
-                         animated: true,
-                         completion: nil)
+            Auth.auth().sendPasswordReset(withEmail: tfEmail.text!) { (error) in
+                if let _ = error {
+                    let alertVC: UIAlertController = UIAlertController(title: "", message: "FP_ERR".localized, preferredStyle: UIAlertController.Style.alert)
+                    alertVC.addAction(UIAlertAction(title: "OK".localized, style: UIAlertAction.Style.destructive, handler: nil))
+                    self.present(alertVC, animated: true, completion: {
+                        self.tfEmail.showInvalidInputStateWhen(isValidInput: true)
+                    })
+                } else {
+                    let alertVC: UIAlertController = UIAlertController(title: "", message: "FP_RECPASS".localized, preferredStyle: UIAlertController.Style.alert)
+                    alertVC.addAction(UIAlertAction(title: "OK".localized, style: UIAlertAction.Style.destructive, handler: { (alert) in
+                        self.navigationController?.popViewController(animated: true)
+                    }))
+                    self.present(alertVC, animated: true, completion: nil)
+                }
+            }
         }
+    }
+}
+
+//MARK: - EXTENSIONS
+
+extension ForgotPasswordVC: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        
+        textField.showInvalidInputStateWhen(isValidInput: false)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        dismissKeyboard()
+        return true
     }
 }
