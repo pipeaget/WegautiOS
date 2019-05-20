@@ -81,7 +81,7 @@ class MyActivitiesVC: UIViewController {
         } else if segue.identifier == "ShowProfile" {
             
             let destinationVC: ProfileVC =  segue.destination as! ProfileVC
-            destinationVC.userData = selectedActivity.actUser
+            destinationVC.currentUser = selectedActivity.actUser
         }
     }
     

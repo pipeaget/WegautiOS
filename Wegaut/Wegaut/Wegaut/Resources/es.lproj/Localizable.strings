@@ -294,13 +294,17 @@
 
 //MARK: - PROFILEVC
 
-"PRO_TIT"    = "Usuario";
-"PRO_FOLWRS" = "Followers";
-"PRO_LEVEL"  = "Level";
-"PRO_EVENTS" = "Events";
-"PRO_GOING"  = "I'm going";
-"PRO_FAVS"   = "Favorites";
-"PRO_SHARED" = "Shared";
+"PRO_TIT"      = "Usuario";
+"PRO_FOLWRS"   = "Followers";
+"PRO_LEVEL"    = "Level";
+"PRO_EVENTS"   = "Events";
+"PRO_GOING"    = "I'm going";
+"PRO_FAVS"     = "Favorites";
+"PRO_SHARED"   = "Shared";
+"PRO_DOWN"     = "Obteniendo información del usuario...";
+"PRO_IMG_ERR"  = "Error al descargar la foto de perfil";
+"PRO_ERR_TIT"  = "Error al descargar la información del usuario";
+"PRO_ERR_MESS" = "Es necesario volver a iniciar sesión";
 
 //MARK: - MYBADGESVC
 

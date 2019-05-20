@@ -157,27 +157,27 @@ struct User {
                     usActivities: [],
                     usTags: [])
     }
-
-  static func newUser() -> User {
-    return User(usId: "", usName: "",
-                usEmail: "",
-                usFirstName: "",
-                usLastNames: "",
-                usProfileImageURL: "",
-                usProfileImage: #imageLiteral(resourceName: "ICFollowBack"),
-                usBirthdate: "",
-                usPassword: "",
-                usDescription: "REG_DESC".localized,
-                usWegautLevel: Level.noob,
-                usFollowers: [],
-                usFollowing: [],
-                usCreatedEvents: [],
-                usAssistingEvents: [],
-                usFavouriteEvents: [],
-                usSharedEvents: [],
-                usActivities: [],
-                usTags: [])
-  }
+    
+    static func newUser() -> User {
+        return User(usId: "", usName: "",
+                    usEmail: "",
+                    usFirstName: "",
+                    usLastNames: "",
+                    usProfileImageURL: "",
+                    usProfileImage: #imageLiteral(resourceName: "ICFollowBack"),
+                    usBirthdate: "",
+                    usPassword: "",
+                    usDescription: "REG_DESC".localized,
+                    usWegautLevel: Level.noob,
+                    usFollowers: [],
+                    usFollowing: [],
+                    usCreatedEvents: [],
+                    usAssistingEvents: [],
+                    usFavouriteEvents: [],
+                    usSharedEvents: [],
+                    usActivities: [],
+                    usTags: [])
+    }
     
     static func isUserInArray(anArray: [User])-> Bool {
         

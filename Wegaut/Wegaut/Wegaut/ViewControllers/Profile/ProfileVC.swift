@@ -8,17 +8,16 @@
 
 import UIKit
 import SDWebImage
+import FirebaseDatabase
+import FirebaseStorage
+import KVNProgress
 
 class ProfileVC: UIViewController {
     
     //MARK: - VARIABLES
     
-    var userData: User!
+    var currentUser: User?
     var userImage: UIImage?
-    var arrMyEvents: [Event]!
-    var arrGoingEvents: [Event]!
-    var arrFavoriteEvents: [Event]!
-    var arrSharedevents: [Event]!
     var currentSegmentControlIndex: Int!{
         didSet{
             cvEvents.reloadData()
@@ -73,44 +72,7 @@ class ProfileVC: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        if userData == nil {
-            
-            userData = User.getUserData()
-        } else {
-            
-            isOtherUserProfile = true
-        }
-        imgvwNewProfilePic.isHidden = isOtherUserProfile
-        vwUserEvents.isHidden = isOtherUserProfile
-        arrMyEvents = Event.getEvents()
-        arrGoingEvents = Event.getEvents()
-        arrFavoriteEvents = Event.getEvents()
-        arrSharedevents = Event.getEvents()
-        currentSegmentControlIndex = 0
-        
-        lblUsername.text = userData.usName
-        btnProfilePic.imageView?.contentMode = UIView.ContentMode.scaleAspectFit
-        if let anURL = URL(string: userData.usProfileImageURL){
-            
-            btnProfilePic.sd_setImage(with: anURL,
-                                      for: UIControl.State.normal,
-                                      completed: nil)
-        }
-        lblUserDescription.text = userData.usDescription
-        lblFollowersQuantity.text = "\(userData.usFollowers.count)"
-        lblFollowers.text = "PRO_FOLWRS".localized
-        lblWegautLevel.text = userData.usWegautLevel.description
-        lblLevel.text = "PRO_LEVEL".localized
-        lblEvents.text = "PRO_EVENTS".localized
-        lblNumberOfEvents.text = "\(arrMyEvents.count)"
-        
-        imgvwSection1.image = #imageLiteral(resourceName: "ICPurpleCalendar")
-        lblSection1.text = "PRO_GOING".localized
-        imgvwSection2.image = #imageLiteral(resourceName: "ICWhiteHearth")
-        lblSection2.text = "PRO_FAVS".localized
-        imgvwSection3.image = #imageLiteral(resourceName: "ICWhiteShare")
-        lblSection3.text = "PRO_SHARED".localized
-        
+        currentUser == nil ? loadUserData() : (isOtherUserProfile = true)
         btnProfilePic.cornerRadius(cornerRadius: nil)
         btnProfilePic.layer.borderWidth = 1
         btnProfilePic.layer.borderColor = UIColor.black.cgColor
@@ -120,6 +82,11 @@ class ProfileVC: UIViewController {
         self.addImageLogoToNavBar()
         vwUsage.cornerRadius(cornerRadius: 5)
         vwUsage.clipsToBounds = true
+        imgvwNewProfilePic.isHidden = isOtherUserProfile
+        vwUserEvents.isHidden = isOtherUserProfile
+        currentSegmentControlIndex = 0
+        lblUsername.text = ""
+        lblUserDescription.text = ""
     }
 
     override func didReceiveMemoryWarning() {
@@ -139,6 +106,73 @@ class ProfileVC: UIViewController {
     }
     
     //MARK: - FUNCTIONS
+    
+    func updateUI() {
+        lblUsername.text = currentUser?.usName ?? ""
+        btnProfilePic.imageView?.contentMode = UIView.ContentMode.scaleAspectFit
+        btnProfilePic.setImage(self.currentUser?.usProfileImage, for: UIControl.State.normal)
+        lblUserDescription.text = currentUser?.usDescription ?? ""
+        lblFollowersQuantity.text = "\(currentUser?.usFollowers.count ?? 0)"
+        lblFollowers.text = "PRO_FOLWRS".localized
+        lblWegautLevel.text = currentUser?.usWegautLevel.description ?? ""
+        lblLevel.text = "PRO_LEVEL".localized
+        lblEvents.text = "PRO_EVENTS".localized
+        lblNumberOfEvents.text = "\(currentUser?.usCreatedEvents.count ?? 0)"
+        
+        imgvwSection1.image = #imageLiteral(resourceName: "ICPurpleCalendar")
+        lblSection1.text = "PRO_GOING".localized
+        imgvwSection2.image = #imageLiteral(resourceName: "ICWhiteHearth")
+        lblSection2.text = "PRO_FAVS".localized
+        imgvwSection3.image = #imageLiteral(resourceName: "ICWhiteShare")
+        lblSection3.text = "PRO_SHARED".localized
+    }
+    
+    func loadUserData() {
+        
+        KVNProgress.show(withStatus: "PRO_DOWN".localized)
+        if let aUserId = UserDefaults.standard.string(forKey: WegautConstants.USER_ID) {
+            let ref  = Database.database().reference()
+            ref.child("users").child(aUserId).observeSingleEvent(of: DataEventType.value) { (userInfo) in
+                if let aDic = userInfo.value as? [String: Any], let aUser = User.convertDicToUser(aDic) {
+                    self.currentUser = aUser
+                    self.getUserProfilePhoto(userId: aUserId)
+                } else {
+                    self.logOut()
+                }
+            }
+        } else {
+            logOut()
+        }
+    }
+    
+    func getUserProfilePhoto(userId: String) {
+        
+        let storage = Storage.storage()
+        let storageRef = storage.reference()
+        let imagesRef = storageRef.child(WegautConstants.PROFILE_IMAGES_SOURCE+"\(userId)")
+        imagesRef.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
+            if let imageData = data {
+                self.currentUser?.usProfileImage = UIImage(data: imageData) ?? #imageLiteral(resourceName: "BGLogo")
+                self.updateUI()
+                KVNProgress.dismiss()
+            } else {
+                KVNProgress.showError(withStatus: "PRO_IMG_ERR".localized)
+            }
+        }
+    }
+    
+    func logOut() {
+        KVNProgress.dismiss()
+        let alert = UIAlertController(title: "PRO_ERR_TIT".localized, message: "PRO_ERR_MESS".localized, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertAction.Style.destructive, handler: { (alert) in
+            UserDefaults.standard.set(false, forKey: WegautConstants.IS_USER_LOGGED)
+            let storyBoard: UIStoryboard = UIStoryboard(name: "Login",
+                                                        bundle: nil)
+            let loginRoot = storyBoard.instantiateViewController(withIdentifier: "RootLogin") as! UINavigationController
+            self.present(loginRoot, animated:true, completion:nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
     
     func setSegmentedControlUI(){
         
@@ -199,6 +233,16 @@ class ProfileVC: UIViewController {
         self.present(imagePicker,
                      animated: true,
                      completion: nil)
+    }
+    
+    func getNumberOfItemsFor(section: Int)-> Int {
+        
+        switch section {
+        case 0: return self.currentUser?.usAssistingEvents.count ?? 0
+        case 1: return self.currentUser?.usFavouriteEvents.count ?? 0
+        case 2: return self.currentUser?.usSharedEvents.count ?? 0
+        default: return 0
+        }
     }
     
     //MARK: - ACTIONS
@@ -275,13 +319,13 @@ extension ProfileVC: UICollectionViewDataSource, UICollectionViewDelegate, UICol
         switch currentSegmentControlIndex {
             
         case 0:
-            return arrGoingEvents.count
+            return currentUser?.usAssistingEvents.count ?? 1
             
         case 1:
-            return arrFavoriteEvents.count
+            return currentUser?.usFavouriteEvents.count ?? 1
             
         case 2:
-            return arrSharedevents.count
+            return currentUser?.usSharedEvents.count ?? 1
             
         default:
             return 0
@@ -290,12 +334,13 @@ extension ProfileVC: UICollectionViewDataSource, UICollectionViewDelegate, UICol
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let cellWidth:CGFloat = (cvEvents.frame.width - 40) / 3
-        return CGSize(width: cellWidth, height: cellWidth)
+        let cellHeight: CGFloat = getNumberOfItemsFor(section: currentSegmentControlIndex) == 0 ? 100 : ((cvEvents.frame.width - 40) / 3)
+        let cellWidth: CGFloat = getNumberOfItemsFor(section: currentSegmentControlIndex) == 0 ? (cvEvents.frame.width - 40) : ((cvEvents.frame.width - 40) / 3)
+        return CGSize(width: cellWidth, height: cellHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+        if getNumberOfItemsFor(section: <#T##Int#>)
         let aCell: EventCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: "EventCell", for: indexPath) as! EventCVCell
         return aCell
     }
@@ -306,13 +351,17 @@ extension ProfileVC: UICollectionViewDataSource, UICollectionViewDelegate, UICol
         switch currentSegmentControlIndex {
             
         case 0:
-            aCell.currentEvent = arrGoingEvents[indexPath.row]
+            guard let anEvent = currentUser?.usAssistingEvents[indexPath.row] else { return }
+            aCell.currentEvent = anEvent
             
         case 1:
-            aCell.currentEvent = arrFavoriteEvents[indexPath.row]
+            guard let anEvent = currentUser?.usFavouriteEvents[indexPath.row] else { return }
+            
+            aCell.currentEvent = anEvent
             
         case 2:
-            aCell.currentEvent = arrSharedevents[indexPath.row]
+            guard let anEvent = currentUser?.usSharedEvents[indexPath.row] else { return }
+            aCell.currentEvent = anEvent
             
         default:
             break

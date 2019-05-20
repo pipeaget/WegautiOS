@@ -199,7 +199,6 @@ class RegisterVC: UIViewController {
     
     func uploadUserData() {
         
-        KVNProgress.show(withStatus: "REG_PROC".localized)
         UserDefaults.standard.set(User.convertUserToDic(self.currentUser), forKey: WegautConstants.USER_DATA)
         if let aUserData = UserDefaults.standard.object(forKey: WegautConstants.USER_DATA) as? [String: Any],
            let _ = User.convertDicToUser(aUserData) {
@@ -229,6 +228,7 @@ class RegisterVC: UIViewController {
                                                                               "usSharedEvents": self.currentUser.usSharedEvents,
                                                                               "usActivities": self.currentUser.usActivities,
                                                                               "usTags": self.currentUser.usTags])
+                        UserDefaults.standard.set("\(anUser.uid)", forKey: WegautConstants.USER_ID)
                         self.currentUser.usId = anUser.uid
                         UserDefaults.standard.set(User.convertUserToDic(self.currentUser), forKey: WegautConstants.USER_DATA)
                         self.uploadProfileImage(userId: self.currentUser.usId)
@@ -245,7 +245,7 @@ class RegisterVC: UIViewController {
         let storage = Storage.storage()
         let storageRef = storage.reference()
         let imagesRef = storageRef.child(WegautConstants.PROFILE_IMAGES_SOURCE+"\(userId)")
-        if let anImageData = currentUser.usProfileImage.pngData(){
+        if let anImageData = currentUser.usProfileImage.resize(targetSize: CGSize(width: 250, height: 250)).pngData() {
             imagesRef.putData(anImageData, metadata: nil) { (metadata, error) in
                 if error != nil {
                     KVNProgress.dismiss()
@@ -268,9 +268,7 @@ class RegisterVC: UIViewController {
                                                                  completion: nil)
                                                     
                     }))
-                    self.present(alert, animated: true, completion: {
-                        self.dismiss(animated: true, completion: nil)
-                    })
+                    self.present(alert, animated: true, completion: nil)
                 }
             }
         } else {
@@ -288,7 +286,7 @@ class RegisterVC: UIViewController {
     
     @objc func actRegister(_ sender: UIButton) {
 
-        KVNProgress.show(withStatus: "Validando información")
+        KVNProgress.show(withStatus: "REG_PROC".localized)
         var strErrorMessage: String = ""
         if currentUser.usName.isEmpty{
             
@@ -315,9 +313,9 @@ class RegisterVC: UIViewController {
             strErrorMessage = "REG_INVCOPASS".localized
             tfError = arrTextfields[5]
         }
-        KVNProgress.dismiss()
         if strErrorMessage != "" {
             
+            KVNProgress.dismiss()
             let alertVC: UIAlertController = UIAlertController(title: "ERROR",
                                                                message: strErrorMessage,
                                                                preferredStyle: UIAlertController.Style.alert)

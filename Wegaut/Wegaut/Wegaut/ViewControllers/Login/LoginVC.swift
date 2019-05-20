@@ -105,6 +105,7 @@ class LoginVC: UIViewController {
     
     @IBAction func actBtnLogin(_ sender: UIButton) {
         
+        dismissKeyboard()
         KVNProgress.show(withStatus: "LOG_VALDATA".localized)
         var strErrorMessage: String = ""
         var tfError: UITextField?
@@ -145,11 +146,24 @@ class LoginVC: UIViewController {
                 KVNProgress.dismiss()
                 self.present(anAlert, animated: true, completion: nil)
             } else {
-              UserDefaults.standard.set(true, forKey: WegautConstants.IS_USER_LOGGED)
-              let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-              let rootNavigation: UITabBarController = storyBoard.instantiateViewController(withIdentifier: "RootNavigation") as! UITabBarController
-              KVNProgress.dismiss()
-              self.present(rootNavigation, animated: true, completion: nil)
+                if let aUserData = authResult {
+                    UserDefaults.standard.set(aUserData.user.uid, forKey: WegautConstants.USER_ID)
+                    UserDefaults.standard.set(true, forKey: WegautConstants.IS_USER_LOGGED)
+                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                    let rootNavigation: UITabBarController = storyBoard.instantiateViewController(withIdentifier: "RootNavigation") as! UITabBarController
+                    KVNProgress.dismiss()
+                    self.present(rootNavigation, animated: true, completion: nil)
+                } else {
+                    let anAlert = UIAlertController(title: "ERROR".localized, message: "LOG_FAIL".localized, preferredStyle: UIAlertController.Style.alert)
+                    anAlert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertAction.Style.destructive, handler: { (alert) in
+                        self.tfUser.showInvalidInputStateWhen(isValidInput: true)
+                        self.tfUser.text = ""
+                        self.tfPassword.showInvalidInputStateWhen(isValidInput: true)
+                        self.tfPassword.text = ""
+                    }))
+                    KVNProgress.dismiss()
+                    self.present(anAlert, animated: true, completion: nil)
+                }
             }
           }
         }

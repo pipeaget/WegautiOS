@@ -294,13 +294,17 @@
 
 //MARK: - PROFILEVC
 
-"PRO_TIT"    = "User";
-"PRO_FOLWRS" = "Followers";
-"PRO_LEVEL"  = "Level";
-"PRO_EVENTS" = "Events";
-"PRO_GOING"  = "I'm going";
-"PRO_FAVS"   = "Favorites";
-"PRO_SHARED" = "Shared";
+"PRO_TIT"      = "User";
+"PRO_FOLWRS"   = "Followers";
+"PRO_LEVEL"    = "Level";
+"PRO_EVENTS"   = "Events";
+"PRO_GOING"    = "I'm going";
+"PRO_FAVS"     = "Favorites";
+"PRO_SHARED"   = "Shared";
+"PRO_DOWN"     = "Retrieving user data...";
+"PRO_IMG_ERR"  = "Error while downloading the profile picture";
+"PRO_ERR_TIT"  = "Error retrieving user data";
+"PRO_ERR_MESS" = "You must make a Login again";
 
 //MARK: - FOLLOWERSVC
 
