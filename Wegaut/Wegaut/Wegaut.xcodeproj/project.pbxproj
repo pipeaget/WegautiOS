@@ -20,6 +20,7 @@
 		59A79B16224711D900D82A09 /* MyBadgesPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A79B15224711D900D82A09 /* MyBadgesPVC.swift */; };
 		59A79B18224711FC00D82A09 /* MyBadgesContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A79B17224711FC00D82A09 /* MyBadgesContainerVC.swift */; };
 		59A79B1D22472A1800D82A09 /* BadgeCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A79B1C22472A1800D82A09 /* BadgeCVCell.swift */; };
+		82352EE22292F1CA003AD5F2 /* FirstNameTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82352EE12292F1CA003AD5F2 /* FirstNameTVCell.swift */; };
 		D52A5E58220BC35900849266 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D52A5E57220BC35900849266 /* GoogleService-Info.plist */; };
 		D52CB3EC214AD284007C58D2 /* WegautConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52CB3EB214AD284007C58D2 /* WegautConstants.swift */; };
 		D52CB3EF214AD40C007C58D2 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52CB3EE214AD40C007C58D2 /* UIViewControllerExtensions.swift */; };
@@ -143,6 +144,7 @@
 		59A79B17224711FC00D82A09 /* MyBadgesContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBadgesContainerVC.swift; sourceTree = "<group>"; };
 		59A79B1C22472A1800D82A09 /* BadgeCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeCVCell.swift; sourceTree = "<group>"; };
 		70EC62B6E2DF73A38F3A4B44 /* Pods_WegautTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WegautTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		82352EE12292F1CA003AD5F2 /* FirstNameTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstNameTVCell.swift; sourceTree = "<group>"; };
 		BAE21DFAFE1FC24330F5A26F /* Pods_WegautUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WegautUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0B5A281DCD7ED4346D02AA6 /* Pods-Wegaut.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Wegaut.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Wegaut/Pods-Wegaut.debug.xcconfig"; sourceTree = "<group>"; };
 		CE1C11ED81BD8501D3A1D65A /* Pods-WegautTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WegautTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WegautTests/Pods-WegautTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 			children = (
 				59A2568822504DB100AA7EF0 /* UserProfileImageTVCell.swift */,
 				59A2568A22504DC900AA7EF0 /* UsernameTVCell.swift */,
+				82352EE12292F1CA003AD5F2 /* FirstNameTVCell.swift */,
 				59A2568C225052A900AA7EF0 /* LastNamesTVCell.swift */,
 				59A2568E225052BA00AA7EF0 /* EmailTVCell.swift */,
 				59A25692225052F200AA7EF0 /* BirthdayTVCell.swift */,
@@ -910,6 +913,7 @@
 				D5D14666214EA882005C2FC5 /* FORView.swift in Sources */,
 				D55CC4B021C042B1000A1C43 /* NewSponsorCVCell.swift in Sources */,
 				D55CC4A721C04201000A1C43 /* WebEventTVCell.swift in Sources */,
+				82352EE22292F1CA003AD5F2 /* FirstNameTVCell.swift in Sources */,
 				D5D1462B214D7A0F005C2FC5 /* UITextFieldExtensions.swift in Sources */,
 				D52CB3EC214AD284007C58D2 /* WegautConstants.swift in Sources */,
 				D5D146BD214EA9D0005C2FC5 /* AddNewEventVC.swift in Sources */,

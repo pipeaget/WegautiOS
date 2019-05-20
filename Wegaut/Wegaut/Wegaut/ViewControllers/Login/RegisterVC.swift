@@ -292,26 +292,30 @@ class RegisterVC: UIViewController {
             
             strErrorMessage = "REG_INVUSNAME".localized
             tfError = arrTextfields[0]
-        } else if currentUser.usLastNames.isEmpty{
+        } else if currentUser.usName.isEmpty {
+
+          strErrorMessage = "REG_INVNAME".localized
+          tfError = arrTextfields[1]
+        } else if currentUser.usLastNames.isEmpty {
             
             strErrorMessage = "REG_INVLANAME".localized
-            tfError = arrTextfields[1]
+            tfError = arrTextfields[2]
         } else if !currentUser.usEmail.isAValidEmail {
             
             strErrorMessage = "REG_INVMAIL".localized
-            tfError = arrTextfields[2]
+            tfError = arrTextfields[3]
         } else if currentUser.usBirthdate.isEmpty {
             
             strErrorMessage = "REG_INVBIRTH".localized
-            tfError = arrTextfields[3]
+            tfError = arrTextfields[4]
         } else if currentUser.usPassword.isEmpty {
             
             strErrorMessage = "REG_INVPASS".localized
-            tfError = arrTextfields[4]
+            tfError = arrTextfields[5]
         } else if confirmPassword.isEmpty {
             
             strErrorMessage = "REG_INVCOPASS".localized
-            tfError = arrTextfields[5]
+            tfError = arrTextfields[6]
         }
         if strErrorMessage != "" {
             
@@ -363,36 +367,42 @@ extension RegisterVC: UITableViewDataSource, UITableViewDelegate {
             aCell.currentImage = currentUser.usProfileImage
             aCell.delegate = self
             return aCell
-            
+
         case 1:
+          let aCell: FirstNameTVCell = tableView.dequeueReusableCell(withIdentifier: "FirstNameCell", for: indexPath) as! FirstNameTVCell
+          aCell.currentFirstName = currentUser.usFirstName
+          aCell.delegate = self
+          return aCell
+            
+        case 2:
             let aCell: UsernameTVCell = tableView.dequeueReusableCell(withIdentifier: "UsernameCell", for: indexPath) as! UsernameTVCell
             aCell.currentName = currentUser.usName
             aCell.delegate = self
             arrTextfields.append(aCell.tfUsername)
             return aCell
             
-        case 2:
+        case 3:
             let aCell: LastNamesTVCell = tableView.dequeueReusableCell(withIdentifier: "LastNamesCell", for: indexPath) as! LastNamesTVCell
             aCell.currentLastNames = currentUser.usLastNames
             arrTextfields.append(aCell.tfLastNames)
             aCell.delegate = self
             return aCell
             
-        case 3:
+        case 4:
             let aCell: EmailTVCell = tableView.dequeueReusableCell(withIdentifier: "EmailCell", for: indexPath) as! EmailTVCell
             aCell.currentEmail = currentUser.usEmail
             arrTextfields.append(aCell.tfEmail)
             aCell.delegate = self
             return aCell
             
-        case 4:
+        case 5:
             let aCell: BirthdayTVCell = tableView.dequeueReusableCell(withIdentifier: "BirthdayCell", for: indexPath) as! BirthdayTVCell
             aCell.currentBirthday = currentUser.usBirthdate.description
             arrTextfields.append(aCell.tfBirthday)
             aCell.delegate = self
             return aCell
             
-        case 5:
+        case 6:
             let aCell: PasswordTVCell = tableView.dequeueReusableCell(withIdentifier: "PasswordCell", for: indexPath) as! PasswordTVCell
             aCell.currentPassword = currentUser.usPassword
             aCell.isConfirmationPassword = false
@@ -401,7 +411,7 @@ extension RegisterVC: UITableViewDataSource, UITableViewDelegate {
             aCell.delegate = self
             return aCell
             
-        case 6:
+        case 7:
             let aCell: PasswordTVCell = tableView.dequeueReusableCell(withIdentifier: "PasswordCell", for: indexPath) as! PasswordTVCell
             aCell.currentPassword = confirmPassword
             aCell.isConfirmationPassword = true
@@ -444,6 +454,17 @@ extension RegisterVC: UserProfileImageTVCellDelegate {
     }
 }
 
+extension RegisterVC: FirstNameTVCellDelegate {
+
+  func textfieldFirstNameEndEditing(text: String) {
+    currentUser.usName = text
+  }
+
+  func firstNameReturnPressed() {
+    setCorrespondingFirstResponder(indexPath: 1)
+  }
+}
+
 extension RegisterVC: UsernameTVCellDelegate {
     
     func textfieldUsernameEndEditing(text: String) {
@@ -451,7 +472,7 @@ extension RegisterVC: UsernameTVCellDelegate {
     }
     
     func usernameReturnPressed() {
-        setCorrespondingFirstResponder(indexPath: 1)
+        setCorrespondingFirstResponder(indexPath: 2)
     }
 }
 
@@ -462,7 +483,7 @@ extension RegisterVC: LastNamesTVCellDelegate {
     }
     
     func lastNamesReturnPressed() {
-        setCorrespondingFirstResponder(indexPath: 2)
+        setCorrespondingFirstResponder(indexPath: 3)
     }
 }
 
@@ -474,7 +495,7 @@ extension RegisterVC: EmailTVCellDelegate {
     
     func emailReturnPressed() {
         dismissKeyboard()
-        setCorrespondingFirstResponder(indexPath: 3)
+        setCorrespondingFirstResponder(indexPath: 4)
     }
 }
 
@@ -490,7 +511,7 @@ extension RegisterVC: BirthdayTVCellDelegate {
     }
     
     func birthdayReturnPressed() {
-        setCorrespondingFirstResponder(indexPath: 4)
+        setCorrespondingFirstResponder(indexPath: 5)
     }
 }
 
@@ -506,7 +527,7 @@ extension RegisterVC: PasswordTVCellDelegate {
             guard let aCell: AboutTVCell = tvRegister.cellForRow(at: IndexPath(row: 0, section: 7)) as? AboutTVCell else { return }
             aCell.txtvwAbout.becomeFirstResponder()
         } else {
-            setCorrespondingFirstResponder(indexPath: 6)
+            setCorrespondingFirstResponder(indexPath: 7)
         }
     }
 }
@@ -518,7 +539,7 @@ extension RegisterVC: AboutTVCellDelegate {
     }
     
     func aboutReturnPressed() {
-        guard let aCell: AboutTVCell = tvRegister.cellForRow(at: IndexPath(row: 0, section: 7)) as? AboutTVCell else { return }
+        guard let aCell: AboutTVCell = tvRegister.cellForRow(at: IndexPath(row: 0, section: 8)) as? AboutTVCell else { return }
         aCell.dismissKeyboard()
     }
 }

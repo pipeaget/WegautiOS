@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -344,8 +344,45 @@
                                             <outlet property="tfUsername" destination="Fs9-61-uwg" id="Sfr-3f-8Fi"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="60" id="el9-jT-1dc" customClass="FirstNameTVCell" customModule="Wegaut" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="270" width="320" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="el9-jT-1dc" id="AsF-kw-dKP">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nombre(s)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gkb-sD-IkH">
+                                                    <rect key="frame" x="12" y="10" width="296" height="12"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="12" id="5iI-Zh-hH7"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
+                                                    <color key="textColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="exJ-gB-df8">
+                                                    <rect key="frame" x="12" y="26" width="296" height="27.5"/>
+                                                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Gkb-sD-IkH" secondAttribute="trailing" constant="12" id="3ar-hM-LXj"/>
+                                                <constraint firstAttribute="trailing" secondItem="exJ-gB-df8" secondAttribute="trailing" constant="12" id="Ik4-tX-4HA"/>
+                                                <constraint firstItem="Gkb-sD-IkH" firstAttribute="top" secondItem="AsF-kw-dKP" secondAttribute="top" constant="10" id="LS3-GC-O8y"/>
+                                                <constraint firstAttribute="bottom" secondItem="exJ-gB-df8" secondAttribute="bottom" constant="6" id="MGg-gF-XYY"/>
+                                                <constraint firstItem="exJ-gB-df8" firstAttribute="top" secondItem="Gkb-sD-IkH" secondAttribute="bottom" constant="4" id="Pi9-p5-wDk"/>
+                                                <constraint firstItem="Gkb-sD-IkH" firstAttribute="leading" secondItem="AsF-kw-dKP" secondAttribute="leading" constant="12" id="mMT-ld-xvw"/>
+                                                <constraint firstItem="exJ-gB-df8" firstAttribute="leading" secondItem="AsF-kw-dKP" secondAttribute="leading" constant="12" id="wHO-lF-BAM"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="lblFirstName" destination="Gkb-sD-IkH" id="Adk-oq-5st"/>
+                                            <outlet property="tfFirstName" destination="exJ-gB-df8" id="JIS-Qv-UpY"/>
+                                        </connections>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LastNamesCell" rowHeight="62" id="weu-95-Ay9" customClass="LastNamesTVCell" customModule="Wegaut" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="270" width="320" height="62"/>
+                                        <rect key="frame" x="0.0" y="330" width="320" height="62"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="weu-95-Ay9" id="4UZ-OH-fl4">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="61.5"/>
@@ -395,7 +432,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EmailCell" rowHeight="62" id="M1N-gi-bF9" customClass="EmailTVCell" customModule="Wegaut" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="332" width="320" height="62"/>
+                                        <rect key="frame" x="0.0" y="392" width="320" height="62"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="M1N-gi-bF9" id="h8f-tU-2gW">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="61.5"/>
@@ -448,7 +485,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="BirthdayCell" rowHeight="62" id="sY8-q3-teB" customClass="BirthdayTVCell" customModule="Wegaut" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="394" width="320" height="62"/>
+                                        <rect key="frame" x="0.0" y="454" width="320" height="62"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sY8-q3-teB" id="5lx-og-drJ">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="61.5"/>
@@ -501,7 +538,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PasswordCell" rowHeight="62" id="mac-A8-uEx" customClass="PasswordTVCell" customModule="Wegaut" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="456" width="320" height="62"/>
+                                        <rect key="frame" x="0.0" y="516" width="320" height="62"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mac-A8-uEx" id="Hk1-hh-xxH">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="61.5"/>
@@ -568,7 +605,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AboutCell" rowHeight="150" id="lrL-i7-wAu" customClass="AboutTVCell" customModule="Wegaut" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="518" width="320" height="150"/>
+                                        <rect key="frame" x="0.0" y="578" width="320" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lrL-i7-wAu" id="lqZ-hY-ged">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="149.5"/>
@@ -1077,7 +1114,7 @@
         <image name="ICClose" width="40" height="39"/>
         <image name="ICDone" width="28" height="20"/>
         <image name="ICExitP" width="20.5" height="20"/>
-        <image name="ICVisible" width="30" height="30"/>
+        <image name="ICVisible" width="44.536083221435547" height="44.536083221435547"/>
         <image name="LGNavBar" width="68" height="58"/>
         <image name="LGWhite" width="263" height="320"/>
     </resources>

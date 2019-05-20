@@ -101,6 +101,7 @@
 
 "REG_TIT"       = "Register";
 "REG_USR"       = "User";
+"REG_FN"        = "First name(s)";
 "REG_LN"        = "Last names";
 "REG_EM"        = "Email";
 "REG_PSSWD"     = "Password";
@@ -115,6 +116,7 @@
 "REG_EDIT"      = "Edit";
 "REG_PABIRTH"   = "Select your birthdate:";
 "REG_INVUSNAME" = "The username isn't valid";
+"REG_INVNAME"   = "The name isn't valid";
 "REG_INVLANAME" = "The last names aren't valid";
 "REG_INVBIRTH"  = "The birthdate isn't valid";
 "REG_INVMAIL"   = "The email isn't valid";

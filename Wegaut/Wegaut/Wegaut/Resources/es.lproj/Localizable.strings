@@ -101,6 +101,7 @@
 
 "REG_TIT"       = "Registro";
 "REG_USR"       = "Usuario";
+"REG_FN"        = "Nombre(s)";
 "REG_LN"        = "Apellidos";
 "REG_EM"        = "Email";
 "REG_PSSWD"     = "Contraseña";
@@ -115,6 +116,7 @@
 "REG_EDIT"      = "Editar";
 "REG_PABIRTH"   = "Selecciona tu fecha de nacimiento:";
 "REG_INVUSNAME" = "El nombre de usuario no es válido";
+"REG_INVNAME"   = "El nombre no es válido";
 "REG_INVLANAME" = "Los apellidos no son válidos";
 "REG_INVBIRTH"  = "La fecha de nacimiento no es válida";
 "REG_INVMAIL"   = "El email no es válido";
