@@ -20,7 +20,6 @@ class RegisterVC: UIViewController {
     var arrTextfields: [UITextField]!
     var keyBoardHeight: CGFloat = 0
     var currentUser: User!
-    var confirmPassword: String = ""
     var tfError: UITextField!
     var dbRef: DatabaseReference!
     
@@ -73,7 +72,7 @@ class RegisterVC: UIViewController {
         
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue else { return }
         DispatchQueue.main.async {
-            self.cnTvRegisterBottom.constant = -keyboardSize.height
+            self.cnTvRegisterBottom.constant = keyboardSize.height + 1
         }
     }
     
@@ -155,26 +154,20 @@ class RegisterVC: UIViewController {
                      completion: nil)
     }
     
-    func validatePasswords() -> Bool {
-        
-        if confirmPassword.isEmpty {
-            return true
-        }
-        return confirmPassword == currentUser.usPassword
-    }
-    
-    func setCorrespondingFirstResponder(indexPath: Int) {
-        arrTextfields[indexPath].becomeFirstResponder()
+    func scrollToMakeVisibleCellIn(section: Int) {
+        tvRegister.scrollToRow(at: IndexPath(row: 0, section: section), at: UITableView.ScrollPosition.top, animated: true)
     }
     
     func showDateAlert() {
         let popupAlert: FORPopUpView = FORPopUpView(with: FORAlertData(datePicker: UIColor.white, aTitle: "", aMessage: "REG_PABIRTH".localized, yesButtonTitle: "OK".localized, yesButtonColor: UIColor.deepPurple, noButtonTitle: "CANCEL".localized, noButtonColor: UIColor.red))
         popupAlert.show(animated: true)
         popupAlert.dateSelection = { aDate in
-            self.currentUser.usBirthdate = aDate.description
+            self.currentUser.usBirthdate = aDate.dateToStringEddMMMyyyy()
             self.tvRegister.reloadData()
             popupAlert.dismiss(animated: true)
-            self.setCorrespondingFirstResponder(indexPath: 4)
+            guard let aCell = self.tvRegister.cellForRow(at: IndexPath(row: 0, section: 5)) as? PasswordTVCell else { return }
+            aCell.tfPassword.becomeFirstResponder()
+            self.scrollToMakeVisibleCellIn(section: 5)
         }
         popupAlert.yesNoSuccess = { aBool in
             popupAlert.dismiss(animated: true)
@@ -182,7 +175,6 @@ class RegisterVC: UIViewController {
     }
     
     func showRegisterErrorAlert()-> UIAlertController {
-        
         let alert: UIAlertController = UIAlertController(title: "ERROR".localized, message: "REG_ERR".localized, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (alert) in
             UserDefaults.standard.set(nil, forKey: WegautConstants.USER_DATA)
@@ -191,7 +183,6 @@ class RegisterVC: UIViewController {
     }
     
     func showProfileUploadErrorAlert()-> UIAlertController {
-        
         let alert:UIAlertController = UIAlertController(title: "ERROR".localized, message: "REG_PROF_ERR".localized, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "OK".localized, style: UIAlertAction.Style.default, handler: nil))
         return alert
@@ -280,7 +271,6 @@ class RegisterVC: UIViewController {
     //MARK: - ACTIONS
     
     @IBAction func actClose(_ sender: UIButton) {
-        
         self.navigationController?.popViewController(animated: true)       
     }
     
@@ -312,10 +302,6 @@ class RegisterVC: UIViewController {
             
             strErrorMessage = "REG_INVPASS".localized
             tfError = arrTextfields[5]
-        } else if confirmPassword.isEmpty {
-            
-            strErrorMessage = "REG_INVCOPASS".localized
-            tfError = arrTextfields[6]
         }
         if strErrorMessage != "" {
             
@@ -369,54 +355,44 @@ extension RegisterVC: UITableViewDataSource, UITableViewDelegate {
             return aCell
 
         case 1:
-          let aCell: FirstNameTVCell = tableView.dequeueReusableCell(withIdentifier: "FirstNameCell", for: indexPath) as! FirstNameTVCell
-          aCell.currentFirstName = currentUser.usFirstName
-          aCell.delegate = self
-          return aCell
-            
-        case 2:
             let aCell: UsernameTVCell = tableView.dequeueReusableCell(withIdentifier: "UsernameCell", for: indexPath) as! UsernameTVCell
             aCell.currentName = currentUser.usName
             aCell.delegate = self
-            arrTextfields.append(aCell.tfUsername)
+            arrTextfields.contains(aCell.tfUsername) ? nil : arrTextfields.append(aCell.tfUsername)
+            return aCell
+            
+        case 2:
+            let aCell: FirstNameTVCell = tableView.dequeueReusableCell(withIdentifier: "FirstNameCell", for: indexPath) as! FirstNameTVCell
+            aCell.currentFirstName = currentUser.usFirstName
+            aCell.delegate = self
+            arrTextfields.contains(aCell.tfFirstName) ? nil : arrTextfields.append(aCell.tfFirstName)
             return aCell
             
         case 3:
             let aCell: LastNamesTVCell = tableView.dequeueReusableCell(withIdentifier: "LastNamesCell", for: indexPath) as! LastNamesTVCell
             aCell.currentLastNames = currentUser.usLastNames
-            arrTextfields.append(aCell.tfLastNames)
+            arrTextfields.contains(aCell.tfLastNames) ? nil : arrTextfields.append(aCell.tfLastNames)
             aCell.delegate = self
             return aCell
             
         case 4:
             let aCell: EmailTVCell = tableView.dequeueReusableCell(withIdentifier: "EmailCell", for: indexPath) as! EmailTVCell
             aCell.currentEmail = currentUser.usEmail
-            arrTextfields.append(aCell.tfEmail)
+            arrTextfields.contains(aCell.tfEmail) ? nil : arrTextfields.append(aCell.tfEmail)
             aCell.delegate = self
             return aCell
             
         case 5:
             let aCell: BirthdayTVCell = tableView.dequeueReusableCell(withIdentifier: "BirthdayCell", for: indexPath) as! BirthdayTVCell
             aCell.currentBirthday = currentUser.usBirthdate.description
-            arrTextfields.append(aCell.tfBirthday)
+            arrTextfields.contains(aCell.tfBirthday) ? nil : arrTextfields.append(aCell.tfBirthday)
             aCell.delegate = self
             return aCell
             
         case 6:
             let aCell: PasswordTVCell = tableView.dequeueReusableCell(withIdentifier: "PasswordCell", for: indexPath) as! PasswordTVCell
             aCell.currentPassword = currentUser.usPassword
-            aCell.isConfirmationPassword = false
-            aCell.passwordsAreEqual = validatePasswords()
-            arrTextfields.append(aCell.tfPassword)
-            aCell.delegate = self
-            return aCell
-            
-        case 7:
-            let aCell: PasswordTVCell = tableView.dequeueReusableCell(withIdentifier: "PasswordCell", for: indexPath) as! PasswordTVCell
-            aCell.currentPassword = confirmPassword
-            aCell.isConfirmationPassword = true
-            aCell.passwordsAreEqual = validatePasswords()
-            arrTextfields.append(aCell.tfPassword)
+            arrTextfields.contains(aCell.tfPassword) ? nil : arrTextfields.append(aCell.tfPassword)
             aCell.delegate = self
             return aCell
             
@@ -429,9 +405,7 @@ extension RegisterVC: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        setCorrespondingFirstResponder(indexPath: (indexPath.section - 1))
-        
-        tvRegister.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.bottom, animated: true)
+        scrollToMakeVisibleCellIn(section: indexPath.section)
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -454,17 +428,6 @@ extension RegisterVC: UserProfileImageTVCellDelegate {
     }
 }
 
-extension RegisterVC: FirstNameTVCellDelegate {
-
-  func textfieldFirstNameEndEditing(text: String) {
-    currentUser.usName = text
-  }
-
-  func firstNameReturnPressed() {
-    setCorrespondingFirstResponder(indexPath: 1)
-  }
-}
-
 extension RegisterVC: UsernameTVCellDelegate {
     
     func textfieldUsernameEndEditing(text: String) {
@@ -472,7 +435,22 @@ extension RegisterVC: UsernameTVCellDelegate {
     }
     
     func usernameReturnPressed() {
-        setCorrespondingFirstResponder(indexPath: 2)
+        guard let aCell = tvRegister.cellForRow(at: IndexPath(row: 0, section: 2)) as? FirstNameTVCell else { return }
+        aCell.tfFirstName.becomeFirstResponder()
+        scrollToMakeVisibleCellIn(section: 2)
+    }
+}
+
+extension RegisterVC: FirstNameTVCellDelegate {
+    
+    func textfieldFirstNameEndEditing(text: String) {
+        currentUser.usName = text
+    }
+    
+    func firstNameReturnPressed() {
+        guard let aCell = tvRegister.cellForRow(at: IndexPath(row: 0, section: 3)) as? LastNamesTVCell else { return }
+        aCell.tfLastNames.becomeFirstResponder()
+        scrollToMakeVisibleCellIn(section: 3)
     }
 }
 
@@ -483,7 +461,9 @@ extension RegisterVC: LastNamesTVCellDelegate {
     }
     
     func lastNamesReturnPressed() {
-        setCorrespondingFirstResponder(indexPath: 3)
+        guard let aCell = tvRegister.cellForRow(at: IndexPath(row: 0, section: 4)) as? EmailTVCell else { return }
+        aCell.tfEmail.becomeFirstResponder()
+        scrollToMakeVisibleCellIn(section: 4)
     }
 }
 
@@ -495,7 +475,9 @@ extension RegisterVC: EmailTVCellDelegate {
     
     func emailReturnPressed() {
         dismissKeyboard()
-        setCorrespondingFirstResponder(indexPath: 4)
+        guard let aCell = tvRegister.cellForRow(at: IndexPath(row: 0, section: 5)) as? BirthdayTVCell else { return }
+        aCell.tfBirthday.becomeFirstResponder()
+        scrollToMakeVisibleCellIn(section: 5)
     }
 }
 
@@ -511,24 +493,18 @@ extension RegisterVC: BirthdayTVCellDelegate {
     }
     
     func birthdayReturnPressed() {
-        setCorrespondingFirstResponder(indexPath: 5)
+        guard let aCell = tvRegister.cellForRow(at: IndexPath(row: 0, section: 6)) as? PasswordTVCell else { return }
+        aCell.tfPassword.becomeFirstResponder()
+        scrollToMakeVisibleCellIn(section: 6)
     }
 }
 
 extension RegisterVC: PasswordTVCellDelegate {
     
-    func textfieldPasswordEndEditing(text: String, isConfirm: Bool) {
-        isConfirm ? (confirmPassword = text) : (currentUser.usPassword = text)
-        tvRegister.reloadData()
-    }
-    
-    func passwordReturnPressed(isConfirm: Bool) {
-        if isConfirm {
-            guard let aCell: AboutTVCell = tvRegister.cellForRow(at: IndexPath(row: 0, section: 7)) as? AboutTVCell else { return }
-            aCell.txtvwAbout.becomeFirstResponder()
-        } else {
-            setCorrespondingFirstResponder(indexPath: 7)
-        }
+    func passwordReturnPressed() {
+        guard let aCell: AboutTVCell = tvRegister.cellForRow(at: IndexPath(row: 0, section: 7)) as? AboutTVCell else { return }
+        aCell.txtvwAbout.becomeFirstResponder()
+        scrollToMakeVisibleCellIn(section: 7)
     }
 }
 

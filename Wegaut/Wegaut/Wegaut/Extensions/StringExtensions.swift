@@ -32,6 +32,10 @@ extension String{
         return emailTest.evaluate(with:self)
     }
     
+    var isAValidPassword: Bool {
+        let passwordRegex = "[A-Z0-9a-z]"
+    }
+    
     var isAValidURL: Bool {
         
         let urlRegex = "[-\\w\\.]++(:\\d+)?(/([\\w/_\\.]*(\\?\\S+)?)?)?"

@@ -100,12 +100,12 @@
 //MARK: - REGISTERVC
 
 "REG_TIT"       = "Register";
-"REG_USR"       = "User";
+"REG_USR"       = "Username";
 "REG_FN"        = "First name(s)";
 "REG_LN"        = "Last names";
 "REG_EM"        = "Email";
 "REG_PSSWD"     = "Password";
-"REG_CPSSWD"    = "Confirm password";
+"REG_PSSWD_COND" = "8 - 12 digits";
 "REG_BIRTH"     = "Birthday";
 "REG_ABOUT"     = "Tell us about you";
 "REG_DESC"      = "Use this space to describe yourself...";
@@ -307,6 +307,10 @@
 "PRO_IMG_ERR"  = "Error while downloading the profile picture";
 "PRO_ERR_TIT"  = "Error retrieving user data";
 "PRO_ERR_MESS" = "You must make a Login again";
+"PRO_EMPTY_ MESS0" = "Oh oh!\nCurrently you don't have any event scheduled. Find interesting events in our Feed.";
+"PRO_EMPTY_ MESS1" = "Oh oh!\n Currently you don't have any event favourited. Find events you'll love in our Feed.";
+"PRO_EMPTY_ MESS2" = "Oh oh!\n Currently you don't have any event shared. Find events you could share with your friends.";
+"PRO_GO_FEED" = "Go to Feed";
 
 //MARK: - FOLLOWERSVC
 
