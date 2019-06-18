@@ -100,12 +100,12 @@
 //MARK: - REGISTERVC
 
 "REG_TIT"       = "Registro";
-"REG_USR"       = "Usuario";
+"REG_USR"       = "Nombre de Usuario";
 "REG_FN"        = "Nombre(s)";
 "REG_LN"        = "Apellidos";
 "REG_EM"        = "Email";
 "REG_PSSWD"     = "Contraseña";
-"REG_CPSSWD"    = "Confirmar contraseña";
+"REG_PSSWD_COND" = "8 - 12 dígitos";
 "REG_BIRTH"     = "Cumpleaños";
 "REG_ABOUT"     = "Cuentanos sobre ti";
 "REG_DESC"      = "Usa este espacio para describirte...";
@@ -307,6 +307,8 @@
 "PRO_IMG_ERR"  = "Error al descargar la foto de perfil";
 "PRO_ERR_TIT"  = "Error al descargar la información del usuario";
 "PRO_ERR_MESS" = "Es necesario volver a iniciar sesión";
+"PRO_EMPTY_ MESS" = "Oh oh!\nActualmente no cuentas con ningún evento agendado. Encuentra eventos de tu interés en nuestra vista de Eventos.";
+"PRO_GO_FEED" = "Ver Eventos";
 
 //MARK: - MYBADGESVC
 

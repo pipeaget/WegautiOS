@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		59592DFE2298B38300ACEF95 /* EmptyEventCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59592DFD2298B38300ACEF95 /* EmptyEventCVCell.swift */; };
 		597CBE282287456600D95FBA /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597CBE272287456600D95FBA /* Languages.swift */; };
 		597CBE2A22877DB800D95FBA /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597CBE2922877DB800D95FBA /* DateExtensions.swift */; };
 		59A1B9BA226A8197005A007C /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A1B9B9226A8197005A007C /* Comment.swift */; };
@@ -130,6 +131,7 @@
 		0CC4F014C17B7E4E6E4CC7B0 /* Pods-WegautUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WegautUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WegautUITests/Pods-WegautUITests.release.xcconfig"; sourceTree = "<group>"; };
 		17F33DD3A31A7DA1D3DC907C /* Pods-WegautUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WegautUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WegautUITests/Pods-WegautUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		1AA6765B6664F7C90B601730 /* Pods-WegautTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WegautTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WegautTests/Pods-WegautTests.release.xcconfig"; sourceTree = "<group>"; };
+		59592DFD2298B38300ACEF95 /* EmptyEventCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyEventCVCell.swift; sourceTree = "<group>"; };
 		597CBE272287456600D95FBA /* Languages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
 		597CBE2922877DB800D95FBA /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		59A1B9B9226A8197005A007C /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -280,6 +282,14 @@
 				BAE21DFAFE1FC24330F5A26F /* Pods_WegautUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		59592DFC2298B34D00ACEF95 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				59592DFD2298B38300ACEF95 /* EmptyEventCVCell.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		59A256872250493E00AA7EF0 /* Register */ = {
@@ -442,6 +452,7 @@
 		D5CE6169219E4079001F7E3C /* CollectionViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				59592DFC2298B34D00ACEF95 /* Profile */,
 				D5CE616A219E408F001F7E3C /* EventCVCell.swift */,
 				D5CE616D219E4090001F7E3C /* InterestCVCell.swift */,
 				D5CE616B219E408F001F7E3C /* MultimediaCVCell.swift */,
@@ -654,9 +665,9 @@
 		D5E20F0921478EB60099C1BD /* XIBS */ = {
 			isa = PBXGroup;
 			children = (
+				D5E20EE421478B3A0099C1BD /* LaunchScreen.storyboard */,
 				D5D146E4214EAA9B005C2FC5 /* Onboarding.storyboard */,
 				D5EBD477214982D700FEEBA4 /* Login.storyboard */,
-				D5E20EE421478B3A0099C1BD /* LaunchScreen.storyboard */,
 				D5D146E8214EAAD0005C2FC5 /* Main.storyboard */,
 				D5D146E6214EAAA3005C2FC5 /* AddNewEvent.storyboard */,
 				D5EA546E219D1A170048CFED /* NoConnection.xib */,
@@ -726,7 +737,7 @@
 				TargetAttributes = {
 					D5E20ED721478B390099C1BD = {
 						CreatedOnToolsVersion = 9.4.1;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -920,6 +931,7 @@
 				D5D14693214EA94D005C2FC5 /* OrganizersTVCell.swift in Sources */,
 				D5D146DF214EAA58005C2FC5 /* SettingsVC.swift in Sources */,
 				D5D146DA214EAA58005C2FC5 /* DropDownDetailVC.swift in Sources */,
+				59592DFE2298B38300ACEF95 /* EmptyEventCVCell.swift in Sources */,
 				D5D14656214EA866005C2FC5 /* Tag.swift in Sources */,
 				D5D146D0214EAA45005C2FC5 /* EventTimelineVC.swift in Sources */,
 				59A25693225052F200AA7EF0 /* BirthdayTVCell.swift in Sources */,
@@ -1090,7 +1102,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Wegaut.Aget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1110,7 +1122,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Wegaut.Aget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

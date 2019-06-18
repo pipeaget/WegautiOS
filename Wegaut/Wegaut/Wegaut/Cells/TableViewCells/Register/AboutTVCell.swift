@@ -77,7 +77,6 @@ extension AboutTVCell: UITextViewDelegate {
         textView.inputAccessoryView = toolBar
         textView.inputAccessoryView = toolBar
         if textView.text == "REG_DESC".localized {
-            
             textView.text = ""
         }
     }

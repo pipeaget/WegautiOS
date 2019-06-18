@@ -9,8 +9,7 @@
 import UIKit
 
 protocol PasswordTVCellDelegate {
-    func textfieldPasswordEndEditing(text: String, isConfirm: Bool)
-    func passwordReturnPressed(isConfirm: Bool)
+    func passwordReturnPressed()
 }
 
 class PasswordTVCell: UITableViewCell {
@@ -23,19 +22,12 @@ class PasswordTVCell: UITableViewCell {
         }
     }
     var delegate: PasswordTVCellDelegate?
-    var isConfirmationPassword: Bool = false
-    var isVisible: Bool = true {
-        didSet{
-            updateVisibility()
-        }
-    }
     var passwordsAreEqual: Bool = true
     
     //MARK: - OUTLETS
     
     @IBOutlet weak var lblPassword: UILabel!
     @IBOutlet weak var tfPassword: UITextField!
-    @IBOutlet weak var btnVisibleInvisible: UIButton!
     
     //MARK: - VIEW LIFECYCLE
     
@@ -51,36 +43,29 @@ class PasswordTVCell: UITableViewCell {
 
     func setupCell() {
         guard let aPassword = currentPassword else { return }
-        lblPassword.text = isConfirmationPassword ? "REG_CPSSWD".localized : "REG_PSSWD".localized
+        lblPassword.text = "REG_PSSWD".localized
         tfPassword.text = aPassword
-        tfPassword.textColor = passwordsAreEqual ? UIColor.black : UIColor.red
+        tfPassword.textColor = UIColor.red
         tfPassword.delegate = self
-        updateVisibility()
-    }
-    
-    func updateVisibility() {
-        tfPassword.isSecureTextEntry = isVisible
-        btnVisibleInvisible.setImage(isVisible ? #imageLiteral(resourceName: "ICVisible") : #imageLiteral(resourceName: "ICInvisible.png"), for: UIControl.State.normal)
-        btnVisibleInvisible.imageView?.getImageWith(tintColor: UIColor.deepPurple)
-    }
-    
-    //MARK: - ACTIONS
-    
-    @IBAction func actBtnVisibleInvisible(_ sender: UIButton) {
-        isVisible = !isVisible
-        updateVisibility()
     }
 }
 
 extension PasswordTVCell: UITextFieldDelegate {
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        lblPassword.text = "REG_PSSWD_COND".localized
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
-        guard let aString = textField.text else { return }
-        delegate?.textfieldPasswordEndEditing(text: aString, isConfirm: isConfirmationPassword)
+        lblPassword.text = "REG_PSSWD".localized
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        (textField.text! + string).isAValidURL
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        delegate?.passwordReturnPressed(isConfirm: isConfirmationPassword)
+        delegate?.passwordReturnPressed()
         return true
     }
 }

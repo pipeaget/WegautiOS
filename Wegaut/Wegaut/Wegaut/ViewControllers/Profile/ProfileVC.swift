@@ -155,6 +155,8 @@ class ProfileVC: UIViewController {
                 self.currentUser?.usProfileImage = UIImage(data: imageData) ?? #imageLiteral(resourceName: "BGLogo")
                 self.updateUI()
                 KVNProgress.dismiss()
+                self.cvEvents.isHidden = false
+                self.cvEvents.reloadData()
             } else {
                 KVNProgress.showError(withStatus: "PRO_IMG_ERR".localized)
             }
@@ -235,13 +237,19 @@ class ProfileVC: UIViewController {
                      completion: nil)
     }
     
-    func getNumberOfItemsFor(section: Int)-> Int {
+    func getNumberOfItemsFor(section: Int)-> (Int, Bool) {
         
         switch section {
-        case 0: return self.currentUser?.usAssistingEvents.count ?? 0
-        case 1: return self.currentUser?.usFavouriteEvents.count ?? 0
-        case 2: return self.currentUser?.usSharedEvents.count ?? 0
-        default: return 0
+        case 0:
+            guard let assistingEvents = self.currentUser?.usAssistingEvents.count else { return (1,true) }
+            return assistingEvents == 0 ? (1, true) : (assistingEvents, false)
+        case 1:
+            guard let favouritedEvents = self.currentUser?.usFavouriteEvents.count else { return (1, true) }
+            return favouritedEvents == 0 ? (1, true) : (favouritedEvents, false)
+        case 2:
+            guard let sharedEvents = self.currentUser?.usSharedEvents.count else { return (1, true) }
+            return sharedEvents == 0 ? (1, true) : (sharedEvents, false)
+        default: return (0, false)
         }
     }
     
@@ -316,67 +324,55 @@ extension ProfileVC: UICollectionViewDataSource, UICollectionViewDelegate, UICol
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        switch currentSegmentControlIndex {
-            
-        case 0:
-            return currentUser?.usAssistingEvents.count ?? 1
-            
-        case 1:
-            return currentUser?.usFavouriteEvents.count ?? 1
-            
-        case 2:
-            return currentUser?.usSharedEvents.count ?? 1
-            
-        default:
-            return 0
-        }
+        return getNumberOfItemsFor(section: section).0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let cellHeight: CGFloat = getNumberOfItemsFor(section: currentSegmentControlIndex) == 0 ? 100 : ((cvEvents.frame.width - 40) / 3)
-        let cellWidth: CGFloat = getNumberOfItemsFor(section: currentSegmentControlIndex) == 0 ? (cvEvents.frame.width - 40) : ((cvEvents.frame.width - 40) / 3)
+        let cellHeight: CGFloat = getNumberOfItemsFor(section: currentSegmentControlIndex).1 ? 300 : ((cvEvents.frame.width - 40) / 3)
+        let cellWidth: CGFloat = getNumberOfItemsFor(section: currentSegmentControlIndex).1 ? (cvEvents.frame.width - 40) : ((cvEvents.frame.width - 40) / 3)
         return CGSize(width: cellWidth, height: cellHeight)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if getNumberOfItemsFor(section: <#T##Int#>)
-        let aCell: EventCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: "EventCell", for: indexPath) as! EventCVCell
-        return aCell
+        
+        if getNumberOfItemsFor(section: indexPath.section).1 {
+            let aCell: EmptyEventCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyEventCell", for: indexPath) as! EmptyEventCVCell
+            aCell.delegate = self
+            aCell.setUpCellFor(section: currentSegmentControlIndex)
+            return aCell
+        } else {
+            let aCell: EventCVCell = collectionView.dequeueReusableCell(withReuseIdentifier: "EventCell", for: indexPath) as! EventCVCell
+            return aCell
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        
-        let aCell: EventCVCell = cell as! EventCVCell
-        switch currentSegmentControlIndex {
-            
-        case 0:
-            guard let anEvent = currentUser?.usAssistingEvents[indexPath.row] else { return }
-            aCell.currentEvent = anEvent
-            
-        case 1:
-            guard let anEvent = currentUser?.usFavouriteEvents[indexPath.row] else { return }
-            
-            aCell.currentEvent = anEvent
-            
-        case 2:
-            guard let anEvent = currentUser?.usSharedEvents[indexPath.row] else { return }
-            aCell.currentEvent = anEvent
-            
-        default:
-            break
+        if !getNumberOfItemsFor(section: indexPath.section).1 {
+            let aCell: EventCVCell = cell as! EventCVCell
+            switch currentSegmentControlIndex {
+            case 0:
+                guard let anEvent = currentUser?.usAssistingEvents[indexPath.row] else { return }
+                aCell.currentEvent = anEvent
+            case 1:
+                guard let anEvent = currentUser?.usFavouriteEvents[indexPath.row] else { return }
+                aCell.currentEvent = anEvent
+            case 2:
+                guard let anEvent = currentUser?.usSharedEvents[indexPath.row] else { return }
+                aCell.currentEvent = anEvent
+            default:
+                break
+            }
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        let aCell: EventCVCell = cvEvents.cellForItem(at: indexPath) as! EventCVCell
-        guard let anEvent = aCell.currentEvent else{
-            
-            return
+        if !getNumberOfItemsFor(section: indexPath.section).1 {
+            let aCell: EventCVCell = cvEvents.cellForItem(at: indexPath) as! EventCVCell
+            guard let anEvent = aCell.currentEvent else { return }
+            selectedEvent = anEvent
+            self.performSegue(withIdentifier: "ShowEventDetail", sender: self)
         }
-        selectedEvent = anEvent
-        self.performSegue(withIdentifier: "ShowEventDetail", sender: self)
     }
 }
 
@@ -411,4 +407,13 @@ fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [U
 // Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
 	return input.rawValue
+}
+
+extension ProfileVC: EmptyEventCVCellProtocol {
+    
+    func didTappedGoToFeed() {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let rootNavigation: UITabBarController = storyBoard.instantiateViewController(withIdentifier: "RootNavigation") as! UITabBarController
+        self.present(rootNavigation, animated: true, completion: nil)
+    }
 }
