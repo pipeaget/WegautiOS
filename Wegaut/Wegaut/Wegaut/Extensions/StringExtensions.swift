@@ -29,11 +29,13 @@ extension String{
     var isAValidEmail:Bool{
         let emailregex = "[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}"
         let emailTest = NSPredicate(format: "SELF MATCHES %@", emailregex)
-        return emailTest.evaluate(with:self)
+        return emailTest.evaluate(with: self)
     }
     
     var isAValidPassword: Bool {
-        let passwordRegex = "[A-Z0-9a-z]"
+        let passwordRegex = "[A-Za-z0-9-]{8,12}"
+        let passwordTest = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
+        return passwordTest.evaluate(with: self)
     }
     
     var isAValidURL: Bool {

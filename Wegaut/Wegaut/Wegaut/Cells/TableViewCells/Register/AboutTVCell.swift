@@ -101,7 +101,7 @@ extension AboutTVCell: UITextViewDelegate {
                 
                 return false
             }
-            if (text.rangeOfCharacter(from: .newlines) == nil && (textView.text! + text).count <= 100) {
+            if (textView.text! + text).count <= 100 {
                 
                 self.lblCount.text = "\(self.txtvwAbout.text.count + text.count) / 100"
                 self.lblCount.textColor = UIColor.black

@@ -60,10 +60,6 @@ extension PasswordTVCell: UITextFieldDelegate {
         lblPassword.text = "REG_PSSWD".localized
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        (textField.text! + string).isAValidURL
-    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         delegate?.passwordReturnPressed()
         return true

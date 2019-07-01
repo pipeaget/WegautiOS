@@ -131,7 +131,8 @@
 
 //MARK: - SELECTINTERESTSVC
 
-"SEL_TIT" = "Choose your interests";
+"SEL_TIT"     = "Choose your interests";
+"SEL_INT_ERR" = "You must select at least 3 categories";
 
 //MARK: - WALKTHROUGHVC
 

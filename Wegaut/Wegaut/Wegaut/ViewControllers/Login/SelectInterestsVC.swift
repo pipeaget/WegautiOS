@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import KVNProgress
+import FirebaseDatabase
 class SelectInterestsVC: UIViewController {
     
     //MARK: - VARIABLES
@@ -17,6 +18,7 @@ class SelectInterestsVC: UIViewController {
             cvInterests.reloadData()
         }
     }
+    var dbRef: DatabaseReference!
     
     //MARK: - OUTLETS
     
@@ -29,6 +31,7 @@ class SelectInterestsVC: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        dbRef = Database.database().reference()
         arrInterests = Tag.getTags()
         lblInstructions.text = "SEL_TIT".localized
     }
@@ -52,6 +55,17 @@ class SelectInterestsVC: UIViewController {
                      completion:nil)
     }
     
+    func uploadInterests() {
+        if let aUserData = UserDefaults.standard.object(forKey: WegautConstants.USER_DATA) as? [String: Any],
+            var anUser = User.convertDicToUser(aUserData) {
+            
+            anUser.usTags = arrInterests.filter{ $0.tagIsSelected == true }
+            self.dbRef.child("users").child(anUser.usId).child("usTags").setValue(Tag.convertArrToTags(anUser.usTags)) { (<#Error?#>,  ) in
+                <#code#>
+            }
+        }
+    }
+    
     //MARK: - ACTIONS
     
     @IBAction func actDismiss(_ sender: UIButton) {
@@ -60,8 +74,14 @@ class SelectInterestsVC: UIViewController {
     }
 
     @IBAction func actConfirmInterests(_ sender: UIButton) {
-        
-        goToFeed()
+        if (arrInterests.filter{$0.tagIsSelected == true}.count >= 3) {
+            
+            goToFeed()
+        } else {
+            let alert: UIAlertController = UIAlertController(title: "ERROR".localized, message: "SEL_INT_ERR".localized, preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.destructive, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }
 

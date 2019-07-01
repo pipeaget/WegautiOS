@@ -251,12 +251,7 @@ class RegisterVC: UIViewController {
                     alert.addAction(UIAlertAction(title: "OK",
                                                   style: UIAlertAction.Style.default, handler: { (alert) in
                                                     UserDefaults.standard.set(true,forKey: WegautConstants.IS_USER_LOGGED)
-                                                    let storyBoard: UIStoryboard = UIStoryboard(name: "Main",
-                                                                                                bundle: Bundle.main)
-                                                    let rootNavigation: UITabBarController = storyBoard.instantiateViewController(withIdentifier: "RootNavigation") as! UITabBarController
-                                                    self.present(rootNavigation,
-                                                                 animated: true,
-                                                                 completion: nil)
+                                                    self.performSegue(withIdentifier: "showInterests", sender: nil)
                                                     
                     }))
                     self.present(alert, animated: true, completion: nil)
@@ -298,7 +293,7 @@ class RegisterVC: UIViewController {
             
             strErrorMessage = "REG_INVBIRTH".localized
             tfError = arrTextfields[4]
-        } else if currentUser.usPassword.isEmpty {
+        } else if currentUser.usPassword.isAValidPassword {
             
             strErrorMessage = "REG_INVPASS".localized
             tfError = arrTextfields[5]
