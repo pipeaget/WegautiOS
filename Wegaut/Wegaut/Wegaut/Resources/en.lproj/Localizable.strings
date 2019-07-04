@@ -104,8 +104,9 @@
 "REG_FN"        = "First name(s)";
 "REG_LN"        = "Last names";
 "REG_EM"        = "Email";
+"REG_PSSWDS"    = "Passwords (8 - 12 characters)";
 "REG_PSSWD"     = "Password";
-"REG_PSSWD_COND" = "8 - 12 digits";
+"REG_CONFPSSWD" = "Confirm password";
 "REG_BIRTH"     = "Birthday";
 "REG_ABOUT"     = "Tell us about you";
 "REG_DESC"      = "Use this space to describe yourself...";
@@ -115,16 +116,18 @@
 "REG_GALLERY"   = "Gallery";
 "REG_EDIT"      = "Edit";
 "REG_PABIRTH"   = "Select your birthdate:";
+"REG_T&C"       = "I accept the terms and conditions.";
 "REG_INVUSNAME" = "The username isn't valid";
 "REG_INVNAME"   = "The name isn't valid";
 "REG_INVLANAME" = "The last names aren't valid";
 "REG_INVBIRTH"  = "The birthdate isn't valid";
 "REG_INVMAIL"   = "The email isn't valid";
 "REG_INVPASS"   = "The password isn't valid";
+"REG_INVTERMS"  = "You must accept the terms and conditions to register.";
 "REG_INVCOPASS" = "The confirm password isn't valid";
 "REG_WELCOME"   = "WELCOME!!!";
 "REG_HELLO"     = "Hello";
-"REG_DESC"      = "Tell us a about you";
+"REG_DESC"      = "Tell us about you";
 "REG_PROC"      = "Registering the user...";
 "REG_ERR"       = "The user can't be registered";
 "REG_PROF_ERR"  = "There was a problem during profile picture upload, you can change it later.";
@@ -298,6 +301,8 @@
 //MARK: - PROFILEVC
 
 "PRO_TIT"      = "User";
+"PRO_FOLLOW"   = "Follow";
+"PRO_REPORT"   = "Report";
 "PRO_FOLWRS"   = "Followers";
 "PRO_LEVEL"    = "Level";
 "PRO_EVENTS"   = "Events";

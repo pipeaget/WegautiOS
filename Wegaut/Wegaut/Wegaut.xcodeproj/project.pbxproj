@@ -10,6 +10,7 @@
 		59592DFE2298B38300ACEF95 /* EmptyEventCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59592DFD2298B38300ACEF95 /* EmptyEventCVCell.swift */; };
 		597CBE282287456600D95FBA /* Languages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597CBE272287456600D95FBA /* Languages.swift */; };
 		597CBE2A22877DB800D95FBA /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597CBE2922877DB800D95FBA /* DateExtensions.swift */; };
+		5986C19822CD175100C4A4EA /* FORSelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5986C19722CD175100C4A4EA /* FORSelectionButton.swift */; };
 		59A1B9BA226A8197005A007C /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A1B9B9226A8197005A007C /* Comment.swift */; };
 		59A2568922504DB100AA7EF0 /* UserProfileImageTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A2568822504DB100AA7EF0 /* UserProfileImageTVCell.swift */; };
 		59A2568B22504DC900AA7EF0 /* UsernameTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A2568A22504DC900AA7EF0 /* UsernameTVCell.swift */; };
@@ -134,6 +135,7 @@
 		59592DFD2298B38300ACEF95 /* EmptyEventCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyEventCVCell.swift; sourceTree = "<group>"; };
 		597CBE272287456600D95FBA /* Languages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Languages.swift; sourceTree = "<group>"; };
 		597CBE2922877DB800D95FBA /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		5986C19722CD175100C4A4EA /* FORSelectionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FORSelectionButton.swift; sourceTree = "<group>"; };
 		59A1B9B9226A8197005A007C /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		59A2568822504DB100AA7EF0 /* UserProfileImageTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileImageTVCell.swift; sourceTree = "<group>"; };
 		59A2568A22504DC900AA7EF0 /* UsernameTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsernameTVCell.swift; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 				D5BCEE7A219B60C5003428C9 /* FORButton.swift */,
 				D5F198EB21AF1C9B0082DE73 /* FORAndroidTextfield.swift */,
 				D5A7710D2200D66900F49D06 /* EventAnnotation.swift */,
+				5986C19722CD175100C4A4EA /* FORSelectionButton.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -943,6 +946,7 @@
 				D5D14664214EA882005C2FC5 /* FORFooterSearchResults.swift in Sources */,
 				D5D146A3214EA968005C2FC5 /* NotificationBadgeTVCell.swift in Sources */,
 				D5D146DD214EAA58005C2FC5 /* ProfileVC.swift in Sources */,
+				5986C19822CD175100C4A4EA /* FORSelectionButton.swift in Sources */,
 				D5D1469A214EA958005C2FC5 /* MainInfoTVCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -104,8 +104,9 @@
 "REG_FN"        = "Nombre(s)";
 "REG_LN"        = "Apellidos";
 "REG_EM"        = "Email";
+"REG_PSSWDS"    = "Contraseñas (8 - 12 caractéres)";
 "REG_PSSWD"     = "Contraseña";
-"REG_PSSWD_COND" = "8 - 12 dígitos";
+"REG_CONFPSSWD" = "Confirmar contraseña";
 "REG_BIRTH"     = "Cumpleaños";
 "REG_ABOUT"     = "Cuentanos sobre ti";
 "REG_DESC"      = "Usa este espacio para describirte...";
@@ -115,12 +116,14 @@
 "REG_GALLERY"   = "Galería";
 "REG_EDIT"      = "Editar";
 "REG_PABIRTH"   = "Selecciona tu fecha de nacimiento:";
+"REG_T&C"       = "Acepto los términos y condiciones";
 "REG_INVUSNAME" = "El nombre de usuario no es válido";
 "REG_INVNAME"   = "El nombre no es válido";
 "REG_INVLANAME" = "Los apellidos no son válidos";
 "REG_INVBIRTH"  = "La fecha de nacimiento no es válida";
 "REG_INVMAIL"   = "El email no es válido";
 "REG_INVPASS"   = "La contraseña no es válida";
+"REG_INVTERMS"  = "Debes aceptar los términos y condiciones para registrarte.";
 "REG_INVCOPASS" = "Las contraseñas no coinciden";
 "REG_WELCOME"   = "¡Bienvenido!";
 "REG_HELLO"     = "Hola";
@@ -298,6 +301,8 @@
 //MARK: - PROFILEVC
 
 "PRO_TIT"      = "Usuario";
+"PRO_FOLLOW"   = "Seguir";
+"PRO_REPORT"   = "Reportar";
 "PRO_FOLWRS"   = "Followers";
 "PRO_LEVEL"    = "Level";
 "PRO_EVENTS"   = "Events";

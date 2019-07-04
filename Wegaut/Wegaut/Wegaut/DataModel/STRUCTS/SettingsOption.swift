@@ -42,6 +42,13 @@ struct SettingsOption{
     var SOTitle: String!
     var SODestinationType:destinationType
     
+    static func getTandC()-> SettingsOption {
+        
+        return SettingsOption(SOCellType: cellType.detailDisclosure,
+                              SOTitle: "SO_T&C".localized,
+                              SODestinationType: destinationType.simpleDetail)
+    }
+    
     static func getSections()->[String: [SettingsOption]]{
         
         return ["SO_H1".localized: [SettingsOption(SOCellType: cellType.pushNotifications,

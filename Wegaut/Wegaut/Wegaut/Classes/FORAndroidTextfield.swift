@@ -247,6 +247,20 @@ import UIKit
 
 extension UITextField{
     
+    /// Used to add left image in a UITextfield class or child.
+    ///
+    /// - Parameter image: The UIImage value to be assigned.
+    func addLeftImageWith(image: UIImage) {
+        let imgvwLeft: UIImageView = UIImageView(image: image)
+        imgvwLeft.frame = CGRect(x: 0,
+                                 y: 0,
+                                 width: 30,
+                                 height: 30)
+        imgvwLeft.contentMode = UIView.ContentMode.scaleAspectFit
+        self.leftView = imgvwLeft
+        self.leftViewMode = UITextField.ViewMode.whileEditing
+    }
+    
     /// Used to add left image with tintColor (optional) in a UITextfield class or child.
     ///
     /// - Parameters:
@@ -263,7 +277,21 @@ extension UITextField{
         imgvwLeft.contentMode = UIView.ContentMode.scaleAspectFit
         imgvwLeft.tintColor = tintColor ?? UIColor.white
         self.leftView = imgvwLeft
-        self.leftViewMode = UITextField.ViewMode.always
+        self.rightViewMode = UITextField.ViewMode.always
+    }
+    
+    /// Used to add right image in a UITextfield class or child.
+    ///
+    /// - Parameter image: The UIImage value to be assigned.
+    func addRightImageWith(image: UIImage) {
+        let imgvwRight: UIImageView = UIImageView(image: image)
+        imgvwRight.frame = CGRect(x: 0,
+                                 y: 0,
+                                 width: 30,
+                                 height: 30)
+        imgvwRight.contentMode = UIView.ContentMode.scaleAspectFit
+        self.leftView = imgvwRight
+        self.leftViewMode = UITextField.ViewMode.whileEditing
     }
     
     /// Used to add right image with tintColor (optional) in a UITextfield class or child.

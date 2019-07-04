@@ -60,9 +60,9 @@ class SelectInterestsVC: UIViewController {
             var anUser = User.convertDicToUser(aUserData) {
             
             anUser.usTags = arrInterests.filter{ $0.tagIsSelected == true }
-            self.dbRef.child("users").child(anUser.usId).child("usTags").setValue(Tag.convertArrToTags(anUser.usTags)) { (<#Error?#>,  ) in
+        /*self.dbRef.child("users").child(anUser.usId).child("usTags").setValue(Tag.convertArrToTags(anUser.usTags)) { (<#Error?#>,  ) in
                 <#code#>
-            }
+            }*/
         }
     }
     

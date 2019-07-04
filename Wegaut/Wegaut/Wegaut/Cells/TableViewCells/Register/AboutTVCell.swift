@@ -44,6 +44,9 @@ class AboutTVCell: UITableViewCell {
 
     func setupCell() {
         guard let anAbout = currentAbout else { return }
+        txtvwAbout.layer.borderWidth = 1
+        txtvwAbout.layer.borderColor = UIColor.lightGray.cgColor
+        txtvwAbout.layer.cornerRadius = 5
         lblAbout.text = "REG_ABOUT".localized
         lblCount.text = txtvwAbout.text.isEmpty ? "0/250" : "\(self.txtvwAbout.text.count) / 100"
         lblCount.textColor = txtvwAbout.text.count == 250 ? UIColor.red : UIColor.black
@@ -109,9 +112,8 @@ extension AboutTVCell: UITextViewDelegate {
             } else {
                 
                 self.lblCount.textColor = UIColor.red
-                return false
             }
         }
-        return true
+        return false
     }
 }

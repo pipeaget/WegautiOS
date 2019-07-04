@@ -32,6 +32,8 @@ class ProfileVC: UIViewController {
     @IBOutlet weak var imgvwNewProfilePic: UIImageView!
     @IBOutlet weak var lblUsername: UILabel!
     @IBOutlet weak var lblUserDescription: UILabel!
+    @IBOutlet weak var btnFollow: UIButton!
+    @IBOutlet weak var btnReport: UIButton!
     @IBOutlet weak var vwUsage: UIView!
     @IBOutlet weak var lblFollowersQuantity: UILabel!
     @IBOutlet weak var lblFollowers: UILabel!
@@ -87,6 +89,15 @@ class ProfileVC: UIViewController {
         currentSegmentControlIndex = 0
         lblUsername.text = ""
         lblUserDescription.text = ""
+        
+        if isOtherUserProfile {
+            btnFollow.isHidden = false
+            btnFollow.setTitle("PRO_FOLLOW".localized, for: UIControl.State.normal)
+            btnFollow.cornerRadius(cornerRadius: 5)
+            btnReport.isHidden = false
+            btnReport.setTitle("PRO_REPORT".localized, for: UIControl.State.normal)
+            btnReport.cornerRadius(cornerRadius: 5)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -308,6 +319,13 @@ class ProfileVC: UIViewController {
         
         self.performSegue(withIdentifier: "showMyEvents",
                           sender: nil)
+    }
+    
+    @IBAction func actBtnFollow(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func actBtnReport(_ sender: UIButton) {
     }
 }
 

@@ -12,14 +12,18 @@ class SimpleDetailVC: UIViewController {
     
     //MARK: - VARIABLES
     
-    var currentSettingOption:SettingsOption?
-    
+    var currentSettingOption: SettingsOption? 
     //MARK: - OUTLETS
     
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var tvwDetail: UITextView!
     
     //MARK: - VIEW LIFECYCLE
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+    }
 
     override func viewDidLoad() {
         

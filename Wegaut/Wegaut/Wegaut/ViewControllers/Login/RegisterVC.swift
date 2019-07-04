@@ -22,6 +22,8 @@ class RegisterVC: UIViewController {
     var currentUser: User!
     var tfError: UITextField!
     var dbRef: DatabaseReference!
+    var areTermsActive: Bool = false
+    var isPasswordsEquals: Bool = false
     
     //MARK: - OUTLETS
     
@@ -29,7 +31,9 @@ class RegisterVC: UIViewController {
     @IBOutlet weak var vwNavigation: UIView!
     @IBOutlet weak var btnClose: UIButton!
     @IBOutlet weak var tvRegister: UITableView!
-    @IBOutlet weak var cnTvRegisterBottom: NSLayoutConstraint!
+    @IBOutlet weak var ccTermsAndConditions: FORSelectionButton!
+    @IBOutlet weak var btnRegister: UIButton!
+    @IBOutlet weak var cnBtnRegisterBottom: NSLayoutConstraint!
     
     //MARK: - VIEW LIFECYCLE
     
@@ -44,6 +48,9 @@ class RegisterVC: UIViewController {
         arrTextfields = []
         currentUser = User.newUser()
         lblTitle.text = "REG_TIT".localized
+        ccTermsAndConditions.displayText = "REG_T&C".localized
+        ccTermsAndConditions.delegate = self
+        btnRegister.setTitle("REG_TIT".localized, for: UIControl.State.normal)
         dbRef = Database.database().reference()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.keyboardWillShow(notification:)),
@@ -72,13 +79,13 @@ class RegisterVC: UIViewController {
         
         guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue else { return }
         DispatchQueue.main.async {
-            self.cnTvRegisterBottom.constant = keyboardSize.height + 1
+            self.cnBtnRegisterBottom.constant = keyboardSize.height + 1
         }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
         DispatchQueue.main.async {
-            self.cnTvRegisterBottom.constant = 0
+            self.cnBtnRegisterBottom.constant = 0
         }
     }
 
@@ -269,8 +276,7 @@ class RegisterVC: UIViewController {
         self.navigationController?.popViewController(animated: true)       
     }
     
-    @objc func actRegister(_ sender: UIButton) {
-
+    @IBAction func actRegister(_ sender: Any) {
         KVNProgress.show(withStatus: "REG_PROC".localized)
         var strErrorMessage: String = ""
         if currentUser.usName.isEmpty{
@@ -278,9 +284,9 @@ class RegisterVC: UIViewController {
             strErrorMessage = "REG_INVUSNAME".localized
             tfError = arrTextfields[0]
         } else if currentUser.usName.isEmpty {
-
-          strErrorMessage = "REG_INVNAME".localized
-          tfError = arrTextfields[1]
+            
+            strErrorMessage = "REG_INVNAME".localized
+            tfError = arrTextfields[1]
         } else if currentUser.usLastNames.isEmpty {
             
             strErrorMessage = "REG_INVLANAME".localized
@@ -297,6 +303,13 @@ class RegisterVC: UIViewController {
             
             strErrorMessage = "REG_INVPASS".localized
             tfError = arrTextfields[5]
+        } else if !isPasswordsEquals {
+            
+            strErrorMessage = "REG_INVCOPASS".localized
+            
+        } else if !areTermsActive {
+            
+            strErrorMessage = "REG_INVTERMS".localized
         }
         if strErrorMessage != "" {
             
@@ -331,6 +344,7 @@ extension RegisterVC: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:  return 180
+        case 6:  return 98
         case 7:  return 150
         default: return 62
         }
@@ -401,18 +415,6 @@ extension RegisterVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         scrollToMakeVisibleCellIn(section: indexPath.section)
-    }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let btnRegister: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
-        btnRegister.backgroundColor = UIColor.deepPurple
-        btnRegister.setImage(#imageLiteral(resourceName: "ICDone"), for: UIControl.State.normal)
-        btnRegister.addTarget(self, action: #selector(actRegister(_:)), for: UIControl.Event.touchUpInside)
-        return section == 7 ? btnRegister : nil
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return section == 7 ? 50 : 0
     }
 }
 
@@ -496,7 +498,8 @@ extension RegisterVC: BirthdayTVCellDelegate {
 
 extension RegisterVC: PasswordTVCellDelegate {
     
-    func passwordReturnPressed() {
+    func passwordReturnPressed(arePasswordsEqual: Bool) {
+        isPasswordsEquals = arePasswordsEqual
         guard let aCell: AboutTVCell = tvRegister.cellForRow(at: IndexPath(row: 0, section: 7)) as? AboutTVCell else { return }
         aCell.txtvwAbout.becomeFirstResponder()
         scrollToMakeVisibleCellIn(section: 7)
@@ -533,6 +536,20 @@ extension RegisterVC: UIImagePickerControllerDelegate, UINavigationControllerDel
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension RegisterVC: FORSelectionButtonDelegate {
+    
+    func didChangeSelectionStatus(_ sender: FORSelectionButton) {
+        areTermsActive = !areTermsActive
+    }
+    
+    func didTextTapped(_ sender: FORSelectionButton) {
+        let sbMain: UIStoryboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+        let vc: SimpleDetailVC = sbMain.instantiateViewController(withIdentifier: "SimpleDetailVC") as! SimpleDetailVC
+        vc.currentSettingOption = SettingsOption.getTandC()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
