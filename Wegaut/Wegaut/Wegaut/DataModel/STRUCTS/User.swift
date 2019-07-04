@@ -23,6 +23,7 @@ struct User {
     var usWegautLevel: Level
     var usFollowers: [User]
     var usFollowing: [User]
+    var usBlocked: [User]
     var usCreatedEvents: [Event]
     var usAssistingEvents: [Event]
     var usFavouriteEvents: [Event]
@@ -51,6 +52,11 @@ struct User {
             var aFollowing: [String: Any] = [:]
             if let following = aDic["usFollowing"] as? [String: Any] {
                 aFollowing = following
+            }
+            
+            var aBlocked: [String: Any] = [:]
+            if let blocked = aDic["usBlocked"] as? [String: Any] {
+                aBlocked = blocked
             }
             
             var aCreatedEvents: [String: Any] = [:]
@@ -82,7 +88,26 @@ struct User {
             if let tags = aDic["usTags"] as? [String] {
                 aTags = tags
             }
-            return User(usId: anId, usName: aName, usEmail: anEmail, usFirstName: aFirstName, usLastNames: aLastName, usProfileImageURL: aProfileImage, usProfileImage: #imageLiteral(resourceName: "LGNavBar"), usBirthdate: aBirthdate, usPassword: aPassword, usDescription: aDescription, usWegautLevel: Level.getLevelFromString(aWegautLevel), usFollowers: User.convertDicToUsers(aFollowers), usFollowing: User.convertDicToUsers(aFollowing), usCreatedEvents: Event.convertDicToEvents(aCreatedEvents), usAssistingEvents: Event.convertDicToEvents(anAssitingEvents), usFavouriteEvents: Event.convertDicToEvents(aFavouriteEvents), usSharedEvents: Event.convertDicToEvents(aSharedEvents), usActivities: Activity.convertDicToActivities(anActivities), usTags: Tag.convertArrToTags(aTags))
+            return User(usId: anId,
+                        usName: aName,
+                        usEmail: anEmail,
+                        usFirstName: aFirstName,
+                        usLastNames: aLastName,
+                        usProfileImageURL: aProfileImage,
+                        usProfileImage: #imageLiteral(resourceName: "LGNavBar"),
+                        usBirthdate: aBirthdate,
+                        usPassword: aPassword,
+                        usDescription: aDescription,
+                        usWegautLevel: Level.getLevelFromString(aWegautLevel),
+                        usFollowers: User.convertDicToUsers(aFollowers),
+                        usFollowing: User.convertDicToUsers(aFollowing),
+                        usBlocked: User.convertDicToUsers(aBlocked),
+                        usCreatedEvents: Event.convertDicToEvents(aCreatedEvents),
+                        usAssistingEvents: Event.convertDicToEvents(anAssitingEvents),
+                        usFavouriteEvents: Event.convertDicToEvents(aFavouriteEvents),
+                        usSharedEvents: Event.convertDicToEvents(aSharedEvents),
+                        usActivities: Activity.convertDicToActivities(anActivities),
+                        usTags: Tag.convertArrToTags(aTags))
         } else {
             return nil
         }
@@ -150,6 +175,7 @@ struct User {
                     usWegautLevel: Level.noob,
                     usFollowers: [],
                     usFollowing: [],
+                    usBlocked: [],
                     usCreatedEvents: [],
                     usAssistingEvents: [],
                     usFavouriteEvents: [],
@@ -171,6 +197,7 @@ struct User {
                     usWegautLevel: Level.noob,
                     usFollowers: [],
                     usFollowing: [],
+                    usBlocked: [],
                     usCreatedEvents: [],
                     usAssistingEvents: [],
                     usFavouriteEvents: [],
@@ -198,6 +225,7 @@ struct User {
                      usWegautLevel: Level.noob,
                      usFollowers: [],
                      usFollowing: [],
+                     usBlocked: [],
                      usCreatedEvents: [],
                      usAssistingEvents: [],
                      usFavouriteEvents: [],
@@ -216,6 +244,7 @@ struct User {
                      usWegautLevel: Level.noob,
                      usFollowers: [],
                      usFollowing: [],
+                     usBlocked: [],
                      usCreatedEvents: [],
                      usAssistingEvents: [],
                      usFavouriteEvents: [],
@@ -234,6 +263,7 @@ struct User {
                      usWegautLevel: Level.noob,
                      usFollowers: [],
                      usFollowing: [],
+                     usBlocked: [],
                      usCreatedEvents: [],
                      usAssistingEvents: [],
                      usFavouriteEvents: [],
@@ -252,6 +282,7 @@ struct User {
                      usWegautLevel: Level.noob,
                      usFollowers: [],
                      usFollowing: [],
+                     usBlocked: [],
                      usCreatedEvents: [],
                      usAssistingEvents: [],
                      usFavouriteEvents: [],
@@ -270,6 +301,7 @@ struct User {
                      usWegautLevel: Level.noob,
                      usFollowers: [],
                      usFollowing: [],
+                     usBlocked: [],
                      usCreatedEvents: [],
                      usAssistingEvents: [],
                      usFavouriteEvents: [],
@@ -292,6 +324,7 @@ struct User {
                      usWegautLevel: Level.noob,
                      usFollowers: [],
                      usFollowing: [],
+                     usBlocked: [],
                      usCreatedEvents: [],
                      usAssistingEvents: [],
                      usFavouriteEvents: [],
@@ -310,6 +343,7 @@ struct User {
                      usWegautLevel: Level.noob,
                      usFollowers: [],
                      usFollowing: [],
+                     usBlocked: [],
                      usCreatedEvents: [],
                      usAssistingEvents: [],
                      usFavouriteEvents: [],
@@ -328,6 +362,7 @@ struct User {
                      usWegautLevel: Level.noob,
                      usFollowers: [],
                      usFollowing: [],
+                     usBlocked: [],
                      usCreatedEvents: [],
                      usAssistingEvents: [],
                      usFavouriteEvents: [],
@@ -346,6 +381,7 @@ struct User {
                      usWegautLevel: Level.noob,
                      usFollowers: [],
                      usFollowing: [],
+                     usBlocked: [],
                      usCreatedEvents: [],
                      usAssistingEvents: [],
                      usFavouriteEvents: [],
@@ -364,6 +400,7 @@ struct User {
                      usWegautLevel: Level.noob,
                      usFollowers: [],
                      usFollowing: [],
+                     usBlocked: [],
                      usCreatedEvents: [],
                      usAssistingEvents: [],
                      usFavouriteEvents: [],

@@ -1195,11 +1195,11 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="JG7-gv-gpF"/>
                                 </constraints>
-                                <state key="normal" title="btnReport">
+                                <state key="normal" title="btnBlock">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="actBtnReport:" destination="x7o-Lz-WRk" eventType="touchUpInside" id="vu6-Xy-wfb"/>
+                                    <action selector="actBtnBlock:" destination="x7o-Lz-WRk" eventType="touchUpInside" id="LSm-iJ-MBf"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -302,7 +302,9 @@
 
 "PRO_TIT"      = "User";
 "PRO_FOLLOW"   = "Follow";
-"PRO_REPORT"   = "Report";
+"PRO_UNFOLLOW" = "Unfollow";
+"PRO_BLOCK"    = "Block";
+"PRO_UNBLOCK"  = "Unblock";
 "PRO_FOLWRS"   = "Followers";
 "PRO_LEVEL"    = "Level";
 "PRO_EVENTS"   = "Events";

@@ -25,6 +25,8 @@ class ProfileVC: UIViewController {
     }
     var selectedEvent: Event?
     var isOtherUserProfile: Bool = false
+    var isFollowing: Bool = false
+    var isBlocked: Bool = false
     
     //MARK: - OUTLETS
     
@@ -91,12 +93,8 @@ class ProfileVC: UIViewController {
         lblUserDescription.text = ""
         
         if isOtherUserProfile {
-            btnFollow.isHidden = false
-            btnFollow.setTitle("PRO_FOLLOW".localized, for: UIControl.State.normal)
-            btnFollow.cornerRadius(cornerRadius: 5)
-            btnReport.isHidden = false
-            btnReport.setTitle("PRO_REPORT".localized, for: UIControl.State.normal)
-            btnReport.cornerRadius(cornerRadius: 5)
+            updateBlockStatus()
+            updateFollowStatus()
         }
     }
 
@@ -136,6 +134,18 @@ class ProfileVC: UIViewController {
         lblSection2.text = "PRO_FAVS".localized
         imgvwSection3.image = #imageLiteral(resourceName: "ICWhiteShare")
         lblSection3.text = "PRO_SHARED".localized
+    }
+    
+    func updateBlockStatus() {
+        btnReport.isHidden = false
+        btnReport.setTitle(isBlocked ? "PRO_UNBLOCK".localized : "PRO_BLOCK".localized, for: UIControl.State.normal)
+        btnReport.cornerRadius(cornerRadius: 5)
+    }
+    
+    func updateFollowStatus() {
+        btnFollow.isHidden = false
+        btnFollow.setTitle(isFollowing ? "PRO_UNFOLLOW".localized : "PRO_FOLLOW".localized, for: UIControl.State.normal)
+        btnFollow.cornerRadius(cornerRadius: 5)
     }
     
     func loadUserData() {
@@ -322,10 +332,13 @@ class ProfileVC: UIViewController {
     }
     
     @IBAction func actBtnFollow(_ sender: UIButton) {
-        
+        updateFollowStatus()
+        //TODO: FOLLOW/UNFOLLOW
     }
     
-    @IBAction func actBtnReport(_ sender: UIButton) {
+    @IBAction func actBtnBlock(_ sender: UIButton) {
+        updateBlockStatus()
+        //TODO: BLOCK
     }
 }
 
